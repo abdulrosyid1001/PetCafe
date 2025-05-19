@@ -1,0 +1,23 @@
+{
+	"name": "labelGrantedInfo",
+	"plugin-id": "Text",
+	"sid": 681178750508463,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [
+		{
+			"name": "ID",
+			"type": "string",
+			"desc": "",
+			"show": true,
+			"sid": 353696955118804
+		}
+	],
+	"behaviorTypes": [],
+	"effectTypes": [
+		{
+			"effectId": "skymen_BetterOutline",
+			"name": "BetterOutline"
+		}
+	]
+}
