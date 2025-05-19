@@ -1,0 +1,4204 @@
+{
+	"name": "StoreEvents",
+	"events": [
+		{
+			"eventType": "variable",
+			"name": "banner_slider_nav",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 459567604114447
+		},
+		{
+			"eventType": "include",
+			"includeSheet": "GlobalEvents"
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-start-of-layout",
+					"objectClass": "System",
+					"sid": 158661968856771
+				}
+			],
+			"actions": [
+				{
+					"callFunction": "anim_navbar_button",
+					"sid": 700072764359105,
+					"parameters": [
+						"\"store\""
+					]
+				},
+				{
+					"id": "set-text",
+					"objectClass": "TextTickets",
+					"sid": 816539646075661,
+					"parameters": {
+						"text": "ticket"
+					}
+				},
+				{
+					"id": "set-text",
+					"objectClass": "TextCoin",
+					"sid": 955525268375363,
+					"parameters": {
+						"text": "coin"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 409137619522207,
+					"parameters": {
+						"variable": "banner_slider_nav",
+						"value": "1"
+					}
+				},
+				{
+					"callFunction": "slider_banner_nav_anim",
+					"sid": 820593270422697
+				},
+				{
+					"id": "start-timer",
+					"objectClass": "StoreManager",
+					"sid": 662135322667447,
+					"behaviorType": "Timer",
+					"parameters": {
+						"duration": "3",
+						"type": "once",
+						"tag": "\"runSlider\""
+					}
+				}
+			],
+			"sid": 287507838941045,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-empty",
+							"objectClass": "itemStoreData",
+							"sid": 940713079413354
+						}
+					],
+					"actions": [
+						{
+							"id": "request-project-file",
+							"objectClass": "AJAX",
+							"sid": 311497415058324,
+							"parameters": {
+								"tag": "\"item_store_data\"",
+								"file": "itemStoreData.json"
+							}
+						}
+					],
+					"sid": 563721417395581
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 283094950671945
+						}
+					],
+					"actions": [
+						{
+							"callFunction": "create_list_item_store",
+							"sid": 648194164820809
+						}
+					],
+					"sid": 146021361677686
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-empty",
+							"objectClass": "bannerStoreData",
+							"sid": 192194484375362
+						}
+					],
+					"actions": [
+						{
+							"id": "request-project-file",
+							"objectClass": "AJAX",
+							"sid": 631097261987520,
+							"parameters": {
+								"tag": "\"banner_store_data\"",
+								"file": "bannerStoreData.json"
+							}
+						}
+					],
+					"sid": 716714532006723
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 903175170992983
+						}
+					],
+					"actions": [
+						{
+							"callFunction": "create_slider_banner",
+							"sid": 890504517172361,
+							"parameters": [
+								"0"
+							]
+						}
+					],
+					"sid": 406850822296768
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-completed",
+					"objectClass": "AJAX",
+					"sid": 112916356732193,
+					"parameters": {
+						"tag": "\"item_store_data\""
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "load",
+					"objectClass": "itemStoreData",
+					"sid": 252981828122367,
+					"parameters": {
+						"json": "AJAX.LastData"
+					}
+				},
+				{
+					"id": "wait-for-previous-actions",
+					"objectClass": "System",
+					"sid": 447706988116582
+				},
+				{
+					"callFunction": "create_list_item_store",
+					"sid": 383477801053091
+				}
+			],
+			"sid": 832499251969033
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-completed",
+					"objectClass": "AJAX",
+					"sid": 816703091408544,
+					"parameters": {
+						"tag": "\"banner_store_data\""
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "load",
+					"objectClass": "bannerStoreData",
+					"sid": 297937258867461,
+					"parameters": {
+						"json": "AJAX.LastData"
+					}
+				},
+				{
+					"id": "wait-for-previous-actions",
+					"objectClass": "System",
+					"sid": 204294638151476
+				},
+				{
+					"callFunction": "create_slider_banner",
+					"sid": 620214628419915,
+					"parameters": [
+						"0"
+					]
+				}
+			],
+			"sid": 712370675416863
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-touched-object",
+					"objectClass": "Touch",
+					"sid": 856716084096179,
+					"parameters": {
+						"object": "greenButton",
+						"type": "end"
+					}
+				},
+				{
+					"id": "is-playing",
+					"objectClass": "greenButton",
+					"sid": 692667379670806,
+					"behaviorType": "Tween",
+					"parameters": {
+						"tags": "\"button\""
+					},
+					"isInverted": true
+				}
+			],
+			"actions": [],
+			"sid": 953146329237891,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "greenButton",
+							"sid": 444049828962194,
+							"parameters": {
+								"instance-variable": "ID",
+								"comparison": 0,
+								"value": "\"banner_store\""
+							}
+						},
+						{
+							"id": "is-touching-object",
+							"objectClass": "Touch",
+							"sid": 574976313396478,
+							"parameters": {
+								"object": "black_shadow"
+							},
+							"isInverted": true
+						},
+						{
+							"id": "compare-at-xy",
+							"objectClass": "bannerStoreData",
+							"sid": 642959644311473,
+							"parameters": {
+								"x": "0",
+								"y": "greenButton.ID_case-1",
+								"comparison": 4,
+								"value": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "tween-two-properties",
+							"objectClass": "greenButton",
+							"sid": 848784923024390,
+							"behaviorType": "Tween",
+							"parameters": {
+								"tags": "\"button\"",
+								"property": "scale",
+								"end-x": "1",
+								"end-y": "1",
+								"time": "0.1",
+								"ease": "easeoutsine",
+								"destroy-on-complete": "no",
+								"loop": "no",
+								"ping-pong": "yes",
+								"repeat-count": "1"
+							}
+						},
+						{
+							"id": "set-at-xy",
+							"objectClass": "bannerStoreData",
+							"sid": 213589518543514,
+							"parameters": {
+								"x": "0",
+								"y": "greenButton.ID_case-1\n",
+								"value": "bannerStoreData.At(0, greenButton.ID_case-1)-1"
+							}
+						},
+						{
+							"callFunction": "set_banner_store",
+							"sid": 208217897104291
+						},
+						{
+							"id": "wait-for-previous-actions",
+							"objectClass": "System",
+							"sid": 774180339559463
+						},
+						{
+							"callFunction": "popup_store",
+							"sid": 561765493367529,
+							"parameters": [
+								"\"\""
+							]
+						}
+					],
+					"sid": 377059698352727
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "greenButton",
+							"sid": 981129188666577,
+							"parameters": {
+								"instance-variable": "ID",
+								"comparison": 0,
+								"value": "\"item_store\""
+							}
+						},
+						{
+							"id": "is-touching-object",
+							"objectClass": "Touch",
+							"sid": 800221513980745,
+							"parameters": {
+								"object": "black_shadow"
+							},
+							"isInverted": true
+						},
+						{
+							"id": "is-touching-object",
+							"objectClass": "Touch",
+							"sid": 468701930897356,
+							"parameters": {
+								"object": "BG_banner_slider"
+							},
+							"isInverted": true
+						},
+						{
+							"id": "is-touching-object",
+							"objectClass": "Touch",
+							"sid": 896109684322627,
+							"parameters": {
+								"object": "frameNavbarButton"
+							},
+							"isInverted": true
+						},
+						{
+							"id": "compare-at-xyz",
+							"objectClass": "itemStoreData",
+							"sid": 223157992432072,
+							"parameters": {
+								"x": "1",
+								"y": "greenButton.ID_number-1",
+								"z": "greenButton.ID_case-1",
+								"comparison": 4,
+								"value": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "tween-two-properties",
+							"objectClass": "greenButton",
+							"sid": 232380808564569,
+							"behaviorType": "Tween",
+							"parameters": {
+								"tags": "\"button\"",
+								"property": "scale",
+								"end-x": "0.8",
+								"end-y": "0.8",
+								"time": "0.1",
+								"ease": "easeoutsine",
+								"destroy-on-complete": "no",
+								"loop": "no",
+								"ping-pong": "yes",
+								"repeat-count": "1"
+							}
+						},
+						{
+							"id": "set-at-xyz",
+							"objectClass": "itemStoreData",
+							"sid": 144576745815638,
+							"parameters": {
+								"x": "1",
+								"y": "greenButton.ID_number-1",
+								"z": "greenButton.ID_case-1",
+								"value": "itemStoreData.At(1,greenButton.ID_number-1, greenButton.ID_case-1)-1"
+							}
+						},
+						{
+							"callFunction": "set_item_store",
+							"sid": 592858056368196,
+							"parameters": [
+								"greenButton.ID_number",
+								"greenButton.ID_case"
+							]
+						}
+					],
+					"sid": 613760708196779
+				}
+			]
+		},
+		{
+			"functionName": "anim_box_store",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "ID",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"sid": 919139226477529
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 733820589626551,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "orangeBoxClosed",
+							"sid": 312219006097141,
+							"parameters": {
+								"instance-variable": "ID",
+								"comparison": 0,
+								"value": "\"popup\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-volume",
+							"objectClass": "Audio",
+							"sid": 785149012943835,
+							"parameters": {
+								"tag": "\"BGM_Homepage\"",
+								"db": "0.3"
+							}
+						},
+						{
+							"callFunction": "audio_settings",
+							"sid": 604600271978070,
+							"parameters": [
+								"\"Gift_Open\""
+							]
+						},
+						{
+							"id": "tween-one-property",
+							"objectClass": "orangeBoxClosed",
+							"sid": 910276418624885,
+							"behaviorType": "Tween",
+							"parameters": {
+								"tags": "\"start_shake_anim\"",
+								"property": "offsetAngle",
+								"end-value": "-10",
+								"time": "0.2",
+								"ease": "default",
+								"destroy-on-complete": "no",
+								"loop": "no",
+								"ping-pong": "no",
+								"repeat-count": "1"
+							}
+						},
+						{
+							"id": "wait-for-previous-actions",
+							"objectClass": "System",
+							"sid": 987936967740466
+						},
+						{
+							"id": "tween-one-property",
+							"objectClass": "orangeBoxClosed",
+							"sid": 518419565593810,
+							"behaviorType": "Tween",
+							"parameters": {
+								"tags": "\"shake_anim\"",
+								"property": "offsetAngle",
+								"end-value": "10",
+								"time": "0.1",
+								"ease": "default",
+								"destroy-on-complete": "no",
+								"loop": "no",
+								"ping-pong": "yes",
+								"repeat-count": "5"
+							}
+						},
+						{
+							"id": "tween-two-properties",
+							"objectClass": "orangeBoxClosed",
+							"sid": 279363774588927,
+							"behaviorType": "Tween",
+							"parameters": {
+								"tags": "\"pos_anim\"",
+								"property": "position",
+								"end-x": "Self.X",
+								"end-y": "LayoutHeight/2-100",
+								"time": "0.8",
+								"ease": "default",
+								"destroy-on-complete": "no",
+								"loop": "no",
+								"ping-pong": "no",
+								"repeat-count": "1"
+							}
+						},
+						{
+							"id": "wait-for-previous-actions",
+							"objectClass": "System",
+							"sid": 502048276813849
+						},
+						{
+							"id": "tween-two-properties",
+							"objectClass": "orangeBoxClosed",
+							"sid": 256383831479705,
+							"behaviorType": "Tween",
+							"parameters": {
+								"tags": "\"out\"",
+								"property": "scale",
+								"end-x": "0",
+								"end-y": "0",
+								"time": "0.2",
+								"ease": "easeinback",
+								"destroy-on-complete": "yes",
+								"loop": "no",
+								"ping-pong": "no",
+								"repeat-count": "1"
+							}
+						},
+						{
+							"id": "wait-for-previous-actions",
+							"objectClass": "System",
+							"sid": 351328573487315
+						},
+						{
+							"id": "create-object",
+							"objectClass": "System",
+							"sid": 726820237861948,
+							"parameters": {
+								"object-to-create": "orangeBoxOpened",
+								"layer": "\"PopUpStore\"",
+								"x": "LayoutWidth/2",
+								"y": "(LayoutHeight/2)-50",
+								"create-hierarchy": false,
+								"template-name": "\"\""
+							}
+						},
+						{
+							"id": "set-scale",
+							"objectClass": "orangeBoxOpened",
+							"sid": 945822008799780,
+							"parameters": {
+								"scale": "0"
+							}
+						},
+						{
+							"id": "tween-two-properties",
+							"objectClass": "orangeBoxOpened",
+							"sid": 581006491769262,
+							"behaviorType": "Tween",
+							"parameters": {
+								"tags": "\"in\"",
+								"property": "scale",
+								"end-x": "1.8",
+								"end-y": "1.8",
+								"time": "0.2",
+								"ease": "default",
+								"destroy-on-complete": "no",
+								"loop": "no",
+								"ping-pong": "no",
+								"repeat-count": "1"
+							}
+						},
+						{
+							"id": "wait-for-previous-actions",
+							"objectClass": "System",
+							"sid": 619006060768242
+						},
+						{
+							"id": "add-child",
+							"objectClass": "black_shadow",
+							"sid": 507489600529038,
+							"parameters": {
+								"child": "orangeBoxOpened",
+								"transform-x": true,
+								"transform-y": true,
+								"transform-w": true,
+								"transform-h": true,
+								"transform-a": true,
+								"transform-o": false,
+								"transform-z-elevation": true,
+								"transform-visibility": false,
+								"destroy-with-parent": true
+							}
+						}
+					],
+					"sid": 482412349542820,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 313083256731229,
+									"parameters": {
+										"variable": "ID",
+										"comparison": 0,
+										"value": "\"free_gift\""
+									}
+								}
+							],
+							"actions": [],
+							"sid": 208591471430094,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "for",
+											"objectClass": "System",
+											"sid": 565409008705921,
+											"parameters": {
+												"name": "\"free_gift\"",
+												"start-index": "1",
+												"end-index": "4"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "create-object",
+											"objectClass": "System",
+											"sid": 251403928153120,
+											"parameters": {
+												"object-to-create": "Shine2",
+												"layer": "\"PopUpStore\"",
+												"x": "(LayoutWidth/5)+(85*(loopindex-1))",
+												"y": "(LayoutHeight/2)-100",
+												"create-hierarchy": false,
+												"template-name": "\"\""
+											}
+										},
+										{
+											"id": "create-object",
+											"objectClass": "System",
+											"sid": 959953251788664,
+											"parameters": {
+												"object-to-create": "missionIconPack",
+												"layer": "\"PopUpStore\"",
+												"x": "(LayoutWidth/5)+(85*(loopindex-1))",
+												"y": "(LayoutHeight/2)-100",
+												"create-hierarchy": false,
+												"template-name": "\"\""
+											}
+										},
+										{
+											"id": "create-object",
+											"objectClass": "System",
+											"sid": 501814570980844,
+											"parameters": {
+												"object-to-create": "labelGrantedInfo",
+												"layer": "\"PopUpStore\"",
+												"x": "(LayoutWidth/5)+(85*(loopindex-1))",
+												"y": "(LayoutHeight/2)-50",
+												"create-hierarchy": false,
+												"template-name": "\"\""
+											}
+										},
+										{
+											"id": "set-size",
+											"objectClass": "Shine2",
+											"sid": 847266387258268,
+											"parameters": {
+												"width": "100",
+												"height": "100"
+											}
+										},
+										{
+											"id": "set-size",
+											"objectClass": "missionIconPack",
+											"sid": 129863871307800,
+											"parameters": {
+												"width": "90",
+												"height": "90"
+											}
+										},
+										{
+											"id": "set-animation-frame",
+											"objectClass": "missionIconPack",
+											"sid": 791701767429626,
+											"parameters": {
+												"frame-number": "loopindex-1"
+											}
+										},
+										{
+											"id": "set-effect-enabled",
+											"objectClass": "missionIconPack",
+											"sid": 197614061462808,
+											"parameters": {
+												"mode": "enable",
+												"effect": "\"BetterOutline\""
+											}
+										},
+										{
+											"id": "set-text",
+											"objectClass": "labelGrantedInfo",
+											"sid": 647704930890958,
+											"parameters": {
+												"text": "\"X88\""
+											}
+										},
+										{
+											"id": "set-font-size",
+											"objectClass": "labelGrantedInfo",
+											"sid": 264029219666191,
+											"parameters": {
+												"size-pt": "24"
+											}
+										},
+										{
+											"id": "add-child",
+											"objectClass": "black_shadow",
+											"sid": 278978621491953,
+											"parameters": {
+												"child": "Shine2",
+												"transform-x": true,
+												"transform-y": true,
+												"transform-w": true,
+												"transform-h": true,
+												"transform-a": true,
+												"transform-o": false,
+												"transform-z-elevation": true,
+												"transform-visibility": false,
+												"destroy-with-parent": true
+											}
+										},
+										{
+											"id": "add-child",
+											"objectClass": "black_shadow",
+											"sid": 781093325173493,
+											"parameters": {
+												"child": "missionIconPack",
+												"transform-x": true,
+												"transform-y": true,
+												"transform-w": true,
+												"transform-h": true,
+												"transform-a": true,
+												"transform-o": false,
+												"transform-z-elevation": true,
+												"transform-visibility": false,
+												"destroy-with-parent": true
+											}
+										},
+										{
+											"id": "add-child",
+											"objectClass": "black_shadow",
+											"sid": 441101523501059,
+											"parameters": {
+												"child": "labelGrantedInfo",
+												"transform-x": true,
+												"transform-y": true,
+												"transform-w": true,
+												"transform-h": true,
+												"transform-a": true,
+												"transform-o": false,
+												"transform-z-elevation": true,
+												"transform-visibility": false,
+												"destroy-with-parent": true
+											}
+										}
+									],
+									"sid": 158534947403801
+								},
+								{
+									"eventType": "block",
+									"conditions": [],
+									"actions": [
+										{
+											"id": "wait-for-previous-actions",
+											"objectClass": "System",
+											"sid": 752603108525596
+										},
+										{
+											"id": "create-object",
+											"objectClass": "System",
+											"sid": 723261721155176,
+											"parameters": {
+												"object-to-create": "blueButton",
+												"layer": "\"PopUpStore\"",
+												"x": "LayoutWidth/2",
+												"y": "(LayoutHeight/2)+200",
+												"create-hierarchy": true,
+												"template-name": "\"\""
+											}
+										},
+										{
+											"id": "set-text",
+											"objectClass": "labelButton",
+											"sid": 813490692442249,
+											"parameters": {
+												"text": "\"Claim\""
+											}
+										},
+										{
+											"id": "set-instvar-value",
+											"objectClass": "blueButton",
+											"sid": 733592833156338,
+											"parameters": {
+												"instance-variable": "ID",
+												"value": "\"claim\""
+											}
+										}
+									],
+									"sid": 889635615675160
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"functionName": "popup_store",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "ID",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"sid": 326296861783579
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 624678373860766,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"callFunction": "audio_settings",
+							"sid": 158447500198605,
+							"parameters": [
+								"\"PopUp_Appear\""
+							]
+						},
+						{
+							"id": "set-enabled",
+							"objectClass": "dragging",
+							"sid": 755841673698777,
+							"behaviorType": "DragDrop",
+							"parameters": {
+								"state": "disabled"
+							}
+						},
+						{
+							"id": "set-enabled",
+							"objectClass": "swipe_control",
+							"sid": 638074705659227,
+							"behaviorType": "DragDrop",
+							"parameters": {
+								"state": "disabled"
+							}
+						},
+						{
+							"id": "create-object",
+							"objectClass": "System",
+							"sid": 854303612825407,
+							"parameters": {
+								"object-to-create": "black_shadow",
+								"layer": "\"PopUpStore\"",
+								"x": "LayoutWidth/2",
+								"y": "LayoutHeight/2",
+								"create-hierarchy": false,
+								"template-name": "\"\""
+							}
+						},
+						{
+							"id": "set-size",
+							"objectClass": "black_shadow",
+							"sid": 241397456739436,
+							"parameters": {
+								"width": "ViewportWidth(Self.LayerName)",
+								"height": "ViewportHeight(Self.LayerName)"
+							}
+						},
+						{
+							"id": "create-object",
+							"objectClass": "System",
+							"sid": 648818799185645,
+							"parameters": {
+								"object-to-create": "labelInfo",
+								"layer": "\"PopUpStore\"",
+								"x": "LayoutWidth/2",
+								"y": "(LayoutHeight/2)-300",
+								"create-hierarchy": false,
+								"template-name": "\"\""
+							}
+						},
+						{
+							"id": "set-text",
+							"objectClass": "labelInfo",
+							"sid": 327673943443090,
+							"parameters": {
+								"text": "\"REWARDS!\""
+							}
+						},
+						{
+							"id": "set-font-size",
+							"objectClass": "labelInfo",
+							"sid": 707880069940847,
+							"parameters": {
+								"size-pt": "24"
+							}
+						},
+						{
+							"id": "set-height",
+							"objectClass": "labelInfo",
+							"sid": 899583455048417,
+							"parameters": {
+								"height": "48"
+							}
+						},
+						{
+							"id": "set-font-color",
+							"objectClass": "labelInfo",
+							"sid": 605509937843585,
+							"parameters": {
+								"color": "rgba255(255, 255, 255, 255)"
+							}
+						},
+						{
+							"id": "create-object",
+							"objectClass": "System",
+							"sid": 792209454284153,
+							"parameters": {
+								"object-to-create": "Shine2",
+								"layer": "\"PopUpStore\"",
+								"x": "LayoutWidth/2",
+								"y": "(LayoutHeight/2)-50",
+								"create-hierarchy": false,
+								"template-name": "\"\""
+							}
+						},
+						{
+							"id": "set-scale",
+							"objectClass": "Shine2",
+							"sid": 202167779029924,
+							"parameters": {
+								"scale": "1.8"
+							}
+						},
+						{
+							"id": "create-object",
+							"objectClass": "System",
+							"sid": 826609172293287,
+							"parameters": {
+								"object-to-create": "orangeBoxClosed",
+								"layer": "\"PopUpStore\"",
+								"x": "LayoutWidth/2",
+								"y": "(LayoutHeight/2)-50",
+								"create-hierarchy": false,
+								"template-name": "\"\""
+							}
+						},
+						{
+							"id": "set-scale",
+							"objectClass": "orangeBoxClosed",
+							"sid": 946395898501759,
+							"parameters": {
+								"scale": "1.8"
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "orangeBoxClosed",
+							"sid": 888965901596210,
+							"parameters": {
+								"instance-variable": "ID",
+								"value": "\"popup\""
+							}
+						},
+						{
+							"id": "add-child",
+							"objectClass": "orangeBoxClosed",
+							"sid": 600692608000546,
+							"parameters": {
+								"child": "Shine2",
+								"transform-x": true,
+								"transform-y": true,
+								"transform-w": true,
+								"transform-h": true,
+								"transform-a": false,
+								"transform-o": false,
+								"transform-z-elevation": true,
+								"transform-visibility": false,
+								"destroy-with-parent": true
+							}
+						},
+						{
+							"id": "create-object",
+							"objectClass": "System",
+							"sid": 391408805952337,
+							"parameters": {
+								"object-to-create": "ParticlesMerge",
+								"layer": "\"PopUpStore\"",
+								"x": "LayoutWidth/2",
+								"y": "(LayoutHeight/2)-50",
+								"create-hierarchy": false,
+								"template-name": "\"\""
+							}
+						},
+						{
+							"id": "set-size",
+							"objectClass": "ParticlesMerge",
+							"sid": 527458874854428,
+							"parameters": {
+								"size": "50"
+							}
+						},
+						{
+							"id": "set-speed",
+							"objectClass": "ParticlesMerge",
+							"sid": 863843371602969,
+							"parameters": {
+								"speed": "300"
+							}
+						},
+						{
+							"id": "create-object",
+							"objectClass": "System",
+							"sid": 868985561421222,
+							"parameters": {
+								"object-to-create": "blueButton",
+								"layer": "\"PopUpStore\"",
+								"x": "LayoutWidth/2",
+								"y": "(LayoutHeight/2)+200",
+								"create-hierarchy": true,
+								"template-name": "\"\""
+							}
+						},
+						{
+							"id": "set-text",
+							"objectClass": "labelButton",
+							"sid": 741743775580031,
+							"parameters": {
+								"text": "\"OPEN\""
+							}
+						},
+						{
+							"id": "set-instvar-value",
+							"objectClass": "blueButton",
+							"sid": 626123464327284,
+							"parameters": {
+								"instance-variable": "ID",
+								"value": "\"open\""
+							}
+						},
+						{
+							"id": "add-child",
+							"objectClass": "black_shadow",
+							"sid": 138867360673508,
+							"parameters": {
+								"child": "labelInfo",
+								"transform-x": true,
+								"transform-y": true,
+								"transform-w": true,
+								"transform-h": true,
+								"transform-a": true,
+								"transform-o": false,
+								"transform-z-elevation": true,
+								"transform-visibility": false,
+								"destroy-with-parent": true
+							}
+						},
+						{
+							"id": "add-child",
+							"objectClass": "black_shadow",
+							"sid": 595947115666178,
+							"parameters": {
+								"child": "Shine2",
+								"transform-x": true,
+								"transform-y": true,
+								"transform-w": true,
+								"transform-h": true,
+								"transform-a": true,
+								"transform-o": false,
+								"transform-z-elevation": true,
+								"transform-visibility": false,
+								"destroy-with-parent": true
+							}
+						},
+						{
+							"id": "add-child",
+							"objectClass": "black_shadow",
+							"sid": 678500059735620,
+							"parameters": {
+								"child": "orangeBoxClosed",
+								"transform-x": true,
+								"transform-y": true,
+								"transform-w": true,
+								"transform-h": true,
+								"transform-a": true,
+								"transform-o": false,
+								"transform-z-elevation": true,
+								"transform-visibility": false,
+								"destroy-with-parent": true
+							}
+						}
+					],
+					"sid": 815053249962582
+				}
+			]
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "Banner Store",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "group",
+					"disabled": false,
+					"title": "Banner Control",
+					"description": "",
+					"isActiveOnStart": true,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-drop",
+									"objectClass": "swipe_control",
+									"sid": 436494382866306,
+									"behaviorType": "DragDrop"
+								},
+								{
+									"id": "is-touching-object",
+									"objectClass": "Touch",
+									"sid": 817182882380107,
+									"parameters": {
+										"object": "greenButton"
+									},
+									"isInverted": true
+								},
+								{
+									"id": "layer-is-visible",
+									"objectClass": "System",
+									"sid": 876391604386723,
+									"parameters": {
+										"layer": "\"PopUp\""
+									},
+									"isInverted": true
+								}
+							],
+							"actions": [],
+							"sid": 443951790308695,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-x",
+											"objectClass": "swipe_control",
+											"sid": 140192064100310,
+											"parameters": {
+												"comparison": 2,
+												"x-co-ordinate": "(LayoutWidth/2)-50"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-enabled",
+											"objectClass": "swipe_control",
+											"sid": 660781175510731,
+											"behaviorType": "DragDrop",
+											"parameters": {
+												"state": "disabled"
+											}
+										},
+										{
+											"callFunction": "run_slider",
+											"sid": 668874711006243,
+											"parameters": [
+												"1"
+											]
+										},
+										{
+											"id": "set-x",
+											"objectClass": "swipe_control",
+											"sid": 168670021698637,
+											"parameters": {
+												"x": "LayoutWidth/2"
+											}
+										},
+										{
+											"id": "start-timer",
+											"objectClass": "StoreManager",
+											"sid": 969299435615411,
+											"behaviorType": "Timer",
+											"parameters": {
+												"duration": "0.3",
+												"type": "once",
+												"tag": "\"swipeSlider\""
+											}
+										},
+										{
+											"id": "stop-timer",
+											"objectClass": "StoreManager",
+											"sid": 398559350592165,
+											"behaviorType": "Timer",
+											"parameters": {
+												"tag": "\"runSlider\""
+											}
+										},
+										{
+											"id": "start-timer",
+											"objectClass": "StoreManager",
+											"sid": 575302950153851,
+											"behaviorType": "Timer",
+											"parameters": {
+												"duration": "3",
+												"type": "once",
+												"tag": "\"runSlider\""
+											}
+										}
+									],
+									"sid": 189331357509668
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-x",
+											"objectClass": "swipe_control",
+											"sid": 469859043778597,
+											"parameters": {
+												"comparison": 4,
+												"x-co-ordinate": "(LayoutWidth/2)+50"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-enabled",
+											"objectClass": "swipe_control",
+											"sid": 610021094245069,
+											"behaviorType": "DragDrop",
+											"parameters": {
+												"state": "disabled"
+											}
+										},
+										{
+											"callFunction": "run_slider",
+											"sid": 146803888565080,
+											"parameters": [
+												"2"
+											]
+										},
+										{
+											"id": "set-x",
+											"objectClass": "swipe_control",
+											"sid": 692055614094732,
+											"parameters": {
+												"x": "LayoutWidth/2"
+											}
+										},
+										{
+											"id": "start-timer",
+											"objectClass": "StoreManager",
+											"sid": 910324876836013,
+											"behaviorType": "Timer",
+											"parameters": {
+												"duration": "0.3",
+												"type": "once",
+												"tag": "\"swipeSlider\""
+											}
+										},
+										{
+											"id": "stop-timer",
+											"objectClass": "StoreManager",
+											"sid": 754268043933264,
+											"behaviorType": "Timer",
+											"parameters": {
+												"tag": "\"runSlider\""
+											}
+										},
+										{
+											"id": "start-timer",
+											"objectClass": "StoreManager",
+											"sid": 359357256931197,
+											"behaviorType": "Timer",
+											"parameters": {
+												"duration": "3",
+												"type": "once",
+												"tag": "\"runSlider\""
+											}
+										}
+									],
+									"sid": 951255519287335
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-x",
+											"objectClass": "swipe_control",
+											"sid": 935295094252822,
+											"parameters": {
+												"comparison": 3,
+												"x-co-ordinate": "(LayoutWidth/2)+50"
+											}
+										},
+										{
+											"id": "compare-x",
+											"objectClass": "swipe_control",
+											"sid": 778973060895256,
+											"parameters": {
+												"comparison": 5,
+												"x-co-ordinate": "(LayoutWidth/2)-50"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "stop-timer",
+											"objectClass": "StoreManager",
+											"sid": 741175089699941,
+											"behaviorType": "Timer",
+											"parameters": {
+												"tag": "\"runSlider\""
+											}
+										},
+										{
+											"id": "start-timer",
+											"objectClass": "StoreManager",
+											"sid": 131502202793415,
+											"behaviorType": "Timer",
+											"parameters": {
+												"duration": "3",
+												"type": "once",
+												"tag": "\"runSlider\""
+											}
+										}
+									],
+									"sid": 236826321874556
+								}
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-dragging",
+									"objectClass": "swipe_control",
+									"sid": 698926456297108,
+									"behaviorType": "DragDrop"
+								}
+							],
+							"actions": [
+								{
+									"id": "stop-timer",
+									"objectClass": "StoreManager",
+									"sid": 450686501888724,
+									"behaviorType": "Timer",
+									"parameters": {
+										"tag": "\"runSlider\""
+									}
+								}
+							],
+							"sid": 357998149946366
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-timer",
+									"objectClass": "StoreManager",
+									"sid": 479522337488671,
+									"behaviorType": "Timer",
+									"parameters": {
+										"tag": "\"runSlider\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "stop-timer",
+									"objectClass": "StoreManager",
+									"sid": 514433592675568,
+									"behaviorType": "Timer",
+									"parameters": {
+										"tag": "\"runSlider\""
+									}
+								},
+								{
+									"id": "start-timer",
+									"objectClass": "StoreManager",
+									"sid": 734983675075774,
+									"behaviorType": "Timer",
+									"parameters": {
+										"duration": "3",
+										"type": "once",
+										"tag": "\"runSlider\""
+									}
+								},
+								{
+									"callFunction": "run_slider",
+									"sid": 721054089484359,
+									"parameters": [
+										"1"
+									]
+								}
+							],
+							"sid": 182076435541212
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-timer",
+									"objectClass": "StoreManager",
+									"sid": 831095320024787,
+									"behaviorType": "Timer",
+									"parameters": {
+										"tag": "\"swipeSlider\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-enabled",
+									"objectClass": "swipe_control",
+									"sid": 203353989069963,
+									"behaviorType": "DragDrop",
+									"parameters": {
+										"state": "enabled"
+									}
+								}
+							],
+							"sid": 390139955925148
+						}
+					],
+					"sid": 168817539134925
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-created",
+							"objectClass": "bannerBundle",
+							"sid": 729194777250783
+						}
+					],
+					"actions": [],
+					"sid": 924375177634996,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-outside-layout",
+									"objectClass": "bannerBundle",
+									"sid": 678538939377519
+								}
+							],
+							"actions": [
+								{
+									"id": "set-scale",
+									"objectClass": "bannerBundle",
+									"sid": 268326111199170,
+									"parameters": {
+										"scale": "0"
+									}
+								}
+							],
+							"sid": 785084803417839
+						}
+					]
+				},
+				{
+					"functionName": "run_slider",
+					"functionDescription": "",
+					"functionCategory": "",
+					"functionReturnType": "none",
+					"functionCopyPicked": false,
+					"functionIsAsync": false,
+					"functionParameters": [
+						{
+							"name": "ID",
+							"type": "number",
+							"initialValue": "0",
+							"comment": "",
+							"sid": 227663545212176
+						}
+					],
+					"eventType": "function-block",
+					"conditions": [],
+					"actions": [],
+					"sid": 712047464056041,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 891556936590811,
+									"parameters": {
+										"variable": "ID",
+										"comparison": 0,
+										"value": "1"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "add-to-eventvar",
+									"objectClass": "System",
+									"sid": 414284737536627,
+									"parameters": {
+										"variable": "banner_slider_nav",
+										"value": "1"
+									}
+								}
+							],
+							"sid": 820404759256607,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-eventvar",
+											"objectClass": "System",
+											"sid": 447247887139892,
+											"parameters": {
+												"variable": "banner_slider_nav",
+												"comparison": 4,
+												"value": "banner_slider_nav.Count"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "wait-for-previous-actions",
+											"objectClass": "System",
+											"sid": 243022890287601
+										},
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 534104294716431,
+											"parameters": {
+												"variable": "banner_slider_nav",
+												"value": "1"
+											}
+										}
+									],
+									"sid": 853463642213709
+								},
+								{
+									"eventType": "block",
+									"conditions": [],
+									"actions": [
+										{
+											"id": "wait-for-previous-actions",
+											"objectClass": "System",
+											"sid": 982536949120386
+										},
+										{
+											"callFunction": "create_slider_banner",
+											"sid": 756134269397197,
+											"parameters": [
+												"1"
+											]
+										},
+										{
+											"id": "wait-for-previous-actions",
+											"objectClass": "System",
+											"sid": 351228259395229
+										},
+										{
+											"callFunction": "slider_banner",
+											"sid": 856800117010095,
+											"parameters": [
+												"1"
+											]
+										},
+										{
+											"callFunction": "slider_banner_nav_anim",
+											"sid": 799453713411415
+										}
+									],
+									"sid": 605528155289650
+								}
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 101154305141619,
+									"parameters": {
+										"variable": "ID",
+										"comparison": 0,
+										"value": "2"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "subtract-from-eventvar",
+									"objectClass": "System",
+									"sid": 397081738596631,
+									"parameters": {
+										"variable": "banner_slider_nav",
+										"value": "1"
+									}
+								}
+							],
+							"sid": 803653691195114,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-eventvar",
+											"objectClass": "System",
+											"sid": 157450878525341,
+											"parameters": {
+												"variable": "banner_slider_nav",
+												"comparison": 2,
+												"value": "1"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "wait-for-previous-actions",
+											"objectClass": "System",
+											"sid": 132329748943947
+										},
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 393908011666535,
+											"parameters": {
+												"variable": "banner_slider_nav",
+												"value": "banner_slider_nav.Count"
+											}
+										}
+									],
+									"sid": 357389102980098
+								},
+								{
+									"eventType": "block",
+									"conditions": [],
+									"actions": [
+										{
+											"id": "wait-for-previous-actions",
+											"objectClass": "System",
+											"sid": 358007573757943
+										},
+										{
+											"callFunction": "create_slider_banner",
+											"sid": 262643660814400,
+											"parameters": [
+												"2"
+											]
+										},
+										{
+											"id": "wait-for-previous-actions",
+											"objectClass": "System",
+											"sid": 322030473970857
+										},
+										{
+											"callFunction": "slider_banner",
+											"sid": 536382264180614,
+											"parameters": [
+												"2"
+											]
+										},
+										{
+											"callFunction": "slider_banner_nav_anim",
+											"sid": 262089912952643
+										}
+									],
+									"sid": 424753632071745
+								}
+							]
+						}
+					]
+				},
+				{
+					"functionName": "create_slider_banner",
+					"functionDescription": "",
+					"functionCategory": "",
+					"functionReturnType": "none",
+					"functionCopyPicked": false,
+					"functionIsAsync": false,
+					"functionParameters": [
+						{
+							"name": "ID",
+							"type": "number",
+							"initialValue": "0",
+							"comment": "",
+							"sid": 920417515028893
+						}
+					],
+					"eventType": "function-block",
+					"conditions": [],
+					"actions": [],
+					"sid": 772222108270836,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 102335273448243,
+									"parameters": {
+										"variable": "ID",
+										"comparison": 0,
+										"value": "0"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "create-object",
+									"objectClass": "System",
+									"sid": 682707447321719,
+									"parameters": {
+										"object-to-create": "bannerBundle",
+										"layer": "\"UI_Banner_Slider\"",
+										"x": "LayoutWidth/2",
+										"y": "205",
+										"create-hierarchy": true,
+										"template-name": "\"slider_\"&1"
+									}
+								},
+								{
+									"id": "set-instvar-value",
+									"objectClass": "greenButton",
+									"sid": 138387175410534,
+									"parameters": {
+										"instance-variable": "ID_case",
+										"value": "1"
+									}
+								}
+							],
+							"sid": 818422793625570
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 348257494758705,
+									"parameters": {
+										"variable": "ID",
+										"comparison": 0,
+										"value": "1"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "create-object",
+									"objectClass": "System",
+									"sid": 556188653949309,
+									"parameters": {
+										"object-to-create": "bannerBundle",
+										"layer": "\"UI_Banner_Slider\"",
+										"x": "LayoutWidth/2+((2-1)*1.5*LayoutWidth)",
+										"y": "205",
+										"create-hierarchy": true,
+										"template-name": "\"slider_\"&banner_slider_nav"
+									}
+								}
+							],
+							"sid": 532502075859564
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 334742223435149,
+									"parameters": {
+										"variable": "ID",
+										"comparison": 0,
+										"value": "2"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "create-object",
+									"objectClass": "System",
+									"sid": 622008037842461,
+									"parameters": {
+										"object-to-create": "bannerBundle",
+										"layer": "\"UI_Banner_Slider\"",
+										"x": "-LayoutWidth",
+										"y": "205",
+										"create-hierarchy": true,
+										"template-name": "\"slider_\"&banner_slider_nav"
+									}
+								}
+							],
+							"sid": 763819809598117
+						},
+						{
+							"eventType": "block",
+							"conditions": [],
+							"actions": [
+								{
+									"id": "wait-for-previous-actions",
+									"objectClass": "System",
+									"sid": 150119530356092
+								},
+								{
+									"callFunction": "set_banner_store",
+									"sid": 348015022134068
+								}
+							],
+							"sid": 364503067554740
+						}
+					]
+				},
+				{
+					"functionName": "slider_banner",
+					"functionDescription": "",
+					"functionCategory": "",
+					"functionReturnType": "none",
+					"functionCopyPicked": false,
+					"functionIsAsync": false,
+					"functionParameters": [
+						{
+							"name": "ID",
+							"type": "number",
+							"initialValue": "0",
+							"comment": "",
+							"sid": 772125587527207
+						}
+					],
+					"eventType": "function-block",
+					"conditions": [],
+					"actions": [],
+					"sid": 708439309145797,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 751000866784827,
+									"parameters": {
+										"variable": "ID",
+										"comparison": 0,
+										"value": "1"
+									}
+								}
+							],
+							"actions": [],
+							"sid": 531273979661354,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "pick-by-comparison",
+											"objectClass": "System",
+											"sid": 396691366830916,
+											"parameters": {
+												"object": "bannerBundle",
+												"expression": "bannerBundle.X",
+												"comparison": 2,
+												"value": "LayoutWidth"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "tween-one-property",
+											"objectClass": "bannerBundle",
+											"sid": 707619996078463,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "\"\"",
+												"property": "offsetX",
+												"end-value": "Self.X-(1.5*LayoutWidth)",
+												"time": "0.6",
+												"ease": "easeoutsine",
+												"destroy-on-complete": "yes",
+												"loop": "no",
+												"ping-pong": "no",
+												"repeat-count": "1"
+											}
+										},
+										{
+											"id": "tween-two-properties",
+											"objectClass": "bannerBundle",
+											"sid": 417500557381024,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "\"zoom_out\"",
+												"property": "scale",
+												"end-x": "0",
+												"end-y": "0",
+												"time": "0.5",
+												"ease": "default",
+												"destroy-on-complete": "no",
+												"loop": "no",
+												"ping-pong": "no",
+												"repeat-count": "1"
+											}
+										}
+									],
+									"sid": 194509307120374
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "pick-by-comparison",
+											"objectClass": "System",
+											"sid": 705880194667556,
+											"parameters": {
+												"object": "bannerBundle",
+												"expression": "bannerBundle.X",
+												"comparison": 4,
+												"value": "LayoutWidth"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "tween-one-property",
+											"objectClass": "bannerBundle",
+											"sid": 751228448046223,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "\"banner_anim\"",
+												"property": "offsetX",
+												"end-value": "LayoutWidth/2",
+												"time": "0.6",
+												"ease": "easeoutsine",
+												"destroy-on-complete": "no",
+												"loop": "no",
+												"ping-pong": "no",
+												"repeat-count": "1"
+											}
+										},
+										{
+											"id": "tween-two-properties",
+											"objectClass": "bannerBundle",
+											"sid": 948932756097295,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "\"zoom_in\"",
+												"property": "scale",
+												"end-x": "1",
+												"end-y": "1",
+												"time": "0.5",
+												"ease": "default",
+												"destroy-on-complete": "no",
+												"loop": "no",
+												"ping-pong": "no",
+												"repeat-count": "1"
+											}
+										}
+									],
+									"sid": 463568336931071
+								}
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 751777050890446,
+									"parameters": {
+										"variable": "ID",
+										"comparison": 0,
+										"value": "2"
+									}
+								}
+							],
+							"actions": [],
+							"sid": 674623831321853,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "pick-by-comparison",
+											"objectClass": "System",
+											"sid": 164184075874161,
+											"parameters": {
+												"object": "bannerBundle",
+												"expression": "bannerBundle.X",
+												"comparison": 4,
+												"value": "0\n"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "tween-one-property",
+											"objectClass": "bannerBundle",
+											"sid": 396307941114185,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "\"\"",
+												"property": "offsetX",
+												"end-value": "Self.X+(1.5*LayoutWidth)",
+												"time": "0.6",
+												"ease": "easeoutsine",
+												"destroy-on-complete": "yes",
+												"loop": "no",
+												"ping-pong": "no",
+												"repeat-count": "1"
+											}
+										},
+										{
+											"id": "tween-two-properties",
+											"objectClass": "bannerBundle",
+											"sid": 514871005216478,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "\"zoom_out\"",
+												"property": "scale",
+												"end-x": "0",
+												"end-y": "0",
+												"time": "0.5",
+												"ease": "default",
+												"destroy-on-complete": "no",
+												"loop": "no",
+												"ping-pong": "no",
+												"repeat-count": "1"
+											}
+										}
+									],
+									"sid": 390371283247849
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "pick-by-comparison",
+											"objectClass": "System",
+											"sid": 308647419388436,
+											"parameters": {
+												"object": "bannerBundle",
+												"expression": "bannerBundle.X",
+												"comparison": 2,
+												"value": "0"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "tween-one-property",
+											"objectClass": "bannerBundle",
+											"sid": 804341891121766,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "\"banner_anim\"",
+												"property": "offsetX",
+												"end-value": "LayoutWidth/2",
+												"time": "0.6",
+												"ease": "easeoutsine",
+												"destroy-on-complete": "no",
+												"loop": "no",
+												"ping-pong": "no",
+												"repeat-count": "1"
+											}
+										},
+										{
+											"id": "tween-two-properties",
+											"objectClass": "bannerBundle",
+											"sid": 935560492663710,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "\"zoom_in\"",
+												"property": "scale",
+												"end-x": "1",
+												"end-y": "1",
+												"time": "0.5",
+												"ease": "default",
+												"destroy-on-complete": "no",
+												"loop": "no",
+												"ping-pong": "no",
+												"repeat-count": "1"
+											}
+										}
+									],
+									"sid": 237692163110975
+								}
+							]
+						}
+					]
+				},
+				{
+					"functionName": "slider_banner_nav_anim",
+					"functionDescription": "",
+					"functionCategory": "",
+					"functionReturnType": "none",
+					"functionCopyPicked": false,
+					"functionIsAsync": false,
+					"functionParameters": [],
+					"eventType": "function-block",
+					"conditions": [],
+					"actions": [],
+					"sid": 979273720807293,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "for-each",
+									"objectClass": "System",
+									"sid": 683874849362346,
+									"parameters": {
+										"object": "banner_slider_nav"
+									}
+								}
+							],
+							"actions": [],
+							"sid": 478325018284142,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "banner_slider_nav",
+											"sid": 607529136538401,
+											"parameters": {
+												"instance-variable": "ID",
+												"comparison": 0,
+												"value": "banner_slider_nav-1"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "tween-two-properties",
+											"objectClass": "banner_slider_nav",
+											"sid": 289653952309429,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "\"\"",
+												"property": "scale",
+												"end-x": "1.2",
+												"end-y": "1.2",
+												"time": "0.2",
+												"ease": "default",
+												"destroy-on-complete": "no",
+												"loop": "no",
+												"ping-pong": "no",
+												"repeat-count": "1"
+											}
+										},
+										{
+											"id": "set-animation-frame",
+											"objectClass": "banner_slider_nav",
+											"sid": 303708837931444,
+											"parameters": {
+												"frame-number": "1"
+											}
+										}
+									],
+									"sid": 480399696013177
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "else",
+											"objectClass": "System",
+											"sid": 342307475267844
+										}
+									],
+									"actions": [
+										{
+											"id": "tween-two-properties",
+											"objectClass": "banner_slider_nav",
+											"sid": 367536142423058,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "\"\"",
+												"property": "scale",
+												"end-x": "1",
+												"end-y": "1",
+												"time": "0.2",
+												"ease": "default",
+												"destroy-on-complete": "no",
+												"loop": "no",
+												"ping-pong": "no",
+												"repeat-count": "1"
+											}
+										},
+										{
+											"id": "set-animation-frame",
+											"objectClass": "banner_slider_nav",
+											"sid": 727423128517753,
+											"parameters": {
+												"frame-number": "0"
+											}
+										}
+									],
+									"sid": 916466963776133
+								}
+							]
+						}
+					]
+				},
+				{
+					"functionName": "set_banner_store",
+					"functionDescription": "",
+					"functionCategory": "",
+					"functionReturnType": "none",
+					"functionCopyPicked": false,
+					"functionIsAsync": false,
+					"functionParameters": [],
+					"eventType": "function-block",
+					"conditions": [],
+					"actions": [],
+					"sid": 760573533801154,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "for-each",
+									"objectClass": "System",
+									"sid": 335167385061015,
+									"parameters": {
+										"object": "labelBanner"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-text",
+									"objectClass": "labelBanner",
+									"sid": 702056024183243,
+									"parameters": {
+										"text": "bannerStoreData.At(1, Self.ID-1)"
+									}
+								}
+							],
+							"sid": 166887652869075,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-two-values",
+											"objectClass": "System",
+											"sid": 903364691141248,
+											"parameters": {
+												"first-value": "bannerStoreData.At(1, labelBanner.ID-1)",
+												"comparison": 0,
+												"second-value": "0"
+											}
+										}
+									],
+									"actions": [],
+									"sid": 244293358919118,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-two-values",
+													"objectClass": "System",
+													"sid": 986733796749048,
+													"parameters": {
+														"first-value": "bannerStoreData.At(0, labelBanner.ID-1)",
+														"comparison": 4,
+														"second-value": "0"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-text",
+													"objectClass": "labelBanner",
+													"sid": 339538020183723,
+													"parameters": {
+														"text": "\"OPEN!\""
+													}
+												}
+											],
+											"sid": 349975045520558
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "else",
+													"objectClass": "System",
+													"sid": 896312946057994
+												}
+											],
+											"actions": [
+												{
+													"id": "set-text",
+													"objectClass": "labelBanner",
+													"sid": 135698738680198,
+													"parameters": {
+														"text": "\"12h 45m\""
+													}
+												}
+											],
+											"sid": 469415086841175
+										}
+									]
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "else",
+											"objectClass": "System",
+											"sid": 356749354889911
+										}
+									],
+									"actions": [],
+									"sid": 352507011010080,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-two-values",
+													"objectClass": "System",
+													"sid": 959243594035416,
+													"parameters": {
+														"first-value": "bannerStoreData.At(0, labelBanner.ID-1)",
+														"comparison": 0,
+														"second-value": "0"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-text",
+													"objectClass": "labelBanner",
+													"sid": 699565170715706,
+													"parameters": {
+														"text": "\"12h 45m\""
+													}
+												}
+											],
+											"sid": 228430710125433
+										}
+									]
+								}
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "for-each",
+									"objectClass": "System",
+									"sid": 184723142561578,
+									"parameters": {
+										"object": "greenButton"
+									}
+								},
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "greenButton",
+									"sid": 909629728862560,
+									"parameters": {
+										"instance-variable": "ID",
+										"comparison": 0,
+										"value": "\"banner_store\""
+									}
+								}
+							],
+							"actions": [],
+							"sid": 580588750718379,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-two-values",
+											"objectClass": "System",
+											"sid": 803636066762734,
+											"parameters": {
+												"first-value": "bannerStoreData.At(0, greenButton.ID_case-1)",
+												"comparison": 0,
+												"second-value": "0"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-effect-enabled",
+											"objectClass": "greenButton",
+											"sid": 357503580684146,
+											"parameters": {
+												"mode": "enable",
+												"effect": "\"Brightness\""
+											}
+										},
+										{
+											"id": "set-effect-parameter",
+											"objectClass": "greenButton",
+											"sid": 796477546348950,
+											"parameters": {
+												"effect": "\"Brightness\"",
+												"parameter-index": "0",
+												"value": "75"
+											}
+										}
+									],
+									"sid": 970073101844891
+								}
+							]
+						}
+					]
+				}
+			],
+			"sid": 874577726897702
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "Item Store",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"functionName": "create_list_item_store",
+					"functionDescription": "",
+					"functionCategory": "",
+					"functionReturnType": "none",
+					"functionCopyPicked": false,
+					"functionIsAsync": false,
+					"functionParameters": [],
+					"eventType": "function-block",
+					"conditions": [],
+					"actions": [],
+					"sid": 207355937427246,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [],
+							"actions": [
+								{
+									"id": "create-object",
+									"objectClass": "System",
+									"sid": 759595919550753,
+									"parameters": {
+										"object-to-create": "labelSubMenuStore",
+										"layer": "\"UI_BottomStore\"",
+										"x": "LayoutWidth/2",
+										"y": "devider_plane.Y+(devider_plane.Height/2)+10",
+										"create-hierarchy": false,
+										"template-name": "\"\""
+									}
+								},
+								{
+									"id": "set-text",
+									"objectClass": "labelSubMenuStore",
+									"sid": 507398264994449,
+									"parameters": {
+										"text": "\"Coins\""
+									}
+								}
+							],
+							"sid": 174717677015359
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "for",
+									"objectClass": "System",
+									"sid": 521897245098610,
+									"parameters": {
+										"name": "\"create_y_list_item_A_store\"",
+										"start-index": "0",
+										"end-index": "(6/3)-1"
+									}
+								}
+							],
+							"actions": [],
+							"sid": 295899076324037,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "for",
+											"objectClass": "System",
+											"sid": 335299329806393,
+											"parameters": {
+												"name": "\"create_x_list_item_A_store\"",
+												"start-index": "1",
+												"end-index": "3"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "create-object",
+											"objectClass": "System",
+											"sid": 841007959467725,
+											"parameters": {
+												"object-to-create": "subPanelItemStore",
+												"layer": "\"UI_BottomStore\"",
+												"x": "(LayoutWidth/2)-280+(140*loopindex(\"create_x_list_item_A_store\")-1)",
+												"y": "devider_plane.Y+(devider_plane.Height/2)+50+(160*loopindex(\"create_y_list_item_A_store\"))",
+												"create-hierarchy": true,
+												"template-name": "\"\""
+											}
+										},
+										{
+											"id": "set-animation-frame",
+											"objectClass": "subPanelItemStore",
+											"sid": 745628029839099,
+											"parameters": {
+												"frame-number": "0"
+											}
+										},
+										{
+											"id": "set-text",
+											"objectClass": "labelSubMenuStore",
+											"sid": 934977455124963,
+											"disabled": true,
+											"parameters": {
+												"text": "3*(loopindex(\"create_y_list_item_A_store\"))+loopindex(\"create_x_list_item_A_store\")"
+											}
+										},
+										{
+											"id": "set-text",
+											"objectClass": "labelSubItemRibbons",
+											"sid": 160331421538541,
+											"parameters": {
+												"text": "itemStoreData.At(0, (3*(loopindex(\"create_y_list_item_A_store\"))+loopindex(\"create_x_list_item_A_store\"))-1, 0)"
+											}
+										},
+										{
+											"id": "set-text",
+											"objectClass": "labelSubItemStatus",
+											"sid": 843891425265461,
+											"parameters": {
+												"text": "\"Left \"&itemStoreData.At(1, (3*(loopindex(\"create_y_list_item_A_store\"))+loopindex(\"create_x_list_item_A_store\"))-1, 0)"
+											}
+										},
+										{
+											"id": "set-text",
+											"objectClass": "labelSubItemValue",
+											"sid": 482195551994264,
+											"parameters": {
+												"text": "itemStoreData.At(2, (3*(loopindex(\"create_y_list_item_A_store\"))+loopindex(\"create_x_list_item_A_store\"))-1, 0)"
+											}
+										},
+										{
+											"id": "set-text",
+											"objectClass": "labelButton",
+											"sid": 109498205800257,
+											"parameters": {
+												"text": "itemStoreData.At(3, (3*(loopindex(\"create_y_list_item_A_store\"))+loopindex(\"create_x_list_item_A_store\"))-1, 0)"
+											}
+										},
+										{
+											"id": "set-animation",
+											"objectClass": "subitemImage",
+											"sid": 338788034787269,
+											"parameters": {
+												"animation": "\"Coins\"",
+												"from": "beginning"
+											}
+										},
+										{
+											"id": "set-animation-frame",
+											"objectClass": "subitemImage",
+											"sid": 910610112974516,
+											"parameters": {
+												"frame-number": "len(labelSubItemValue.Text)-1"
+											}
+										},
+										{
+											"id": "set-instvar-value",
+											"objectClass": "labelSubItemStatus",
+											"sid": 271610678420277,
+											"parameters": {
+												"instance-variable": "ID_number",
+												"value": "3*(loopindex(\"create_y_list_item_A_store\"))+loopindex(\"create_x_list_item_A_store\")"
+											}
+										},
+										{
+											"id": "set-instvar-value",
+											"objectClass": "labelButton",
+											"sid": 164290375709182,
+											"parameters": {
+												"instance-variable": "ID_number",
+												"value": "3*(loopindex(\"create_y_list_item_A_store\"))+loopindex(\"create_x_list_item_A_store\")"
+											}
+										},
+										{
+											"id": "set-instvar-value",
+											"objectClass": "greenButton",
+											"sid": 721781091669221,
+											"parameters": {
+												"instance-variable": "ID_number",
+												"value": "3*(loopindex(\"create_y_list_item_A_store\"))+loopindex(\"create_x_list_item_A_store\")"
+											}
+										},
+										{
+											"id": "set-instvar-value",
+											"objectClass": "greenButton",
+											"sid": 507738237025388,
+											"parameters": {
+												"instance-variable": "ID",
+												"value": "\"item_store\""
+											}
+										},
+										{
+											"id": "set-instvar-value",
+											"objectClass": "greenButton",
+											"sid": 135710894665272,
+											"parameters": {
+												"instance-variable": "ID_case",
+												"value": "1"
+											}
+										},
+										{
+											"id": "set-instvar-value",
+											"objectClass": "labelSubItemStatus",
+											"sid": 931582930176895,
+											"parameters": {
+												"instance-variable": "ID_case",
+												"value": "1"
+											}
+										},
+										{
+											"id": "set-instvar-value",
+											"objectClass": "labelButton",
+											"sid": 255123930203122,
+											"parameters": {
+												"instance-variable": "ID_case",
+												"value": "1"
+											}
+										}
+									],
+									"sid": 268049220857352,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-two-values",
+													"objectClass": "System",
+													"sid": 164449525128213,
+													"parameters": {
+														"first-value": "itemStoreData.At(0, (3*(loopindex(\"create_y_list_item_A_store\"))+loopindex(\"create_x_list_item_A_store\"))-1, 0)",
+														"comparison": 0,
+														"second-value": "\"\""
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "destroy",
+													"objectClass": "redRibbonItem",
+													"sid": 391267738444003
+												}
+											],
+											"sid": 291459569677679
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-two-values",
+													"objectClass": "System",
+													"sid": 368842257279974,
+													"parameters": {
+														"first-value": "itemStoreData.At(1, (3*(loopindex(\"create_y_list_item_A_store\"))+loopindex(\"create_x_list_item_A_store\"))-1, 0)",
+														"comparison": 0,
+														"second-value": "1"
+													}
+												}
+											],
+											"actions": [],
+											"sid": 376102342519997,
+											"children": [
+												{
+													"eventType": "block",
+													"conditions": [
+														{
+															"id": "compare-two-values",
+															"objectClass": "System",
+															"sid": 164327995410734,
+															"parameters": {
+																"first-value": "itemStoreData.At(3, (3*(loopindex(\"create_y_list_item_A_store\"))+loopindex(\"create_x_list_item_A_store\"))-1, 0)",
+																"comparison": 1,
+																"second-value": "\"0\""
+															}
+														},
+														{
+															"id": "compare-two-values",
+															"objectClass": "System",
+															"sid": 184238218745734,
+															"parameters": {
+																"first-value": "itemStoreData.At(3, (3*(loopindex(\"create_y_list_item_A_store\"))+loopindex(\"create_x_list_item_A_store\"))-1, 0)",
+																"comparison": 1,
+																"second-value": "\"1\""
+															}
+														}
+													],
+													"actions": [
+														{
+															"id": "destroy",
+															"objectClass": "labelSubItemStatus",
+															"sid": 545999514300262
+														}
+													],
+													"sid": 206057494663256,
+													"isOrBlock": true
+												}
+											]
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-two-values",
+													"objectClass": "System",
+													"sid": 420992556856038,
+													"parameters": {
+														"first-value": "itemStoreData.At(1, (3*(loopindex(\"create_y_list_item_A_store\"))+loopindex(\"create_x_list_item_A_store\"))-1, 0)",
+														"comparison": 0,
+														"second-value": "0"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-text",
+													"objectClass": "labelSubItemStatus",
+													"sid": 911959502877744,
+													"parameters": {
+														"text": "\"Ready in\""
+													}
+												},
+												{
+													"id": "set-text",
+													"objectClass": "labelButton",
+													"sid": 363840122186322,
+													"parameters": {
+														"text": "\"12h 45m\""
+													}
+												},
+												{
+													"id": "set-effect-enabled",
+													"objectClass": "greenButton",
+													"sid": 475803446232523,
+													"parameters": {
+														"mode": "enable",
+														"effect": "\"Brightness\""
+													}
+												},
+												{
+													"id": "set-effect-parameter",
+													"objectClass": "greenButton",
+													"sid": 795954666657716,
+													"parameters": {
+														"effect": "\"Brightness\"",
+														"parameter-index": "0",
+														"value": "75"
+													}
+												},
+												{
+													"id": "create-object",
+													"objectClass": "System",
+													"sid": 361980860812468,
+													"parameters": {
+														"object-to-create": "time_icon",
+														"layer": "labelButton.LayerName",
+														"x": "labelButton.X-30",
+														"y": "labelButton.Y+6",
+														"create-hierarchy": false,
+														"template-name": "\"\""
+													}
+												},
+												{
+													"id": "set-animation-frame",
+													"objectClass": "time_icon",
+													"sid": 176184681534204,
+													"parameters": {
+														"frame-number": "1"
+													}
+												},
+												{
+													"id": "set-x",
+													"objectClass": "labelButton",
+													"sid": 962356048722629,
+													"parameters": {
+														"x": "Self.X+5"
+													}
+												},
+												{
+													"id": "add-child",
+													"objectClass": "labelButton",
+													"sid": 175512437348761,
+													"parameters": {
+														"child": "time_icon",
+														"transform-x": true,
+														"transform-y": true,
+														"transform-w": true,
+														"transform-h": true,
+														"transform-a": true,
+														"transform-o": false,
+														"transform-z-elevation": true,
+														"transform-visibility": false,
+														"destroy-with-parent": false
+													}
+												}
+											],
+											"sid": 932397584246354
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-two-values",
+													"objectClass": "System",
+													"sid": 219601386511286,
+													"parameters": {
+														"first-value": "itemStoreData.At(1, (3*(loopindex(\"create_y_list_item_A_store\"))+loopindex(\"create_x_list_item_A_store\"))-1, 0)",
+														"comparison": 0,
+														"second-value": "\"Ready in\""
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-text",
+													"objectClass": "labelSubItemStatus",
+													"sid": 591336184808068,
+													"parameters": {
+														"text": "itemStoreData.At(1, (3*(loopindex(\"create_y_list_item_A_store\"))+loopindex(\"create_x_list_item_A_store\"))-1,0)"
+													}
+												}
+											],
+											"sid": 840762829604370
+										}
+									]
+								}
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [],
+							"actions": [
+								{
+									"id": "wait-for-previous-actions",
+									"objectClass": "System",
+									"sid": 362599360356847
+								},
+								{
+									"id": "create-object",
+									"objectClass": "System",
+									"sid": 222063025938983,
+									"parameters": {
+										"object-to-create": "labelSubMenuStore",
+										"layer": "\"UI_BottomStore\"",
+										"x": "LayoutWidth/2",
+										"y": "devider_plane.Y+(devider_plane.Height/2)+60+(160*2)",
+										"create-hierarchy": false,
+										"template-name": "\"\""
+									}
+								},
+								{
+									"id": "set-text",
+									"objectClass": "labelSubMenuStore",
+									"sid": 145783144138114,
+									"parameters": {
+										"text": "\"Skip 'Its\""
+									}
+								}
+							],
+							"sid": 356150729978435
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "for",
+									"objectClass": "System",
+									"sid": 146241994968539,
+									"parameters": {
+										"name": "\"create_y_list_item_B_store\"",
+										"start-index": "0",
+										"end-index": "(6/3)-1"
+									}
+								}
+							],
+							"actions": [],
+							"sid": 376721349146698,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "for",
+											"objectClass": "System",
+											"sid": 684078729435352,
+											"parameters": {
+												"name": "\"create_x_list_item_B_store\"",
+												"start-index": "1",
+												"end-index": "3"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "create-object",
+											"objectClass": "System",
+											"sid": 731519878961846,
+											"parameters": {
+												"object-to-create": "subPanelItemStore",
+												"layer": "\"UI_BottomStore\"",
+												"x": "(LayoutWidth/2)-280+(140*loopindex(\"create_x_list_item_B_store\")-1)",
+												"y": "devider_plane.Y+(devider_plane.Height/2)+50+(160*2)+50+(160*loopindex(\"create_y_list_item_B_store\"))",
+												"create-hierarchy": true,
+												"template-name": "\"\""
+											}
+										},
+										{
+											"id": "set-animation-frame",
+											"objectClass": "subPanelItemStore",
+											"sid": 425904089538453,
+											"parameters": {
+												"frame-number": "1"
+											}
+										},
+										{
+											"id": "set-text",
+											"objectClass": "labelSubItemRibbons",
+											"sid": 107045702705088,
+											"parameters": {
+												"text": "itemStoreData.At(0, (3*(loopindex(\"create_y_list_item_B_store\"))+loopindex(\"create_x_list_item_B_store\"))-1, 1)"
+											}
+										},
+										{
+											"id": "set-text",
+											"objectClass": "labelSubItemStatus",
+											"sid": 921764594780465,
+											"parameters": {
+												"text": "\"Left \"&itemStoreData.At(1, (3*(loopindex(\"create_y_list_item_B_store\"))+loopindex(\"create_x_list_item_B_store\"))-1, 1)"
+											}
+										},
+										{
+											"id": "set-text",
+											"objectClass": "labelSubItemValue",
+											"sid": 122209353644941,
+											"parameters": {
+												"text": "itemStoreData.At(2, (3*(loopindex(\"create_y_list_item_B_store\"))+loopindex(\"create_x_list_item_B_store\"))-1, 1)"
+											}
+										},
+										{
+											"id": "set-text",
+											"objectClass": "labelButton",
+											"sid": 538690457860077,
+											"parameters": {
+												"text": "itemStoreData.At(3, (3*(loopindex(\"create_y_list_item_B_store\"))+loopindex(\"create_x_list_item_B_store\"))-1, 1)"
+											}
+										},
+										{
+											"id": "set-animation",
+											"objectClass": "subitemImage",
+											"sid": 190346296678153,
+											"parameters": {
+												"animation": "\"Tickets\"",
+												"from": "beginning"
+											}
+										},
+										{
+											"id": "set-animation-frame",
+											"objectClass": "subitemImage",
+											"sid": 520928911883154,
+											"parameters": {
+												"frame-number": "len(labelSubItemValue.Text)-1"
+											}
+										},
+										{
+											"id": "set-instvar-value",
+											"objectClass": "labelSubItemStatus",
+											"sid": 573959012988337,
+											"parameters": {
+												"instance-variable": "ID_number",
+												"value": "3*(loopindex(\"create_y_list_item_B_store\"))+loopindex(\"create_x_list_item_B_store\")"
+											}
+										},
+										{
+											"id": "set-instvar-value",
+											"objectClass": "labelButton",
+											"sid": 609767401500336,
+											"parameters": {
+												"instance-variable": "ID_number",
+												"value": "3*(loopindex(\"create_y_list_item_B_store\"))+loopindex(\"create_x_list_item_B_store\")"
+											}
+										},
+										{
+											"id": "set-instvar-value",
+											"objectClass": "greenButton",
+											"sid": 173854314220801,
+											"parameters": {
+												"instance-variable": "ID_number",
+												"value": "3*(loopindex(\"create_y_list_item_B_store\"))+loopindex(\"create_x_list_item_B_store\")"
+											}
+										},
+										{
+											"id": "set-instvar-value",
+											"objectClass": "greenButton",
+											"sid": 608795104535997,
+											"parameters": {
+												"instance-variable": "ID",
+												"value": "\"item_store\""
+											}
+										},
+										{
+											"id": "set-instvar-value",
+											"objectClass": "greenButton",
+											"sid": 828512455846180,
+											"parameters": {
+												"instance-variable": "ID_case",
+												"value": "2"
+											}
+										},
+										{
+											"id": "set-instvar-value",
+											"objectClass": "labelSubItemStatus",
+											"sid": 925903890677671,
+											"parameters": {
+												"instance-variable": "ID_case",
+												"value": "2"
+											}
+										},
+										{
+											"id": "set-instvar-value",
+											"objectClass": "labelButton",
+											"sid": 471902249812063,
+											"parameters": {
+												"instance-variable": "ID_case",
+												"value": "2"
+											}
+										}
+									],
+									"sid": 999616470593930,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-two-values",
+													"objectClass": "System",
+													"sid": 920889102477539,
+													"parameters": {
+														"first-value": "itemStoreData.At(0, (3*(loopindex(\"create_y_list_item_B_store\"))+loopindex(\"create_x_list_item_B_store\"))-1, 1)",
+														"comparison": 0,
+														"second-value": "\"\""
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "destroy",
+													"objectClass": "redRibbonItem",
+													"sid": 276997761286850
+												}
+											],
+											"sid": 420115366685446
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-two-values",
+													"objectClass": "System",
+													"sid": 691866447555562,
+													"parameters": {
+														"first-value": "itemStoreData.At(1, (3*(loopindex(\"create_y_list_item_B_store\"))+loopindex(\"create_x_list_item_B_store\"))-1, 1)",
+														"comparison": 0,
+														"second-value": "1"
+													}
+												}
+											],
+											"actions": [],
+											"sid": 586691220245977,
+											"children": [
+												{
+													"eventType": "block",
+													"conditions": [
+														{
+															"id": "compare-two-values",
+															"objectClass": "System",
+															"sid": 776901179203548,
+															"parameters": {
+																"first-value": "itemStoreData.At(3, (3*(loopindex(\"create_y_list_item_B_store\"))+loopindex(\"create_x_list_item_B_store\"))-1, 1)",
+																"comparison": 1,
+																"second-value": "\"0\""
+															}
+														},
+														{
+															"id": "compare-two-values",
+															"objectClass": "System",
+															"sid": 182228997157658,
+															"parameters": {
+																"first-value": "itemStoreData.At(3, (3*(loopindex(\"create_y_list_item_B_store\"))+loopindex(\"create_x_list_item_B_store\"))-1, 1)",
+																"comparison": 1,
+																"second-value": "\"1\""
+															}
+														}
+													],
+													"actions": [
+														{
+															"id": "destroy",
+															"objectClass": "labelSubItemStatus",
+															"sid": 629945253451032
+														}
+													],
+													"sid": 912093989067433,
+													"isOrBlock": true
+												}
+											]
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-two-values",
+													"objectClass": "System",
+													"sid": 614348091996493,
+													"parameters": {
+														"first-value": "itemStoreData.At(1, (3*(loopindex(\"create_y_list_item_B_store\"))+loopindex(\"create_x_list_item_B_store\"))-1, 1)",
+														"comparison": 0,
+														"second-value": "0"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-text",
+													"objectClass": "labelSubItemStatus",
+													"sid": 873081926222381,
+													"parameters": {
+														"text": "\"Ready in\""
+													}
+												},
+												{
+													"id": "set-text",
+													"objectClass": "labelButton",
+													"sid": 504630730995891,
+													"parameters": {
+														"text": "\"12h 45m\""
+													}
+												},
+												{
+													"id": "set-effect-enabled",
+													"objectClass": "greenButton",
+													"sid": 452980269138138,
+													"parameters": {
+														"mode": "enable",
+														"effect": "\"Brightness\""
+													}
+												},
+												{
+													"id": "set-effect-parameter",
+													"objectClass": "greenButton",
+													"sid": 272375520667371,
+													"parameters": {
+														"effect": "\"Brightness\"",
+														"parameter-index": "0",
+														"value": "75"
+													}
+												},
+												{
+													"id": "create-object",
+													"objectClass": "System",
+													"sid": 564685133540665,
+													"parameters": {
+														"object-to-create": "time_icon",
+														"layer": "labelButton.LayerName",
+														"x": "labelButton.X-30",
+														"y": "labelButton.Y+6",
+														"create-hierarchy": false,
+														"template-name": "\"\""
+													}
+												},
+												{
+													"id": "set-animation-frame",
+													"objectClass": "time_icon",
+													"sid": 838137471301544,
+													"parameters": {
+														"frame-number": "1"
+													}
+												},
+												{
+													"id": "set-x",
+													"objectClass": "labelButton",
+													"sid": 238981485189592,
+													"parameters": {
+														"x": "Self.X+5"
+													}
+												},
+												{
+													"id": "add-child",
+													"objectClass": "labelButton",
+													"sid": 549190557109661,
+													"parameters": {
+														"child": "time_icon",
+														"transform-x": true,
+														"transform-y": true,
+														"transform-w": true,
+														"transform-h": true,
+														"transform-a": true,
+														"transform-o": false,
+														"transform-z-elevation": true,
+														"transform-visibility": false,
+														"destroy-with-parent": false
+													}
+												}
+											],
+											"sid": 657519104719540
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-two-values",
+													"objectClass": "System",
+													"sid": 616260094847624,
+													"parameters": {
+														"first-value": "itemStoreData.At(1, (3*(loopindex(\"create_y_list_item_B_store\"))+loopindex(\"create_x_list_item_B_store\"))-1, 1)",
+														"comparison": 0,
+														"second-value": "\"Ready in\""
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-text",
+													"objectClass": "labelSubItemStatus",
+													"sid": 984181506868323,
+													"parameters": {
+														"text": "itemStoreData.At(1, (3*(loopindex(\"create_y_list_item_B_store\"))+loopindex(\"create_x_list_item_B_store\"))-1,0)"
+													}
+												}
+											],
+											"sid": 719336338623370
+										}
+									]
+								}
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [],
+							"actions": [
+								{
+									"id": "wait-for-previous-actions",
+									"objectClass": "System",
+									"sid": 993518731861949
+								}
+							],
+							"sid": 309274118689960,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "for-each",
+											"objectClass": "System",
+											"sid": 941653056749873,
+											"parameters": {
+												"object": "labelButton"
+											}
+										}
+									],
+									"actions": [],
+									"sid": 916446368176004,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-text",
+													"objectClass": "labelButton",
+													"sid": 704577306477039,
+													"parameters": {
+														"text-to-compare": "\"0\"",
+														"case-sensitivity": "ignore-case"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-x",
+													"objectClass": "labelButton",
+													"sid": 789308960604138,
+													"parameters": {
+														"x": "Self.X+10"
+													}
+												},
+												{
+													"id": "set-text",
+													"objectClass": "labelButton",
+													"sid": 473862963575793,
+													"parameters": {
+														"text": "\"Get\""
+													}
+												},
+												{
+													"id": "create-object",
+													"objectClass": "System",
+													"sid": 914984642769635,
+													"parameters": {
+														"object-to-create": "adsIcon",
+														"layer": "labelButton.LayerName",
+														"x": "labelButton.X-20-10",
+														"y": "labelButton.Y+8",
+														"create-hierarchy": false,
+														"template-name": "\"\""
+													}
+												},
+												{
+													"id": "set-size",
+													"objectClass": "adsIcon",
+													"sid": 484407531769809,
+													"parameters": {
+														"width": "15",
+														"height": "15"
+													}
+												},
+												{
+													"id": "add-child",
+													"objectClass": "labelButton",
+													"sid": 803134432771720,
+													"parameters": {
+														"child": "adsIcon",
+														"transform-x": true,
+														"transform-y": true,
+														"transform-w": true,
+														"transform-h": true,
+														"transform-a": true,
+														"transform-o": false,
+														"transform-z-elevation": true,
+														"transform-visibility": false,
+														"destroy-with-parent": false
+													}
+												}
+											],
+											"sid": 812783128174739
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-text",
+													"objectClass": "labelButton",
+													"sid": 330784638914717,
+													"parameters": {
+														"text-to-compare": "\"1\"",
+														"case-sensitivity": "ignore-case"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-x",
+													"objectClass": "labelButton",
+													"sid": 309358912164653,
+													"parameters": {
+														"x": "Self.X+10"
+													}
+												},
+												{
+													"id": "set-text",
+													"objectClass": "labelButton",
+													"sid": 753417804474380,
+													"parameters": {
+														"text": "\"Use\""
+													}
+												},
+												{
+													"id": "create-object",
+													"objectClass": "System",
+													"sid": 258860679920332,
+													"parameters": {
+														"object-to-create": "ticketIcon",
+														"layer": "labelButton.LayerName",
+														"x": "labelButton.X-20-10",
+														"y": "labelButton.Y+8",
+														"create-hierarchy": false,
+														"template-name": "\"\""
+													}
+												},
+												{
+													"id": "set-size",
+													"objectClass": "ticketIcon",
+													"sid": 755279683770016,
+													"parameters": {
+														"width": "30",
+														"height": "30"
+													}
+												},
+												{
+													"id": "add-child",
+													"objectClass": "labelButton",
+													"sid": 980695752160027,
+													"parameters": {
+														"child": "ticketIcon",
+														"transform-x": true,
+														"transform-y": true,
+														"transform-w": true,
+														"transform-h": true,
+														"transform-a": true,
+														"transform-o": false,
+														"transform-z-elevation": true,
+														"transform-visibility": false,
+														"destroy-with-parent": false
+													}
+												}
+											],
+											"sid": 967964164371370
+										}
+									]
+								}
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [],
+							"actions": [
+								{
+									"id": "wait-for-previous-actions",
+									"objectClass": "System",
+									"sid": 106329203416711
+								},
+								{
+									"callFunction": "locked_dragging",
+									"sid": 838909341192928
+								}
+							],
+							"sid": 816356813393212
+						}
+					]
+				},
+				{
+					"functionName": "locked_dragging",
+					"functionDescription": "",
+					"functionCategory": "",
+					"functionReturnType": "none",
+					"functionCopyPicked": false,
+					"functionIsAsync": false,
+					"functionParameters": [],
+					"eventType": "function-block",
+					"conditions": [],
+					"actions": [],
+					"sid": 207875267328998,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [],
+							"actions": [
+								{
+									"id": "wait-for-previous-actions",
+									"objectClass": "System",
+									"sid": 888033637184744
+								},
+								{
+									"id": "create-object",
+									"objectClass": "System",
+									"sid": 775655745634743,
+									"parameters": {
+										"object-to-create": "dragging",
+										"layer": "\"UI_BottomStore\"",
+										"x": "LayoutWidth/2",
+										"y": "devider_plane.Y+(devider_plane.Height/2)",
+										"create-hierarchy": false,
+										"template-name": "\"\""
+									}
+								},
+								{
+									"id": "add-child",
+									"objectClass": "dragging",
+									"sid": 280939566267159,
+									"parameters": {
+										"child": "subPanelItemStore",
+										"transform-x": true,
+										"transform-y": true,
+										"transform-w": false,
+										"transform-h": false,
+										"transform-a": true,
+										"transform-o": false,
+										"transform-z-elevation": true,
+										"transform-visibility": false,
+										"destroy-with-parent": false
+									}
+								},
+								{
+									"id": "add-child",
+									"objectClass": "dragging",
+									"sid": 406874433598765,
+									"parameters": {
+										"child": "labelSubMenuStore",
+										"transform-x": true,
+										"transform-y": true,
+										"transform-w": false,
+										"transform-h": false,
+										"transform-a": true,
+										"transform-o": false,
+										"transform-z-elevation": true,
+										"transform-visibility": false,
+										"destroy-with-parent": false
+									}
+								},
+								{
+									"id": "set-instvar-value",
+									"objectClass": "dragging",
+									"sid": 525841550112309,
+									"parameters": {
+										"instance-variable": "selfY",
+										"value": "Self.Y"
+									}
+								}
+							],
+							"sid": 642131139516593,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "pick-last-created",
+											"objectClass": "System",
+											"sid": 477707729671744,
+											"parameters": {
+												"object": "subPanelItemStore"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-size",
+											"objectClass": "dragging",
+											"sid": 831508742488714,
+											"parameters": {
+												"width": "LayoutWidth",
+												"height": "subPanelItemStore.Y-devider_plane.Y+150"
+											}
+										}
+									],
+									"sid": 677709766287180
+								}
+							]
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-drop",
+							"objectClass": "dragging",
+							"sid": 643333804640191,
+							"behaviorType": "DragDrop"
+						}
+					],
+					"actions": [],
+					"sid": 526924633629751,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-y",
+									"objectClass": "dragging",
+									"sid": 745776056608317,
+									"parameters": {
+										"comparison": 4,
+										"y-co-ordinate": "Self.selfY"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "tween-one-property",
+									"objectClass": "dragging",
+									"sid": 266116780987567,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"pos_Y\"",
+										"property": "offsetY",
+										"end-value": "Self.selfY",
+										"time": "0.2",
+										"ease": "easeoutback",
+										"destroy-on-complete": "no",
+										"loop": "no",
+										"ping-pong": "no",
+										"repeat-count": "1"
+									}
+								}
+							],
+							"sid": 316097610357596
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-y",
+									"objectClass": "dragging",
+									"sid": 946194342443884,
+									"parameters": {
+										"comparison": 2,
+										"y-co-ordinate": "Self.selfY-Self.Height+devider_plane.Y-devider_plane.Height+frameNavbarButton.Height"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "tween-one-property",
+									"objectClass": "dragging",
+									"sid": 934063571595305,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"pos_Y\"",
+										"property": "offsetY",
+										"end-value": "Self.selfY-Self.Height+devider_plane.Y-devider_plane.Height+frameNavbarButton.Height",
+										"time": "0.2",
+										"ease": "easeoutback",
+										"destroy-on-complete": "no",
+										"loop": "no",
+										"ping-pong": "no",
+										"repeat-count": "1"
+									}
+								}
+							],
+							"sid": 348987264869228
+						}
+					]
+				},
+				{
+					"functionName": "set_item_store",
+					"functionDescription": "",
+					"functionCategory": "",
+					"functionReturnType": "none",
+					"functionCopyPicked": false,
+					"functionIsAsync": false,
+					"functionParameters": [
+						{
+							"name": "item_status",
+							"type": "number",
+							"initialValue": "0",
+							"comment": "",
+							"sid": 530483143135811
+						},
+						{
+							"name": "item_case",
+							"type": "number",
+							"initialValue": "0",
+							"comment": "",
+							"sid": 850247695703268
+						}
+					],
+					"eventType": "function-block",
+					"conditions": [],
+					"actions": [],
+					"sid": 961781465332312,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-at-xyz",
+									"objectClass": "itemStoreData",
+									"sid": 845325861765274,
+									"parameters": {
+										"x": "1",
+										"y": "item_status-1",
+										"z": "item_case-1",
+										"comparison": 4,
+										"value": "0"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-at-xyz",
+									"objectClass": "itemStoreData",
+									"sid": 167757390491102,
+									"parameters": {
+										"x": "1",
+										"y": "item_status-1",
+										"z": "item_case-1",
+										"value": "itemStoreData.At(1, item_status-1, item_case-1)-1"
+									}
+								},
+								{
+									"type": "script",
+									"script": [
+										"console.log(\"item_status\", localVars.item_status)"
+									]
+								}
+							],
+							"sid": 101117786490252,
+							"disabled": true
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "greenButton",
+									"sid": 863024950473473,
+									"parameters": {
+										"instance-variable": "ID_case",
+										"comparison": 0,
+										"value": "item_case"
+									}
+								},
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "greenButton",
+									"sid": 788421106771619,
+									"parameters": {
+										"instance-variable": "ID",
+										"comparison": 0,
+										"value": "\"item_store\""
+									}
+								},
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "greenButton",
+									"sid": 256833458048185,
+									"parameters": {
+										"instance-variable": "ID_number",
+										"comparison": 0,
+										"value": "item_status"
+									}
+								}
+							],
+							"actions": [],
+							"sid": 353176240239198,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-two-values",
+											"objectClass": "System",
+											"sid": 356861716575134,
+											"parameters": {
+												"first-value": "itemStoreData.At(1, item_status-1, item_case-1)",
+												"comparison": 0,
+												"second-value": "0"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-effect-enabled",
+											"objectClass": "greenButton",
+											"sid": 788850197062914,
+											"parameters": {
+												"mode": "enable",
+												"effect": "\"Brightness\""
+											}
+										},
+										{
+											"id": "set-effect-parameter",
+											"objectClass": "greenButton",
+											"sid": 328895044370564,
+											"parameters": {
+												"effect": "\"Brightness\"",
+												"parameter-index": "0",
+												"value": "75"
+											}
+										}
+									],
+									"sid": 310892787471187
+								}
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "labelSubItemStatus",
+									"sid": 997271227468603,
+									"parameters": {
+										"instance-variable": "ID_case",
+										"comparison": 0,
+										"value": "item_case"
+									}
+								},
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "labelSubItemStatus",
+									"sid": 720941954797873,
+									"parameters": {
+										"instance-variable": "ID_number",
+										"comparison": 0,
+										"value": "item_status"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-text",
+									"objectClass": "labelSubItemStatus",
+									"sid": 148835947607630,
+									"parameters": {
+										"text": "\"Left \"&itemStoreData.At(1, item_status-1, item_case-1)"
+									}
+								}
+							],
+							"sid": 476474108419918,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-two-values",
+											"objectClass": "System",
+											"sid": 655078679280850,
+											"parameters": {
+												"first-value": "itemStoreData.At(1, item_status-1, item_case-1)",
+												"comparison": 0,
+												"second-value": "0"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-text",
+											"objectClass": "labelSubItemStatus",
+											"sid": 420346885037936,
+											"parameters": {
+												"text": "\"Ready in\""
+											}
+										}
+									],
+									"sid": 850903202808430
+								}
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "labelButton",
+									"sid": 671235051703555,
+									"parameters": {
+										"instance-variable": "ID_case",
+										"comparison": 0,
+										"value": "item_case"
+									}
+								},
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "labelButton",
+									"sid": 135532032206431,
+									"parameters": {
+										"instance-variable": "ID_number",
+										"comparison": 0,
+										"value": "item_status"
+									}
+								}
+							],
+							"actions": [],
+							"sid": 158156192388507,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-two-values",
+											"objectClass": "System",
+											"sid": 946494577311061,
+											"parameters": {
+												"first-value": "itemStoreData.At(1, item_status-1, item_case-1)",
+												"comparison": 0,
+												"second-value": "0"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-text",
+											"objectClass": "labelButton",
+											"sid": 588913126172856,
+											"parameters": {
+												"text": "\"12h 45m\""
+											}
+										}
+									],
+									"sid": 971857646305609,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "pick-children",
+													"objectClass": "labelButton",
+													"sid": 293916733396533,
+													"parameters": {
+														"child": "adsIcon",
+														"which": "all"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-x",
+													"objectClass": "labelButton",
+													"sid": 642955373726350,
+													"parameters": {
+														"x": "Self.X-10"
+													}
+												},
+												{
+													"id": "destroy",
+													"objectClass": "adsIcon",
+													"sid": 919895176864198
+												}
+											],
+											"sid": 140267681331361
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "pick-children",
+													"objectClass": "labelButton",
+													"sid": 805277567154317,
+													"parameters": {
+														"child": "ticketIcon",
+														"which": "all"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-x",
+													"objectClass": "labelButton",
+													"sid": 522284194017245,
+													"parameters": {
+														"x": "Self.X-10"
+													}
+												},
+												{
+													"id": "destroy",
+													"objectClass": "ticketIcon",
+													"sid": 337598982762781
+												}
+											],
+											"sid": 543294998467992
+										},
+										{
+											"eventType": "block",
+											"conditions": [],
+											"actions": [
+												{
+													"id": "create-object",
+													"objectClass": "System",
+													"sid": 723292916739610,
+													"parameters": {
+														"object-to-create": "time_icon",
+														"layer": "labelButton.LayerName",
+														"x": "labelButton.X-30",
+														"y": "labelButton.Y+6",
+														"create-hierarchy": false,
+														"template-name": "\"\""
+													}
+												},
+												{
+													"id": "set-animation-frame",
+													"objectClass": "time_icon",
+													"sid": 852545476354753,
+													"parameters": {
+														"frame-number": "1"
+													}
+												},
+												{
+													"id": "set-x",
+													"objectClass": "labelButton",
+													"sid": 280674765466123,
+													"parameters": {
+														"x": "Self.X+5"
+													}
+												},
+												{
+													"id": "add-child",
+													"objectClass": "labelButton",
+													"sid": 521775989129206,
+													"parameters": {
+														"child": "time_icon",
+														"transform-x": true,
+														"transform-y": true,
+														"transform-w": true,
+														"transform-h": true,
+														"transform-a": true,
+														"transform-o": false,
+														"transform-z-elevation": true,
+														"transform-visibility": false,
+														"destroy-with-parent": false
+													}
+												}
+											],
+											"sid": 898168233519206
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			],
+			"sid": 744298404444603
+		},
+		{
+			"eventType": "comment",
+			"text": "DEBUGGING"
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-key-pressed",
+					"objectClass": "Keyboard",
+					"sid": 438781517594568,
+					"parameters": {
+						"key": 37
+					}
+				},
+				{
+					"id": "is-playing",
+					"objectClass": "bannerBundle",
+					"sid": 826739746456389,
+					"behaviorType": "Tween",
+					"parameters": {
+						"tags": "\"banner_anim\""
+					},
+					"isInverted": true
+				}
+			],
+			"actions": [
+				{
+					"callFunction": "run_slider",
+					"sid": 117374442281492,
+					"parameters": [
+						"2"
+					]
+				},
+				{
+					"id": "stop-timer",
+					"objectClass": "StoreManager",
+					"sid": 739958102142645,
+					"behaviorType": "Timer",
+					"parameters": {
+						"tag": "\"runSlider\""
+					}
+				},
+				{
+					"id": "start-timer",
+					"objectClass": "StoreManager",
+					"sid": 676291129086226,
+					"behaviorType": "Timer",
+					"parameters": {
+						"duration": "3",
+						"type": "once",
+						"tag": "\"runSlider\""
+					}
+				}
+			],
+			"sid": 213675261486250
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-key-pressed",
+					"objectClass": "Keyboard",
+					"sid": 275930293102285,
+					"parameters": {
+						"key": 39
+					}
+				},
+				{
+					"id": "is-playing",
+					"objectClass": "bannerBundle",
+					"sid": 771277498121692,
+					"behaviorType": "Tween",
+					"parameters": {
+						"tags": "\"banner_anim\""
+					},
+					"isInverted": true
+				}
+			],
+			"actions": [
+				{
+					"callFunction": "run_slider",
+					"sid": 100935279254097,
+					"parameters": [
+						"1"
+					]
+				},
+				{
+					"id": "stop-timer",
+					"objectClass": "StoreManager",
+					"sid": 975110262312946,
+					"behaviorType": "Timer",
+					"parameters": {
+						"tag": "\"runSlider\""
+					}
+				},
+				{
+					"id": "start-timer",
+					"objectClass": "StoreManager",
+					"sid": 684436309287221,
+					"behaviorType": "Timer",
+					"parameters": {
+						"duration": "3",
+						"type": "once",
+						"tag": "\"runSlider\""
+					}
+				}
+			],
+			"sid": 394495582574890
+		}
+	],
+	"sid": 151751080889417
+}
