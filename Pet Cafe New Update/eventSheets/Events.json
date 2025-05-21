@@ -160,28 +160,6 @@
 			"sid": 575963210867564
 		},
 		{
-			"functionName": "set_probability_next_tile_level",
-			"functionDescription": "",
-			"functionCategory": "",
-			"functionReturnType": "none",
-			"functionCopyPicked": false,
-			"functionIsAsync": false,
-			"functionParameters": [],
-			"eventType": "function-block",
-			"conditions": [],
-			"actions": [
-				{
-					"type": "script",
-					"script": [
-						"",
-						"",
-						"testDistribution();"
-					]
-				}
-			],
-			"sid": 124197642540088
-		},
-		{
 			"eventType": "group",
 			"disabled": false,
 			"title": "Setup",
@@ -1504,12 +1482,7 @@
 							}
 						}
 					],
-					"actions": [
-						{
-							"callFunction": "set_probability_next_tile_level",
-							"sid": 832222256317016
-						}
-					],
+					"actions": [],
 					"sid": 752698818430999
 				}
 			],
@@ -2478,6 +2451,7 @@
 			"actions": [
 				{
 					"type": "script",
+					"language": "javascript",
 					"script": [
 						"var is_tutorial_ID_completed = tutorialCompletedArr[localVars.ID-1];",
 						"console.log(\"is_tutorial_ID\", localVars.ID-1);",
@@ -2686,13 +2660,6 @@
 									],
 									"actions": [
 										{
-											"callFunction": "check_tutorial_completed",
-											"sid": 389423860567160,
-											"parameters": [
-												"2"
-											]
-										},
-										{
 											"id": "destroy",
 											"objectClass": "boostersButton",
 											"sid": 787330669483889
@@ -2700,6 +2667,51 @@
 									],
 									"sid": 568590410232555,
 									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-eventvar",
+													"objectClass": "System",
+													"sid": 746343684894420,
+													"parameters": {
+														"variable": "level_stage",
+														"comparison": 0,
+														"value": "6"
+													}
+												}
+											],
+											"actions": [
+												{
+													"callFunction": "check_tutorial_completed",
+													"sid": 894275042087767,
+													"parameters": [
+														"7"
+													]
+												}
+											],
+											"sid": 776927148464167
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "else",
+													"objectClass": "System",
+													"sid": 390493052023993
+												}
+											],
+											"actions": [
+												{
+													"callFunction": "check_tutorial_completed",
+													"sid": 893741625111274,
+													"parameters": [
+														"2"
+													]
+												}
+											],
+											"sid": 346342590153897
+										},
 										{
 											"eventType": "block",
 											"conditions": [
@@ -4846,6 +4858,123 @@
 											"sid": 887745192905080
 										}
 									]
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-eventvar",
+											"objectClass": "System",
+											"sid": 399437972341478,
+											"parameters": {
+												"variable": "ID",
+												"comparison": 0,
+												"value": "7"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 946209835732412,
+											"parameters": {
+												"variable": "tutorial_case",
+												"value": "\"wood\""
+											}
+										},
+										{
+											"id": "create-object",
+											"objectClass": "System",
+											"sid": 235000419262595,
+											"parameters": {
+												"object-to-create": "Fader",
+												"layer": "\"Tutorial\"",
+												"x": "LayoutWidth/2",
+												"y": "LayoutHeight/2",
+												"create-hierarchy": false,
+												"template-name": "\"\""
+											}
+										},
+										{
+											"id": "set-size",
+											"objectClass": "Fader",
+											"sid": 562875700151130,
+											"parameters": {
+												"width": "ViewportWidth(Self.LayerName)",
+												"height": "ViewportHeight(Self.LayerName)"
+											}
+										},
+										{
+											"id": "create-object",
+											"objectClass": "System",
+											"sid": 447549815193725,
+											"parameters": {
+												"object-to-create": "tutorialFrame",
+												"layer": "\"Tutorial\"",
+												"x": "LayoutWidth/2",
+												"y": "50+(LayoutHeight/2)",
+												"create-hierarchy": true,
+												"template-name": "\"\""
+											}
+										},
+										{
+											"id": "set-width",
+											"objectClass": "tutorialFrame",
+											"sid": 741634548780066,
+											"parameters": {
+												"width": "LayoutWidth-100"
+											}
+										},
+										{
+											"id": "set-text",
+											"objectClass": "TextTutorial",
+											"sid": 356878853086332,
+											"parameters": {
+												"text": "\"[color=red]Merge [/color]\"&\"next to a box\"&newline&\"to\"&\"[color=red]Break [/color]\"&\"it\""
+											}
+										},
+										{
+											"id": "set-width",
+											"objectClass": "TextTutorial",
+											"sid": 469989677944976,
+											"parameters": {
+												"width": "LayoutWidth-100"
+											}
+										}
+									],
+									"sid": 309761918973839,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "pick-all",
+													"objectClass": "System",
+													"sid": 592488467242100,
+													"parameters": {
+														"object": "props"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "wait-for-previous-actions",
+													"objectClass": "System",
+													"sid": 871883544603270
+												},
+												{
+													"id": "move-to-layer",
+													"objectClass": "props",
+													"sid": 881600003738912,
+													"parameters": {
+														"layer": "\"Tutorial\""
+													}
+												}
+											],
+											"sid": 926122520201624
+										}
+									]
 								}
 							]
 						},
@@ -4866,6 +4995,7 @@
 							"actions": [
 								{
 									"type": "script",
+									"language": "javascript",
 									"script": [
 										"console.log(\"woy kepanggil enggak\")"
 									]
@@ -5107,6 +5237,30 @@
 												}
 											],
 											"sid": 110924965205752
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "pick-all",
+													"objectClass": "System",
+													"sid": 598030765450292,
+													"parameters": {
+														"object": "props"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "move-to-layer",
+													"objectClass": "props",
+													"sid": 355075080062512,
+													"parameters": {
+														"layer": "\"Game\""
+													}
+												}
+											],
+											"sid": 538374086986016
 										}
 									]
 								},
@@ -5156,6 +5310,7 @@
 									"id": "create-object",
 									"objectClass": "System",
 									"sid": 472477435724402,
+									"disabled": true,
 									"parameters": {
 										"object-to-create": "Fader",
 										"layer": "\"Tutorial\"",
@@ -5169,6 +5324,7 @@
 									"id": "set-size",
 									"objectClass": "Fader",
 									"sid": 464952262129843,
+									"disabled": true,
 									"parameters": {
 										"width": "ViewportWidth(Self.LayerName)",
 										"height": "ViewportHeight(Self.LayerName)"
@@ -5178,6 +5334,7 @@
 									"id": "create-object",
 									"objectClass": "System",
 									"sid": 709410802101473,
+									"disabled": true,
 									"parameters": {
 										"object-to-create": "TextTutorial",
 										"layer": "\"Tutorial\"",
@@ -5191,6 +5348,7 @@
 									"id": "set-text",
 									"objectClass": "TextTutorial",
 									"sid": 260709237370706,
+									"disabled": true,
 									"parameters": {
 										"text": "\"[color=white] Tap to [/color]\"&\"[color=red] Start[/color]\""
 									}
@@ -5199,6 +5357,7 @@
 									"id": "add-child",
 									"objectClass": "Fader",
 									"sid": 451597234873214,
+									"disabled": true,
 									"parameters": {
 										"child": "TextTutorial",
 										"transform-x": false,
@@ -5210,6 +5369,60 @@
 										"transform-z-elevation": true,
 										"transform-visibility": false,
 										"destroy-with-parent": true
+									}
+								},
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 594078484642930,
+									"parameters": {
+										"variable": "tutorial_case",
+										"value": "\"close\""
+									}
+								},
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 918783536975360,
+									"parameters": {
+										"variable": "temp_high_score",
+										"value": "high_score"
+									}
+								},
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 591699862121096,
+									"parameters": {
+										"variable": "gameState",
+										"value": "\"play\""
+									}
+								},
+								{
+									"id": "set-group-active",
+									"objectClass": "System",
+									"sid": 600205498097582,
+									"parameters": {
+										"group-name": "\"Controls\"",
+										"state": "activated"
+									}
+								},
+								{
+									"id": "set-group-active",
+									"objectClass": "System",
+									"sid": 602034468770336,
+									"parameters": {
+										"group-name": "\"Fruit Collision\"",
+										"state": "activated"
+									}
+								},
+								{
+									"id": "set-group-active",
+									"objectClass": "System",
+									"sid": 289227183142576,
+									"parameters": {
+										"group-name": "\"Game Over\"",
+										"state": "deactivated"
 									}
 								}
 							],
@@ -5353,6 +5566,7 @@
 							"actions": [
 								{
 									"type": "script",
+									"language": "javascript",
 									"script": [
 										"var obj = {\"level\": runtime.globalVars.level_select, \"star\":localVars.grade};",
 										"let star = 0;",
@@ -6332,6 +6546,7 @@
 												},
 												{
 													"type": "script",
+													"language": "javascript",
 													"script": [
 														"runtime.callFunction(\"save_storage\", \"local_storage\", \"high_score\", String(runtime.globalVars.high_score))"
 													]
@@ -6457,6 +6672,7 @@
 												},
 												{
 													"type": "script",
+													"language": "javascript",
 													"script": [
 														"runtime.callFunction(\"save_storage\", \"local_storage\", \"high_score\", String(runtime.globalVars.high_score))"
 													]
@@ -6736,6 +6952,7 @@
 										},
 										{
 											"type": "script",
+											"language": "javascript",
 											"script": [
 												"runtime.callFunction(\"save_storage\", \"local_storage\", \"player_level\", String(runtime.globalVars.player_level))"
 											]
@@ -6912,6 +7129,7 @@
 									"actions": [
 										{
 											"type": "script",
+											"language": "javascript",
 											"script": [
 												"console.log(\"end adventure\");"
 											]
@@ -12336,6 +12554,7 @@
 					"actions": [
 						{
 							"type": "script",
+							"language": "javascript",
 							"script": [
 								"console.log(\"call Me\");"
 							]
@@ -12404,6 +12623,7 @@
 					"actions": [
 						{
 							"type": "script",
+							"language": "javascript",
 							"script": [
 								"const curr_level = runtime.globalVars.level_select-1;",
 								"const probabilities = levelMissionDataArr[curr_level].probabilities;",
@@ -15073,6 +15293,7 @@
 														},
 														{
 															"type": "script",
+															"language": "javascript",
 															"script": [
 																"console.log(\"starttimer\");"
 															]
@@ -15113,6 +15334,7 @@
 						},
 						{
 							"type": "script",
+							"language": "javascript",
 							"script": [
 								"console.log(\"nothingmerge\");"
 							]
@@ -19610,6 +19832,11 @@
 							"conditions": [],
 							"actions": [
 								{
+									"id": "wait-for-previous-actions",
+									"objectClass": "System",
+									"sid": 727791930072050
+								},
+								{
 									"callFunction": "tutorial_ev",
 									"sid": 977710682537112
 								}
@@ -19789,6 +20016,7 @@
 							"actions": [
 								{
 									"type": "script",
+									"language": "javascript",
 									"script": [
 										"let goals_completed = 0;",
 										"for (let i = 0; i < tempLevelGoalsArr.length; i++) {",
@@ -20060,6 +20288,7 @@
 							"actions": [
 								{
 									"type": "script",
+									"language": "javascript",
 									"script": [
 										"console.log(\"its called\");",
 										"const x_spacing = 8;",
@@ -20101,6 +20330,7 @@
 							"actions": [
 								{
 									"type": "script",
+									"language": "javascript",
 									"script": [
 										"const panelGameoverAdventure = runtime.objects.subPanelEndAdventure.getFirstPickedInstance();",
 										"",
@@ -20160,11 +20390,12 @@
 					"actions": [
 						{
 							"type": "script",
+							"language": "javascript",
 							"script": [
 								"const curr_level = runtime.globalVars.level_select-1;",
 								"const goals_length = levelMissionDataArr[curr_level].goals.length;",
 								"",
-								"//tempLevelGoalsArr = [];",
+								"tempLevelGoalsArr = [];",
 								"",
 								"for (let i = 0; i < goals_length; i++) {",
 								"\tvar obj = {\"goalsID\": levelMissionDataArr[curr_level].goals[i].goalsID, \"qty\": levelMissionDataArr[curr_level].goals[i].qty};",

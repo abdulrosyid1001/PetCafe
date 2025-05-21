@@ -12,6 +12,36 @@
 			"sid": 996681540535150
 		},
 		{
+			"eventType": "variable",
+			"name": "is_daily_bonus",
+			"type": "boolean",
+			"initialValue": "true",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 869287477410011
+		},
+		{
+			"eventType": "variable",
+			"name": "day",
+			"type": "number",
+			"initialValue": "2",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 368404113134713
+		},
+		{
+			"eventType": "variable",
+			"name": "total_day",
+			"type": "number",
+			"initialValue": "2",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 159005337721840
+		},
+		{
 			"eventType": "include",
 			"includeSheet": "GlobalEvents"
 		},
@@ -92,6 +122,7 @@
 					"actions": [
 						{
 							"type": "script",
+							"language": "javascript",
 							"script": [
 								"runtime.callFunction(\"get_storage\", \"local_storage\", \"high_score\");",
 								"runtime.callFunction(\"get_storage\", \"local_storage\", \"player_level\");"
@@ -131,6 +162,38 @@
 						}
 					],
 					"sid": 522135614081933
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-boolean-eventvar",
+							"objectClass": "System",
+							"sid": 977642084912861,
+							"parameters": {
+								"variable": "is_daily_bonus"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-boolean-eventvar",
+							"objectClass": "System",
+							"sid": 603710224477209,
+							"parameters": {
+								"variable": "is_daily_bonus",
+								"value": "false"
+							}
+						},
+						{
+							"callFunction": "show_popup_daily_bonus",
+							"sid": 153403693681774,
+							"parameters": [
+								"\"daily_bonus\""
+							]
+						}
+					],
+					"sid": 446713740161827
 				}
 			]
 		},
@@ -1279,6 +1342,278 @@
 				}
 			],
 			"sid": 526300302371910
+		},
+		{
+			"functionName": "set_daily_bonus_value",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "set-width",
+					"objectClass": "green_fillbar_dailybonus",
+					"sid": 109140830443830,
+					"parameters": {
+						"width": "(298/30)*total_day"
+					}
+				}
+			],
+			"sid": 694338319305923,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "panel_daily_login",
+							"sid": 521011401750033,
+							"parameters": {
+								"instance-variable": "day",
+								"comparison": 2,
+								"value": "day"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-animation-frame",
+							"objectClass": "panel_daily_login",
+							"sid": 112477503499413,
+							"parameters": {
+								"frame-number": "1"
+							}
+						}
+					],
+					"sid": 400904370798598
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "panel_daily_login",
+							"sid": 364985976748280,
+							"parameters": {
+								"instance-variable": "day",
+								"comparison": 0,
+								"value": "day"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-effect-enabled",
+							"objectClass": "panel_daily_login",
+							"sid": 490809542860220,
+							"parameters": {
+								"mode": "enable",
+								"effect": "\"Brightness\""
+							}
+						},
+						{
+							"id": "set-effect-parameter",
+							"objectClass": "panel_daily_login",
+							"sid": 272062575845607,
+							"parameters": {
+								"effect": "\"Brightness\"",
+								"parameter-index": "0",
+								"value": "75"
+							}
+						},
+						{
+							"id": "set-animation-frame",
+							"objectClass": "panel_daily_login",
+							"sid": 548120950891639,
+							"parameters": {
+								"frame-number": "0"
+							}
+						}
+					],
+					"sid": 505479043405086
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "panel_daily_login",
+							"sid": 598370781158770,
+							"parameters": {
+								"instance-variable": "day",
+								"comparison": 0,
+								"value": "day+1"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-animation-frame",
+							"objectClass": "panel_daily_login",
+							"sid": 534464818361828,
+							"parameters": {
+								"frame-number": "2"
+							}
+						}
+					],
+					"sid": 794038951638810
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "panel_daily_login",
+							"sid": 474210560063733,
+							"parameters": {
+								"instance-variable": "day",
+								"comparison": 4,
+								"value": "day+1"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-animation-frame",
+							"objectClass": "panel_daily_login",
+							"sid": 642324706900818,
+							"parameters": {
+								"frame-number": "0"
+							}
+						}
+					],
+					"sid": 999529799626769
+				}
+			]
+		},
+		{
+			"functionName": "show_popup_daily_bonus",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "ID",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"sid": 458996443518055
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"callFunction": "audio_settings",
+					"sid": 796335589230941,
+					"parameters": [
+						"\"PopUp_Appear\""
+					]
+				},
+				{
+					"id": "set-width",
+					"objectClass": "green_fillbar_dailybonus",
+					"sid": 873718178883640,
+					"parameters": {
+						"width": "0"
+					}
+				},
+				{
+					"id": "set-layer-visible",
+					"objectClass": "System",
+					"sid": 993865477224005,
+					"parameters": {
+						"layer": "\"PopUp\"",
+						"visibility": "visible"
+					}
+				},
+				{
+					"id": "create-object",
+					"objectClass": "System",
+					"sid": 923085480840303,
+					"parameters": {
+						"object-to-create": "black_shadow",
+						"layer": "\"PopUp\"",
+						"x": "LayoutWidth/2",
+						"y": "LayoutHeight/2",
+						"create-hierarchy": false,
+						"template-name": "\"\""
+					}
+				},
+				{
+					"id": "set-size",
+					"objectClass": "black_shadow",
+					"sid": 729305464656480,
+					"parameters": {
+						"width": "ViewportWidth(Self.LayerName)",
+						"height": "ViewportHeight(Self.LayerName)"
+					}
+				},
+				{
+					"id": "wait-for-previous-actions",
+					"objectClass": "System",
+					"sid": 909969404974984
+				},
+				{
+					"id": "create-object",
+					"objectClass": "System",
+					"sid": 370371463382573,
+					"parameters": {
+						"object-to-create": "framePopUp",
+						"layer": "\"PopUp\"",
+						"x": "LayoutWidth/2",
+						"y": "(LayoutHeight/2)-75",
+						"create-hierarchy": true,
+						"template-name": "ID"
+					}
+				},
+				{
+					"id": "set-scale",
+					"objectClass": "framePopUp",
+					"sid": 671525748859866,
+					"parameters": {
+						"scale": "0"
+					}
+				},
+				{
+					"id": "tween-two-properties",
+					"objectClass": "framePopUp",
+					"sid": 608823617847513,
+					"behaviorType": "Tween",
+					"parameters": {
+						"tags": "\"popUp\"",
+						"property": "scale",
+						"end-x": "1",
+						"end-y": "1",
+						"time": "0.5",
+						"ease": "easeoutback",
+						"destroy-on-complete": "no",
+						"loop": "no",
+						"ping-pong": "no",
+						"repeat-count": "1"
+					}
+				},
+				{
+					"id": "wait",
+					"objectClass": "System",
+					"sid": 111676003106862,
+					"parameters": {
+						"seconds": "0.2",
+						"use-timescale": true
+					}
+				},
+				{
+					"callFunction": "set_daily_bonus_value",
+					"sid": 785362024873777
+				}
+			],
+			"sid": 578149137109970
 		},
 		{
 			"functionName": "anim_box_pack",

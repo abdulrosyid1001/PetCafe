@@ -103,6 +103,7 @@
 					"actions": [
 						{
 							"type": "script",
+							"language": "javascript",
 							"script": [
 								"if(localVars.type == \"local_storage\"){",
 								"\tawait runtime.storage.setItem(localVars.keyName, localVars.dataStr);",
@@ -140,6 +141,7 @@
 					"actions": [
 						{
 							"type": "script",
+							"language": "javascript",
 							"script": [
 								"var getdataStr = \"\";",
 								"var keyName = localVars.keyName;",
@@ -183,6 +185,7 @@
 					"actions": [
 						{
 							"type": "script",
+							"language": "javascript",
 							"script": [
 								"var build_version = 0.0;",
 								"var keyName = localVars.keyName;",
@@ -1261,6 +1264,7 @@
 										},
 										{
 											"type": "script",
+											"language": "javascript",
 											"script": [
 												"triggerHaptics();"
 											]
@@ -1304,6 +1308,7 @@
 									"actions": [
 										{
 											"type": "script",
+											"language": "javascript",
 											"script": [
 												"if(tutorialCompletedArr[1] == 1){",
 												"\truntime.goToLayout(\"Missions\");",
@@ -2728,6 +2733,7 @@
 							"actions": [
 								{
 									"type": "script",
+									"language": "javascript",
 									"script": [
 										"if(tutorialCompletedArr[1] == 1){",
 										"\truntime.goToLayout(\"Missions\");",

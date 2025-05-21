@@ -3766,6 +3766,7 @@
 								},
 								{
 									"type": "script",
+									"language": "javascript",
 									"script": [
 										"console.log(\"item_status\", localVars.item_status)"
 									]

@@ -1,6 +1,6 @@
 {
 	"projectFormatVersion": 1,
-	"savedWithRelease": 43203,
+	"savedWithRelease": 44000,
 	"name": "PetCafe",
 	"runtime": "c3",
 	"useWorker": "auto",
@@ -334,7 +334,15 @@
 			"breakerBrown",
 			"breakerBlue",
 			"breakerYellow",
-			"breakerGreen"
+			"breakerGreen",
+			"panel_daily_login",
+			"9patch",
+			"removeadsIcon",
+			"green_fillbar_dailybonus",
+			"progress_box_daily_bonus",
+			"weekly_gift_Frame_Bar",
+			"cake_icon",
+			"collider_tile_visual"
 		],
 		"subfolders": [
 			{
@@ -433,6 +441,7 @@
 			}
 		]
 	},
+	"functionsName": "Functions",
 	"autosaveData": null,
 	"containers": [],
 	"families": {

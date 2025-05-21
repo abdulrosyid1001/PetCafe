@@ -440,6 +440,7 @@
 								},
 								{
 									"type": "script",
+									"language": "javascript",
 									"script": [
 										"console.log(\"star Level\", starLevelCollectedArr);",
 										"for(let i = 0; i<runtime.globalVars.level_stage; i++){",
@@ -846,6 +847,7 @@
 										},
 										{
 											"type": "script",
+											"language": "javascript",
 											"script": [
 												"console.log(\"star Level\", starLevelCollectedArr);",
 												"for(let i = 0; i<runtime.globalVars.level_stage-1; i++){",
@@ -1290,6 +1292,7 @@
 										},
 										{
 											"type": "script",
+											"language": "javascript",
 											"script": [
 												"console.log(\"star Level\", starLevelCollectedArr);",
 												"for(let i = 0; i<runtime.globalVars.level_stage-1; i++){",
@@ -2038,6 +2041,7 @@
 						},
 						{
 							"type": "script",
+							"language": "javascript",
 							"script": [
 								"triggerHaptics();"
 							]

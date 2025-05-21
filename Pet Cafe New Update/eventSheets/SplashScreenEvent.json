@@ -76,6 +76,7 @@
 				},
 				{
 					"type": "script",
+					"language": "javascript",
 					"script": [
 						"runtime.callFunction(\"get_storage\", \"local_storage\", \"tutorial_completed_arr\");"
 					],
@@ -194,6 +195,7 @@
 			"actions": [
 				{
 					"type": "script",
+					"language": "javascript",
 					"script": [
 						"if(tutorialCompletedArr[0] == 1){",
 						"\truntime.globalVars.game_mode = \"classic\";",
