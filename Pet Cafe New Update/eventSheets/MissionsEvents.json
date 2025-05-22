@@ -2556,10 +2556,10 @@
 				{
 					"id": "set-eventvar-value",
 					"objectClass": "System",
-					"sid": 988329875195612,
+					"sid": 995469186867316,
 					"parameters": {
 						"variable": "level_stage",
-						"value": "2"
+						"value": "12"
 					}
 				},
 				{
@@ -2586,10 +2586,10 @@
 				{
 					"id": "set-eventvar-value",
 					"objectClass": "System",
-					"sid": 166543147454105,
+					"sid": 635251750962329,
 					"parameters": {
 						"variable": "level_stage",
-						"value": "3"
+						"value": "13"
 					}
 				},
 				{
@@ -2616,10 +2616,10 @@
 				{
 					"id": "set-eventvar-value",
 					"objectClass": "System",
-					"sid": 509433083202494,
+					"sid": 467739575892700,
 					"parameters": {
 						"variable": "level_stage",
-						"value": "4"
+						"value": "14"
 					}
 				},
 				{
@@ -2655,10 +2655,10 @@
 				{
 					"id": "set-eventvar-value",
 					"objectClass": "System",
-					"sid": 729053210692391,
+					"sid": 268922507229300,
 					"parameters": {
 						"variable": "level_stage",
-						"value": "5"
+						"value": "15"
 					}
 				},
 				{
@@ -2685,10 +2685,10 @@
 				{
 					"id": "set-eventvar-value",
 					"objectClass": "System",
-					"sid": 496270367303341,
+					"sid": 376306190645824,
 					"parameters": {
 						"variable": "level_stage",
-						"value": "6"
+						"value": "16"
 					}
 				},
 				{
@@ -2715,10 +2715,10 @@
 				{
 					"id": "set-eventvar-value",
 					"objectClass": "System",
-					"sid": 358493766012006,
+					"sid": 690933007648254,
 					"parameters": {
 						"variable": "level_stage",
-						"value": "7"
+						"value": "17"
 					}
 				},
 				{
@@ -2745,10 +2745,10 @@
 				{
 					"id": "set-eventvar-value",
 					"objectClass": "System",
-					"sid": 761492038438482,
+					"sid": 473724637085587,
 					"parameters": {
 						"variable": "level_stage",
-						"value": "8"
+						"value": "18"
 					}
 				},
 				{
@@ -2775,10 +2775,10 @@
 				{
 					"id": "set-eventvar-value",
 					"objectClass": "System",
-					"sid": 535281036898799,
+					"sid": 889751469929602,
 					"parameters": {
 						"variable": "level_stage",
-						"value": "9"
+						"value": "19"
 					}
 				},
 				{
@@ -2805,10 +2805,10 @@
 				{
 					"id": "set-eventvar-value",
 					"objectClass": "System",
-					"sid": 214772849183813,
+					"sid": 886380162560082,
 					"parameters": {
 						"variable": "level_stage",
-						"value": "10"
+						"value": "20"
 					}
 				},
 				{
