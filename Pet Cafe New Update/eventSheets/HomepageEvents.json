@@ -46,6 +46,90 @@
 			"includeSheet": "GlobalEvents"
 		},
 		{
+			"functionName": "set_offer_time",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "h",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"sid": 340120991277251
+				},
+				{
+					"name": "m",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"sid": 227584508636423
+				},
+				{
+					"name": "s",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"sid": 192254402090375
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "set-text",
+					"objectClass": "labelOfferTime",
+					"sid": 457674427641719,
+					"parameters": {
+						"text": "h&\"h\"&\" \"&m&\"m\""
+					}
+				}
+			],
+			"sid": 439151859651135
+		},
+		{
+			"functionName": "get_offer_time",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"type": "script",
+					"language": "javascript",
+					"script": [
+						"var now = new Date();",
+						"var time = now.getTime();",
+						"var timezoneoffset = (-1*now.getTimezoneOffset())*60000;   //minutes to milliseconds",
+						"var expired_str =\"; expires=\" + now.toGMTString();",
+						"var hours = now.getHours()*3600000;",
+						"var minutes = now.getMinutes()*60000;",
+						"var seconds = now.getSeconds()*1000;",
+						"var expireHour = ms_24 - (hours+minutes+seconds);",
+						"var expireTime = time + expireHour + timezoneoffset;",
+						"",
+						"var h = String(Math.floor(expireHour/3600000));",
+						"var m = String(Math.ceil(expireHour/60000)-(h*60));",
+						"var s = String(Math.ceil(expireHour/1000)-((h*3600)+(m*60)-60));",
+						"console.log(\"expireHour\"+expireHour/3600000+\"expireTime\"+expireTime)",
+						"h = h<10 ? \"0\"+h : h ;",
+						"m = m<10 ? \"0\"+m : m ;",
+						"s = s<10 ? \"0\"+s : s ;",
+						"runtime.callFunction(\"set_offer_time\", h, m, s);",
+						"// console.log(\"expire time:\", h, m, s);",
+						"// runtime.objects.labelOfferTime.getFirstPickedInstance().text = h+\"h \"+m+\"m\";"
+					]
+				}
+			],
+			"sid": 971114247321406
+		},
+		{
 			"eventType": "block",
 			"conditions": [
 				{
@@ -101,6 +185,10 @@
 				{
 					"callFunction": "anim_pack_icon",
 					"sid": 119046869792179
+				},
+				{
+					"callFunction": "get_offer_time",
+					"sid": 393654394309278
 				}
 			],
 			"sid": 905947639483000,
@@ -186,23 +274,6 @@
 							}
 						},
 						{
-							"type": "script",
-							"language": "javascript",
-							"script": [
-								"var now = new Date();",
-								"var time = now.getTime();",
-								"var hours = now.getHours()*3600000;",
-								"var minutes = now.getMinutes()*60000;",
-								"var seconds = now.getSeconds()*1000;",
-								"var expireHour = ms_24 - (hours+minutes+seconds);",
-								"var timezoneoffset = (-1*now.getTimezoneOffset())*60000; ",
-								"var now_time = time + timezoneoffset;",
-								"console.log('now_time', now_time/3600000);",
-								"",
-								"console.log('expire date', expireHour/3600000);"
-							]
-						},
-						{
 							"callFunction": "show_popup_daily_bonus",
 							"sid": 153403693681774,
 							"parameters": [
@@ -213,6 +284,26 @@
 					"sid": 446713740161827
 				}
 			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "every-x-seconds",
+					"objectClass": "System",
+					"sid": 228675664115501,
+					"parameters": {
+						"interval-seconds": "1"
+					}
+				}
+			],
+			"actions": [
+				{
+					"callFunction": "get_offer_time",
+					"sid": 335326132536662
+				}
+			],
+			"sid": 500967683037741
 		},
 		{
 			"eventType": "block",

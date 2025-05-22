@@ -11513,6 +11513,28 @@
 										{
 											"id": "create-object",
 											"objectClass": "System",
+											"sid": 462484616213987,
+											"parameters": {
+												"object-to-create": "collider_props",
+												"layer": "\"Game\"",
+												"x": "FruitFamily.X",
+												"y": "FruitFamily.Y",
+												"create-hierarchy": false,
+												"template-name": "\"\""
+											}
+										},
+										{
+											"id": "set-size",
+											"objectClass": "collider_props",
+											"sid": 329788510488923,
+											"parameters": {
+												"width": "FruitFamily.ImageWidth+30",
+												"height": "FruitFamily.ImageHeight+30"
+											}
+										},
+										{
+											"id": "create-object",
+											"objectClass": "System",
 											"sid": 916015858021043,
 											"parameters": {
 												"object-to-create": "ParticlesMerge",
@@ -11582,19 +11604,6 @@
 											}
 										},
 										{
-											"id": "create-object",
-											"objectClass": "System",
-											"sid": 448552305511944,
-											"parameters": {
-												"object-to-create": "collider_props",
-												"layer": "\"Game\"",
-												"x": "meanX",
-												"y": "meanY",
-												"create-hierarchy": false,
-												"template-name": "\"\""
-											}
-										},
-										{
 											"id": "set-size",
 											"objectClass": "collider_eye_face",
 											"sid": 439230846769811,
@@ -11604,18 +11613,9 @@
 											}
 										},
 										{
-											"id": "set-size",
-											"objectClass": "collider_props",
-											"sid": 933449920727947,
-											"parameters": {
-												"width": "Fruit.Width+40",
-												"height": "Fruit.Height+40"
-											}
-										},
-										{
 											"id": "destroy",
 											"objectClass": "collider_eye_face",
-											"sid": 388197864475664
+											"sid": 369930222846219
 										},
 										{
 											"callFunction": "check_goals_completed",
@@ -13296,6 +13296,37 @@
 								}
 							],
 							"sid": 300582168871183
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "pick-children",
+									"objectClass": "Fruit",
+									"sid": 544428947479167,
+									"parameters": {
+										"child": "collider_tile_visual",
+										"which": "own"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-size",
+									"objectClass": "collider_tile_visual",
+									"sid": 406666585307818,
+									"parameters": {
+										"width": "Fruit.ImageWidth+30",
+										"height": "Fruit.ImageHeight+30"
+									}
+								},
+								{
+									"id": "move-to-top",
+									"objectClass": "collider_tile_visual",
+									"sid": 250543609542011
+								}
+							],
+							"sid": 579407518304490
 						}
 					]
 				},

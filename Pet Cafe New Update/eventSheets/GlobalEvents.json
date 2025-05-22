@@ -2025,6 +2025,339 @@
 								{
 									"id": "compare-instance-variable",
 									"objectClass": "blueButton",
+									"sid": 521405934272553,
+									"parameters": {
+										"instance-variable": "ID",
+										"comparison": 0,
+										"value": "\"claim_login\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "destroy",
+									"objectClass": "blueButton",
+									"sid": 306862042768702
+								},
+								{
+									"id": "destroy",
+									"objectClass": "black_shadow",
+									"sid": 574380656822172,
+									"disabled": true
+								},
+								{
+									"id": "set-layer-visible",
+									"objectClass": "System",
+									"sid": 795216905362862,
+									"disabled": true,
+									"parameters": {
+										"layer": "\"PopUp\"",
+										"visibility": "invisible"
+									}
+								},
+								{
+									"id": "set-enabled",
+									"objectClass": "dragging",
+									"sid": 486155391566019,
+									"disabled": true,
+									"behaviorType": "DragDrop",
+									"parameters": {
+										"state": "enabled"
+									}
+								},
+								{
+									"id": "set-enabled",
+									"objectClass": "swipe_control",
+									"sid": 478990126367326,
+									"disabled": true,
+									"behaviorType": "DragDrop",
+									"parameters": {
+										"state": "enabled"
+									}
+								}
+							],
+							"sid": 196596502866603,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "pick-by-comparison",
+											"objectClass": "System",
+											"sid": 471539005902640,
+											"parameters": {
+												"object": "panel_daily_login",
+												"expression": "panel_daily_login.day",
+												"comparison": 0,
+												"value": "day"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "create-object",
+											"objectClass": "System",
+											"sid": 960309084788146,
+											"parameters": {
+												"object-to-create": "check_icon",
+												"layer": "panel_daily_login.LayerName",
+												"x": "panel_daily_login.X",
+												"y": "panel_daily_login.Y+10",
+												"create-hierarchy": false,
+												"template-name": "\"\""
+											}
+										},
+										{
+											"id": "set-scale",
+											"objectClass": "check_icon",
+											"sid": 982886717993618,
+											"parameters": {
+												"scale": "2"
+											}
+										},
+										{
+											"id": "tween-two-properties",
+											"objectClass": "check_icon",
+											"sid": 677123617263834,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "\"scale\"",
+												"property": "scale",
+												"end-x": "1.2",
+												"end-y": "1.2",
+												"time": "1",
+												"ease": "easeoutbounce",
+												"destroy-on-complete": "no",
+												"loop": "no",
+												"ping-pong": "no",
+												"repeat-count": "1"
+											}
+										}
+									],
+									"sid": 607615150175960,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "pick-children",
+													"objectClass": "panel_daily_login",
+													"sid": 837124640092968,
+													"parameters": {
+														"child": "missionIconPack",
+														"which": "own"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "destroy",
+													"objectClass": "missionIconPack",
+													"sid": 463930920213125
+												}
+											],
+											"sid": 429576179627332
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "pick-children",
+													"objectClass": "panel_daily_login",
+													"sid": 411280829226694,
+													"parameters": {
+														"child": "labelBundleItem",
+														"which": "own"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "destroy",
+													"objectClass": "labelBundleItem",
+													"sid": 816848788521339
+												}
+											],
+											"sid": 796410555449394
+										},
+										{
+											"eventType": "block",
+											"conditions": [],
+											"actions": [
+												{
+													"id": "wait-for-previous-actions",
+													"objectClass": "System",
+													"sid": 117195951126762
+												},
+												{
+													"id": "create-object",
+													"objectClass": "System",
+													"sid": 206196423395463,
+													"parameters": {
+														"object-to-create": "cake_icon",
+														"layer": "panel_daily_login.LayerName",
+														"x": "panel_daily_login.X-(panel_daily_login.Width/2)",
+														"y": "panel_daily_login.Y-(panel_daily_login.Height/2)",
+														"create-hierarchy": false,
+														"template-name": "\"\""
+													}
+												},
+												{
+													"id": "set-scale",
+													"objectClass": "cake_icon",
+													"sid": 453975427754868,
+													"parameters": {
+														"scale": "0"
+													}
+												},
+												{
+													"id": "tween-two-properties",
+													"objectClass": "cake_icon",
+													"sid": 629645904670632,
+													"behaviorType": "Tween",
+													"parameters": {
+														"tags": "\"scale\"",
+														"property": "scale",
+														"end-x": "1.2",
+														"end-y": "1.2",
+														"time": "0.5",
+														"ease": "easeoutbounce",
+														"destroy-on-complete": "no",
+														"loop": "no",
+														"ping-pong": "no",
+														"repeat-count": "1"
+													}
+												},
+												{
+													"id": "create-object",
+													"objectClass": "System",
+													"sid": 834251769039547,
+													"parameters": {
+														"object-to-create": "missionIconPack",
+														"layer": "panel_daily_login.LayerName",
+														"x": "panel_daily_login.X",
+														"y": "panel_daily_login.Y",
+														"create-hierarchy": false,
+														"template-name": "\"\""
+													}
+												},
+												{
+													"id": "set-scale",
+													"objectClass": "missionIconPack",
+													"sid": 597617009601382,
+													"parameters": {
+														"scale": "0"
+													}
+												},
+												{
+													"id": "tween-two-properties",
+													"objectClass": "missionIconPack",
+													"sid": 997916829603558,
+													"behaviorType": "Tween",
+													"parameters": {
+														"tags": "\"scale\"",
+														"property": "scale",
+														"end-x": "1.2",
+														"end-y": "1.2",
+														"time": "0.5",
+														"ease": "easeoutbounce",
+														"destroy-on-complete": "no",
+														"loop": "no",
+														"ping-pong": "no",
+														"repeat-count": "1"
+													}
+												},
+												{
+													"id": "wait-for-previous-actions",
+													"objectClass": "System",
+													"sid": 974214735340659
+												},
+												{
+													"id": "tween-two-properties",
+													"objectClass": "missionIconPack",
+													"sid": 861086886026061,
+													"behaviorType": "Tween",
+													"parameters": {
+														"tags": "\"move\"",
+														"property": "position",
+														"end-x": "LayoutWidth/2",
+														"end-y": "ViewportHeight(Self.LayerName)",
+														"time": "1",
+														"ease": "easeoutsine",
+														"destroy-on-complete": "yes",
+														"loop": "no",
+														"ping-pong": "no",
+														"repeat-count": "1"
+													}
+												},
+												{
+													"id": "tween-two-properties",
+													"objectClass": "cake_icon",
+													"sid": 556102460543637,
+													"behaviorType": "Tween",
+													"parameters": {
+														"tags": "\"move\"",
+														"property": "position",
+														"end-x": "green_fillbar_dailybonus.X",
+														"end-y": "green_fillbar_dailybonus.Y",
+														"time": "1",
+														"ease": "easeoutsine",
+														"destroy-on-complete": "yes",
+														"loop": "no",
+														"ping-pong": "no",
+														"repeat-count": "1"
+													}
+												}
+											],
+											"sid": 643086164697985,
+											"children": [
+												{
+													"eventType": "block",
+													"conditions": [],
+													"actions": [
+														{
+															"id": "wait-for-previous-actions",
+															"objectClass": "System",
+															"sid": 992431970427476
+														},
+														{
+															"id": "wait",
+															"objectClass": "System",
+															"sid": 675318772718400,
+															"parameters": {
+																"seconds": "1",
+																"use-timescale": true
+															}
+														},
+														{
+															"id": "destroy",
+															"objectClass": "black_shadow",
+															"sid": 858191722580753
+														},
+														{
+															"id": "set-layer-visible",
+															"objectClass": "System",
+															"sid": 587286851419159,
+															"parameters": {
+																"layer": "\"PopUp\"",
+																"visibility": "invisible"
+															}
+														}
+													],
+													"sid": 352656104235618
+												}
+											]
+										}
+									]
+								}
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "blueButton",
 									"sid": 149110899396205,
 									"parameters": {
 										"instance-variable": "ID",

@@ -2125,7 +2125,7 @@
 					"sid": 983095219440332,
 					"tags": "",
 					"instanceVariables": {
-						"ID": "unlock_level_2"
+						"ID": ""
 					},
 					"behaviors": {},
 					"instanceFolderItem": {
@@ -2135,8 +2135,8 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 66.33111731714465,
-						"y": 416.287711096992,
+						"x": 65.33111731714465,
+						"y": 417.287711096992,
 						"width": 61.3012724062979,
 						"height": 34.79982200945727,
 						"originX": 0.5,
