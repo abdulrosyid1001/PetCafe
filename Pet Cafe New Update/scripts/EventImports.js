@@ -45,3 +45,7 @@ var starLevelCollectedArr = [{"level": 1, "star":0},{"level": 2, "star":0},{"lev
 var tutorialCompletedArr = [1,1,1,1,1,1,1,1];
 const unlockedBoosterArr = [{"classic_level_min":[5,7,9]},{"adventure_level_min":[7,13,20]}];
 
+var ms_24 = 86400000;   	//86400000 = 24 hours   //180000 = 3 minutes    //600000 = 10 minutes
+var weekly_arr = [0,0,0,0,0,0,0];
+//0:nextdaily(claim yet) 1:today 2: dailyclaimed 3:missingday
+

@@ -288,11 +288,11 @@
 										{
 											"id": "set-at-xy",
 											"objectClass": "unlockedBooster",
-											"sid": 582261072669452,
+											"sid": 355415923959334,
 											"parameters": {
 												"x": "1",
 												"y": "1",
-												"value": "13"
+												"value": "12"
 											}
 										},
 										{
@@ -9003,6 +9003,14 @@
 							"eventType": "block",
 							"conditions": [
 								{
+									"id": "for-each",
+									"objectClass": "System",
+									"sid": 493928046336416,
+									"parameters": {
+										"object": "props"
+									}
+								},
+								{
 									"id": "is-overlapping-another-object",
 									"objectClass": "props",
 									"sid": 446206945425463,
@@ -9011,7 +9019,17 @@
 									}
 								}
 							],
-							"actions": [],
+							"actions": [
+								{
+									"id": "wait",
+									"objectClass": "System",
+									"sid": 331317210003041,
+									"parameters": {
+										"seconds": "loopindex*0.01",
+										"use-timescale": true
+									}
+								}
+							],
 							"sid": 600873748082706,
 							"children": [
 								{
@@ -11011,6 +11029,28 @@
 								{
 									"id": "create-object",
 									"objectClass": "System",
+									"sid": 551127351842588,
+									"parameters": {
+										"object-to-create": "collider_props",
+										"layer": "\"Game\"",
+										"x": "Fruit.X",
+										"y": "Fruit.Y",
+										"create-hierarchy": false,
+										"template-name": "\"\""
+									}
+								},
+								{
+									"id": "set-size",
+									"objectClass": "collider_props",
+									"sid": 742085052045701,
+									"parameters": {
+										"width": "Fruit.ImageWidth+30",
+										"height": "Fruit.ImageHeight+30"
+									}
+								},
+								{
+									"id": "create-object",
+									"objectClass": "System",
 									"sid": 552791057377012,
 									"parameters": {
 										"object-to-create": "ParticlesMerge",
@@ -11075,31 +11115,9 @@
 									}
 								},
 								{
-									"id": "create-object",
-									"objectClass": "System",
-									"sid": 974690894790713,
-									"parameters": {
-										"object-to-create": "collider_props",
-										"layer": "\"Game\"",
-										"x": "meanX",
-										"y": "meanY",
-										"create-hierarchy": false,
-										"template-name": "\"\""
-									}
-								},
-								{
 									"id": "set-size",
 									"objectClass": "collider_eye_face",
 									"sid": 871975398795246,
-									"parameters": {
-										"width": "Fruit.Width+40",
-										"height": "Fruit.Height+40"
-									}
-								},
-								{
-									"id": "set-size",
-									"objectClass": "collider_props",
-									"sid": 879907348215182,
 									"parameters": {
 										"width": "Fruit.Width+40",
 										"height": "Fruit.Height+40"
@@ -12588,9 +12606,9 @@
 						},
 						{
 							"callFunction": "gameOver",
-							"sid": 181303053945077,
+							"sid": 382299526472399,
 							"parameters": [
-								"\"\""
+								"\"failed\""
 							]
 						}
 					],

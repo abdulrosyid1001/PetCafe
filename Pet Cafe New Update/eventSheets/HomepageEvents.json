@@ -186,6 +186,23 @@
 							}
 						},
 						{
+							"type": "script",
+							"language": "javascript",
+							"script": [
+								"var now = new Date();",
+								"var time = now.getTime();",
+								"var hours = now.getHours()*3600000;",
+								"var minutes = now.getMinutes()*60000;",
+								"var seconds = now.getSeconds()*1000;",
+								"var expireHour = ms_24 - (hours+minutes+seconds);",
+								"var timezoneoffset = (-1*now.getTimezoneOffset())*60000; ",
+								"var now_time = time + timezoneoffset;",
+								"console.log('now_time', now_time/3600000);",
+								"",
+								"console.log('expire date', expireHour/3600000);"
+							]
+						},
+						{
 							"callFunction": "show_popup_daily_bonus",
 							"sid": 153403693681774,
 							"parameters": [

@@ -342,7 +342,8 @@
 			"progress_box_daily_bonus",
 			"weekly_gift_Frame_Bar",
 			"cake_icon",
-			"collider_tile_visual"
+			"collider_tile_visual",
+			"cat_Icon"
 		],
 		"subfolders": [
 			{
