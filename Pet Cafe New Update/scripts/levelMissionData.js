@@ -1,3 +1,4 @@
+//v1.0
 export const levelMissionDataArr = 
 [
     {
@@ -116,7 +117,7 @@ export const levelMissionDataArr =
         "goals": [
             {
                 "goalsID": 13,
-                "qty": 10,
+                "qty": 12,
             }
         ],
         "moves": 30,
@@ -245,7 +246,7 @@ export const levelMissionDataArr =
                 "qty": 1,
             }
         ],
-        "moves": 35,
+        "moves": 25,
         "probabilities" :[0.45, 0.40, 0.10, 0.05, 0.00, 0.00]
     }
 ]

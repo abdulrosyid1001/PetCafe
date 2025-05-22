@@ -2556,10 +2556,10 @@
 				{
 					"id": "set-eventvar-value",
 					"objectClass": "System",
-					"sid": 988329875195612,
+					"sid": 694186323305025,
 					"parameters": {
 						"variable": "level_stage",
-						"value": "2"
+						"value": "12"
 					}
 				},
 				{
