@@ -1,4 +1,4 @@
-//v1.0
+//v1.1
 export const levelMissionDataArr = 
 [
     {
@@ -120,7 +120,7 @@ export const levelMissionDataArr =
                 "qty": 12,
             }
         ],
-        "moves": 30,
+        "moves": 20,
         "probabilities" :[0.60, 0.15, 0.10, 0.00, 0.15, 0.00]
     },
     {
