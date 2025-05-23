@@ -9,7 +9,7 @@
 			"eventType": "variable",
 			"name": "level_stage",
 			"type": "number",
-			"initialValue": "3",
+			"initialValue": "1",
 			"comment": "",
 			"isStatic": false,
 			"isConstant": false,
@@ -19,7 +19,7 @@
 			"eventType": "variable",
 			"name": "level_select",
 			"type": "number",
-			"initialValue": "3",
+			"initialValue": "1",
 			"comment": "",
 			"isStatic": false,
 			"isConstant": false,
@@ -2546,7 +2546,7 @@
 				{
 					"id": "key-is-down",
 					"objectClass": "Keyboard",
-					"sid": 701928391912227,
+					"sid": 208777722723392,
 					"parameters": {
 						"key": 50
 					}
@@ -2556,7 +2556,7 @@
 				{
 					"id": "set-eventvar-value",
 					"objectClass": "System",
-					"sid": 694186323305025,
+					"sid": 298788062032863,
 					"parameters": {
 						"variable": "level_stage",
 						"value": "12"
@@ -2565,10 +2565,10 @@
 				{
 					"id": "restart-layout",
 					"objectClass": "System",
-					"sid": 414800710569851
+					"sid": 126627573022900
 				}
 			],
-			"sid": 232841738065082
+			"sid": 109854787059854
 		},
 		{
 			"eventType": "block",
@@ -2805,10 +2805,10 @@
 				{
 					"id": "set-eventvar-value",
 					"objectClass": "System",
-					"sid": 937465554358364,
+					"sid": 214772849183813,
 					"parameters": {
 						"variable": "level_stage",
-						"value": "20"
+						"value": "10"
 					}
 				},
 				{

@@ -38,7 +38,7 @@ async function triggerHaptics() {
 
 //LEVEL GOALS MISSION ADVENTURE MODE
 var tempLevelGoalsArr = [];
-var starLevelCollectedArr = [{"level": 1, "star":0},{"level": 2, "star":0},{"level": 3, "star":0},{"level": 4, "star":0},{"level": 5, "star":0},{"level": 6, "star":0},{"level": 7, "star":0},{"level": 8, "star":0},{"level": 9, "star":0},{"level": 10, "star":0}];
+var starLevelCollectedArr = [];
 
 //**--------------------------------- */
 
@@ -46,6 +46,16 @@ var tutorialCompletedArr = [1,1,1,1,1,1,1,1];
 const unlockedBoosterArr = [{"classic_level_min":[5,7,9]},{"adventure_level_min":[7,13,20]}];
 
 var ms_24 = 86400000;   	//86400000 = 24 hours   //180000 = 3 minutes    //600000 = 10 minutes
-var weekly_arr = [0,0,0,0,0,0,0];
-//0:nextdaily(claim yet) 1:today 2: dailyclaimed 3:missingday
+var default_weekly_arr = [
+    {"status":0, "bonus_face":0, "count":1},
+    {"status":0, "bonus_face":1, "count":1},
+    {"status":0, "bonus_face":2, "count":1},
+    {"status":0, "bonus_face":3, "count":1},
+    {"status":0, "bonus_face":1, "count":1},
+    {"status":0, "bonus_face":2, "count":1},
+    {"status":0, "bonus_face":3, "count":1}
+]
+var weekly_arr = [];
+// status index; 0:nextdaily(claim yet) 1:today 2: dailyclaimed 3:missingday
 
+var exp_time = 0;
