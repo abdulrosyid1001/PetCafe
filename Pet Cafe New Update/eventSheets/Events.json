@@ -11042,10 +11042,10 @@
 								{
 									"id": "set-size",
 									"objectClass": "collider_props",
-									"sid": 742085052045701,
+									"sid": 448303446726461,
 									"parameters": {
-										"width": "Fruit.ImageWidth+30",
-										"height": "Fruit.ImageHeight+30"
+										"width": "Fruit.ImageWidth+8",
+										"height": "Fruit.ImageHeight+8"
 									}
 								},
 								{
@@ -13314,10 +13314,10 @@
 								{
 									"id": "set-size",
 									"objectClass": "collider_tile_visual",
-									"sid": 406666585307818,
+									"sid": 556071699333626,
 									"parameters": {
-										"width": "Fruit.ImageWidth+30",
-										"height": "Fruit.ImageHeight+30"
+										"width": "Fruit.ImageWidth+8",
+										"height": "Fruit.ImageHeight+8"
 									}
 								},
 								{
