@@ -5467,6 +5467,44 @@
 					"children": [
 						{
 							"eventType": "block",
+							"conditions": [],
+							"actions": [
+								{
+									"type": "script",
+									"language": "javascript",
+									"script": [
+										"var obj = {\"level\": runtime.globalVars.level_select, \"star\":localVars.grade};",
+										"let star = 0;",
+										"console.log(starLevelCollectedArr[runtime.globalVars.level_select-1]);",
+										"if(starLevelCollectedArr[runtime.globalVars.level_select-1] !== null){",
+										"\tstar = starLevelCollectedArr[runtime.globalVars.level_select-1].star;",
+										"\tconsole.log(\"star\", star);",
+										"\tif(localVars.grade > star){",
+										"\t\truntime.globalVars.star += localVars.grade-star;",
+										"\t\truntime.callFunction(\"save_storage\", \"local_storage\", \"star\", String(runtime.globalVars.star));",
+										"\t}",
+										"}",
+										"else{",
+										"\tconsole.log(\"grade\", localVars.grade);",
+										"\truntime.globalVars.star += localVars.grade;",
+										"\truntime.callFunction(\"save_storage\", \"local_storage\", \"star\", String(runtime.globalVars.star));",
+										"}",
+										"starLevelCollectedArr[runtime.globalVars.level_select-1] = obj;",
+										"runtime.callFunction(\"save_storage\", \"local_storage\", \"star_level_collected_arr\", JSON.stringify(starLevelCollectedArr));",
+										"",
+										"if(runtime.globalVars.level_select == runtime.globalVars.level_stage){",
+										"\truntime.globalVars.level_stage++;",
+										"\truntime.globalVars.level_select++;",
+										"\truntime.callFunction(\"save_storage\", \"local_storage\", \"level_stage\", String(runtime.globalVars.level_stage));",
+										"}",
+										""
+									]
+								}
+							],
+							"sid": 421248395039100
+						},
+						{
+							"eventType": "block",
 							"conditions": [
 								{
 									"id": "for",
@@ -5559,44 +5597,6 @@
 									"sid": 361860609234170
 								}
 							]
-						},
-						{
-							"eventType": "block",
-							"conditions": [],
-							"actions": [
-								{
-									"type": "script",
-									"language": "javascript",
-									"script": [
-										"var obj = {\"level\": runtime.globalVars.level_select, \"star\":localVars.grade};",
-										"let star = 0;",
-										"console.log(starLevelCollectedArr[runtime.globalVars.level_select-1]);",
-										"if(starLevelCollectedArr[runtime.globalVars.level_select-1] !== null){",
-										"\tstar = starLevelCollectedArr[runtime.globalVars.level_select-1].star;",
-										"\tconsole.log(\"star\", star);",
-										"\tif(localVars.grade > star){",
-										"\t\truntime.globalVars.star += localVars.grade-star;",
-										"\t}",
-										"}",
-										"else{",
-										"\tconsole.log(\"grade\", localVars.grade);",
-										"\truntime.globalVars.star += localVars.grade;",
-										"}",
-										"starLevelCollectedArr[runtime.globalVars.level_select-1] = obj;"
-									]
-								},
-								{
-									"id": "add-to-eventvar",
-									"objectClass": "System",
-									"sid": 713428997018539,
-									"disabled": true,
-									"parameters": {
-										"variable": "star",
-										"value": "grade"
-									}
-								}
-							],
-							"sid": 969987949705867
 						}
 					]
 				},
@@ -7475,6 +7475,13 @@
 										"variable": "checkpoint_save",
 										"value": "false"
 									}
+								},
+								{
+									"type": "script",
+									"language": "javascript",
+									"script": [
+										"runtime.callFunction(\"save_storage\", \"local_storage\", \"checkpoint_save\", String(runtime.globalVars.checkpoint_save));"
+									]
 								}
 							],
 							"sid": 593517571034988,
@@ -11042,7 +11049,7 @@
 								{
 									"id": "set-size",
 									"objectClass": "collider_props",
-									"sid": 448303446726461,
+									"sid": 376443127860164,
 									"parameters": {
 										"width": "Fruit.ImageWidth+8",
 										"height": "Fruit.ImageHeight+8"
@@ -13314,7 +13321,7 @@
 								{
 									"id": "set-size",
 									"objectClass": "collider_tile_visual",
-									"sid": 556071699333626,
+									"sid": 214254037637465,
 									"parameters": {
 										"width": "Fruit.ImageWidth+8",
 										"height": "Fruit.ImageHeight+8"

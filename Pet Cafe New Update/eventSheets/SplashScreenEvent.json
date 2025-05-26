@@ -2,6 +2,16 @@
 	"name": "SplashScreenEvent",
 	"events": [
 		{
+			"eventType": "variable",
+			"name": "is_init_data",
+			"type": "boolean",
+			"initialValue": "false",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 345167533314854
+		},
+		{
 			"eventType": "block",
 			"conditions": [
 				{
@@ -75,12 +85,11 @@
 					"sid": 492757013632414
 				},
 				{
-					"type": "script",
-					"language": "javascript",
-					"script": [
-						"runtime.callFunction(\"get_storage\", \"local_storage\", \"tutorial_completed_arr\");"
-					],
-					"disabled": true
+					"callFunction": "init_data",
+					"sid": 216678488164415,
+					"parameters": [
+						"0"
+					]
 				},
 				{
 					"id": "wait",
@@ -166,7 +175,10 @@
 						},
 						{
 							"callFunction": "init_data",
-							"sid": 280164671185664
+							"sid": 505129457465338,
+							"parameters": [
+								"1"
+							]
 						},
 						{
 							"id": "go-to-layout",
@@ -189,25 +201,100 @@
 			"functionReturnType": "none",
 			"functionCopyPicked": false,
 			"functionIsAsync": false,
-			"functionParameters": [],
-			"eventType": "function-block",
-			"conditions": [],
-			"actions": [
+			"functionParameters": [
 				{
-					"type": "script",
-					"language": "javascript",
-					"script": [
-						"if(tutorialCompletedArr[0] == 1){",
-						"\truntime.globalVars.game_mode = \"classic\";",
-						"\truntime.goToLayout(\"Game\");",
-						"}",
-						"else{",
-						"\truntime.goToLayout(\"Homepage\");",
-						"}"
-					]
+					"name": "ID",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 924214512619982
 				}
 			],
-			"sid": 323950553863239
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 323950553863239,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 112315539376250,
+							"parameters": {
+								"variable": "ID",
+								"comparison": 0,
+								"value": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"type": "script",
+							"language": "javascript",
+							"script": [
+								"weekly_arr = default_weekly_arr;",
+								"for (let i=0; i<levelMissionDataArr.length; i++){",
+								"\tvar obj = {\"level\": i+1, \"star\":0};",
+								"\tstarLevelCollectedArr[i] = obj;",
+								"}",
+								"console.log(\"star collected\", starLevelCollectedArr);"
+							]
+						},
+						{
+							"type": "script",
+							"language": "javascript",
+							"script": [
+								"runtime.callFunction(\"get_storage\", \"local_storage\", \"tutorial_completed_arr\");",
+								"runtime.callFunction(\"get_storage\", \"local_storage\", \"expire_time\");",
+								"runtime.callFunction(\"get_storage\", \"local_storage\", \"day\");",
+								"runtime.callFunction(\"get_storage\", \"local_storage\", \"total_day\");",
+								"runtime.callFunction(\"get_storage\", \"local_storage\", \"high_score\");",
+								"runtime.callFunction(\"get_storage\", \"local_storage\", \"player_level\");",
+								"runtime.callFunction(\"get_storage\", \"local_storage\", \"level_stage\");",
+								"runtime.callFunction(\"get_storage\", \"local_storage\", \"weekly_arr\");",
+								"runtime.callFunction(\"get_storage\", \"local_storage\", \"star_level_collected_arr\");",
+								"runtime.callFunction(\"get_storage\", \"local_storage\", \"star\");",
+								"runtime.callFunction(\"get_storage\", \"local_storage\", \"checkpoint_save\");",
+								"runtime.callFunction(\"get_storage\", \"local_storage\", \"enabled_starter_pack\");"
+							]
+						}
+					],
+					"sid": 652243590740839
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 514809418579949,
+							"parameters": {
+								"variable": "ID",
+								"comparison": 0,
+								"value": "1"
+							}
+						}
+					],
+					"actions": [
+						{
+							"type": "script",
+							"language": "javascript",
+							"script": [
+								"if(tutorialCompletedArr[0] == 1){",
+								"\truntime.globalVars.game_mode = \"classic\";",
+								"\truntime.goToLayout(\"Game\");",
+								"}",
+								"else{",
+								"\truntime.goToLayout(\"Homepage\");",
+								"}"
+							]
+						}
+					],
+					"sid": 898187623456838
+				}
+			]
 		}
 	],
 	"sid": 254461062679589

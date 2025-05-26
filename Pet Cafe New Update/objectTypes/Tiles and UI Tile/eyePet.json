@@ -1138,7 +1138,7 @@
 				"isPingPong": false,
 				"repeatCount": 1,
 				"repeatTo": 0,
-				"speed": 1
+				"speed": 0
 			},
 			{
 				"frames": [

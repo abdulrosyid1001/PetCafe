@@ -62,6 +62,16 @@
 			"sid": 797032759137126
 		},
 		{
+			"eventType": "variable",
+			"name": "classic_template_save",
+			"type": "string",
+			"initialValue": "",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 714527125436236
+		},
+		{
 			"eventType": "group",
 			"disabled": false,
 			"title": "Storage",
@@ -107,7 +117,8 @@
 							"script": [
 								"if(localVars.type == \"local_storage\"){",
 								"\tawait runtime.storage.setItem(localVars.keyName, localVars.dataStr);",
-								"}"
+								"}",
+								"console.log(localVars.keyName, localVars.dataStr);"
 							]
 						}
 					],
@@ -200,15 +211,65 @@
 								"\tcase \"player_level\":",
 								"\t\truntime.globalVars.player_level = Number(localVars.dataStr);",
 								"\t\tbreak;",
+								"\tcase \"level_stage\":",
+								"\t\truntime.globalVars.level_stage = Number(localVars.dataStr);",
+								"\t\tconsole.log(runtime.globalVars.level_stage);",
+								"\t\tbreak;",
 								"\tcase \"tutorial_completed_arr\":",
 								"\t\ttutorialCompletedArr = JSON.parse(localVars.dataStr);",
 								"\t\tconsole.log(tutorialCompletedArr);",
+								"\t\tbreak;",
+								"\tcase \"expire_time\":",
+								"\t\texp_time = Number(localVars.dataStr);",
+								"\t\tbreak;",
+								"\tcase \"weekly_arr\":",
+								"\t\tweekly_arr = JSON.parse(localVars.dataStr);",
+								"\t\tbreak;",
+								"\tcase \"day\":",
+								"\t\truntime.globalVars.day = Number(localVars.dataStr);",
+								"\t\tbreak;",
+								"\tcase \"total_day\":",
+								"\t\truntime.globalVars.total_day = Number(localVars.dataStr);",
+								"\t\tbreak;",
+								"\tcase \"star_level_collected_arr\":",
+								"\t\tstarLevelCollectedArr = JSON.parse(localVars.dataStr);",
+								"\t\tconsole.log(starLevelCollectedArr);",
+								"\t\tbreak;",
+								"\tcase \"star\":",
+								"\t\truntime.globalVars.star = Number(localVars.dataStr);",
+								"\t\tconsole.log(runtime.globalVars.star);",
+								"\t\tbreak;",
+								"\tcase \"checkpoint_save\":",
+								"\t\truntime.globalVars.checkpoint_save = Boolean(localVars.dataStr);",
+								"\t\tconsole.log(runtime.globalVars.checkpoint_save);",
+								"\t\tbreak;",
+								"\tcase \"enabled_starter_pack\":",
+								"\t\truntime.globalVars.is_enabled_starter_pack = Boolean(localVars.dataStr);",
 								"\t\tbreak;",
 								"}"
 							]
 						}
 					],
 					"sid": 615546365650416
+				},
+				{
+					"functionName": "default_data",
+					"functionDescription": "",
+					"functionCategory": "",
+					"functionReturnType": "none",
+					"functionCopyPicked": false,
+					"functionIsAsync": false,
+					"functionParameters": [],
+					"eventType": "function-block",
+					"conditions": [],
+					"actions": [
+						{
+							"type": "script",
+							"language": "javascript",
+							"script": []
+						}
+					],
+					"sid": 668491797507315
 				}
 			],
 			"sid": 310982651902263
@@ -1402,6 +1463,13 @@
 											}
 										},
 										{
+											"type": "script",
+											"language": "javascript",
+											"script": [
+												"runtime.callFunction(\"save_storage\", \"local_storage\", \"checkpoint_save\", String(runtime.globalVars.checkpoint_save));"
+											]
+										},
+										{
 											"id": "go-to-layout",
 											"objectClass": "System",
 											"sid": 113177296203653,
@@ -2038,46 +2106,20 @@
 									"id": "destroy",
 									"objectClass": "blueButton",
 									"sid": 306862042768702
-								},
-								{
-									"id": "destroy",
-									"objectClass": "black_shadow",
-									"sid": 574380656822172,
-									"disabled": true
-								},
-								{
-									"id": "set-layer-visible",
-									"objectClass": "System",
-									"sid": 795216905362862,
-									"disabled": true,
-									"parameters": {
-										"layer": "\"PopUp\"",
-										"visibility": "invisible"
-									}
-								},
-								{
-									"id": "set-enabled",
-									"objectClass": "dragging",
-									"sid": 486155391566019,
-									"disabled": true,
-									"behaviorType": "DragDrop",
-									"parameters": {
-										"state": "enabled"
-									}
-								},
-								{
-									"id": "set-enabled",
-									"objectClass": "swipe_control",
-									"sid": 478990126367326,
-									"disabled": true,
-									"behaviorType": "DragDrop",
-									"parameters": {
-										"state": "enabled"
-									}
 								}
 							],
 							"sid": 196596502866603,
 							"children": [
+								{
+									"eventType": "variable",
+									"name": "missionIconFrame",
+									"type": "number",
+									"initialValue": "0",
+									"comment": "",
+									"isStatic": false,
+									"isConstant": false,
+									"sid": 769233681688460
+								},
 								{
 									"eventType": "block",
 									"conditions": [
@@ -2132,6 +2174,14 @@
 												"ping-pong": "no",
 												"repeat-count": "1"
 											}
+										},
+										{
+											"id": "set-animation-frame",
+											"objectClass": "panel_daily_login",
+											"sid": 970761035313098,
+											"parameters": {
+												"frame-number": "1"
+											}
 										}
 									],
 									"sid": 607615150175960,
@@ -2150,6 +2200,15 @@
 												}
 											],
 											"actions": [
+												{
+													"id": "set-animation-frame",
+													"objectClass": "missionIconPack",
+													"sid": 958089270349474,
+													"disabled": true,
+													"parameters": {
+														"frame-number": "missionIconFrame"
+													}
+												},
 												{
 													"id": "destroy",
 													"objectClass": "missionIconPack",
@@ -2187,7 +2246,7 @@
 												{
 													"id": "wait-for-previous-actions",
 													"objectClass": "System",
-													"sid": 117195951126762
+													"sid": 323495572414068
 												},
 												{
 													"id": "create-object",
@@ -2242,9 +2301,26 @@
 													}
 												},
 												{
+													"type": "script",
+													"language": "javascript",
+													"script": [
+														"localVars.missionIconFrame = weekly_arr[runtime.globalVars.day-1].bonus_face;",
+														"weekly_arr[runtime.globalVars.day-1].status = 1;",
+														"runtime.callFunction(\"save_storage\", \"local_storage\", \"weekly_arr\", JSON.stringify(weekly_arr));"
+													]
+												},
+												{
+													"id": "set-animation-frame",
+													"objectClass": "missionIconPack",
+													"sid": 885498870019349,
+													"parameters": {
+														"frame-number": "missionIconFrame"
+													}
+												},
+												{
 													"id": "set-scale",
 													"objectClass": "missionIconPack",
-													"sid": 597617009601382,
+													"sid": 523195967299817,
 													"parameters": {
 														"scale": "0"
 													}
@@ -2323,9 +2399,9 @@
 														{
 															"id": "wait",
 															"objectClass": "System",
-															"sid": 675318772718400,
+															"sid": 207996094201343,
 															"parameters": {
-																"seconds": "1",
+																"seconds": "0.8",
 																"use-timescale": true
 															}
 														},
@@ -2366,61 +2442,17 @@
 									}
 								}
 							],
-							"actions": [],
-							"sid": 574878899180068,
-							"children": [
+							"actions": [
 								{
-									"eventType": "block",
-									"conditions": [
-										{
-											"id": "compare-eventvar",
-											"objectClass": "System",
-											"sid": 179880913755252,
-											"parameters": {
-												"variable": "level_select",
-												"comparison": 0,
-												"value": "level_stage"
-											}
-										}
-									],
-									"actions": [
-										{
-											"id": "add-to-eventvar",
-											"objectClass": "System",
-											"sid": 284221483968082,
-											"parameters": {
-												"variable": "level_stage",
-												"value": "1"
-											}
-										},
-										{
-											"id": "add-to-eventvar",
-											"objectClass": "System",
-											"sid": 371709287998680,
-											"parameters": {
-												"variable": "level_select",
-												"value": "1"
-											}
-										}
-									],
-									"sid": 390258309898501
-								},
-								{
-									"eventType": "block",
-									"conditions": [],
-									"actions": [
-										{
-											"id": "go-to-layout",
-											"objectClass": "System",
-											"sid": 498145186965255,
-											"parameters": {
-												"layout": "Missions"
-											}
-										}
-									],
-									"sid": 223758661545222
+									"id": "go-to-layout",
+									"objectClass": "System",
+									"sid": 507179777703152,
+									"parameters": {
+										"layout": "Missions"
+									}
 								}
-							]
+							],
+							"sid": 574878899180068
 						},
 						{
 							"eventType": "block",

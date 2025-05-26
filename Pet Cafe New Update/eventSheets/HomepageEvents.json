@@ -15,7 +15,7 @@
 			"eventType": "variable",
 			"name": "is_daily_bonus",
 			"type": "boolean",
-			"initialValue": "true",
+			"initialValue": "false",
 			"comment": "",
 			"isStatic": false,
 			"isConstant": false,
@@ -25,7 +25,7 @@
 			"eventType": "variable",
 			"name": "day",
 			"type": "number",
-			"initialValue": "2",
+			"initialValue": "1",
 			"comment": "",
 			"isStatic": false,
 			"isConstant": false,
@@ -35,11 +35,21 @@
 			"eventType": "variable",
 			"name": "total_day",
 			"type": "number",
-			"initialValue": "2",
+			"initialValue": "1",
 			"comment": "",
 			"isStatic": false,
 			"isConstant": false,
 			"sid": 159005337721840
+		},
+		{
+			"eventType": "variable",
+			"name": "is_enabled_starter_pack",
+			"type": "boolean",
+			"initialValue": "false",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 743704376193263
 		},
 		{
 			"eventType": "include",
@@ -112,18 +122,45 @@
 						"var minutes = now.getMinutes()*60000;",
 						"var seconds = now.getSeconds()*1000;",
 						"var expireHour = ms_24 - (hours+minutes+seconds);",
-						"var expireTime = time + expireHour + timezoneoffset;",
+						"var expireTimeUTC = time + expireHour + timezoneoffset;",
+						"var expireTimeLocal = time + expireHour;",
+						"",
+						"if(time > exp_time){",
+						"\t// exp_time = time-30000; //for test",
+						"\tvar d = Math.floor((time-exp_time)/(3600000*24));",
+						"\tconsole.log(\"d\", d);",
+						"\texp_time = expireTimeLocal;",
+						"\t// exp_time = time+60000; //for test",
+						"\truntime.globalVars.total_day++;",
+						"\truntime.globalVars.day = runtime.globalVars.day + d;",
+						"\truntime.callFunction(\"save_storage\", \"local_storage\", \"expire_time\", String(exp_time));",
+						"\truntime.callFunction(\"save_storage\", \"local_storage\", \"day\", String(runtime.globalVars.day));",
+						"\truntime.callFunction(\"save_storage\", \"local_storage\", \"total_day\", String(runtime.globalVars.total_day));",
+						"\t// exp_time = expireTimeLocal-expireHour+30000; //for test",
+						"\tconsole.log('start exp time', (exp_time-time)/3600000);",
+						"\truntime.globalVars.is_daily_bonus = true;",
+						"\truntime.globalVars.is_enabled_starter_pack = true;",
+						"\truntime.callFunction(\"save_storage\", \"local_storage\", \"enabled_starter_pack\", String(runtime.globalVars.is_enabled_starter_pack));",
+						"}",
+						"",
+						"if(runtime.globalVars.day > 7){",
+						"\truntime.globalVars.day = 1;",
+						"\tweekly_arr=default_weekly_arr;",
+						"\truntime.callFunction(\"save_storage\", \"local_storage\", \"day\", String(runtime.globalVars.day));",
+						"\truntime.callFunction(\"save_storage\", \"local_storage\", \"weekly_arr\", JSON.stringify(weekly_arr));",
+						"}",
+						"",
 						"",
 						"var h = String(Math.floor(expireHour/3600000));",
 						"var m = String(Math.ceil(expireHour/60000)-(h*60));",
 						"var s = String(Math.ceil(expireHour/1000)-((h*3600)+(m*60)-60));",
-						"console.log(\"expireHour\"+expireHour/3600000+\"expireTime\"+expireTime)",
+						"// console.log(\"expireHour\"+expireHour/3600000+\"expireTime\"+expireTimeUTC, \"timelocal\", expireTimeLocal);",
 						"h = h<10 ? \"0\"+h : h ;",
 						"m = m<10 ? \"0\"+m : m ;",
 						"s = s<10 ? \"0\"+s : s ;",
 						"runtime.callFunction(\"set_offer_time\", h, m, s);",
-						"// console.log(\"expire time:\", h, m, s);",
-						"// runtime.objects.labelOfferTime.getFirstPickedInstance().text = h+\"h \"+m+\"m\";"
+						"",
+						"// console.log(\"expire time:\", h, m, s);"
 					]
 				}
 			],
@@ -173,26 +210,43 @@
 						"layer": "\"Settings\"",
 						"visibility": "invisible"
 					}
-				},
-				{
-					"callFunction": "create_unlocked_mission_pack",
-					"sid": 103069025287886
-				},
-				{
-					"callFunction": "create_locked_booster",
-					"sid": 841910741595033
-				},
-				{
-					"callFunction": "anim_pack_icon",
-					"sid": 119046869792179
-				},
-				{
-					"callFunction": "get_offer_time",
-					"sid": 393654394309278
 				}
 			],
 			"sid": 905947639483000,
 			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-boolean-eventvar",
+							"objectClass": "System",
+							"sid": 622029463985766,
+							"parameters": {
+								"variable": "is_init_data"
+							},
+							"isInverted": true
+						}
+					],
+					"actions": [
+						{
+							"id": "set-boolean-eventvar",
+							"objectClass": "System",
+							"sid": 613985223636802,
+							"parameters": {
+								"variable": "is_init_data",
+								"value": "true"
+							}
+						},
+						{
+							"callFunction": "init_data",
+							"sid": 441219651613349,
+							"parameters": [
+								"0"
+							]
+						}
+					],
+					"sid": 763106741104366
+				},
 				{
 					"eventType": "block",
 					"conditions": [
@@ -208,14 +262,6 @@
 						}
 					],
 					"actions": [
-						{
-							"type": "script",
-							"language": "javascript",
-							"script": [
-								"runtime.callFunction(\"get_storage\", \"local_storage\", \"high_score\");",
-								"runtime.callFunction(\"get_storage\", \"local_storage\", \"player_level\");"
-							]
-						},
 						{
 							"callFunction": "anim_navbar_button",
 							"sid": 310293987925300,
@@ -253,35 +299,83 @@
 				},
 				{
 					"eventType": "block",
-					"conditions": [
-						{
-							"id": "compare-boolean-eventvar",
-							"objectClass": "System",
-							"sid": 977642084912861,
-							"parameters": {
-								"variable": "is_daily_bonus"
-							}
-						}
-					],
+					"conditions": [],
 					"actions": [
 						{
-							"id": "set-boolean-eventvar",
+							"id": "wait-for-previous-actions",
 							"objectClass": "System",
-							"sid": 603710224477209,
+							"sid": 844154269458100
+						},
+						{
+							"callFunction": "create_unlocked_mission_pack",
+							"sid": 103069025287886
+						},
+						{
+							"callFunction": "create_locked_booster",
+							"sid": 841910741595033
+						},
+						{
+							"callFunction": "anim_pack_icon",
+							"sid": 119046869792179
+						},
+						{
+							"id": "wait",
+							"objectClass": "System",
+							"sid": 928995152042015,
 							"parameters": {
-								"variable": "is_daily_bonus",
-								"value": "false"
+								"seconds": "0.2",
+								"use-timescale": true
 							}
 						},
 						{
-							"callFunction": "show_popup_daily_bonus",
-							"sid": 153403693681774,
-							"parameters": [
-								"\"daily_bonus\""
-							]
+							"callFunction": "get_offer_time",
+							"sid": 393654394309278
 						}
 					],
-					"sid": 446713740161827
+					"sid": 381729287935066,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-boolean-eventvar",
+									"objectClass": "System",
+									"sid": 285726766005103,
+									"parameters": {
+										"variable": "is_daily_bonus"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "wait",
+									"objectClass": "System",
+									"sid": 445936191577188,
+									"parameters": {
+										"seconds": "0.2",
+										"use-timescale": true
+									}
+								},
+								{
+									"id": "set-boolean-eventvar",
+									"objectClass": "System",
+									"sid": 193460618813756,
+									"parameters": {
+										"variable": "is_daily_bonus",
+										"value": "false"
+									}
+								},
+								{
+									"callFunction": "show_popup_daily_bonus",
+									"sid": 188892165400847,
+									"parameters": [
+										"\"daily_bonus\""
+									]
+								}
+							],
+							"sid": 520928257861785
+						}
+					]
 				}
 			]
 		},
@@ -718,53 +812,192 @@
 							}
 						}
 					],
-					"actions": [
+					"actions": [],
+					"sid": 812010929224847,
+					"children": [
 						{
-							"id": "wait",
-							"objectClass": "System",
-							"sid": 497111440621643,
-							"parameters": {
-								"seconds": "0.5",
-								"use-timescale": true
-							}
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-boolean-eventvar",
+									"objectClass": "System",
+									"sid": 569908455899272,
+									"parameters": {
+										"variable": "is_enabled_starter_pack"
+									}
+								}
+							],
+							"actions": [],
+							"sid": 264515881995258,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "pick-children",
+											"objectClass": "packIcon",
+											"sid": 203677597242391,
+											"parameters": {
+												"child": "labelOfferTime",
+												"which": "own"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-visible",
+											"objectClass": "labelOfferTime",
+											"sid": 314186526561564,
+											"parameters": {
+												"visibility": "invisible"
+											}
+										}
+									],
+									"sid": 814528203010497
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "pick-children",
+											"objectClass": "packIcon",
+											"sid": 978960947600457,
+											"parameters": {
+												"child": "time_icon",
+												"which": "own"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-visible",
+											"objectClass": "time_icon",
+											"sid": 323134977605169,
+											"parameters": {
+												"visibility": "invisible"
+											}
+										}
+									],
+									"sid": 181756352682769
+								}
+							]
 						},
 						{
-							"id": "set-active",
-							"objectClass": "packIcon",
-							"sid": 133950095604290,
-							"behaviorType": "Sine",
-							"parameters": {
-								"state": "active"
-							}
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "else",
+									"objectClass": "System",
+									"sid": 120211977604427
+								}
+							],
+							"actions": [],
+							"sid": 439180713753174,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "pick-children",
+											"objectClass": "packIcon",
+											"sid": 332556059671627,
+											"parameters": {
+												"child": "labelOfferTime",
+												"which": "own"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-visible",
+											"objectClass": "labelOfferTime",
+											"sid": 894711591073280,
+											"parameters": {
+												"visibility": "visible"
+											}
+										}
+									],
+									"sid": 363869496726589
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "pick-children",
+											"objectClass": "packIcon",
+											"sid": 907557530235125,
+											"parameters": {
+												"child": "time_icon",
+												"which": "own"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-visible",
+											"objectClass": "time_icon",
+											"sid": 850702504697093,
+											"parameters": {
+												"visibility": "visible"
+											}
+										}
+									],
+									"sid": 233993058821854
+								}
+							]
 						},
 						{
-							"id": "wait",
-							"objectClass": "System",
-							"sid": 876857290855246,
-							"parameters": {
-								"seconds": "1",
-								"use-timescale": true
-							}
-						},
-						{
-							"id": "set-active",
-							"objectClass": "packIcon",
-							"sid": 887602135704935,
-							"behaviorType": "Sine",
-							"parameters": {
-								"state": "inactive"
-							}
-						},
-						{
-							"id": "set-scale",
-							"objectClass": "packIcon",
-							"sid": 181296475116667,
-							"parameters": {
-								"scale": "1"
-							}
+							"eventType": "block",
+							"conditions": [],
+							"actions": [
+								{
+									"id": "wait",
+									"objectClass": "System",
+									"sid": 497111440621643,
+									"parameters": {
+										"seconds": "0.5",
+										"use-timescale": true
+									}
+								},
+								{
+									"id": "set-active",
+									"objectClass": "packIcon",
+									"sid": 133950095604290,
+									"behaviorType": "Sine",
+									"parameters": {
+										"state": "active"
+									}
+								},
+								{
+									"id": "wait",
+									"objectClass": "System",
+									"sid": 876857290855246,
+									"parameters": {
+										"seconds": "1",
+										"use-timescale": true
+									}
+								},
+								{
+									"id": "set-active",
+									"objectClass": "packIcon",
+									"sid": 887602135704935,
+									"behaviorType": "Sine",
+									"parameters": {
+										"state": "inactive"
+									}
+								},
+								{
+									"id": "set-scale",
+									"objectClass": "packIcon",
+									"sid": 181296475116667,
+									"parameters": {
+										"scale": "1"
+									}
+								}
+							],
+							"sid": 429549569751693
 						}
-					],
-					"sid": 812010929224847
+					]
 				},
 				{
 					"eventType": "block",
@@ -1171,6 +1404,15 @@
 						"tags": "\"button\""
 					},
 					"isInverted": true
+				},
+				{
+					"id": "is-effect-enabled",
+					"objectClass": "greenButton",
+					"sid": 845594575019348,
+					"parameters": {
+						"effect": "\"Brightness\""
+					},
+					"isInverted": true
 				}
 			],
 			"actions": [],
@@ -1347,6 +1589,61 @@
 									"disabled": true
 								}
 							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-animation-playing",
+									"objectClass": "packIcon",
+									"sid": 151797248750531,
+									"parameters": {
+										"animation": "\"starter_pack\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-boolean-eventvar",
+									"objectClass": "System",
+									"sid": 590548659485618,
+									"parameters": {
+										"variable": "is_enabled_starter_pack",
+										"value": "false"
+									}
+								},
+								{
+									"type": "script",
+									"language": "javascript",
+									"script": [
+										"runtime.callFunction(\"save_storage\", \"local_storage\", \"enabled_starter_pack\", String(runtime.globalVars.is_enabled_starter_pack))"
+									]
+								}
+							],
+							"sid": 157598894187719
+						},
+						{
+							"eventType": "block",
+							"conditions": [],
+							"actions": [
+								{
+									"id": "set-visible",
+									"objectClass": "labelOfferTime",
+									"sid": 189836487227743,
+									"parameters": {
+										"visibility": "visible"
+									}
+								},
+								{
+									"id": "set-visible",
+									"objectClass": "time_icon",
+									"sid": 151455086888544,
+									"parameters": {
+										"visibility": "visible"
+									}
+								}
+							],
+							"sid": 985237763336436
 						}
 					]
 				}
@@ -1449,7 +1746,90 @@
 					}
 				}
 			],
-			"sid": 526300302371910
+			"sid": 526300302371910,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-animation-playing",
+							"objectClass": "packIcon",
+							"sid": 216192085439151,
+							"parameters": {
+								"animation": "\"starter_pack\""
+							}
+						}
+					],
+					"actions": [],
+					"sid": 541451938978669,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-boolean-eventvar",
+									"objectClass": "System",
+									"sid": 408544480867813,
+									"parameters": {
+										"variable": "is_enabled_starter_pack"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-visible",
+									"objectClass": "time_icon",
+									"sid": 843668829369968,
+									"parameters": {
+										"visibility": "invisible"
+									}
+								},
+								{
+									"id": "set-visible",
+									"objectClass": "labelOfferTime",
+									"sid": 521956570715319,
+									"parameters": {
+										"visibility": "invisible"
+									}
+								}
+							],
+							"sid": 815594776778372
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "else",
+									"objectClass": "System",
+									"sid": 589521151541349
+								}
+							],
+							"actions": [
+								{
+									"id": "set-effect-enabled",
+									"objectClass": "greenButton",
+									"sid": 141838806098866,
+									"parameters": {
+										"mode": "enable",
+										"effect": "\"Brightness\""
+									}
+								},
+								{
+									"id": "set-effect-parameter",
+									"objectClass": "greenButton",
+									"sid": 501222537917783,
+									"parameters": {
+										"effect": "\"Brightness\"",
+										"parameter-index": "0",
+										"value": "75"
+									}
+								}
+							],
+							"sid": 920188553321868
+						}
+					]
+				}
+			]
 		},
 		{
 			"functionName": "set_daily_bonus_value",
@@ -1465,10 +1845,20 @@
 				{
 					"id": "set-width",
 					"objectClass": "green_fillbar_dailybonus",
-					"sid": 109140830443830,
+					"sid": 874031559414251,
 					"parameters": {
-						"width": "(298/30)*total_day"
+						"width": "(298/30)*(total_day%30)"
 					}
+				},
+				{
+					"type": "script",
+					"language": "javascript",
+					"script": [
+						"for (let i = 1; i < runtime.globalVars.day; i++){",
+						"\truntime.objects.panel_daily_login.getPickedInstances()[-(i-7)].animationFrame = weekly_arr[i-1].status;",
+						"\tconsole.log(\"status\", weekly_arr[i].status);",
+						"}"
+					]
 				}
 			],
 			"sid": 694338319305923,
@@ -1497,52 +1887,8 @@
 							}
 						}
 					],
-					"sid": 400904370798598
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "compare-instance-variable",
-							"objectClass": "panel_daily_login",
-							"sid": 364985976748280,
-							"parameters": {
-								"instance-variable": "day",
-								"comparison": 0,
-								"value": "day"
-							}
-						}
-					],
-					"actions": [
-						{
-							"id": "set-effect-enabled",
-							"objectClass": "panel_daily_login",
-							"sid": 490809542860220,
-							"parameters": {
-								"mode": "enable",
-								"effect": "\"Brightness\""
-							}
-						},
-						{
-							"id": "set-effect-parameter",
-							"objectClass": "panel_daily_login",
-							"sid": 272062575845607,
-							"parameters": {
-								"effect": "\"Brightness\"",
-								"parameter-index": "0",
-								"value": "75"
-							}
-						},
-						{
-							"id": "set-animation-frame",
-							"objectClass": "panel_daily_login",
-							"sid": 548120950891639,
-							"parameters": {
-								"frame-number": "0"
-							}
-						}
-					],
-					"sid": 505479043405086
+					"sid": 400904370798598,
+					"disabled": true
 				},
 				{
 					"eventType": "block",
@@ -1568,7 +1914,8 @@
 							}
 						}
 					],
-					"sid": 794038951638810
+					"sid": 794038951638810,
+					"disabled": true
 				},
 				{
 					"eventType": "block",
@@ -1594,7 +1941,62 @@
 							}
 						}
 					],
-					"sid": 999529799626769
+					"sid": 999529799626769,
+					"disabled": true
+				},
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [],
+					"sid": 276535751372888,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "panel_daily_login",
+									"sid": 665620790841519,
+									"parameters": {
+										"instance-variable": "day",
+										"comparison": 2,
+										"value": "day"
+									}
+								},
+								{
+									"id": "compare-animation-frame",
+									"objectClass": "panel_daily_login",
+									"sid": 961940759427991,
+									"parameters": {
+										"comparison": 0,
+										"number": "0"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-effect-enabled",
+									"objectClass": "panel_daily_login",
+									"sid": 595955769735483,
+									"parameters": {
+										"mode": "enable",
+										"effect": "\"Brightness\""
+									}
+								},
+								{
+									"id": "set-effect-parameter",
+									"objectClass": "panel_daily_login",
+									"sid": 784654757327850,
+									"parameters": {
+										"effect": "\"Brightness\"",
+										"parameter-index": "0",
+										"value": "75"
+									}
+								}
+							],
+							"sid": 238246521303855
+						}
+					]
 				}
 			]
 		},
@@ -1938,7 +2340,24 @@
 									}
 								}
 							],
-							"actions": [],
+							"actions": [
+								{
+									"id": "subtract-from-eventvar",
+									"objectClass": "System",
+									"sid": 176219224321250,
+									"parameters": {
+										"variable": "star",
+										"value": "20"
+									}
+								},
+								{
+									"type": "script",
+									"language": "javascript",
+									"script": [
+										"runtime.callFunction(\"save_storage\", \"local_storage\", \"star\", String(runtime.globalVars.star));"
+									]
+								}
+							],
 							"sid": 364018504948368,
 							"children": [
 								{
