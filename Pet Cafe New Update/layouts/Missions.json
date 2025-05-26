@@ -892,7 +892,7 @@
 					"type": "levelMission",
 					"properties": {
 						"initially-visible": true,
-						"initial-animation": "Hard",
+						"initial-animation": "Normal",
 						"initial-frame": 1,
 						"enable-collisions": true,
 						"live-preview": false
@@ -978,8 +978,8 @@
 					"world": {
 						"x": 286,
 						"y": 217,
-						"width": 100,
-						"height": 81,
+						"width": 99,
+						"height": 80,
 						"originX": 0.5,
 						"originY": 0.5,
 						"color": [

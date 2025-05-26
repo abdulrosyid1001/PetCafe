@@ -635,11 +635,13 @@
 									}
 								},
 								{
-									"id": "compare-boolean-eventvar",
+									"id": "compare-eventvar",
 									"objectClass": "System",
-									"sid": 685527494563641,
+									"sid": 678401146250321,
 									"parameters": {
-										"variable": "checkpoint_save"
+										"variable": "checkpoint_save",
+										"comparison": 0,
+										"value": "1"
 									}
 								}
 							],
@@ -2528,6 +2530,13 @@
 								}
 							],
 							"actions": [
+								{
+									"type": "script",
+									"language": "javascript",
+									"script": [
+										"console.log('START TUTORIAL', tutorialCompletedArr[0]);"
+									]
+								},
 								{
 									"callFunction": "check_boosters_unlocked",
 									"sid": 357512970458761,
@@ -5445,6 +5454,62 @@
 					"text": "Show game over message with score."
 				},
 				{
+					"functionName": "save_yellow_star",
+					"functionDescription": "",
+					"functionCategory": "",
+					"functionReturnType": "none",
+					"functionCopyPicked": false,
+					"functionIsAsync": false,
+					"functionParameters": [],
+					"eventType": "function-block",
+					"conditions": [],
+					"actions": [
+						{
+							"type": "script",
+							"language": "javascript",
+							"script": [
+								"let star_get = 0;",
+								"let limit_move = runtime.globalVars.limit_move;",
+								"if(limit_move < 10){",
+								"\tstar_get = 1;",
+								"}",
+								"else if(limit_move >= 10 && limit_move <=15){",
+								"\tstar_get = 2;",
+								"}",
+								"else if(limit_move > 15){",
+								"\tstar_get = 3;",
+								"}",
+								"var obj = {\"level\": runtime.globalVars.level_select, \"star\":star_get};",
+								"let star = 0;",
+								"console.log(starLevelCollectedArr[runtime.globalVars.level_select-1]);",
+								"if(starLevelCollectedArr[runtime.globalVars.level_select-1] !== null){",
+								"\tstar = starLevelCollectedArr[runtime.globalVars.level_select-1].star;",
+								"\tconsole.log(\"star\", star);",
+								"\tif(star_get > star){",
+								"\t\truntime.globalVars.star += star_get-star;",
+								"\t\truntime.callFunction(\"save_storage\", \"local_storage\", \"star\", String(runtime.globalVars.star));",
+								"\t}",
+								"}",
+								"else{",
+								"\tconsole.log(\"grade\", star_get);",
+								"\truntime.globalVars.star += star_get;",
+								"\truntime.callFunction(\"save_storage\", \"local_storage\", \"star\", String(runtime.globalVars.star));",
+								"}",
+								"starLevelCollectedArr[runtime.globalVars.level_select-1] = obj;",
+								"runtime.callFunction(\"save_storage\", \"local_storage\", \"star_level_collected_arr\", JSON.stringify(starLevelCollectedArr));",
+								"",
+								"if(runtime.globalVars.level_select == runtime.globalVars.level_stage){",
+								"\truntime.globalVars.level_stage++;",
+								"\truntime.globalVars.level_select++;",
+								"\truntime.callFunction(\"save_storage\", \"local_storage\", \"level_stage\", String(runtime.globalVars.level_stage));",
+								"}",
+								""
+							]
+						}
+					],
+					"sid": 720959925126587
+				},
+				{
 					"functionName": "create_yellow_star",
 					"functionDescription": "",
 					"functionCategory": "",
@@ -5465,44 +5530,6 @@
 					"actions": [],
 					"sid": 413248778492658,
 					"children": [
-						{
-							"eventType": "block",
-							"conditions": [],
-							"actions": [
-								{
-									"type": "script",
-									"language": "javascript",
-									"script": [
-										"var obj = {\"level\": runtime.globalVars.level_select, \"star\":localVars.grade};",
-										"let star = 0;",
-										"console.log(starLevelCollectedArr[runtime.globalVars.level_select-1]);",
-										"if(starLevelCollectedArr[runtime.globalVars.level_select-1] !== null){",
-										"\tstar = starLevelCollectedArr[runtime.globalVars.level_select-1].star;",
-										"\tconsole.log(\"star\", star);",
-										"\tif(localVars.grade > star){",
-										"\t\truntime.globalVars.star += localVars.grade-star;",
-										"\t\truntime.callFunction(\"save_storage\", \"local_storage\", \"star\", String(runtime.globalVars.star));",
-										"\t}",
-										"}",
-										"else{",
-										"\tconsole.log(\"grade\", localVars.grade);",
-										"\truntime.globalVars.star += localVars.grade;",
-										"\truntime.callFunction(\"save_storage\", \"local_storage\", \"star\", String(runtime.globalVars.star));",
-										"}",
-										"starLevelCollectedArr[runtime.globalVars.level_select-1] = obj;",
-										"runtime.callFunction(\"save_storage\", \"local_storage\", \"star_level_collected_arr\", JSON.stringify(starLevelCollectedArr));",
-										"",
-										"if(runtime.globalVars.level_select == runtime.globalVars.level_stage){",
-										"\truntime.globalVars.level_stage++;",
-										"\truntime.globalVars.level_select++;",
-										"\truntime.callFunction(\"save_storage\", \"local_storage\", \"level_stage\", String(runtime.globalVars.level_stage));",
-										"}",
-										""
-									]
-								}
-							],
-							"sid": 421248395039100
-						},
 						{
 							"eventType": "block",
 							"conditions": [
@@ -5961,6 +5988,10 @@
 										}
 									],
 									"actions": [
+										{
+											"callFunction": "save_yellow_star",
+											"sid": 506779649658986
+										},
 										{
 											"id": "create-object",
 											"objectClass": "System",
@@ -7373,8 +7404,8 @@
 		{
 			"eventType": "variable",
 			"name": "checkpoint_save",
-			"type": "boolean",
-			"initialValue": "false",
+			"type": "number",
+			"initialValue": "0",
 			"comment": "",
 			"isStatic": false,
 			"isConstant": false,
@@ -7468,12 +7499,12 @@
 									]
 								},
 								{
-									"id": "set-boolean-eventvar",
+									"id": "set-eventvar-value",
 									"objectClass": "System",
-									"sid": 202895855374217,
+									"sid": 151818467547189,
 									"parameters": {
 										"variable": "checkpoint_save",
-										"value": "false"
+										"value": "0"
 									}
 								},
 								{
@@ -9448,7 +9479,7 @@
 								{
 									"id": "is-animation-playing",
 									"objectClass": "props",
-									"sid": 338172160620533,
+									"sid": 119178368060687,
 									"parameters": {
 										"animation": "\"Ice Box\""
 									}
@@ -9456,7 +9487,7 @@
 								{
 									"id": "is-animation-playing",
 									"objectClass": "props",
-									"sid": 917486946932321,
+									"sid": 350913968269835,
 									"parameters": {
 										"animation": "\"Mystery Box\""
 									}
@@ -9464,7 +9495,7 @@
 								{
 									"id": "is-animation-playing",
 									"objectClass": "props",
-									"sid": 116470917197202,
+									"sid": 515028564803815,
 									"parameters": {
 										"animation": "\"Wood Box\""
 									}
@@ -9474,7 +9505,7 @@
 								{
 									"id": "add-child",
 									"objectClass": "fruitBox",
-									"sid": 661942332968087,
+									"sid": 348313535098682,
 									"parameters": {
 										"child": "props",
 										"transform-x": true,
@@ -9489,7 +9520,7 @@
 									}
 								}
 							],
-							"sid": 664041338755105,
+							"sid": 167057092211147,
 							"isOrBlock": true
 						}
 					]
@@ -16451,6 +16482,16 @@
 						{
 							"id": "compare-eventvar",
 							"objectClass": "System",
+							"sid": 233750662833981,
+							"parameters": {
+								"variable": "gameState",
+								"comparison": 1,
+								"value": "\"gameover\""
+							}
+						},
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
 							"sid": 712109638626768,
 							"parameters": {
 								"variable": "tutorial_case",
@@ -18127,6 +18168,15 @@
 											],
 											"actions": [
 												{
+													"id": "set-group-active",
+													"objectClass": "System",
+													"sid": 397422943606373,
+													"parameters": {
+														"group-name": "\"Shake Event\"",
+														"state": "activated"
+													}
+												},
+												{
 													"id": "destroy",
 													"objectClass": "blueButton",
 													"sid": 561275797119806
@@ -19107,6 +19157,24 @@
 													"parameters": {
 														"elasticity": "0.25"
 													}
+												},
+												{
+													"id": "set-boolean-eventvar",
+													"objectClass": "System",
+													"sid": 925401870890084,
+													"parameters": {
+														"variable": "shake_activated",
+														"value": "false"
+													}
+												},
+												{
+													"id": "set-group-active",
+													"objectClass": "System",
+													"sid": 609664904748811,
+													"parameters": {
+														"group-name": "\"Shake Event\"",
+														"state": "activated"
+													}
 												}
 											],
 											"sid": 774528069543117
@@ -19517,15 +19585,6 @@
 							"sid": 190867930010473
 						},
 						{
-							"id": "set-boolean-eventvar",
-							"objectClass": "System",
-							"sid": 948046700500259,
-							"parameters": {
-								"variable": "shake_activated",
-								"value": "false"
-							}
-						},
-						{
 							"id": "set-boolean-instvar",
 							"objectClass": "fruitBox",
 							"sid": 109533982598612,
@@ -19611,6 +19670,91 @@
 								}
 							],
 							"sid": 378184171687223
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "else",
+									"objectClass": "System",
+									"sid": 572059532058527
+								}
+							],
+							"actions": [
+								{
+									"id": "set-group-active",
+									"objectClass": "System",
+									"sid": 500320383349849,
+									"parameters": {
+										"group-name": "\"Shake Event\"",
+										"state": "deactivated"
+									}
+								}
+							],
+							"sid": 287461811569359
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 354908680631351
+						}
+					],
+					"actions": [],
+					"sid": 990564994181139,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 422361875387655,
+									"parameters": {
+										"first-value": "LayerScale(\"Game\")",
+										"comparison": 2,
+										"second-value": "1"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-layer-scale",
+									"objectClass": "System",
+									"sid": 856170842371784,
+									"parameters": {
+										"layer": "\"Game\"",
+										"scale": "lerp(LayerScale(\"Game\"), 1, 5*dt)"
+									}
+								}
+							],
+							"sid": 359340133829117
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "else",
+									"objectClass": "System",
+									"sid": 559535601812859
+								}
+							],
+							"actions": [
+								{
+									"id": "set-group-active",
+									"objectClass": "System",
+									"sid": 213004433499909,
+									"parameters": {
+										"group-name": "\"Shake Event\"",
+										"state": "deactivated"
+									}
+								}
+							],
+							"sid": 623062036909977
 						}
 					]
 				}

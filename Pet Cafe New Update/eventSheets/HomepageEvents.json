@@ -35,7 +35,7 @@
 			"eventType": "variable",
 			"name": "total_day",
 			"type": "number",
-			"initialValue": "1",
+			"initialValue": "0",
 			"comment": "",
 			"isStatic": false,
 			"isConstant": false,
@@ -44,8 +44,8 @@
 		{
 			"eventType": "variable",
 			"name": "is_enabled_starter_pack",
-			"type": "boolean",
-			"initialValue": "false",
+			"type": "number",
+			"initialValue": "0",
 			"comment": "",
 			"isStatic": false,
 			"isConstant": false,
@@ -819,16 +819,18 @@
 							"eventType": "block",
 							"conditions": [
 								{
-									"id": "compare-boolean-eventvar",
+									"id": "compare-eventvar",
 									"objectClass": "System",
-									"sid": 569908455899272,
+									"sid": 587253193340691,
 									"parameters": {
-										"variable": "is_enabled_starter_pack"
+										"variable": "is_enabled_starter_pack",
+										"comparison": 0,
+										"value": "1"
 									}
 								}
 							],
 							"actions": [],
-							"sid": 264515881995258,
+							"sid": 205566960066638,
 							"children": [
 								{
 									"eventType": "block",
@@ -836,7 +838,7 @@
 										{
 											"id": "pick-children",
 											"objectClass": "packIcon",
-											"sid": 203677597242391,
+											"sid": 558163206898557,
 											"parameters": {
 												"child": "labelOfferTime",
 												"which": "own"
@@ -847,13 +849,13 @@
 										{
 											"id": "set-visible",
 											"objectClass": "labelOfferTime",
-											"sid": 314186526561564,
+											"sid": 727463004192074,
 											"parameters": {
 												"visibility": "invisible"
 											}
 										}
 									],
-									"sid": 814528203010497
+									"sid": 845737701788043
 								},
 								{
 									"eventType": "block",
@@ -861,7 +863,7 @@
 										{
 											"id": "pick-children",
 											"objectClass": "packIcon",
-											"sid": 978960947600457,
+											"sid": 274305816987407,
 											"parameters": {
 												"child": "time_icon",
 												"which": "own"
@@ -872,13 +874,13 @@
 										{
 											"id": "set-visible",
 											"objectClass": "time_icon",
-											"sid": 323134977605169,
+											"sid": 671070862206865,
 											"parameters": {
 												"visibility": "invisible"
 											}
 										}
 									],
-									"sid": 181756352682769
+									"sid": 365879364024693
 								}
 							]
 						},
@@ -888,11 +890,11 @@
 								{
 									"id": "else",
 									"objectClass": "System",
-									"sid": 120211977604427
+									"sid": 781801309425238
 								}
 							],
 							"actions": [],
-							"sid": 439180713753174,
+							"sid": 176223533953215,
 							"children": [
 								{
 									"eventType": "block",
@@ -900,7 +902,7 @@
 										{
 											"id": "pick-children",
 											"objectClass": "packIcon",
-											"sid": 332556059671627,
+											"sid": 738230614287613,
 											"parameters": {
 												"child": "labelOfferTime",
 												"which": "own"
@@ -911,13 +913,13 @@
 										{
 											"id": "set-visible",
 											"objectClass": "labelOfferTime",
-											"sid": 894711591073280,
+											"sid": 578410462538960,
 											"parameters": {
 												"visibility": "visible"
 											}
 										}
 									],
-									"sid": 363869496726589
+									"sid": 350026939974815
 								},
 								{
 									"eventType": "block",
@@ -925,7 +927,7 @@
 										{
 											"id": "pick-children",
 											"objectClass": "packIcon",
-											"sid": 907557530235125,
+											"sid": 153742800029330,
 											"parameters": {
 												"child": "time_icon",
 												"which": "own"
@@ -936,13 +938,13 @@
 										{
 											"id": "set-visible",
 											"objectClass": "time_icon",
-											"sid": 850702504697093,
+											"sid": 195003971005434,
 											"parameters": {
 												"visibility": "visible"
 											}
 										}
 									],
-									"sid": 233993058821854
+									"sid": 845506853436560
 								}
 							]
 						},
@@ -1321,6 +1323,7 @@
 									"id": "add-to-eventvar",
 									"objectClass": "System",
 									"sid": 121424332706254,
+									"disabled": true,
 									"parameters": {
 										"variable": "star",
 										"value": "1"
@@ -1604,12 +1607,12 @@
 							],
 							"actions": [
 								{
-									"id": "set-boolean-eventvar",
+									"id": "set-eventvar-value",
 									"objectClass": "System",
-									"sid": 590548659485618,
+									"sid": 767017084775082,
 									"parameters": {
 										"variable": "is_enabled_starter_pack",
-										"value": "false"
+										"value": "0"
 									}
 								},
 								{
@@ -1767,11 +1770,13 @@
 							"eventType": "block",
 							"conditions": [
 								{
-									"id": "compare-boolean-eventvar",
+									"id": "compare-eventvar",
 									"objectClass": "System",
-									"sid": 408544480867813,
+									"sid": 358642577701774,
 									"parameters": {
-										"variable": "is_enabled_starter_pack"
+										"variable": "is_enabled_starter_pack",
+										"comparison": 0,
+										"value": "1"
 									}
 								}
 							],
@@ -1779,7 +1784,7 @@
 								{
 									"id": "set-visible",
 									"objectClass": "time_icon",
-									"sid": 843668829369968,
+									"sid": 555018724885106,
 									"parameters": {
 										"visibility": "invisible"
 									}
@@ -1787,13 +1792,13 @@
 								{
 									"id": "set-visible",
 									"objectClass": "labelOfferTime",
-									"sid": 521956570715319,
+									"sid": 237520761241217,
 									"parameters": {
 										"visibility": "invisible"
 									}
 								}
 							],
-							"sid": 815594776778372
+							"sid": 966537880301755
 						},
 						{
 							"eventType": "block",
@@ -1801,14 +1806,14 @@
 								{
 									"id": "else",
 									"objectClass": "System",
-									"sid": 589521151541349
+									"sid": 201666270092141
 								}
 							],
 							"actions": [
 								{
 									"id": "set-effect-enabled",
 									"objectClass": "greenButton",
-									"sid": 141838806098866,
+									"sid": 949910680673069,
 									"parameters": {
 										"mode": "enable",
 										"effect": "\"Brightness\""
@@ -1817,7 +1822,7 @@
 								{
 									"id": "set-effect-parameter",
 									"objectClass": "greenButton",
-									"sid": 501222537917783,
+									"sid": 411993532037712,
 									"parameters": {
 										"effect": "\"Brightness\"",
 										"parameter-index": "0",
@@ -1825,9 +1830,70 @@
 									}
 								}
 							],
-							"sid": 920188553321868
+							"sid": 278547178982408
 						}
 					]
+				}
+			]
+		},
+		{
+			"functionName": "set_frame_daily_bonus",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 541483511674297,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "panel_daily_login",
+							"sid": 511475395923009,
+							"parameters": {
+								"instance-variable": "day",
+								"comparison": 2,
+								"value": "day"
+							}
+						},
+						{
+							"id": "compare-animation-frame",
+							"objectClass": "panel_daily_login",
+							"sid": 395321707861789,
+							"parameters": {
+								"comparison": 0,
+								"number": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-effect-enabled",
+							"objectClass": "panel_daily_login",
+							"sid": 260647256367447,
+							"parameters": {
+								"mode": "enable",
+								"effect": "\"Brightness\""
+							}
+						},
+						{
+							"id": "set-effect-parameter",
+							"objectClass": "panel_daily_login",
+							"sid": 665267636472646,
+							"parameters": {
+								"effect": "\"Brightness\"",
+								"parameter-index": "0",
+								"value": "75"
+							}
+						}
+					],
+					"sid": 611636549786206
 				}
 			]
 		},
@@ -1857,7 +1923,8 @@
 						"for (let i = 1; i < runtime.globalVars.day; i++){",
 						"\truntime.objects.panel_daily_login.getPickedInstances()[-(i-7)].animationFrame = weekly_arr[i-1].status;",
 						"\tconsole.log(\"status\", weekly_arr[i].status);",
-						"}"
+						"}",
+						"runtime.callFunction(\"set_frame_daily_bonus\");"
 					]
 				}
 			],
@@ -1948,55 +2015,7 @@
 					"eventType": "block",
 					"conditions": [],
 					"actions": [],
-					"sid": 276535751372888,
-					"children": [
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "compare-instance-variable",
-									"objectClass": "panel_daily_login",
-									"sid": 665620790841519,
-									"parameters": {
-										"instance-variable": "day",
-										"comparison": 2,
-										"value": "day"
-									}
-								},
-								{
-									"id": "compare-animation-frame",
-									"objectClass": "panel_daily_login",
-									"sid": 961940759427991,
-									"parameters": {
-										"comparison": 0,
-										"number": "0"
-									}
-								}
-							],
-							"actions": [
-								{
-									"id": "set-effect-enabled",
-									"objectClass": "panel_daily_login",
-									"sid": 595955769735483,
-									"parameters": {
-										"mode": "enable",
-										"effect": "\"Brightness\""
-									}
-								},
-								{
-									"id": "set-effect-parameter",
-									"objectClass": "panel_daily_login",
-									"sid": 784654757327850,
-									"parameters": {
-										"effect": "\"Brightness\"",
-										"parameter-index": "0",
-										"value": "75"
-									}
-								}
-							],
-							"sid": 238246521303855
-						}
-					]
+					"sid": 276535751372888
 				}
 			]
 		},
