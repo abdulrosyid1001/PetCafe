@@ -11885,6 +11885,40 @@
 					"sid": 193021023042840
 				},
 				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-collision-with-another-object",
+							"objectClass": "Fruit",
+							"sid": 394404327843876,
+							"parameters": {
+								"object": "props"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-boolean-instvar",
+							"objectClass": "Fruit",
+							"sid": 751926325674922,
+							"parameters": {
+								"instance-variable": "fall",
+								"value": "false"
+							}
+						},
+						{
+							"id": "set-boolean-instvar",
+							"objectClass": "FruitFamily",
+							"sid": 101172568074219,
+							"parameters": {
+								"instance-variable": "in_offset",
+								"value": "false"
+							}
+						}
+					],
+					"sid": 787374308829778
+				},
+				{
 					"eventType": "comment",
 					"text": "When fruits are merging, they flash white."
 				},
