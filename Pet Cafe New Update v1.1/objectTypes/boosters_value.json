@@ -1,0 +1,10 @@
+{
+	"name": "boosters_value",
+	"plugin-id": "Text",
+	"sid": 569689067313363,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": []
+}

@@ -1,0 +1,3157 @@
+{
+	"name": "MissionsEvents",
+	"events": [
+		{
+			"eventType": "include",
+			"includeSheet": "HomepageEvents"
+		},
+		{
+			"eventType": "variable",
+			"name": "level_stage",
+			"type": "number",
+			"initialValue": "1",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 800358386556936
+		},
+		{
+			"eventType": "variable",
+			"name": "level_select",
+			"type": "number",
+			"initialValue": "1",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 703960885528434
+		},
+		{
+			"eventType": "variable",
+			"name": "is_show_mission_completed",
+			"type": "boolean",
+			"initialValue": "false",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 235887037953776
+		},
+		{
+			"eventType": "variable",
+			"name": "level_mode",
+			"type": "string",
+			"initialValue": "Normal",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 551222856342842
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-start-of-layout",
+					"objectClass": "System",
+					"sid": 925966480755317
+				}
+			],
+			"actions": [
+				{
+					"id": "set-instvar-value",
+					"objectClass": "dragging",
+					"sid": 750297912842590,
+					"parameters": {
+						"instance-variable": "selfY",
+						"value": "Self.Y"
+					}
+				},
+				{
+					"id": "add-child",
+					"objectClass": "dragging",
+					"sid": 378143606314732,
+					"parameters": {
+						"child": "levelMission",
+						"transform-x": false,
+						"transform-y": true,
+						"transform-w": false,
+						"transform-h": false,
+						"transform-a": false,
+						"transform-o": false,
+						"transform-z-elevation": true,
+						"transform-visibility": false,
+						"destroy-with-parent": false
+					}
+				},
+				{
+					"id": "add-child",
+					"objectClass": "dragging",
+					"sid": 893228366160574,
+					"parameters": {
+						"child": "levelMissionLine",
+						"transform-x": false,
+						"transform-y": true,
+						"transform-w": false,
+						"transform-h": false,
+						"transform-a": false,
+						"transform-o": false,
+						"transform-z-elevation": true,
+						"transform-visibility": false,
+						"destroy-with-parent": false
+					}
+				},
+				{
+					"id": "add-child",
+					"objectClass": "dragging",
+					"sid": 722971561322021,
+					"parameters": {
+						"child": "labelMission",
+						"transform-x": false,
+						"transform-y": true,
+						"transform-w": false,
+						"transform-h": false,
+						"transform-a": false,
+						"transform-o": false,
+						"transform-z-elevation": true,
+						"transform-visibility": false,
+						"destroy-with-parent": false
+					}
+				},
+				{
+					"id": "set-visible",
+					"objectClass": "camera",
+					"sid": 160350386162815,
+					"parameters": {
+						"visibility": "invisible"
+					}
+				}
+			],
+			"sid": 283704813307772,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-boolean-eventvar",
+							"objectClass": "System",
+							"sid": 703505688024654,
+							"parameters": {
+								"variable": "is_show_mission_completed"
+							},
+							"isInverted": true
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 479847308569659,
+							"parameters": {
+								"variable": "level_select",
+								"value": "level_stage"
+							}
+						}
+					],
+					"sid": 915366115968784,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "levelMission",
+									"sid": 577850275515258,
+									"parameters": {
+										"instance-variable": "lev",
+										"comparison": 3,
+										"value": "level_stage"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-animation-frame",
+									"objectClass": "levelMission",
+									"sid": 179958964516151,
+									"parameters": {
+										"frame-number": "0"
+									}
+								}
+							],
+							"sid": 415308985767114,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "levelMission",
+											"sid": 552889157449866,
+											"parameters": {
+												"instance-variable": "lev",
+												"comparison": 0,
+												"value": "level_stage"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 335207208650239,
+											"parameters": {
+												"variable": "level_mode",
+												"value": "levelMission.AnimationName"
+											}
+										},
+										{
+											"id": "set-position-to-another-object",
+											"objectClass": "camera",
+											"sid": 343170296093343,
+											"parameters": {
+												"object": "levelMission",
+												"image-point-optional": "0"
+											}
+										},
+										{
+											"id": "set-boolean-instvar",
+											"objectClass": "camera",
+											"sid": 706738014066555,
+											"parameters": {
+												"instance-variable": "active",
+												"value": "true"
+											}
+										},
+										{
+											"id": "add-child",
+											"objectClass": "camera",
+											"sid": 927707132329255,
+											"parameters": {
+												"child": "dragging",
+												"transform-x": false,
+												"transform-y": true,
+												"transform-w": false,
+												"transform-h": false,
+												"transform-a": false,
+												"transform-o": false,
+												"transform-z-elevation": true,
+												"transform-visibility": false,
+												"destroy-with-parent": false
+											}
+										}
+									],
+									"sid": 320449707438793,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-instance-variable",
+													"objectClass": "shine",
+													"sid": 147496837215290,
+													"parameters": {
+														"instance-variable": "ID",
+														"comparison": 0,
+														"value": "\"mission\""
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-position-to-another-object",
+													"objectClass": "shine",
+													"sid": 274453465122548,
+													"parameters": {
+														"object": "levelMission",
+														"image-point-optional": "0"
+													}
+												},
+												{
+													"id": "add-child",
+													"objectClass": "levelMission",
+													"sid": 734808301882098,
+													"parameters": {
+														"child": "shine",
+														"transform-x": false,
+														"transform-y": true,
+														"transform-w": false,
+														"transform-h": false,
+														"transform-a": false,
+														"transform-o": false,
+														"transform-z-elevation": true,
+														"transform-visibility": false,
+														"destroy-with-parent": false
+													}
+												}
+											],
+											"sid": 719774785541552
+										}
+									]
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "levelMission",
+											"sid": 928755946012275,
+											"parameters": {
+												"instance-variable": "lev",
+												"comparison": 2,
+												"value": "level_stage"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "destroy",
+											"objectClass": "levelMission",
+											"sid": 420437187334018
+										}
+									],
+									"sid": 943205434817211,
+									"disabled": true
+								}
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "else",
+									"objectClass": "System",
+									"sid": 417616227433654
+								}
+							],
+							"actions": [
+								{
+									"id": "set-animation-frame",
+									"objectClass": "levelMission",
+									"sid": 787752050215983,
+									"parameters": {
+										"frame-number": "1"
+									}
+								}
+							],
+							"sid": 768154963354186
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "levelMissionLine",
+									"sid": 650941147945676,
+									"parameters": {
+										"instance-variable": "lev",
+										"comparison": 3,
+										"value": "level_stage"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-animation-frame",
+									"objectClass": "levelMissionLine",
+									"sid": 190130237366062,
+									"parameters": {
+										"frame-number": "0"
+									}
+								}
+							],
+							"sid": 286637169066252
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "else",
+									"objectClass": "System",
+									"sid": 301206899857522
+								}
+							],
+							"actions": [
+								{
+									"id": "set-animation-frame",
+									"objectClass": "levelMissionLine",
+									"sid": 438876070316195,
+									"parameters": {
+										"frame-number": "1"
+									}
+								}
+							],
+							"sid": 248857745962652
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "for",
+									"objectClass": "System",
+									"sid": 296722370713482,
+									"parameters": {
+										"name": "\"create_star_level_frame\"",
+										"start-index": "1",
+										"end-index": "level_stage"
+									}
+								}
+							],
+							"actions": [],
+							"sid": 237254542968341,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "pick-by-comparison",
+											"objectClass": "System",
+											"sid": 514015152934797,
+											"parameters": {
+												"object": "levelMission",
+												"expression": "levelMission.lev",
+												"comparison": 0,
+												"value": "loopindex"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "create-object",
+											"objectClass": "System",
+											"sid": 809358349403240,
+											"parameters": {
+												"object-to-create": "starLevelFrame",
+												"layer": "\"UI_Mission\"",
+												"x": "levelMission.ImagePointX(1)",
+												"y": "levelMission.ImagePointY(1)",
+												"create-hierarchy": false,
+												"template-name": "\"\""
+											}
+										},
+										{
+											"id": "add-child",
+											"objectClass": "levelMission",
+											"sid": 809697769290771,
+											"parameters": {
+												"child": "starLevelFrame",
+												"transform-x": true,
+												"transform-y": true,
+												"transform-w": true,
+												"transform-h": true,
+												"transform-a": true,
+												"transform-o": false,
+												"transform-z-elevation": true,
+												"transform-visibility": false,
+												"destroy-with-parent": false
+											}
+										}
+									],
+									"sid": 653042188580527
+								}
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [],
+							"actions": [
+								{
+									"id": "wait-for-previous-actions",
+									"objectClass": "System",
+									"sid": 824053164058381
+								},
+								{
+									"type": "script",
+									"language": "javascript",
+									"script": [
+										"console.log(\"star Level\", starLevelCollectedArr);",
+										"for(let i = 0; i<runtime.globalVars.level_stage; i++){",
+										"\truntime.objects.starLevelFrame.getPickedInstances()[i].animationFrame = starLevelCollectedArr[i].star;",
+										"}"
+									]
+								},
+								{
+									"id": "move-to-top",
+									"objectClass": "ButtonPlay",
+									"sid": 315648031558003
+								},
+								{
+									"id": "move-to-top",
+									"objectClass": "labelButton",
+									"sid": 628346427125484
+								}
+							],
+							"sid": 760344781528444,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "pick-last-created",
+											"objectClass": "System",
+											"sid": 526812618089650,
+											"parameters": {
+												"object": "starLevelFrame"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "destroy",
+											"objectClass": "starLevelFrame",
+											"sid": 773653585756185
+										}
+									],
+									"sid": 642320503613790
+								}
+							]
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 963124995425155
+						}
+					],
+					"actions": [],
+					"sid": 183366330342894,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 577424664007111,
+									"parameters": {
+										"variable": "level_select",
+										"comparison": 2,
+										"value": "level_stage"
+									}
+								}
+							],
+							"actions": [],
+							"sid": 935714210625981,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "levelMission",
+											"sid": 193526790430785,
+											"parameters": {
+												"instance-variable": "lev",
+												"comparison": 3,
+												"value": "level_stage"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-animation-frame",
+											"objectClass": "levelMission",
+											"sid": 875663802353364,
+											"parameters": {
+												"frame-number": "0"
+											}
+										}
+									],
+									"sid": 437499525086175,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-instance-variable",
+													"objectClass": "levelMission",
+													"sid": 504622594706715,
+													"parameters": {
+														"instance-variable": "lev",
+														"comparison": 0,
+														"value": "level_select"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-eventvar-value",
+													"objectClass": "System",
+													"sid": 716305458951121,
+													"parameters": {
+														"variable": "level_mode",
+														"value": "levelMission.AnimationName"
+													}
+												},
+												{
+													"id": "set-position-to-another-object",
+													"objectClass": "camera",
+													"sid": 211318060437013,
+													"parameters": {
+														"object": "levelMission",
+														"image-point-optional": "0"
+													}
+												},
+												{
+													"id": "set-boolean-instvar",
+													"objectClass": "camera",
+													"sid": 420021168212562,
+													"parameters": {
+														"instance-variable": "active",
+														"value": "true"
+													}
+												},
+												{
+													"id": "add-child",
+													"objectClass": "camera",
+													"sid": 166983203830244,
+													"parameters": {
+														"child": "dragging",
+														"transform-x": false,
+														"transform-y": true,
+														"transform-w": false,
+														"transform-h": false,
+														"transform-a": false,
+														"transform-o": false,
+														"transform-z-elevation": true,
+														"transform-visibility": false,
+														"destroy-with-parent": false
+													}
+												}
+											],
+											"sid": 499895615397371,
+											"children": [
+												{
+													"eventType": "block",
+													"conditions": [
+														{
+															"id": "compare-instance-variable",
+															"objectClass": "shine",
+															"sid": 855329192488605,
+															"parameters": {
+																"instance-variable": "ID",
+																"comparison": 0,
+																"value": "\"mission\""
+															}
+														}
+													],
+													"actions": [
+														{
+															"id": "set-position-to-another-object",
+															"objectClass": "shine",
+															"sid": 428590030455413,
+															"parameters": {
+																"object": "levelMission",
+																"image-point-optional": "0"
+															}
+														},
+														{
+															"id": "add-child",
+															"objectClass": "levelMission",
+															"sid": 632378698325700,
+															"parameters": {
+																"child": "shine",
+																"transform-x": false,
+																"transform-y": true,
+																"transform-w": false,
+																"transform-h": false,
+																"transform-a": false,
+																"transform-o": false,
+																"transform-z-elevation": true,
+																"transform-visibility": false,
+																"destroy-with-parent": false
+															}
+														},
+														{
+															"id": "wait",
+															"objectClass": "System",
+															"sid": 457190452130502,
+															"parameters": {
+																"seconds": "1",
+																"use-timescale": true
+															}
+														},
+														{
+															"id": "set-boolean-instvar",
+															"objectClass": "camera",
+															"sid": 669285262238888,
+															"parameters": {
+																"instance-variable": "active",
+																"value": "false"
+															}
+														},
+														{
+															"id": "remove-child",
+															"objectClass": "camera",
+															"sid": 524001423504579,
+															"parameters": {
+																"child": "dragging"
+															}
+														},
+														{
+															"id": "remove-child",
+															"objectClass": "levelMission",
+															"sid": 659314846411158,
+															"parameters": {
+																"child": "shine"
+															}
+														}
+													],
+													"sid": 665002875442059
+												}
+											]
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-instance-variable",
+													"objectClass": "levelMission",
+													"sid": 156255667560140,
+													"parameters": {
+														"instance-variable": "lev",
+														"comparison": 2,
+														"value": "level_stage"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "destroy",
+													"objectClass": "levelMission",
+													"sid": 612810868926080
+												}
+											],
+											"sid": 333302811570985,
+											"disabled": true
+										}
+									]
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "else",
+											"objectClass": "System",
+											"sid": 643284197554225
+										}
+									],
+									"actions": [
+										{
+											"id": "set-animation-frame",
+											"objectClass": "levelMission",
+											"sid": 685707149892755,
+											"parameters": {
+												"frame-number": "1"
+											}
+										}
+									],
+									"sid": 924582493851318
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "levelMissionLine",
+											"sid": 641847529493187,
+											"parameters": {
+												"instance-variable": "lev",
+												"comparison": 3,
+												"value": "level_stage"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-animation-frame",
+											"objectClass": "levelMissionLine",
+											"sid": 156576633136093,
+											"parameters": {
+												"frame-number": "0"
+											}
+										}
+									],
+									"sid": 915634171846917
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "else",
+											"objectClass": "System",
+											"sid": 598294183299508
+										}
+									],
+									"actions": [
+										{
+											"id": "set-animation-frame",
+											"objectClass": "levelMissionLine",
+											"sid": 915564768810568,
+											"parameters": {
+												"frame-number": "1"
+											}
+										}
+									],
+									"sid": 571521072452569
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "for",
+											"objectClass": "System",
+											"sid": 887289918841650,
+											"parameters": {
+												"name": "\"create_star_level_frame\"",
+												"start-index": "1",
+												"end-index": "level_stage-1"
+											}
+										}
+									],
+									"actions": [],
+									"sid": 458306030129635,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "pick-by-comparison",
+													"objectClass": "System",
+													"sid": 840731891970384,
+													"parameters": {
+														"object": "levelMission",
+														"expression": "levelMission.lev",
+														"comparison": 0,
+														"value": "loopindex"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "create-object",
+													"objectClass": "System",
+													"sid": 804005787097642,
+													"parameters": {
+														"object-to-create": "starLevelFrame",
+														"layer": "\"UI_Mission\"",
+														"x": "levelMission.ImagePointX(1)",
+														"y": "levelMission.ImagePointY(1)",
+														"create-hierarchy": false,
+														"template-name": "\"\""
+													}
+												},
+												{
+													"id": "add-child",
+													"objectClass": "levelMission",
+													"sid": 116225668951878,
+													"parameters": {
+														"child": "starLevelFrame",
+														"transform-x": true,
+														"transform-y": true,
+														"transform-w": true,
+														"transform-h": true,
+														"transform-a": true,
+														"transform-o": false,
+														"transform-z-elevation": true,
+														"transform-visibility": false,
+														"destroy-with-parent": false
+													}
+												}
+											],
+											"sid": 366018456857680
+										}
+									]
+								},
+								{
+									"eventType": "block",
+									"conditions": [],
+									"actions": [
+										{
+											"id": "wait-for-previous-actions",
+											"objectClass": "System",
+											"sid": 573788170975650
+										},
+										{
+											"type": "script",
+											"language": "javascript",
+											"script": [
+												"console.log(\"star Level\", starLevelCollectedArr);",
+												"for(let i = 0; i<runtime.globalVars.level_stage-1; i++){",
+												"\truntime.objects.starLevelFrame.getPickedInstances()[i].animationFrame = starLevelCollectedArr[i].star;",
+												"}"
+											]
+										},
+										{
+											"id": "move-to-top",
+											"objectClass": "ButtonPlay",
+											"sid": 311575983410431
+										},
+										{
+											"id": "move-to-top",
+											"objectClass": "labelButton",
+											"sid": 280827486203081
+										}
+									],
+									"sid": 975847763962303,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "pick-last-created",
+													"objectClass": "System",
+													"sid": 301978914067274,
+													"parameters": {
+														"object": "starLevelFrame"
+													}
+												}
+											],
+											"actions": [],
+											"sid": 482082357268712
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-instance-variable",
+													"objectClass": "levelMission",
+													"sid": 688042516718520,
+													"parameters": {
+														"instance-variable": "lev",
+														"comparison": 0,
+														"value": "level_select"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "tween-two-properties",
+													"objectClass": "levelMission",
+													"sid": 389763069246501,
+													"behaviorType": "Tween",
+													"parameters": {
+														"tags": "\"scale\"",
+														"property": "scale",
+														"end-x": "1.2",
+														"end-y": "1.2",
+														"time": "0.5",
+														"ease": "easeinback",
+														"destroy-on-complete": "no",
+														"loop": "no",
+														"ping-pong": "yes",
+														"repeat-count": "1"
+													}
+												}
+											],
+											"sid": 620368559348357
+										},
+										{
+											"eventType": "block",
+											"conditions": [],
+											"actions": [
+												{
+													"id": "wait-for-previous-actions",
+													"objectClass": "System",
+													"sid": 813881494131434
+												},
+												{
+													"id": "wait",
+													"objectClass": "System",
+													"sid": 967967527373517,
+													"parameters": {
+														"seconds": "0.5",
+														"use-timescale": true
+													}
+												},
+												{
+													"callFunction": "anim_clear_level_sequence",
+													"sid": 237672801428906
+												}
+											],
+											"sid": 502364490188448
+										}
+									]
+								}
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "else",
+									"objectClass": "System",
+									"sid": 655581886381767
+								}
+							],
+							"actions": [],
+							"sid": 768156588976325,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "levelMission",
+											"sid": 626160411455812,
+											"parameters": {
+												"instance-variable": "lev",
+												"comparison": 2,
+												"value": "level_stage"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-animation-frame",
+											"objectClass": "levelMission",
+											"sid": 154913253567787,
+											"parameters": {
+												"frame-number": "0"
+											}
+										}
+									],
+									"sid": 840580162737501,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-instance-variable",
+													"objectClass": "levelMission",
+													"sid": 346072723278458,
+													"parameters": {
+														"instance-variable": "lev",
+														"comparison": 0,
+														"value": "level_stage-1"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-position-to-another-object",
+													"objectClass": "camera",
+													"sid": 438727754887243,
+													"parameters": {
+														"object": "levelMission",
+														"image-point-optional": "0"
+													}
+												},
+												{
+													"id": "set-boolean-instvar",
+													"objectClass": "camera",
+													"sid": 430044949475777,
+													"parameters": {
+														"instance-variable": "active",
+														"value": "true"
+													}
+												},
+												{
+													"id": "add-child",
+													"objectClass": "camera",
+													"sid": 519625915613239,
+													"parameters": {
+														"child": "dragging",
+														"transform-x": false,
+														"transform-y": true,
+														"transform-w": false,
+														"transform-h": false,
+														"transform-a": false,
+														"transform-o": false,
+														"transform-z-elevation": true,
+														"transform-visibility": false,
+														"destroy-with-parent": false
+													}
+												}
+											],
+											"sid": 467010062223503,
+											"children": [
+												{
+													"eventType": "block",
+													"conditions": [
+														{
+															"id": "compare-instance-variable",
+															"objectClass": "shine",
+															"sid": 680258422918686,
+															"parameters": {
+																"instance-variable": "ID",
+																"comparison": 0,
+																"value": "\"mission\""
+															}
+														}
+													],
+													"actions": [
+														{
+															"id": "set-position-to-another-object",
+															"objectClass": "shine",
+															"sid": 805765384144516,
+															"parameters": {
+																"object": "levelMission",
+																"image-point-optional": "0"
+															}
+														},
+														{
+															"id": "add-child",
+															"objectClass": "levelMission",
+															"sid": 435018484034581,
+															"parameters": {
+																"child": "shine",
+																"transform-x": false,
+																"transform-y": true,
+																"transform-w": false,
+																"transform-h": false,
+																"transform-a": false,
+																"transform-o": false,
+																"transform-z-elevation": true,
+																"transform-visibility": false,
+																"destroy-with-parent": false
+															}
+														},
+														{
+															"id": "wait",
+															"objectClass": "System",
+															"sid": 393769556404850,
+															"parameters": {
+																"seconds": "1",
+																"use-timescale": true
+															}
+														},
+														{
+															"id": "set-boolean-instvar",
+															"objectClass": "camera",
+															"sid": 289104553595453,
+															"parameters": {
+																"instance-variable": "active",
+																"value": "false"
+															}
+														},
+														{
+															"id": "remove-child",
+															"objectClass": "camera",
+															"sid": 260443748056624,
+															"parameters": {
+																"child": "dragging"
+															}
+														},
+														{
+															"id": "remove-child",
+															"objectClass": "levelMission",
+															"sid": 130696746916009,
+															"parameters": {
+																"child": "shine"
+															}
+														}
+													],
+													"sid": 980887907949672
+												}
+											]
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-instance-variable",
+													"objectClass": "levelMission",
+													"sid": 672371019241007,
+													"parameters": {
+														"instance-variable": "lev",
+														"comparison": 2,
+														"value": "level_stage"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "destroy",
+													"objectClass": "levelMission",
+													"sid": 564437792657378
+												}
+											],
+											"sid": 890299389431473,
+											"disabled": true
+										}
+									]
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "else",
+											"objectClass": "System",
+											"sid": 679164621512060
+										}
+									],
+									"actions": [
+										{
+											"id": "set-animation-frame",
+											"objectClass": "levelMission",
+											"sid": 902489571571752,
+											"parameters": {
+												"frame-number": "1"
+											}
+										}
+									],
+									"sid": 181049506797862
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "levelMissionLine",
+											"sid": 720568998705251,
+											"parameters": {
+												"instance-variable": "lev",
+												"comparison": 2,
+												"value": "level_stage"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-animation-frame",
+											"objectClass": "levelMissionLine",
+											"sid": 880863361072564,
+											"parameters": {
+												"frame-number": "0"
+											}
+										}
+									],
+									"sid": 988950552421927
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "else",
+											"objectClass": "System",
+											"sid": 249281802893959
+										}
+									],
+									"actions": [
+										{
+											"id": "set-animation-frame",
+											"objectClass": "levelMissionLine",
+											"sid": 943705935008498,
+											"parameters": {
+												"frame-number": "1"
+											}
+										}
+									],
+									"sid": 228481437328248
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "for",
+											"objectClass": "System",
+											"sid": 437126505313074,
+											"parameters": {
+												"name": "\"create_star_level_frame\"",
+												"start-index": "1",
+												"end-index": "level_stage-1"
+											}
+										}
+									],
+									"actions": [],
+									"sid": 216865492869528,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "pick-by-comparison",
+													"objectClass": "System",
+													"sid": 773083294701545,
+													"parameters": {
+														"object": "levelMission",
+														"expression": "levelMission.lev",
+														"comparison": 0,
+														"value": "loopindex"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "create-object",
+													"objectClass": "System",
+													"sid": 990088356026477,
+													"parameters": {
+														"object-to-create": "starLevelFrame",
+														"layer": "\"UI_Mission\"",
+														"x": "levelMission.ImagePointX(1)",
+														"y": "levelMission.ImagePointY(1)",
+														"create-hierarchy": false,
+														"template-name": "\"\""
+													}
+												},
+												{
+													"id": "add-child",
+													"objectClass": "levelMission",
+													"sid": 252565138417058,
+													"parameters": {
+														"child": "starLevelFrame",
+														"transform-x": true,
+														"transform-y": true,
+														"transform-w": true,
+														"transform-h": true,
+														"transform-a": true,
+														"transform-o": false,
+														"transform-z-elevation": true,
+														"transform-visibility": false,
+														"destroy-with-parent": false
+													}
+												}
+											],
+											"sid": 772222399951806
+										}
+									]
+								},
+								{
+									"eventType": "block",
+									"conditions": [],
+									"actions": [
+										{
+											"id": "wait-for-previous-actions",
+											"objectClass": "System",
+											"sid": 199220534682163
+										},
+										{
+											"type": "script",
+											"language": "javascript",
+											"script": [
+												"console.log(\"star Level\", starLevelCollectedArr);",
+												"for(let i = 0; i<runtime.globalVars.level_stage-1; i++){",
+												"\truntime.objects.starLevelFrame.getPickedInstances()[i].animationFrame = starLevelCollectedArr[i].star;",
+												"}"
+											]
+										},
+										{
+											"id": "move-to-top",
+											"objectClass": "ButtonPlay",
+											"sid": 809513056759136
+										},
+										{
+											"id": "move-to-top",
+											"objectClass": "labelButton",
+											"sid": 104774737940181
+										}
+									],
+									"sid": 452653802312155,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "pick-last-created",
+													"objectClass": "System",
+													"sid": 819795613098067,
+													"parameters": {
+														"object": "starLevelFrame"
+													}
+												}
+											],
+											"actions": [],
+											"sid": 717570733508466
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-instance-variable",
+													"objectClass": "levelMission",
+													"sid": 667085175345395,
+													"parameters": {
+														"instance-variable": "lev",
+														"comparison": 0,
+														"value": "level_stage-1"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "tween-two-properties",
+													"objectClass": "levelMission",
+													"sid": 369656657911348,
+													"behaviorType": "Tween",
+													"parameters": {
+														"tags": "\"scale\"",
+														"property": "scale",
+														"end-x": "1.2",
+														"end-y": "1.2",
+														"time": "0.5",
+														"ease": "easeinback",
+														"destroy-on-complete": "no",
+														"loop": "no",
+														"ping-pong": "yes",
+														"repeat-count": "1"
+													}
+												}
+											],
+											"sid": 525697045834035
+										},
+										{
+											"eventType": "block",
+											"conditions": [],
+											"actions": [
+												{
+													"id": "wait-for-previous-actions",
+													"objectClass": "System",
+													"sid": 982319088351544
+												},
+												{
+													"id": "wait",
+													"objectClass": "System",
+													"sid": 541999833836754,
+													"parameters": {
+														"seconds": "0.5",
+														"use-timescale": true
+													}
+												},
+												{
+													"callFunction": "anim_clear_level_sequence",
+													"sid": 761013838156013
+												}
+											],
+											"sid": 289228618781513
+										}
+									]
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-eventvar",
+											"objectClass": "System",
+											"sid": 304387850402758,
+											"disabled": true,
+											"parameters": {
+												"variable": "level_select",
+												"comparison": 0,
+												"value": "level_stage"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "add-to-eventvar",
+											"objectClass": "System",
+											"sid": 236588159622075,
+											"disabled": true,
+											"parameters": {
+												"variable": "level_stage",
+												"value": "1"
+											}
+										}
+									],
+									"sid": 448816760066278
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"functionName": "anim_clear_level_sequence",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 745194382622029,
+					"parameters": {
+						"variable": "level_select",
+						"value": "level_stage"
+					}
+				},
+				{
+					"id": "set-boolean-eventvar",
+					"objectClass": "System",
+					"sid": 768009750660156,
+					"parameters": {
+						"variable": "is_show_mission_completed",
+						"value": "false"
+					}
+				}
+			],
+			"sid": 134705535091047,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "levelMission",
+							"sid": 405415716144429,
+							"parameters": {
+								"instance-variable": "lev",
+								"comparison": 0,
+								"value": "level_stage"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 147656651054571,
+							"parameters": {
+								"variable": "level_mode",
+								"value": "levelMission.AnimationName"
+							}
+						},
+						{
+							"id": "tween-two-properties",
+							"objectClass": "levelMission",
+							"sid": 984833932469003,
+							"behaviorType": "Tween",
+							"parameters": {
+								"tags": "\"scale\"",
+								"property": "scale",
+								"end-x": "1.2",
+								"end-y": "1.2",
+								"time": "0.5",
+								"ease": "easeinback",
+								"destroy-on-complete": "no",
+								"loop": "no",
+								"ping-pong": "yes",
+								"repeat-count": "1"
+							}
+						},
+						{
+							"id": "set-position-to-another-object",
+							"objectClass": "camera",
+							"sid": 882813292655258,
+							"parameters": {
+								"object": "levelMission",
+								"image-point-optional": "0"
+							}
+						},
+						{
+							"id": "set-boolean-instvar",
+							"objectClass": "camera",
+							"sid": 638713282079109,
+							"parameters": {
+								"instance-variable": "active",
+								"value": "true"
+							}
+						},
+						{
+							"id": "add-child",
+							"objectClass": "camera",
+							"sid": 293169642118438,
+							"parameters": {
+								"child": "dragging",
+								"transform-x": false,
+								"transform-y": true,
+								"transform-w": false,
+								"transform-h": false,
+								"transform-a": false,
+								"transform-o": false,
+								"transform-z-elevation": true,
+								"transform-visibility": false,
+								"destroy-with-parent": false
+							}
+						}
+					],
+					"sid": 389403213472017,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "shine",
+									"sid": 646755251504884,
+									"parameters": {
+										"instance-variable": "ID",
+										"comparison": 0,
+										"value": "\"mission\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-position-to-another-object",
+									"objectClass": "shine",
+									"sid": 807047294017477,
+									"parameters": {
+										"object": "levelMission",
+										"image-point-optional": "0"
+									}
+								},
+								{
+									"id": "add-child",
+									"objectClass": "levelMission",
+									"sid": 651816695284973,
+									"parameters": {
+										"child": "shine",
+										"transform-x": false,
+										"transform-y": true,
+										"transform-w": false,
+										"transform-h": false,
+										"transform-a": false,
+										"transform-o": false,
+										"transform-z-elevation": true,
+										"transform-visibility": false,
+										"destroy-with-parent": false
+									}
+								}
+							],
+							"sid": 787571177301883
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "levelMission",
+							"sid": 855288429924643,
+							"parameters": {
+								"instance-variable": "lev",
+								"comparison": 3,
+								"value": "level_stage"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "wait",
+							"objectClass": "System",
+							"sid": 214088851177014,
+							"parameters": {
+								"seconds": "0.2",
+								"use-timescale": true
+							}
+						},
+						{
+							"id": "set-animation-frame",
+							"objectClass": "levelMission",
+							"sid": 398769179968737,
+							"parameters": {
+								"frame-number": "0"
+							}
+						}
+					],
+					"sid": 274749248282751,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "levelMission",
+									"sid": 520324477815551,
+									"parameters": {
+										"instance-variable": "lev",
+										"comparison": 2,
+										"value": "level_stage"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "destroy",
+									"objectClass": "levelMission",
+									"sid": 770254645667575
+								}
+							],
+							"sid": 368234899316192,
+							"disabled": true
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 805869296750477
+						}
+					],
+					"actions": [
+						{
+							"id": "set-animation-frame",
+							"objectClass": "levelMission",
+							"sid": 174991440839054,
+							"parameters": {
+								"frame-number": "1"
+							}
+						}
+					],
+					"sid": 983673205841803
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "levelMissionLine",
+							"sid": 706098047540247,
+							"parameters": {
+								"instance-variable": "lev",
+								"comparison": 3,
+								"value": "level_stage"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-animation-frame",
+							"objectClass": "levelMissionLine",
+							"sid": 211607551072488,
+							"parameters": {
+								"frame-number": "0"
+							}
+						}
+					],
+					"sid": 819578152213314
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 270678375834157
+						}
+					],
+					"actions": [
+						{
+							"id": "set-animation-frame",
+							"objectClass": "levelMissionLine",
+							"sid": 464293299702164,
+							"parameters": {
+								"frame-number": "1"
+							}
+						}
+					],
+					"sid": 722886935401126
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-drop",
+					"objectClass": "dragging",
+					"sid": 225071141111481,
+					"behaviorType": "DragDrop"
+				}
+			],
+			"actions": [],
+			"sid": 244323529772177,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-y",
+							"objectClass": "dragging",
+							"sid": 147650759474943,
+							"parameters": {
+								"comparison": 2,
+								"y-co-ordinate": "Self.selfY"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "tween-one-property",
+							"objectClass": "dragging",
+							"sid": 137819334720899,
+							"behaviorType": "Tween",
+							"parameters": {
+								"tags": "\"set_position\"",
+								"property": "offsetY",
+								"end-value": "Self.selfY",
+								"time": "0.4",
+								"ease": "easeoutback",
+								"destroy-on-complete": "no",
+								"loop": "no",
+								"ping-pong": "no",
+								"repeat-count": "1"
+							}
+						}
+					],
+					"sid": 734898673432779
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-y",
+							"objectClass": "dragging",
+							"sid": 454016573960148,
+							"parameters": {
+								"comparison": 4,
+								"y-co-ordinate": "ButtonPlay.Y-350"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "tween-one-property",
+							"objectClass": "dragging",
+							"sid": 761459859262677,
+							"behaviorType": "Tween",
+							"parameters": {
+								"tags": "\"set_position\"",
+								"property": "offsetY",
+								"end-value": "ButtonPlay.Y-350",
+								"time": "0.4",
+								"ease": "easeoutback",
+								"destroy-on-complete": "no",
+								"loop": "no",
+								"ping-pong": "no",
+								"repeat-count": "1"
+							}
+						}
+					],
+					"sid": 380047891679038
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-y",
+					"objectClass": "camera",
+					"sid": 515615370001939,
+					"parameters": {
+						"comparison": 1,
+						"y-co-ordinate": "ButtonPlay.Y-50"
+					}
+				},
+				{
+					"id": "is-boolean-instance-variable-set",
+					"objectClass": "camera",
+					"sid": 394920669236969,
+					"parameters": {
+						"instance-variable": "active"
+					}
+				}
+			],
+			"actions": [],
+			"sid": 402372381481104,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "trigger-once-while-true",
+							"objectClass": "System",
+							"sid": 502482979378219
+						}
+					],
+					"actions": [
+						{
+							"id": "tween-one-property",
+							"objectClass": "camera",
+							"sid": 761087203360397,
+							"behaviorType": "Tween",
+							"parameters": {
+								"tags": "\"toCenterY\"",
+								"property": "offsetY",
+								"end-value": "ButtonPlay.Y-100",
+								"time": "0.25",
+								"ease": "easeoutback",
+								"destroy-on-complete": "no",
+								"loop": "no",
+								"ping-pong": "no",
+								"repeat-count": "1"
+							}
+						}
+					],
+					"sid": 436140627436054
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-tweens-finished",
+					"objectClass": "camera",
+					"sid": 451644116402775,
+					"behaviorType": "Tween",
+					"parameters": {
+						"tags": "\"toCenterY\""
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-boolean-instvar",
+					"objectClass": "camera",
+					"sid": 642409095196481,
+					"parameters": {
+						"instance-variable": "active",
+						"value": "false"
+					}
+				}
+			],
+			"sid": 681029927104436
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-touched-object",
+					"objectClass": "Touch",
+					"sid": 543793532340634,
+					"parameters": {
+						"object": "levelMission",
+						"type": "start"
+					}
+				},
+				{
+					"id": "is-dragging",
+					"objectClass": "dragging",
+					"sid": 316511932170794,
+					"behaviorType": "DragDrop",
+					"isInverted": true
+				},
+				{
+					"id": "is-playing",
+					"objectClass": "levelMission",
+					"sid": 318156117437265,
+					"behaviorType": "Tween",
+					"parameters": {
+						"tags": "\"choose\""
+					},
+					"isInverted": true
+				},
+				{
+					"id": "is-touching-object",
+					"objectClass": "Touch",
+					"sid": 320594352029136,
+					"parameters": {
+						"object": "frameNavbarButton"
+					},
+					"isInverted": true
+				},
+				{
+					"id": "is-touching-object",
+					"objectClass": "Touch",
+					"sid": 439571872355000,
+					"parameters": {
+						"object": "black_shadow"
+					},
+					"isInverted": true
+				},
+				{
+					"id": "is-touching-object",
+					"objectClass": "Touch",
+					"sid": 117976139514872,
+					"parameters": {
+						"object": "ButtonPlay"
+					},
+					"isInverted": true
+				}
+			],
+			"actions": [],
+			"sid": 743166725729044,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-animation-frame",
+							"objectClass": "levelMission",
+							"sid": 380540883639018,
+							"parameters": {
+								"comparison": 0,
+								"number": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"callFunction": "audio_settings",
+							"sid": 242909037696662,
+							"parameters": [
+								"\"Button_Tap\""
+							]
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 546868056756318,
+							"parameters": {
+								"variable": "level_mode",
+								"value": "levelMission.AnimationName"
+							}
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 493605233707712,
+							"parameters": {
+								"variable": "level_select",
+								"value": "levelMission.lev"
+							}
+						},
+						{
+							"id": "tween-two-properties",
+							"objectClass": "levelMission",
+							"sid": 886595917478224,
+							"behaviorType": "Tween",
+							"parameters": {
+								"tags": "\"choose\"",
+								"property": "scale",
+								"end-x": "0.8",
+								"end-y": "0.8",
+								"time": "0.1",
+								"ease": "easeinbounce",
+								"destroy-on-complete": "no",
+								"loop": "no",
+								"ping-pong": "yes",
+								"repeat-count": "1"
+							}
+						}
+					],
+					"sid": 469036315965645,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "shine",
+									"sid": 975383994968784,
+									"parameters": {
+										"instance-variable": "ID",
+										"comparison": 0,
+										"value": "\"mission\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-position-to-another-object",
+									"objectClass": "shine",
+									"sid": 375901953027421,
+									"parameters": {
+										"object": "levelMission",
+										"image-point-optional": "0"
+									}
+								}
+							],
+							"sid": 243128329587307
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-animation-frame",
+							"objectClass": "levelMission",
+							"sid": 154214612899550,
+							"parameters": {
+								"comparison": 0,
+								"number": "1"
+							}
+						},
+						{
+							"id": "is-active",
+							"objectClass": "levelMission",
+							"sid": 500485084125116,
+							"behaviorType": "Sine",
+							"isInverted": true
+						}
+					],
+					"actions": [
+						{
+							"callFunction": "audio_settings",
+							"sid": 196850145559518,
+							"parameters": [
+								"\"Button_Disabled\""
+							]
+						},
+						{
+							"type": "script",
+							"language": "javascript",
+							"script": [
+								"triggerHaptics();"
+							]
+						},
+						{
+							"id": "set-active",
+							"objectClass": "levelMission",
+							"sid": 418973334119430,
+							"behaviorType": "Sine",
+							"parameters": {
+								"state": "active"
+							}
+						},
+						{
+							"id": "wait",
+							"objectClass": "System",
+							"sid": 758180649543178,
+							"parameters": {
+								"seconds": "0.5",
+								"use-timescale": true
+							}
+						},
+						{
+							"id": "set-active",
+							"objectClass": "levelMission",
+							"sid": 143300615692997,
+							"behaviorType": "Sine",
+							"parameters": {
+								"state": "inactive"
+							}
+						}
+					],
+					"sid": 904086788728617
+				}
+			]
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "Array Mission",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"functionName": "show_unlocked_mission_pack",
+					"functionDescription": "",
+					"functionCategory": "",
+					"functionReturnType": "none",
+					"functionCopyPicked": false,
+					"functionIsAsync": false,
+					"functionParameters": [
+						{
+							"name": "start_created_frame",
+							"type": "number",
+							"initialValue": "0",
+							"comment": "",
+							"sid": 492158540651297
+						}
+					],
+					"eventType": "function-block",
+					"conditions": [],
+					"actions": [],
+					"sid": 202376130764571,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 141815142736665,
+									"parameters": {
+										"first-value": "LayoutName",
+										"comparison": 0,
+										"second-value": "\"Homepage\""
+									}
+								}
+							],
+							"actions": [],
+							"sid": 533668744112979,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-eventvar",
+											"objectClass": "System",
+											"sid": 913025040701289,
+											"parameters": {
+												"variable": "start_created_frame",
+												"comparison": 2,
+												"value": "3"
+											}
+										},
+										{
+											"id": "for",
+											"objectClass": "System",
+											"sid": 316645990029755,
+											"parameters": {
+												"name": "\"create\"",
+												"start-index": "1+start_created_frame",
+												"end-index": "3"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "create-object",
+											"objectClass": "System",
+											"sid": 119053831696158,
+											"parameters": {
+												"object-to-create": "unlockedMissionFrame",
+												"layer": "\"UI_Float\"",
+												"x": "LayoutWidth-unlockedMissionFrame.ImageWidth-50",
+												"y": "(LayoutHeight/2)-250+((loopindex-start_created_frame)*80)",
+												"create-hierarchy": true,
+												"template-name": "\"\""
+											}
+										},
+										{
+											"id": "set-animation-frame",
+											"objectClass": "missionIconPack",
+											"sid": 271750187068273,
+											"parameters": {
+												"frame-number": "str(unlockedMission.At(loopindex-1, 0)-1)"
+											}
+										},
+										{
+											"id": "set-text",
+											"objectClass": "labelUnlockedMission",
+											"sid": 472597026958282,
+											"parameters": {
+												"text": "\"Unlock Level \"&unlockedMission.At(loopindex-1,1)"
+											}
+										}
+									],
+									"sid": 667286492447414
+								}
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 855846173264027,
+									"parameters": {
+										"first-value": "LayoutName",
+										"comparison": 0,
+										"second-value": "\"Missions\""
+									}
+								}
+							],
+							"actions": [],
+							"sid": 901674984259387,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-two-values",
+											"objectClass": "System",
+											"sid": 897098589684815,
+											"parameters": {
+												"first-value": "start_created_frame",
+												"comparison": 2,
+												"second-value": "unlockedMission.Width-3"
+											}
+										}
+									],
+									"actions": [],
+									"sid": 613793641519274,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "for",
+													"objectClass": "System",
+													"sid": 446295033059869,
+													"parameters": {
+														"name": "\"create\"",
+														"start-index": "1+start_created_frame",
+														"end-index": "start_created_frame+3"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "create-object",
+													"objectClass": "System",
+													"sid": 331429774494075,
+													"parameters": {
+														"object-to-create": "unlockedMissionFrame",
+														"layer": "\"UI_Float\"",
+														"x": "LayoutWidth-unlockedMissionFrame.ImageWidth-50",
+														"y": "(LayoutHeight/2)-250+((loopindex-start_created_frame)*80)",
+														"create-hierarchy": true,
+														"template-name": "\"\""
+													}
+												},
+												{
+													"id": "set-animation-frame",
+													"objectClass": "missionIconPack",
+													"sid": 335391215304909,
+													"parameters": {
+														"frame-number": "str(unlockedMission.At(loopindex-1, 2)-1)"
+													}
+												},
+												{
+													"id": "set-text",
+													"objectClass": "labelUnlockedMission",
+													"sid": 922310416413754,
+													"parameters": {
+														"text": "\"Unlock Level \"&unlockedMission.At(loopindex-1,3)"
+													}
+												}
+											],
+											"sid": 385495887831110
+										}
+									]
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "else",
+											"objectClass": "System",
+											"sid": 824473146819882
+										}
+									],
+									"actions": [],
+									"sid": 765793683492974,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "for",
+													"objectClass": "System",
+													"sid": 880840129792314,
+													"parameters": {
+														"name": "\"create\"",
+														"start-index": "1+start_created_frame",
+														"end-index": "7"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "create-object",
+													"objectClass": "System",
+													"sid": 894832567696654,
+													"parameters": {
+														"object-to-create": "unlockedMissionFrame",
+														"layer": "\"UI_Float\"",
+														"x": "LayoutWidth-unlockedMissionFrame.ImageWidth-50",
+														"y": "(LayoutHeight/2)-250+((loopindex-start_created_frame)*80)",
+														"create-hierarchy": true,
+														"template-name": "\"\""
+													}
+												},
+												{
+													"id": "set-animation-frame",
+													"objectClass": "missionIconPack",
+													"sid": 493707356258892,
+													"parameters": {
+														"frame-number": "str(unlockedMission.At(loopindex-1, 2)-1)"
+													}
+												},
+												{
+													"id": "set-text",
+													"objectClass": "labelUnlockedMission",
+													"sid": 540837930013408,
+													"parameters": {
+														"text": "\"Unlock Level \"&unlockedMission.At(loopindex-1,3)"
+													}
+												}
+											],
+											"sid": 844645775010613
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"functionName": "create_unlocked_mission_pack",
+					"functionDescription": "",
+					"functionCategory": "",
+					"functionReturnType": "none",
+					"functionCopyPicked": false,
+					"functionIsAsync": false,
+					"functionParameters": [],
+					"eventType": "function-block",
+					"conditions": [],
+					"actions": [],
+					"sid": 341077880861152,
+					"children": [
+						{
+							"eventType": "variable",
+							"name": "temp_start_created",
+							"type": "number",
+							"initialValue": "0",
+							"comment": "",
+							"isStatic": false,
+							"isConstant": false,
+							"sid": 351088755498973
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-empty",
+									"objectClass": "unlockedMission",
+									"sid": 521761210617594
+								}
+							],
+							"actions": [
+								{
+									"id": "set-size",
+									"objectClass": "unlockedMission",
+									"sid": 539303120334749,
+									"parameters": {
+										"width": "6",
+										"height": "3",
+										"depth": "1"
+									}
+								},
+								{
+									"id": "push",
+									"objectClass": "unlockedMission",
+									"sid": 510838407869666,
+									"parameters": {
+										"where": "back",
+										"value": "0",
+										"axis": "x"
+									}
+								},
+								{
+									"id": "push",
+									"objectClass": "unlockedMission",
+									"sid": 282957687128568,
+									"parameters": {
+										"where": "back",
+										"value": "0",
+										"axis": "y"
+									}
+								}
+							],
+							"sid": 879777296574126,
+							"children": [
+								{
+									"eventType": "comment",
+									"text": "for Classic/Homepage Floating Unlocked Mission Icon"
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "for",
+											"objectClass": "System",
+											"sid": 177897560842382,
+											"parameters": {
+												"name": "\"\"",
+												"start-index": "1",
+												"end-index": "3"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-at-xy",
+											"objectClass": "unlockedMission",
+											"sid": 889969712118632,
+											"parameters": {
+												"x": "loopindex-1",
+												"y": "0",
+												"value": "loopindex"
+											}
+										}
+									],
+									"sid": 690505162300499
+								},
+								{
+									"eventType": "block",
+									"conditions": [],
+									"actions": [
+										{
+											"id": "set-at-xy",
+											"objectClass": "unlockedMission",
+											"sid": 678398726826893,
+											"parameters": {
+												"x": "0",
+												"y": "1",
+												"value": "2"
+											}
+										},
+										{
+											"id": "set-at-xy",
+											"objectClass": "unlockedMission",
+											"sid": 627303110095624,
+											"parameters": {
+												"x": "1",
+												"y": "1",
+												"value": "5"
+											}
+										},
+										{
+											"id": "set-at-xy",
+											"objectClass": "unlockedMission",
+											"sid": 597676073621413,
+											"parameters": {
+												"x": "2",
+												"y": "1",
+												"value": "9"
+											}
+										}
+									],
+									"sid": 486508903802342
+								},
+								{
+									"eventType": "comment",
+									"text": "for Mission Floating Unlocked Mission Icon"
+								},
+								{
+									"eventType": "comment",
+									"text": "frame unlocked mission icon"
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "for",
+											"objectClass": "System",
+											"sid": 435052437649632,
+											"disabled": true,
+											"parameters": {
+												"name": "\"\"",
+												"start-index": "1",
+												"end-index": "7"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-at-xy",
+											"objectClass": "unlockedMission",
+											"sid": 528853483839124,
+											"parameters": {
+												"x": "0",
+												"y": "2",
+												"value": "1"
+											}
+										},
+										{
+											"id": "set-at-xy",
+											"objectClass": "unlockedMission",
+											"sid": 662281818035632,
+											"parameters": {
+												"x": "1",
+												"y": "2",
+												"value": "5"
+											}
+										},
+										{
+											"id": "set-at-xy",
+											"objectClass": "unlockedMission",
+											"sid": 644368523396112,
+											"parameters": {
+												"x": "2",
+												"y": "2",
+												"value": "2"
+											}
+										},
+										{
+											"id": "set-at-xy",
+											"objectClass": "unlockedMission",
+											"sid": 283917267318098,
+											"parameters": {
+												"x": "3",
+												"y": "2",
+												"value": "6"
+											}
+										},
+										{
+											"id": "set-at-xy",
+											"objectClass": "unlockedMission",
+											"sid": 955872212886776,
+											"parameters": {
+												"x": "4",
+												"y": "2",
+												"value": "4"
+											}
+										},
+										{
+											"id": "set-at-xy",
+											"objectClass": "unlockedMission",
+											"sid": 662284619204231,
+											"parameters": {
+												"x": "5",
+												"y": "2",
+												"value": "7"
+											}
+										},
+										{
+											"id": "set-at-xy",
+											"objectClass": "unlockedMission",
+											"sid": 886428886975096,
+											"parameters": {
+												"x": "6",
+												"y": "2",
+												"value": "8"
+											}
+										}
+									],
+									"sid": 200184536619186
+								},
+								{
+									"eventType": "comment",
+									"text": "text level unlocked mission"
+								},
+								{
+									"eventType": "block",
+									"conditions": [],
+									"actions": [
+										{
+											"id": "set-at-xy",
+											"objectClass": "unlockedMission",
+											"sid": 208726747993582,
+											"parameters": {
+												"x": "0",
+												"y": "3",
+												"value": "5"
+											}
+										},
+										{
+											"id": "set-at-xy",
+											"objectClass": "unlockedMission",
+											"sid": 196515420872866,
+											"parameters": {
+												"x": "1",
+												"y": "3",
+												"value": "6"
+											}
+										},
+										{
+											"id": "set-at-xy",
+											"objectClass": "unlockedMission",
+											"sid": 362452418338319,
+											"parameters": {
+												"x": "2",
+												"y": "3",
+												"value": "12"
+											}
+										},
+										{
+											"id": "set-at-xy",
+											"objectClass": "unlockedMission",
+											"sid": 285541426999588,
+											"parameters": {
+												"x": "3",
+												"y": "3",
+												"value": "15"
+											}
+										},
+										{
+											"id": "set-at-xy",
+											"objectClass": "unlockedMission",
+											"sid": 473336452506819,
+											"parameters": {
+												"x": "4",
+												"y": "3",
+												"value": "20"
+											}
+										},
+										{
+											"id": "set-at-xy",
+											"objectClass": "unlockedMission",
+											"sid": 965351268623369,
+											"parameters": {
+												"x": "5",
+												"y": "3",
+												"value": "30"
+											}
+										},
+										{
+											"id": "set-at-xy",
+											"objectClass": "unlockedMission",
+											"sid": 543851037440880,
+											"parameters": {
+												"x": "6",
+												"y": "3",
+												"value": "50"
+											}
+										}
+									],
+									"sid": 506756118539426
+								}
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [],
+							"actions": [
+								{
+									"id": "wait-for-previous-actions",
+									"objectClass": "System",
+									"sid": 349948449130551
+								}
+							],
+							"sid": 902415641001790,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-two-values",
+											"objectClass": "System",
+											"sid": 161942950910899,
+											"parameters": {
+												"first-value": "LayoutName",
+												"comparison": 0,
+												"second-value": "\"Homepage\""
+											}
+										},
+										{
+											"id": "for",
+											"objectClass": "System",
+											"sid": 740811805348020,
+											"parameters": {
+												"name": "\"\"",
+												"start-index": "1",
+												"end-index": "3"
+											}
+										}
+									],
+									"actions": [],
+									"sid": 628835015389635,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-two-values",
+													"objectClass": "System",
+													"sid": 162158323308298,
+													"parameters": {
+														"first-value": "player_level",
+														"comparison": 5,
+														"second-value": "unlockedMission.At(loopindex-1, 1)"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "add-to-eventvar",
+													"objectClass": "System",
+													"sid": 331457543941274,
+													"parameters": {
+														"variable": "temp_start_created",
+														"value": "1"
+													}
+												}
+											],
+											"sid": 956638716178495
+										}
+									]
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-two-values",
+											"objectClass": "System",
+											"sid": 506858274340790,
+											"parameters": {
+												"first-value": "LayoutName",
+												"comparison": 0,
+												"second-value": "\"Missions\""
+											}
+										},
+										{
+											"id": "for",
+											"objectClass": "System",
+											"sid": 222111087572850,
+											"parameters": {
+												"name": "\"\"",
+												"start-index": "1",
+												"end-index": "unlockedMission.Width"
+											}
+										}
+									],
+									"actions": [],
+									"sid": 478621485849338,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-two-values",
+													"objectClass": "System",
+													"sid": 796448815939258,
+													"parameters": {
+														"first-value": "level_stage",
+														"comparison": 5,
+														"second-value": "unlockedMission.At(loopindex-1, 3)"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "add-to-eventvar",
+													"objectClass": "System",
+													"sid": 515705250703016,
+													"parameters": {
+														"variable": "temp_start_created",
+														"value": "1"
+													}
+												}
+											],
+											"sid": 284389506495671
+										}
+									]
+								},
+								{
+									"eventType": "block",
+									"conditions": [],
+									"actions": [
+										{
+											"callFunction": "show_unlocked_mission_pack",
+											"sid": 656913153376345,
+											"parameters": [
+												"temp_start_created"
+											]
+										},
+										{
+											"type": "script",
+											"language": "javascript",
+											"script": [
+												"console.log(localVars.temp_start_created);"
+											]
+										}
+									],
+									"sid": 243473585119308
+								}
+							]
+						}
+					]
+				}
+			],
+			"sid": 644214607000727
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "key-is-down",
+					"objectClass": "Keyboard",
+					"sid": 997342635190778,
+					"parameters": {
+						"key": 49
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 456463414589124,
+					"parameters": {
+						"variable": "level_stage",
+						"value": "11"
+					}
+				},
+				{
+					"id": "restart-layout",
+					"objectClass": "System",
+					"sid": 104332339293281
+				}
+			],
+			"sid": 739916374440227
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "key-is-down",
+					"objectClass": "Keyboard",
+					"sid": 208777722723392,
+					"parameters": {
+						"key": 50
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 298788062032863,
+					"parameters": {
+						"variable": "level_stage",
+						"value": "12"
+					}
+				},
+				{
+					"id": "restart-layout",
+					"objectClass": "System",
+					"sid": 126627573022900
+				}
+			],
+			"sid": 109854787059854
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "key-is-down",
+					"objectClass": "Keyboard",
+					"sid": 450719581358009,
+					"parameters": {
+						"key": 51
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 166543147454105,
+					"parameters": {
+						"variable": "level_stage",
+						"value": "3"
+					}
+				},
+				{
+					"id": "restart-layout",
+					"objectClass": "System",
+					"sid": 889695698178793
+				}
+			],
+			"sid": 118996351806727
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "key-is-down",
+					"objectClass": "Keyboard",
+					"sid": 125923248089403,
+					"parameters": {
+						"key": 52
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 509433083202494,
+					"parameters": {
+						"variable": "level_stage",
+						"value": "4"
+					}
+				},
+				{
+					"id": "restart-layout",
+					"objectClass": "System",
+					"sid": 697957150338709
+				}
+			],
+			"sid": 890062632923489
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "key-is-down",
+					"objectClass": "Keyboard",
+					"sid": 991766384037564,
+					"parameters": {
+						"key": 53
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-boolean-eventvar",
+					"objectClass": "System",
+					"sid": 208554891981171,
+					"parameters": {
+						"variable": "is_show_mission_completed",
+						"value": "true"
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 729053210692391,
+					"parameters": {
+						"variable": "level_stage",
+						"value": "5"
+					}
+				},
+				{
+					"id": "restart-layout",
+					"objectClass": "System",
+					"sid": 868288476224519
+				}
+			],
+			"sid": 739716190646062
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "key-is-down",
+					"objectClass": "Keyboard",
+					"sid": 687833886851212,
+					"parameters": {
+						"key": 54
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 496270367303341,
+					"parameters": {
+						"variable": "level_stage",
+						"value": "6"
+					}
+				},
+				{
+					"id": "restart-layout",
+					"objectClass": "System",
+					"sid": 903287327286142
+				}
+			],
+			"sid": 965825802807850
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "key-is-down",
+					"objectClass": "Keyboard",
+					"sid": 162317586165739,
+					"parameters": {
+						"key": 55
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 358493766012006,
+					"parameters": {
+						"variable": "level_stage",
+						"value": "7"
+					}
+				},
+				{
+					"id": "restart-layout",
+					"objectClass": "System",
+					"sid": 298754471417637
+				}
+			],
+			"sid": 543255518035380
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "key-is-down",
+					"objectClass": "Keyboard",
+					"sid": 230155841542597,
+					"parameters": {
+						"key": 56
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 761492038438482,
+					"parameters": {
+						"variable": "level_stage",
+						"value": "8"
+					}
+				},
+				{
+					"id": "restart-layout",
+					"objectClass": "System",
+					"sid": 747864671393337
+				}
+			],
+			"sid": 262867215007434
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "key-is-down",
+					"objectClass": "Keyboard",
+					"sid": 663178084027418,
+					"parameters": {
+						"key": 57
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 535281036898799,
+					"parameters": {
+						"variable": "level_stage",
+						"value": "9"
+					}
+				},
+				{
+					"id": "restart-layout",
+					"objectClass": "System",
+					"sid": 841003036855537
+				}
+			],
+			"sid": 826276831144572
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "key-is-down",
+					"objectClass": "Keyboard",
+					"sid": 189277476056909,
+					"parameters": {
+						"key": 48
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 946021015709891,
+					"parameters": {
+						"variable": "level_stage",
+						"value": "20"
+					}
+				},
+				{
+					"id": "restart-layout",
+					"objectClass": "System",
+					"sid": 273967394798557
+				}
+			],
+			"sid": 492033119536756
+		}
+	],
+	"sid": 194242207910233
+}

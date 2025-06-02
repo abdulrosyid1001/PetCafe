@@ -1,0 +1,10 @@
+{
+	"name": "HighScoreGameOver",
+	"plugin-id": "Text",
+	"sid": 964465195360073,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": []
+}

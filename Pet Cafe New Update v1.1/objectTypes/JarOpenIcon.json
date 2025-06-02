@@ -1,0 +1,76 @@
+{
+	"name": "JarOpenIcon",
+	"plugin-id": "Sprite",
+	"sid": 141211532747175,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Tween",
+			"name": "Tween",
+			"sid": 526307932647091
+		}
+	],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 192,
+						"height": 335,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 1940718,
+						"collisionPoly": {
+							"points": [
+								0.625,
+								0.023880597014925373,
+								0.7708333333333334,
+								0.050746268656716415,
+								0.796875,
+								0.09253731343283582,
+								0.9114583333333334,
+								0.4208955223880597,
+								0.828125,
+								0.9373134328358209,
+								0.78125,
+								0.9641791044776119,
+								0.734375,
+								0.9791044776119403,
+								0.4322916666666667,
+								0.9970149253731343,
+								0.3333333333333333,
+								0.982089552238806,
+								0.17708333333333334,
+								0.8805970149253731,
+								0.09895833333333333,
+								0.41492537313432837,
+								0.21354166666666666,
+								0.11343283582089553,
+								0.2552083333333333,
+								0.08955223880597014
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 496801107647711,
+				"name": "Default",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 0
+			}
+		],
+		"subfolders": []
+	}
+}

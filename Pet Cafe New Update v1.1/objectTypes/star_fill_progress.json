@@ -1,0 +1,31 @@
+{
+	"name": "star_fill_progress",
+	"plugin-id": "NinePatch",
+	"sid": 189604012396334,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [
+		{
+			"name": "ID",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 941728974257358
+		}
+	],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"image": {
+		"width": 11,
+		"height": 16,
+		"originX": 0.5,
+		"originY": 0.5,
+		"originalSource": "",
+		"exportFormat": "lossless",
+		"exportQuality": 0.8,
+		"fileType": "image/png",
+		"imageSpriteId": 9193784,
+		"useCollisionPoly": true,
+		"tag": ""
+	}
+}

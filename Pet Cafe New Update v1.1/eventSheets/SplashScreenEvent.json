@@ -1,0 +1,305 @@
+{
+	"name": "SplashScreenEvent",
+	"events": [
+		{
+			"eventType": "variable",
+			"name": "is_init_data",
+			"type": "boolean",
+			"initialValue": "false",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 345167533314854
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-start-of-layout",
+					"objectClass": "System",
+					"sid": 172357568526022
+				}
+			],
+			"actions": [
+				{
+					"id": "set-scale",
+					"objectClass": "petCafeTittleLogo",
+					"sid": 518867423620360,
+					"disabled": true,
+					"parameters": {
+						"scale": "0.5"
+					}
+				},
+				{
+					"id": "set-opacity",
+					"objectClass": "petCafeTittleLogo",
+					"sid": 137864131320305,
+					"disabled": true,
+					"parameters": {
+						"opacity": "0"
+					}
+				},
+				{
+					"id": "tween-two-properties",
+					"objectClass": "petCafeTittleLogo",
+					"sid": 590338766970000,
+					"disabled": true,
+					"behaviorType": "Tween",
+					"parameters": {
+						"tags": "\"scale\"",
+						"property": "scale",
+						"end-x": "1.2",
+						"end-y": "1.2",
+						"time": "1",
+						"ease": "default",
+						"destroy-on-complete": "no",
+						"loop": "no",
+						"ping-pong": "no",
+						"repeat-count": "1"
+					}
+				},
+				{
+					"id": "tween-one-property",
+					"objectClass": "petCafeTittleLogo",
+					"sid": 788975303043024,
+					"disabled": true,
+					"behaviorType": "Tween",
+					"parameters": {
+						"tags": "\"fade\"",
+						"property": "offsetOpacity",
+						"end-value": "100",
+						"time": "1",
+						"ease": "default",
+						"destroy-on-complete": "no",
+						"loop": "no",
+						"ping-pong": "no",
+						"repeat-count": "1"
+					}
+				},
+				{
+					"callFunction": "create_unlocked_mission_pack",
+					"sid": 119034373398091
+				},
+				{
+					"callFunction": "create_locked_booster",
+					"sid": 492757013632414
+				},
+				{
+					"callFunction": "init_data",
+					"sid": 216678488164415,
+					"parameters": [
+						"0"
+					]
+				},
+				{
+					"id": "wait",
+					"objectClass": "System",
+					"sid": 674259898933480,
+					"parameters": {
+						"seconds": "1",
+						"use-timescale": true
+					}
+				},
+				{
+					"id": "set-boolean-instvar",
+					"objectClass": "overlay",
+					"sid": 273905381153306,
+					"parameters": {
+						"instance-variable": "active",
+						"value": "true"
+					}
+				}
+			],
+			"sid": 608962909240162
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-opacity",
+					"objectClass": "overlay",
+					"sid": 624611022424366,
+					"parameters": {
+						"comparison": 1,
+						"opacity": "100"
+					}
+				},
+				{
+					"id": "is-boolean-instance-variable-set",
+					"objectClass": "overlay",
+					"sid": 657512304807266,
+					"parameters": {
+						"instance-variable": "active"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-opacity",
+					"objectClass": "overlay",
+					"sid": 572600285498039,
+					"parameters": {
+						"opacity": "lerp(Self.Opacity, 100, 2*dt)"
+					}
+				}
+			],
+			"sid": 495071320216676,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-opacity",
+							"objectClass": "overlay",
+							"sid": 193539911276757,
+							"parameters": {
+								"comparison": 4,
+								"opacity": "99"
+							}
+						},
+						{
+							"id": "trigger-once-while-true",
+							"objectClass": "System",
+							"sid": 906209049150330
+						}
+					],
+					"actions": [
+						{
+							"id": "set-boolean-instvar",
+							"objectClass": "overlay",
+							"sid": 800559171862887,
+							"parameters": {
+								"instance-variable": "active",
+								"value": "false"
+							}
+						},
+						{
+							"callFunction": "init_data",
+							"sid": 505129457465338,
+							"parameters": [
+								"1"
+							]
+						},
+						{
+							"id": "go-to-layout",
+							"objectClass": "System",
+							"sid": 514830110935208,
+							"disabled": true,
+							"parameters": {
+								"layout": "Homepage"
+							}
+						}
+					],
+					"sid": 439654236164379
+				}
+			]
+		},
+		{
+			"functionName": "init_data",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "ID",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 924214512619982
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 323950553863239,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 112315539376250,
+							"parameters": {
+								"variable": "ID",
+								"comparison": 0,
+								"value": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"type": "script",
+							"language": "javascript",
+							"script": [
+								"weekly_arr = default_weekly_arr;",
+								"for (let i=0; i<levelMissionDataArr.length; i++){",
+								"\tvar obj = {\"level\": i+1, \"star\":0};",
+								"\tstarLevelCollectedArr[i] = obj;",
+								"}",
+								"console.log(\"star collected\", starLevelCollectedArr);"
+							]
+						},
+						{
+							"type": "script",
+							"language": "javascript",
+							"script": [
+								"runtime.callFunction(\"get_storage\", \"local_storage\", \"tutorial_completed_arr\");",
+								"runtime.callFunction(\"get_storage\", \"local_storage\", \"expire_time\");",
+								"runtime.callFunction(\"get_storage\", \"local_storage\", \"day\");",
+								"runtime.callFunction(\"get_storage\", \"local_storage\", \"total_day\");",
+								"runtime.callFunction(\"get_storage\", \"local_storage\", \"high_score\");",
+								"runtime.callFunction(\"get_storage\", \"local_storage\", \"player_level\");",
+								"runtime.callFunction(\"get_storage\", \"local_storage\", \"level_stage\");",
+								"runtime.callFunction(\"get_storage\", \"local_storage\", \"weekly_arr\");",
+								"runtime.callFunction(\"get_storage\", \"local_storage\", \"star_level_collected_arr\");",
+								"runtime.callFunction(\"get_storage\", \"local_storage\", \"star\");",
+								"runtime.callFunction(\"get_storage\", \"local_storage\", \"checkpoint_save\");",
+								"runtime.callFunction(\"get_storage\", \"local_storage\", \"enabled_starter_pack\");",
+								"runtime.callFunction(\"get_storage\", \"local_storage\", \"boosters_data\");",
+								"runtime.callFunction(\"get_storage\", \"local_storage\", \"item_store\");",
+								"runtime.callFunction(\"get_storage\", \"local_storage\", \"banner_store\");",
+								"runtime.callFunction(\"get_storage\", \"local_storage\", \"coin\");"
+							]
+						}
+					],
+					"sid": 652243590740839
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 514809418579949,
+							"parameters": {
+								"variable": "ID",
+								"comparison": 0,
+								"value": "1"
+							}
+						}
+					],
+					"actions": [
+						{
+							"type": "script",
+							"language": "javascript",
+							"script": [
+								"if(tutorialCompletedArr[0] == 1){",
+								"\truntime.globalVars.game_mode = \"classic\";",
+								"\truntime.goToLayout(\"Game\");",
+								"}",
+								"else{",
+								"\truntime.goToLayout(\"Homepage\");",
+								"}"
+							]
+						}
+					],
+					"sid": 898187623456838
+				}
+			]
+		}
+	],
+	"sid": 254461062679589
+}
