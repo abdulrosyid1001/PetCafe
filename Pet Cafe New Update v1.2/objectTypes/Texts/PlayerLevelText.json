@@ -1,0 +1,10 @@
+{
+	"name": "PlayerLevelText",
+	"plugin-id": "Text",
+	"sid": 709687000536748,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": []
+}

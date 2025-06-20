@@ -1,0 +1,808 @@
+{
+	"name": "AdsEvents",
+	"events": [
+		{
+			"eventType": "variable",
+			"name": "ad_display_status",
+			"type": "string",
+			"initialValue": "ready",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 317034083693742
+		},
+		{
+			"eventType": "variable",
+			"name": "temp_ad_display_status",
+			"type": "string",
+			"initialValue": "ready",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 367608555847993
+		},
+		{
+			"eventType": "variable",
+			"name": "tracking_ad_status",
+			"type": "string",
+			"initialValue": "none",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 710323652477695
+		},
+		{
+			"eventType": "variable",
+			"name": "is_done_watch_ad",
+			"type": "boolean",
+			"initialValue": "true",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 806314813502476
+		},
+		{
+			"eventType": "variable",
+			"name": "is_done_init_ad",
+			"type": "boolean",
+			"initialValue": "false",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 846603762930353
+		},
+		{
+			"eventType": "variable",
+			"name": "is_done_ad",
+			"type": "boolean",
+			"initialValue": "false",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 570536337586391
+		},
+		{
+			"eventType": "variable",
+			"name": "remaining_ad",
+			"type": "number",
+			"initialValue": "2",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 408947758990874
+		},
+		{
+			"eventType": "variable",
+			"name": "loading_completed",
+			"type": "boolean",
+			"initialValue": "false",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 910408364929286
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "ADS",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 110707539468483,
+							"parameters": {
+								"variable": "remaining_ad",
+								"comparison": 0,
+								"value": "0"
+							}
+						},
+						{
+							"id": "compare-boolean-eventvar",
+							"objectClass": "System",
+							"sid": 339602120969303,
+							"parameters": {
+								"variable": "is_done_ad"
+							}
+						}
+					],
+					"actions": [
+						{
+							"type": "script",
+							"language": "javascript",
+							"script": [
+								"console.log(\"remaining_ad\");"
+							]
+						},
+						{
+							"id": "set-boolean-eventvar",
+							"objectClass": "System",
+							"sid": 709896389014831,
+							"parameters": {
+								"variable": "is_done_ad",
+								"value": "false"
+							}
+						},
+						{
+							"type": "script",
+							"language": "javascript",
+							"script": [
+								"tracking_is_done_ad(runtime.globalVars.is_done_ad);"
+							]
+						},
+						{
+							"id": "set-boolean-eventvar",
+							"objectClass": "System",
+							"sid": 729076552780994,
+							"parameters": {
+								"variable": "loading_completed",
+								"value": "true"
+							}
+						},
+						{
+							"type": "script",
+							"language": "javascript",
+							"script": [
+								"runtime.callFunction(\"rewarded_canceled\");"
+							]
+						}
+					],
+					"sid": 791710854885505
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 793933569093517,
+							"parameters": {
+								"variable": "remaining_ad",
+								"comparison": 4,
+								"value": "0"
+							}
+						},
+						{
+							"id": "compare-boolean-eventvar",
+							"objectClass": "System",
+							"sid": 486238930914130,
+							"parameters": {
+								"variable": "is_done_ad"
+							}
+						}
+					],
+					"actions": [],
+					"sid": 387679926333294,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "every-x-seconds",
+									"objectClass": "System",
+									"sid": 469155333513999,
+									"parameters": {
+										"interval-seconds": "1"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "subtract-from-eventvar",
+									"objectClass": "System",
+									"sid": 161273637464449,
+									"parameters": {
+										"variable": "remaining_ad",
+										"value": "1"
+									}
+								}
+							],
+							"sid": 510560279016202
+						}
+					]
+				},
+				{
+					"functionName": "Init_Ads",
+					"functionDescription": "",
+					"functionCategory": "",
+					"functionReturnType": "none",
+					"functionCopyPicked": false,
+					"functionIsAsync": false,
+					"functionParameters": [],
+					"eventType": "function-block",
+					"conditions": [],
+					"actions": [],
+					"sid": 564266202223681,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-boolean-eventvar",
+									"objectClass": "System",
+									"sid": 955810690293192,
+									"parameters": {
+										"variable": "is_done_init_ad"
+									},
+									"isInverted": true
+								}
+							],
+							"actions": [
+								{
+									"type": "script",
+									"language": "javascript",
+									"script": [
+										"if(window.GSInstant != undefined){",
+										"",
+										"\tif(is_done_init_ad == false){",
+										"\t\t",
+										"\t\tis_done_init_ad = true;",
+										"\t}",
+										"",
+										"}",
+										"runtime.globalVars.is_done_ad = true;"
+									]
+								},
+								{
+									"type": "script",
+									"language": "javascript",
+									"script": [
+										"if(platform_ad !== \"Poki\" && platform_ad !== \"PlayDeck\" && platform_ad !== \"Glance\"){",
+										"\truntime.globalVars.get_ads_status = \"init_ad\";",
+										"\truntime.globalVars.remaining_ad = 4;",
+										"\truntime.globalVars.is_done_ad = true;",
+										"\tshow_ad(\"start_session\")}",
+										"else{",
+										"\tload_ad(\"interstitial\");",
+										"\truntime.callFunction(\"rewarded_canceled\");",
+										"}"
+									]
+								}
+							],
+							"sid": 828407104489870
+						}
+					]
+				},
+				{
+					"functionName": "Interstitial_Ads",
+					"functionDescription": "",
+					"functionCategory": "",
+					"functionReturnType": "none",
+					"functionCopyPicked": false,
+					"functionIsAsync": false,
+					"functionParameters": [],
+					"eventType": "function-block",
+					"conditions": [],
+					"actions": [],
+					"sid": 806272110633164,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-boolean-eventvar",
+									"objectClass": "System",
+									"sid": 259771729102339,
+									"parameters": {
+										"variable": "is_done_ad"
+									},
+									"isInverted": true
+								}
+							],
+							"actions": [
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 977815746652890,
+									"parameters": {
+										"variable": "remaining_ad",
+										"value": "3"
+									}
+								},
+								{
+									"id": "set-boolean-eventvar",
+									"objectClass": "System",
+									"sid": 708200703892923,
+									"parameters": {
+										"variable": "is_done_ad",
+										"value": "true"
+									}
+								},
+								{
+									"type": "script",
+									"language": "javascript",
+									"script": [
+										"if(is_have_ad == true){",
+										"\tshow_ad(\"interstitial\");",
+										"}",
+										"else{",
+										"\tsetTimeout(function(){",
+										"\t\truntime.callFunction(\"Other_Interstitial_Ads\");",
+										"\t},500)",
+										"}"
+									]
+								}
+							],
+							"sid": 245934440051708
+						}
+					]
+				},
+				{
+					"functionName": "Other_Interstitial_Ads",
+					"functionDescription": "",
+					"functionCategory": "",
+					"functionReturnType": "none",
+					"functionCopyPicked": false,
+					"functionIsAsync": false,
+					"functionParameters": [],
+					"eventType": "function-block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "wait",
+							"objectClass": "System",
+							"sid": 325529851906864,
+							"parameters": {
+								"seconds": "0.2",
+								"use-timescale": true
+							}
+						}
+					],
+					"sid": 531455000598881
+				},
+				{
+					"functionName": "Reward_Ads",
+					"functionDescription": "",
+					"functionCategory": "",
+					"functionReturnType": "none",
+					"functionCopyPicked": false,
+					"functionIsAsync": false,
+					"functionParameters": [],
+					"eventType": "function-block",
+					"conditions": [],
+					"actions": [],
+					"sid": 279660735499380,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-boolean-eventvar",
+									"objectClass": "System",
+									"sid": 301052495881156,
+									"parameters": {
+										"variable": "is_done_ad"
+									},
+									"isInverted": true
+								}
+							],
+							"actions": [
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 760423307953216,
+									"parameters": {
+										"variable": "remaining_ad",
+										"value": "3"
+									}
+								},
+								{
+									"id": "set-boolean-eventvar",
+									"objectClass": "System",
+									"sid": 331991065324844,
+									"parameters": {
+										"variable": "is_done_ad",
+										"value": "true"
+									}
+								},
+								{
+									"type": "script",
+									"language": "javascript",
+									"script": [
+										"console.log(is_have_ad);",
+										"if(is_have_ad == true){",
+										"\tconsole.log(\"show_ad\");",
+										"\tshow_ad(\"rewarded\");",
+										"}",
+										"else{",
+										"\tsetTimeout(function(){",
+										"\t\truntime.callFunction(\"Other_Rewarded_Ads\");",
+										"\t},500)",
+										"}"
+									]
+								}
+							],
+							"sid": 302518216601110
+						}
+					]
+				},
+				{
+					"functionName": "Other_Rewarded_Ads",
+					"functionDescription": "",
+					"functionCategory": "",
+					"functionReturnType": "none",
+					"functionCopyPicked": false,
+					"functionIsAsync": false,
+					"functionParameters": [],
+					"eventType": "function-block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "wait",
+							"objectClass": "System",
+							"sid": 691358784736672,
+							"parameters": {
+								"seconds": "0.2",
+								"use-timescale": true
+							}
+						}
+					],
+					"sid": 971174704778599
+				},
+				{
+					"functionName": "start_ad",
+					"functionDescription": "",
+					"functionCategory": "",
+					"functionReturnType": "none",
+					"functionCopyPicked": false,
+					"functionIsAsync": false,
+					"functionParameters": [],
+					"eventType": "function-block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "set-boolean-eventvar",
+							"objectClass": "System",
+							"sid": 840262888806830,
+							"parameters": {
+								"variable": "is_done_ad",
+								"value": "false"
+							}
+						},
+						{
+							"id": "set-boolean-eventvar",
+							"objectClass": "System",
+							"sid": 927036735359633,
+							"parameters": {
+								"variable": "is_done_watch_ad",
+								"value": "false"
+							}
+						},
+						{
+							"callFunction": "set_time_scale",
+							"sid": 176461642160954,
+							"parameters": [
+								"0"
+							]
+						}
+					],
+					"sid": 986929230951880
+				},
+				{
+					"functionName": "end_ad",
+					"functionDescription": "",
+					"functionCategory": "",
+					"functionReturnType": "none",
+					"functionCopyPicked": false,
+					"functionIsAsync": false,
+					"functionParameters": [],
+					"eventType": "function-block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "set-boolean-eventvar",
+							"objectClass": "System",
+							"sid": 464222736318736,
+							"parameters": {
+								"variable": "is_done_ad",
+								"value": "false"
+							}
+						},
+						{
+							"id": "set-boolean-eventvar",
+							"objectClass": "System",
+							"sid": 555785425098410,
+							"parameters": {
+								"variable": "is_done_watch_ad",
+								"value": "true"
+							}
+						},
+						{
+							"callFunction": "set_time_scale",
+							"sid": 612979265491360,
+							"parameters": [
+								"1"
+							]
+						}
+					],
+					"sid": 769202266528129
+				},
+				{
+					"functionName": "started_ad",
+					"functionDescription": "",
+					"functionCategory": "",
+					"functionReturnType": "none",
+					"functionCopyPicked": false,
+					"functionIsAsync": false,
+					"functionParameters": [],
+					"eventType": "function-block",
+					"conditions": [],
+					"actions": [
+						{
+							"type": "script",
+							"language": "javascript",
+							"script": [
+								"set_tracking_ad_status(\"started\");"
+							]
+						}
+					],
+					"sid": 821827465586908
+				},
+				{
+					"functionName": "completed_ad",
+					"functionDescription": "",
+					"functionCategory": "",
+					"functionReturnType": "none",
+					"functionCopyPicked": false,
+					"functionIsAsync": false,
+					"functionParameters": [],
+					"eventType": "function-block",
+					"conditions": [],
+					"actions": [
+						{
+							"type": "script",
+							"language": "javascript",
+							"script": [
+								"set_tracking_ad_status(\"completed\");"
+							]
+						}
+					],
+					"sid": 276169916746732
+				},
+				{
+					"functionName": "skipped_ad",
+					"functionDescription": "",
+					"functionCategory": "",
+					"functionReturnType": "none",
+					"functionCopyPicked": false,
+					"functionIsAsync": false,
+					"functionParameters": [],
+					"eventType": "function-block",
+					"conditions": [],
+					"actions": [
+						{
+							"type": "script",
+							"language": "javascript",
+							"script": [
+								"set_tracking_ad_status(\"skipped\");"
+							]
+						}
+					],
+					"sid": 878651693998908
+				}
+			],
+			"sid": 538568981993751
+		},
+		{
+			"eventType": "variable",
+			"name": "get_ads_status",
+			"type": "string",
+			"initialValue": "none",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 620703709051441
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "Rewarded",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"functionName": "rewarded_completed",
+					"functionDescription": "",
+					"functionCategory": "",
+					"functionReturnType": "none",
+					"functionCopyPicked": false,
+					"functionIsAsync": false,
+					"functionParameters": [],
+					"eventType": "function-block",
+					"conditions": [],
+					"actions": [
+						{
+							"type": "script",
+							"language": "javascript",
+							"script": [
+								"// Initialize variables from runtime",
+								"const getAdsStatus = runtime.globalVars.get_ads_status; // Current ad status",
+								"const bonusAnimTime = runtime.globalVars.bonus * 1000; // Animation time for bonus in milliseconds",
+								"",
+								"// Set initial focus and ad states",
+								"runtime.globalVars.is_done_ad = false;",
+								"",
+								"// Process ad-related rewards based on ad status",
+								"switch (getAdsStatus) {",
+								"\tcase \"daily_login_reward\":",
+								"\t\truntime.callFunction(\"claim_login\", 2);",
+								"\t\tbreak;",
+								"    case \"banner_reward\":",
+								"        runtime.callFunction(\"claim_banner\");",
+								"        break;",
+								"\tcase \"item_coin_reward\":",
+								"        runtime.callFunction(\"claim_item\", 1);",
+								"        break;",
+								"\tcase \"item_ticket_reward\":",
+								"        runtime.callFunction(\"claim_item\", 2);",
+								"        break;",
+								"\tcase \"continue_game_reward\":",
+								"        runtime.callFunction(\"claim_continue_game\", 1);",
+								"        break;",
+								"\tcase \"classic_game_over_reward\":",
+								"\t\truntime.callFunction(\"gameOverScreen\", \"\");",
+								"\t\tbreak;",
+								"\tcase \"level_up_reward\":",
+								"\t\truntime.callFunction(\"check_boosters_unlocked\", 2);",
+								"\t\tbreak;",
+								"\tcase \"adventure_completed_reward\":",
+								"\t\truntime.callFunction(\"create_condition_gameover\", 0);",
+								"\t\tbreak;",
+								"\tcase \"adventure_game_over_reward\":",
+								"\t\tbreak;",
+								"\tcase \"adventure_play\":",
+								"\t\truntime.goToLayout(\"Game\");",
+								"\t\tbreak;",
+								"",
+								"    case \"battle_reward\":",
+								"        // Handle battle reward and game over",
+								"       ",
+								"        break;",
+								"",
+								"    case \"init_ad\":",
+								"        // Handle ad initialization",
+								"        runtime.globalVars.get_ads_status = \"finish_ad\";",
+								"        break;",
+								"}"
+							]
+						},
+						{
+							"id": "destroy",
+							"objectClass": "black_ads_loading",
+							"sid": 733714884055155
+						}
+					],
+					"sid": 633453242367227
+				},
+				{
+					"functionName": "rewarded_canceled",
+					"functionDescription": "",
+					"functionCategory": "",
+					"functionReturnType": "none",
+					"functionCopyPicked": false,
+					"functionIsAsync": false,
+					"functionParameters": [],
+					"eventType": "function-block",
+					"conditions": [],
+					"actions": [
+						{
+							"type": "script",
+							"language": "javascript",
+							"script": [
+								"// Initialize variables from runtime",
+								"const getAdsStatus = runtime.globalVars.get_ads_status; // Current ad status",
+								"const bonusAnimTime = runtime.globalVars.bonus * 1000; // Animation time for bonus in milliseconds",
+								"",
+								"// Set initial focus and ad states",
+								"runtime.globalVars.is_done_ad = false;",
+								"",
+								"// Process ad-related rewards based on ad status",
+								"switch (getAdsStatus) {",
+								"\tcase \"daily_login_reward\":",
+								"\t\truntime.callFunction(\"claim_login\", 1);",
+								"\t\tbreak;",
+								"\tcase \"continue_game_reward\":",
+								"        runtime.callFunction(\"claim_continue_game\", 0);",
+								"        break;",
+								"\tcase \"classic_game_over_reward\":",
+								"\t\truntime.callFunction(\"gameOverScreen\", \"\");",
+								"\t\tbreak;",
+								"\tcase \"level_up_reward\":",
+								"\t\truntime.callFunction(\"check_boosters_unlocked\", 2);",
+								"\t\tbreak;",
+								"\tcase \"adventure_completed_reward\":",
+								"\t\truntime.callFunction(\"create_condition_gameover\", 0);",
+								"\t\tbreak;",
+								"\tcase \"adventure_play\":",
+								"\t\truntime.goToLayout(\"Game\");",
+								"\t\tbreak;",
+								"",
+								"    case \"init_ad\":",
+								"        // Handle ad initialization",
+								"        runtime.globalVars.get_ads_status = \"finish_ad\";",
+								"        break;",
+								"}"
+							]
+						},
+						{
+							"id": "destroy",
+							"objectClass": "black_ads_loading",
+							"sid": 733714884055155
+						}
+					],
+					"sid": 951684530733134
+				}
+			],
+			"sid": 509547488421240
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "Tracking Ad Status",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "every-tick",
+							"objectClass": "System",
+							"sid": 954894228510913
+						}
+					],
+					"actions": [
+						{
+							"type": "script",
+							"language": "javascript",
+							"script": [
+								"  // Status-specific operations",
+								"var _tracking_ad_status = runtime.globalVars.tracking_ad_status;",
+								"",
+								"switch(_tracking_ad_status){",
+								"\tcase \"none\":",
+								"\t\truntime.globalVars.tracking_ad_status = tracking_ad_status;",
+								"\t\tbreak;",
+								"\tcase \"started\":",
+								"\t\tnone_tracking_ad_status();",
+								"\t\truntime.globalVars.tracking_ad_status = tracking_ad_status;",
+								"\t\truntime.callFunction(\"start_ad\");",
+								"\t\tbreak;",
+								"\tcase \"skipped\":",
+								"\t\tnone_tracking_ad_status();",
+								"\t\truntime.globalVars.tracking_ad_status = tracking_ad_status;",
+								"\t\tif(!runtime.globalVars.is_done_watch_ad){",
+								"\t\t\truntime.callFunction(\"end_ad\");",
+								"\t\t\truntime.callFunction(\"rewarded_canceled\");",
+								"\t\t}",
+								"\t\tbreak;",
+								"\tcase \"completed\":",
+								"\t\tnone_tracking_ad_status();",
+								"\t\truntime.globalVars.tracking_ad_status = tracking_ad_status;",
+								"\t\tif(!runtime.globalVars.is_done_watch_ad){",
+								"\t\t\truntime.callFunction(\"end_ad\");",
+								"\t\t\truntime.callFunction(\"rewarded_completed\");",
+								"\t\t}",
+								"\t\tbreak;",
+								"\tcase \"loaded\":",
+								"\tcase \"canceled\":",
+								"\tcase \"error\":",
+								"\t\tnone_tracking_ad_status();",
+								"\t\truntime.globalVars.tracking_ad_status = tracking_ad_status;",
+								"\t\tbreak;",
+								"}"
+							]
+						}
+					],
+					"sid": 476677243869735
+				}
+			],
+			"sid": 362157244527760
+		}
+	],
+	"sid": 868185476953153
+}

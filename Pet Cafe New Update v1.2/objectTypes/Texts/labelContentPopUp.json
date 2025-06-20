@@ -1,0 +1,15 @@
+{
+	"name": "labelContentPopUp",
+	"plugin-id": "Text",
+	"sid": 750124481598046,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [
+		{
+			"effectId": "skymen_BetterOutline",
+			"name": "BetterOutline"
+		}
+	]
+}
