@@ -4592,6 +4592,14 @@
 							}
 						}
 					},
+					"effects": {
+						"Grayscale": {
+							"isEnabled": false,
+							"parameters": {
+								"intensity": 1
+							}
+						}
+					},
 					"sceneGraphData": {
 						"parent-uid": 296,
 						"uid": 206,

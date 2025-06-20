@@ -20,7 +20,12 @@
 			"sid": 817821315970536
 		}
 	],
-	"effectTypes": [],
+	"effectTypes": [
+		{
+			"effectId": "grayscale",
+			"name": "Grayscale"
+		}
+	],
 	"animations": {
 		"items": [
 			{

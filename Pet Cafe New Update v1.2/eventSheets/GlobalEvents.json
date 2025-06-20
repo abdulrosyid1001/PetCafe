@@ -2816,6 +2816,15 @@
 							}
 						},
 						{
+							"id": "is-effect-enabled",
+							"objectClass": "blueButton",
+							"sid": 208289172345573,
+							"parameters": {
+								"effect": "\"Grayscale\""
+							},
+							"isInverted": true
+						},
+						{
 							"id": "is-playing",
 							"objectClass": "blueButton",
 							"sid": 849174646612651,
@@ -5529,7 +5538,17 @@
 								{
 									"id": "destroy",
 									"objectClass": "blueButton",
-									"sid": 943901125059285
+									"sid": 943901125059285,
+									"disabled": true
+								},
+								{
+									"id": "set-effect-enabled",
+									"objectClass": "blueButton",
+									"sid": 239886846694483,
+									"parameters": {
+										"mode": "enable",
+										"effect": "\"Grayscale\""
+									}
 								}
 							],
 							"sid": 512531164665133
@@ -5553,7 +5572,17 @@
 								{
 									"id": "destroy",
 									"objectClass": "blueButton",
-									"sid": 270122391122401
+									"sid": 270122391122401,
+									"disabled": true
+								},
+								{
+									"id": "set-effect-enabled",
+									"objectClass": "blueButton",
+									"sid": 334216301165574,
+									"parameters": {
+										"mode": "enable",
+										"effect": "\"Grayscale\""
+									}
 								}
 							],
 							"sid": 390455509601569
@@ -5655,6 +5684,54 @@
 										}
 									],
 									"actions": [
+										{
+											"id": "tween-one-property",
+											"objectClass": "progress_box_daily_bonus",
+											"sid": 947249610873204,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "\"height\"",
+												"property": "offsetHeight",
+												"end-value": "Self.Height-(5*(Self.AnimationFrame+1))",
+												"time": "0.1",
+												"ease": "default",
+												"destroy-on-complete": "no",
+												"loop": "no",
+												"ping-pong": "yes",
+												"repeat-count": "1"
+											}
+										},
+										{
+											"id": "wait",
+											"objectClass": "System",
+											"sid": 686336553822264,
+											"parameters": {
+												"seconds": "0.05",
+												"use-timescale": true
+											}
+										},
+										{
+											"id": "tween-one-property",
+											"objectClass": "progress_box_daily_bonus",
+											"sid": 579670714707427,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "\"width\"",
+												"property": "offsetWidth",
+												"end-value": "Self.Width-(2*(Self.AnimationFrame+1))",
+												"time": "0.1",
+												"ease": "default",
+												"destroy-on-complete": "no",
+												"loop": "no",
+												"ping-pong": "yes",
+												"repeat-count": "1"
+											}
+										},
+										{
+											"id": "wait-for-previous-actions",
+											"objectClass": "System",
+											"sid": 429545145004642
+										},
 										{
 											"id": "set-animation",
 											"objectClass": "progress_box_daily_bonus",
@@ -5865,6 +5942,54 @@
 										}
 									],
 									"actions": [
+										{
+											"id": "tween-one-property",
+											"objectClass": "progress_box_daily_bonus",
+											"sid": 790751390352865,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "\"height\"",
+												"property": "offsetHeight",
+												"end-value": "Self.Height-(5*(Self.AnimationFrame+1))",
+												"time": "0.1",
+												"ease": "default",
+												"destroy-on-complete": "no",
+												"loop": "no",
+												"ping-pong": "yes",
+												"repeat-count": "1"
+											}
+										},
+										{
+											"id": "wait",
+											"objectClass": "System",
+											"sid": 513002047071082,
+											"parameters": {
+												"seconds": "0.05",
+												"use-timescale": true
+											}
+										},
+										{
+											"id": "tween-one-property",
+											"objectClass": "progress_box_daily_bonus",
+											"sid": 928703017765104,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "\"width\"",
+												"property": "offsetWidth",
+												"end-value": "Self.Width-(2*(Self.AnimationFrame+1))",
+												"time": "0.1",
+												"ease": "default",
+												"destroy-on-complete": "no",
+												"loop": "no",
+												"ping-pong": "yes",
+												"repeat-count": "1"
+											}
+										},
+										{
+											"id": "wait-for-previous-actions",
+											"objectClass": "System",
+											"sid": 318447185745714
+										},
 										{
 											"id": "set-animation",
 											"objectClass": "progress_box_daily_bonus",
@@ -6130,6 +6255,54 @@
 									],
 									"actions": [
 										{
+											"id": "tween-one-property",
+											"objectClass": "progress_box_daily_bonus",
+											"sid": 624408278158700,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "\"height\"",
+												"property": "offsetHeight",
+												"end-value": "Self.Height-(5*(Self.AnimationFrame+1))",
+												"time": "0.1",
+												"ease": "default",
+												"destroy-on-complete": "no",
+												"loop": "no",
+												"ping-pong": "yes",
+												"repeat-count": "1"
+											}
+										},
+										{
+											"id": "wait",
+											"objectClass": "System",
+											"sid": 720789451152978,
+											"parameters": {
+												"seconds": "0.05",
+												"use-timescale": true
+											}
+										},
+										{
+											"id": "tween-one-property",
+											"objectClass": "progress_box_daily_bonus",
+											"sid": 760272804286844,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "\"width\"",
+												"property": "offsetWidth",
+												"end-value": "Self.Width-(2*(Self.AnimationFrame+1))",
+												"time": "0.1",
+												"ease": "default",
+												"destroy-on-complete": "no",
+												"loop": "no",
+												"ping-pong": "yes",
+												"repeat-count": "1"
+											}
+										},
+										{
+											"id": "wait-for-previous-actions",
+											"objectClass": "System",
+											"sid": 433442743017595
+										},
+										{
 											"id": "set-animation",
 											"objectClass": "progress_box_daily_bonus",
 											"sid": 284018179538424,
@@ -6371,6 +6544,54 @@
 										}
 									],
 									"actions": [
+										{
+											"id": "tween-one-property",
+											"objectClass": "progress_box_daily_bonus",
+											"sid": 208709034928172,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "\"height\"",
+												"property": "offsetHeight",
+												"end-value": "Self.Height-(5*(Self.AnimationFrame+1))",
+												"time": "0.1",
+												"ease": "default",
+												"destroy-on-complete": "no",
+												"loop": "no",
+												"ping-pong": "yes",
+												"repeat-count": "1"
+											}
+										},
+										{
+											"id": "wait",
+											"objectClass": "System",
+											"sid": 107563927586855,
+											"parameters": {
+												"seconds": "0.05",
+												"use-timescale": true
+											}
+										},
+										{
+											"id": "tween-one-property",
+											"objectClass": "progress_box_daily_bonus",
+											"sid": 736903868430174,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "\"width\"",
+												"property": "offsetWidth",
+												"end-value": "Self.Width-(2*(Self.AnimationFrame+1))",
+												"time": "0.1",
+												"ease": "default",
+												"destroy-on-complete": "no",
+												"loop": "no",
+												"ping-pong": "yes",
+												"repeat-count": "1"
+											}
+										},
+										{
+											"id": "wait-for-previous-actions",
+											"objectClass": "System",
+											"sid": 192632426954075
+										},
 										{
 											"id": "set-animation",
 											"objectClass": "progress_box_daily_bonus",
@@ -6750,9 +6971,9 @@
 										{
 											"id": "set-text",
 											"objectClass": "labelBundleItem",
-											"sid": 985674905084824,
+											"sid": 258273310611804,
 											"parameters": {
-												"text": "\"x\"&(int(right(Self.Text, 1))*multiply)"
+												"text": "\"x\"&(int(mid(Self.Text, 1, len(Self.Text)-1))*multiply)"
 											}
 										}
 									],

@@ -35,7 +35,7 @@
 			"eventType": "variable",
 			"name": "total_day",
 			"type": "number",
-			"initialValue": "0",
+			"initialValue": "7",
 			"comment": "",
 			"isStatic": false,
 			"isConstant": false,
@@ -2410,6 +2410,45 @@
 										}
 									],
 									"sid": 829967340784757
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "PopupDetailInfoDailyLogin",
+											"sid": 882336004233490,
+											"parameters": {
+												"instance-variable": "day",
+												"comparison": 0,
+												"value": "total_day"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "spawn-another-object",
+											"objectClass": "progress_box_daily_bonus",
+											"sid": 721460134379671,
+											"parameters": {
+												"object": "green_shine",
+												"layer": "Self.LayerName",
+												"image-point": "1",
+												"create-hierarchy": false,
+												"template-name": "\"\""
+											}
+										},
+										{
+											"id": "move-to-object",
+											"objectClass": "green_shine",
+											"sid": 161451368085840,
+											"parameters": {
+												"where": "behind",
+												"object": "progress_box_daily_bonus"
+											}
+										}
+									],
+									"sid": 914645331325270
 								}
 							]
 						}

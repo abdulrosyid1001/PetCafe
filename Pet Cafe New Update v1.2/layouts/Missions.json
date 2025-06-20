@@ -11513,6 +11513,14 @@
 							}
 						}
 					},
+					"effects": {
+						"Grayscale": {
+							"isEnabled": false,
+							"parameters": {
+								"intensity": 1
+							}
+						}
+					},
 					"sceneGraphData": {
 						"parent-uid": 509,
 						"uid": 523,

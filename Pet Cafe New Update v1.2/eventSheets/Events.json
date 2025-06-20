@@ -583,6 +583,15 @@
 								"variable": "temp_get_max_bonus",
 								"value": "0"
 							}
+						},
+						{
+							"id": "set-boolean-eventvar",
+							"objectClass": "System",
+							"sid": 466569729580572,
+							"parameters": {
+								"variable": "level_completed",
+								"value": "false"
+							}
 						}
 					],
 					"sid": 393098096475609,
@@ -745,6 +754,10 @@
 										}
 									],
 									"actions": [
+										{
+											"callFunction": "set_boosters_frame_unlocked",
+											"sid": 457229537458158
+										},
 										{
 											"type": "script",
 											"language": "javascript",
@@ -910,9 +923,9 @@
 					"actions": [
 						{
 							"callFunction": "init_data",
-							"sid": 609082724898238,
+							"sid": 814715722173388,
 							"parameters": [
-								"0"
+								"2"
 							]
 						},
 						{
@@ -966,6 +979,15 @@
 							"sid": 809081856764795
 						},
 						{
+							"id": "wait",
+							"objectClass": "System",
+							"sid": 523155533179006,
+							"parameters": {
+								"seconds": "0.1",
+								"use-timescale": true
+							}
+						},
+						{
 							"callFunction": "music_settings",
 							"sid": 153392039465207
 						},
@@ -999,6 +1021,24 @@
 								"const timestamp = now.toISOString().replace(/:/g, '_');",
 								"runtime.callFunction(\"design_event\", \"Classic_Mode\", \"Time_Start_Classic_Round:\"+timestamp);"
 							]
+						},
+						{
+							"id": "set-group-active",
+							"objectClass": "System",
+							"sid": 235175515798285,
+							"parameters": {
+								"group-name": "\"Controls\"",
+								"state": "activated"
+							}
+						},
+						{
+							"id": "set-group-active",
+							"objectClass": "System",
+							"sid": 716378901744000,
+							"parameters": {
+								"group-name": "\"Fruit Collision\"",
+								"state": "activated"
+							}
 						}
 					],
 					"sid": 921790417405125
@@ -1704,7 +1744,6 @@
 						{
 							"callFunction": "check_tutorial_completed",
 							"sid": 478993791511205,
-							"disabled": true,
 							"parameters": [
 								"1"
 							]
@@ -2852,6 +2891,22 @@
 										}
 									],
 									"actions": [
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 976043486521983,
+											"parameters": {
+												"variable": "checkpoint_save",
+												"value": "0"
+											}
+										},
+										{
+											"type": "script",
+											"language": "javascript",
+											"script": [
+												"runtime.callFunction(\"save_storage\", \"local_storage\", \"checkpoint_save\", String(runtime.globalVars.checkpoint_save));"
+											]
+										},
 										{
 											"id": "set-boolean-eventvar",
 											"objectClass": "System",
@@ -14675,6 +14730,831 @@
 					"text": "When a fruit is created, start its activation timer."
 				},
 				{
+					"functionName": "set_physics_fruit",
+					"functionDescription": "",
+					"functionCategory": "",
+					"functionReturnType": "none",
+					"functionCopyPicked": false,
+					"functionIsAsync": false,
+					"functionParameters": [],
+					"eventType": "function-block",
+					"conditions": [],
+					"actions": [],
+					"sid": 599224231117305,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "for-each",
+									"objectClass": "System",
+									"sid": 385130161527597,
+									"parameters": {
+										"object": "Fruit"
+									}
+								}
+							],
+							"actions": [],
+							"sid": 590272041895156,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-animation-playing",
+											"objectClass": "Fruit",
+											"sid": 556285141919732,
+											"parameters": {
+												"animation": "\"0_cherry\""
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-density",
+											"objectClass": "Fruit",
+											"sid": 640476614736476,
+											"behaviorType": "Physics",
+											"parameters": {
+												"density": "0.2"
+											}
+										},
+										{
+											"id": "set-friction",
+											"objectClass": "Fruit",
+											"sid": 817151836895895,
+											"behaviorType": "Physics",
+											"parameters": {
+												"friction": "0.1"
+											}
+										},
+										{
+											"id": "set-elasticity",
+											"objectClass": "Fruit",
+											"sid": 408396102363400,
+											"behaviorType": "Physics",
+											"parameters": {
+												"elasticity": "0.3"
+											}
+										},
+										{
+											"id": "set-linear-damping",
+											"objectClass": "Fruit",
+											"sid": 540511426113004,
+											"behaviorType": "Physics",
+											"parameters": {
+												"linear-damping": "0.01"
+											}
+										},
+										{
+											"id": "set-angular-damping",
+											"objectClass": "Fruit",
+											"sid": 610262331753168,
+											"behaviorType": "Physics",
+											"parameters": {
+												"angular-damping": "0.01"
+											}
+										}
+									],
+									"sid": 941907569760226
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-animation-playing",
+											"objectClass": "Fruit",
+											"sid": 177834472643432,
+											"parameters": {
+												"animation": "\"1_lemon\""
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-density",
+											"objectClass": "Fruit",
+											"sid": 247018817591318,
+											"behaviorType": "Physics",
+											"parameters": {
+												"density": "0.2"
+											}
+										},
+										{
+											"id": "set-friction",
+											"objectClass": "Fruit",
+											"sid": 692994631205292,
+											"behaviorType": "Physics",
+											"parameters": {
+												"friction": "0.1"
+											}
+										},
+										{
+											"id": "set-elasticity",
+											"objectClass": "Fruit",
+											"sid": 898728357579167,
+											"behaviorType": "Physics",
+											"parameters": {
+												"elasticity": "0.3"
+											}
+										},
+										{
+											"id": "set-linear-damping",
+											"objectClass": "Fruit",
+											"sid": 910019995918307,
+											"behaviorType": "Physics",
+											"parameters": {
+												"linear-damping": "0.01"
+											}
+										},
+										{
+											"id": "set-angular-damping",
+											"objectClass": "Fruit",
+											"sid": 477099502079650,
+											"behaviorType": "Physics",
+											"parameters": {
+												"angular-damping": "0.01"
+											}
+										}
+									],
+									"sid": 691443197185885
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-animation-playing",
+											"objectClass": "Fruit",
+											"sid": 436322990394354,
+											"parameters": {
+												"animation": "\"2_orange\""
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-density",
+											"objectClass": "Fruit",
+											"sid": 756044391057757,
+											"behaviorType": "Physics",
+											"parameters": {
+												"density": "0.5"
+											}
+										},
+										{
+											"id": "set-friction",
+											"objectClass": "Fruit",
+											"sid": 114345315138781,
+											"behaviorType": "Physics",
+											"parameters": {
+												"friction": "0.2"
+											}
+										},
+										{
+											"id": "set-elasticity",
+											"objectClass": "Fruit",
+											"sid": 827863668830828,
+											"behaviorType": "Physics",
+											"parameters": {
+												"elasticity": "0.25"
+											}
+										},
+										{
+											"id": "set-linear-damping",
+											"objectClass": "Fruit",
+											"sid": 133386434781140,
+											"behaviorType": "Physics",
+											"parameters": {
+												"linear-damping": "0.03"
+											}
+										},
+										{
+											"id": "set-angular-damping",
+											"objectClass": "Fruit",
+											"sid": 255736910881163,
+											"behaviorType": "Physics",
+											"parameters": {
+												"angular-damping": "0.02"
+											}
+										}
+									],
+									"sid": 391721284138103
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-animation-playing",
+											"objectClass": "Fruit",
+											"sid": 511777398123227,
+											"parameters": {
+												"animation": "\"3_tomato\""
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-density",
+											"objectClass": "Fruit",
+											"sid": 462812345775133,
+											"behaviorType": "Physics",
+											"parameters": {
+												"density": "0.5"
+											}
+										},
+										{
+											"id": "set-friction",
+											"objectClass": "Fruit",
+											"sid": 986223953236465,
+											"behaviorType": "Physics",
+											"parameters": {
+												"friction": "0.2"
+											}
+										},
+										{
+											"id": "set-elasticity",
+											"objectClass": "Fruit",
+											"sid": 792628414022830,
+											"behaviorType": "Physics",
+											"parameters": {
+												"elasticity": "0.25"
+											}
+										},
+										{
+											"id": "set-linear-damping",
+											"objectClass": "Fruit",
+											"sid": 518991624220066,
+											"behaviorType": "Physics",
+											"parameters": {
+												"linear-damping": "0.03"
+											}
+										},
+										{
+											"id": "set-angular-damping",
+											"objectClass": "Fruit",
+											"sid": 947561522309147,
+											"behaviorType": "Physics",
+											"parameters": {
+												"angular-damping": "0.02"
+											}
+										}
+									],
+									"sid": 239520829000222
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-animation-playing",
+											"objectClass": "Fruit",
+											"sid": 565450019147229,
+											"parameters": {
+												"animation": "\"4_melon\""
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-density",
+											"objectClass": "Fruit",
+											"sid": 621764356792066,
+											"behaviorType": "Physics",
+											"parameters": {
+												"density": "1"
+											}
+										},
+										{
+											"id": "set-friction",
+											"objectClass": "Fruit",
+											"sid": 594670761022643,
+											"behaviorType": "Physics",
+											"parameters": {
+												"friction": "0.3"
+											}
+										},
+										{
+											"id": "set-elasticity",
+											"objectClass": "Fruit",
+											"sid": 429503282652000,
+											"behaviorType": "Physics",
+											"parameters": {
+												"elasticity": "0.2"
+											}
+										},
+										{
+											"id": "set-linear-damping",
+											"objectClass": "Fruit",
+											"sid": 847106559434215,
+											"behaviorType": "Physics",
+											"parameters": {
+												"linear-damping": "0.05"
+											}
+										},
+										{
+											"id": "set-angular-damping",
+											"objectClass": "Fruit",
+											"sid": 692554186373625,
+											"behaviorType": "Physics",
+											"parameters": {
+												"angular-damping": "0.03"
+											}
+										}
+									],
+									"sid": 130298300922022
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-animation-playing",
+											"objectClass": "Fruit",
+											"sid": 136981214824730,
+											"parameters": {
+												"animation": "\"5_coconut\""
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-density",
+											"objectClass": "Fruit",
+											"sid": 842597390721595,
+											"behaviorType": "Physics",
+											"parameters": {
+												"density": "1"
+											}
+										},
+										{
+											"id": "set-friction",
+											"objectClass": "Fruit",
+											"sid": 400800372265703,
+											"behaviorType": "Physics",
+											"parameters": {
+												"friction": "0.3"
+											}
+										},
+										{
+											"id": "set-elasticity",
+											"objectClass": "Fruit",
+											"sid": 247800523509995,
+											"behaviorType": "Physics",
+											"parameters": {
+												"elasticity": "0.2"
+											}
+										},
+										{
+											"id": "set-linear-damping",
+											"objectClass": "Fruit",
+											"sid": 722496286845050,
+											"behaviorType": "Physics",
+											"parameters": {
+												"linear-damping": "0.05"
+											}
+										},
+										{
+											"id": "set-angular-damping",
+											"objectClass": "Fruit",
+											"sid": 209404934538619,
+											"behaviorType": "Physics",
+											"parameters": {
+												"angular-damping": "0.03"
+											}
+										}
+									],
+									"sid": 197733699679789
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-animation-playing",
+											"objectClass": "Fruit",
+											"sid": 196367859800198,
+											"parameters": {
+												"animation": "\"6_pumpkin\""
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-density",
+											"objectClass": "Fruit",
+											"sid": 304012498223212,
+											"behaviorType": "Physics",
+											"parameters": {
+												"density": "1.8"
+											}
+										},
+										{
+											"id": "set-friction",
+											"objectClass": "Fruit",
+											"sid": 921557713120696,
+											"behaviorType": "Physics",
+											"parameters": {
+												"friction": "0.4"
+											}
+										},
+										{
+											"id": "set-elasticity",
+											"objectClass": "Fruit",
+											"sid": 148127778262386,
+											"behaviorType": "Physics",
+											"parameters": {
+												"elasticity": "0.15"
+											}
+										},
+										{
+											"id": "set-linear-damping",
+											"objectClass": "Fruit",
+											"sid": 366146688210241,
+											"behaviorType": "Physics",
+											"parameters": {
+												"linear-damping": "0.07"
+											}
+										},
+										{
+											"id": "set-angular-damping",
+											"objectClass": "Fruit",
+											"sid": 942062392265592,
+											"behaviorType": "Physics",
+											"parameters": {
+												"angular-damping": "0.04"
+											}
+										}
+									],
+									"sid": 330794559061576
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-animation-playing",
+											"objectClass": "Fruit",
+											"sid": 458280020986171,
+											"parameters": {
+												"animation": "\"7_watermelon\""
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-density",
+											"objectClass": "Fruit",
+											"sid": 434484387268588,
+											"behaviorType": "Physics",
+											"parameters": {
+												"density": "2.7"
+											}
+										},
+										{
+											"id": "set-friction",
+											"objectClass": "Fruit",
+											"sid": 322605752844139,
+											"behaviorType": "Physics",
+											"parameters": {
+												"friction": "0.5"
+											}
+										},
+										{
+											"id": "set-elasticity",
+											"objectClass": "Fruit",
+											"sid": 970398376182059,
+											"behaviorType": "Physics",
+											"parameters": {
+												"elasticity": "0.09"
+											}
+										},
+										{
+											"id": "set-linear-damping",
+											"objectClass": "Fruit",
+											"sid": 830228051229164,
+											"behaviorType": "Physics",
+											"parameters": {
+												"linear-damping": "0.1"
+											}
+										},
+										{
+											"id": "set-angular-damping",
+											"objectClass": "Fruit",
+											"sid": 215747195616796,
+											"behaviorType": "Physics",
+											"parameters": {
+												"angular-damping": "0.06"
+											}
+										}
+									],
+									"sid": 563481650947107
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-animation-playing",
+											"objectClass": "Fruit",
+											"sid": 567317622020855,
+											"parameters": {
+												"animation": "\"8_x1\""
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-density",
+											"objectClass": "Fruit",
+											"sid": 431159319698993,
+											"behaviorType": "Physics",
+											"parameters": {
+												"density": "2.7"
+											}
+										},
+										{
+											"id": "set-friction",
+											"objectClass": "Fruit",
+											"sid": 880558934612964,
+											"behaviorType": "Physics",
+											"parameters": {
+												"friction": "0.5"
+											}
+										},
+										{
+											"id": "set-elasticity",
+											"objectClass": "Fruit",
+											"sid": 325238712173730,
+											"behaviorType": "Physics",
+											"parameters": {
+												"elasticity": "0.09"
+											}
+										},
+										{
+											"id": "set-linear-damping",
+											"objectClass": "Fruit",
+											"sid": 956797832342521,
+											"behaviorType": "Physics",
+											"parameters": {
+												"linear-damping": "0.1"
+											}
+										},
+										{
+											"id": "set-angular-damping",
+											"objectClass": "Fruit",
+											"sid": 556625114936847,
+											"behaviorType": "Physics",
+											"parameters": {
+												"angular-damping": "0.06"
+											}
+										}
+									],
+									"sid": 249107129731187
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-animation-playing",
+											"objectClass": "Fruit",
+											"sid": 598151980229774,
+											"parameters": {
+												"animation": "\"9_x1\""
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-density",
+											"objectClass": "Fruit",
+											"sid": 521388948705560,
+											"behaviorType": "Physics",
+											"parameters": {
+												"density": "4"
+											}
+										},
+										{
+											"id": "set-friction",
+											"objectClass": "Fruit",
+											"sid": 600784360344386,
+											"behaviorType": "Physics",
+											"parameters": {
+												"friction": "0.65"
+											}
+										},
+										{
+											"id": "set-elasticity",
+											"objectClass": "Fruit",
+											"sid": 304279961610020,
+											"behaviorType": "Physics",
+											"parameters": {
+												"elasticity": "0.03"
+											}
+										},
+										{
+											"id": "set-linear-damping",
+											"objectClass": "Fruit",
+											"sid": 181222697074933,
+											"behaviorType": "Physics",
+											"parameters": {
+												"linear-damping": "0.12"
+											}
+										},
+										{
+											"id": "set-angular-damping",
+											"objectClass": "Fruit",
+											"sid": 522343983809071,
+											"behaviorType": "Physics",
+											"parameters": {
+												"angular-damping": "0.08"
+											}
+										}
+									],
+									"sid": 712266617639552
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-animation-playing",
+											"objectClass": "Fruit",
+											"sid": 669051581941278,
+											"parameters": {
+												"animation": "\"10_1\""
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-density",
+											"objectClass": "Fruit",
+											"sid": 131038121708165,
+											"behaviorType": "Physics",
+											"parameters": {
+												"density": "4"
+											}
+										},
+										{
+											"id": "set-friction",
+											"objectClass": "Fruit",
+											"sid": 539153947676059,
+											"behaviorType": "Physics",
+											"parameters": {
+												"friction": "0.65"
+											}
+										},
+										{
+											"id": "set-elasticity",
+											"objectClass": "Fruit",
+											"sid": 377201183502779,
+											"behaviorType": "Physics",
+											"parameters": {
+												"elasticity": "0.03"
+											}
+										},
+										{
+											"id": "set-linear-damping",
+											"objectClass": "Fruit",
+											"sid": 611238194834577,
+											"behaviorType": "Physics",
+											"parameters": {
+												"linear-damping": "0.12"
+											}
+										},
+										{
+											"id": "set-angular-damping",
+											"objectClass": "Fruit",
+											"sid": 428949615600645,
+											"behaviorType": "Physics",
+											"parameters": {
+												"angular-damping": "0.08"
+											}
+										}
+									],
+									"sid": 278627681477491
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-animation-playing",
+											"objectClass": "Fruit",
+											"sid": 730977376954572,
+											"parameters": {
+												"animation": "\"11_1\""
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-density",
+											"objectClass": "Fruit",
+											"sid": 384005542079462,
+											"behaviorType": "Physics",
+											"parameters": {
+												"density": "1.8"
+											}
+										},
+										{
+											"id": "set-friction",
+											"objectClass": "Fruit",
+											"sid": 644262430932120,
+											"behaviorType": "Physics",
+											"parameters": {
+												"friction": "0.4"
+											}
+										},
+										{
+											"id": "set-elasticity",
+											"objectClass": "Fruit",
+											"sid": 645242550293408,
+											"behaviorType": "Physics",
+											"parameters": {
+												"elasticity": "0.15"
+											}
+										},
+										{
+											"id": "set-linear-damping",
+											"objectClass": "Fruit",
+											"sid": 402096686461723,
+											"behaviorType": "Physics",
+											"parameters": {
+												"linear-damping": "0.07"
+											}
+										},
+										{
+											"id": "set-angular-damping",
+											"objectClass": "Fruit",
+											"sid": 282293233325682,
+											"behaviorType": "Physics",
+											"parameters": {
+												"angular-damping": "0.04"
+											}
+										}
+									],
+									"sid": 196884811750875
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "is-animation-playing",
+											"objectClass": "Fruit",
+											"sid": 773299997740194,
+											"parameters": {
+												"animation": "\"12_1\""
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-density",
+											"objectClass": "Fruit",
+											"sid": 894693606890570,
+											"behaviorType": "Physics",
+											"parameters": {
+												"density": "2.7"
+											}
+										},
+										{
+											"id": "set-friction",
+											"objectClass": "Fruit",
+											"sid": 226659411978334,
+											"behaviorType": "Physics",
+											"parameters": {
+												"friction": "0.5"
+											}
+										},
+										{
+											"id": "set-elasticity",
+											"objectClass": "Fruit",
+											"sid": 895630251585474,
+											"behaviorType": "Physics",
+											"parameters": {
+												"elasticity": "0.09"
+											}
+										},
+										{
+											"id": "set-linear-damping",
+											"objectClass": "Fruit",
+											"sid": 727627180995464,
+											"behaviorType": "Physics",
+											"parameters": {
+												"linear-damping": "0.1"
+											}
+										},
+										{
+											"id": "set-angular-damping",
+											"objectClass": "Fruit",
+											"sid": 319803749327766,
+											"behaviorType": "Physics",
+											"parameters": {
+												"angular-damping": "0.06"
+											}
+										}
+									],
+									"sid": 711364071121144
+								}
+							]
+						}
+					]
+				},
+				{
 					"eventType": "block",
 					"conditions": [
 						{
@@ -14741,6 +15621,799 @@
 								}
 							],
 							"sid": 596212185213322
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-animation-playing",
+									"objectClass": "Fruit",
+									"sid": 204493538879384,
+									"parameters": {
+										"animation": "\"0_cherry\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-density",
+									"objectClass": "Fruit",
+									"sid": 749857625490947,
+									"behaviorType": "Physics",
+									"parameters": {
+										"density": "0.2"
+									}
+								},
+								{
+									"id": "set-friction",
+									"objectClass": "Fruit",
+									"sid": 224203335890264,
+									"behaviorType": "Physics",
+									"parameters": {
+										"friction": "0.1"
+									}
+								},
+								{
+									"id": "set-elasticity",
+									"objectClass": "Fruit",
+									"sid": 900537483138158,
+									"behaviorType": "Physics",
+									"parameters": {
+										"elasticity": "0.3"
+									}
+								},
+								{
+									"id": "set-linear-damping",
+									"objectClass": "Fruit",
+									"sid": 240975314902448,
+									"behaviorType": "Physics",
+									"parameters": {
+										"linear-damping": "0.01"
+									}
+								},
+								{
+									"id": "set-angular-damping",
+									"objectClass": "Fruit",
+									"sid": 612482548456310,
+									"behaviorType": "Physics",
+									"parameters": {
+										"angular-damping": "0.01"
+									}
+								}
+							],
+							"sid": 746045867804534
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-animation-playing",
+									"objectClass": "Fruit",
+									"sid": 664415661389928,
+									"parameters": {
+										"animation": "\"1_lemon\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-density",
+									"objectClass": "Fruit",
+									"sid": 293084858706986,
+									"behaviorType": "Physics",
+									"parameters": {
+										"density": "0.2"
+									}
+								},
+								{
+									"id": "set-friction",
+									"objectClass": "Fruit",
+									"sid": 957330420884651,
+									"behaviorType": "Physics",
+									"parameters": {
+										"friction": "0.1"
+									}
+								},
+								{
+									"id": "set-elasticity",
+									"objectClass": "Fruit",
+									"sid": 252928126375232,
+									"behaviorType": "Physics",
+									"parameters": {
+										"elasticity": "0.3"
+									}
+								},
+								{
+									"id": "set-linear-damping",
+									"objectClass": "Fruit",
+									"sid": 282980413729320,
+									"behaviorType": "Physics",
+									"parameters": {
+										"linear-damping": "0.01"
+									}
+								},
+								{
+									"id": "set-angular-damping",
+									"objectClass": "Fruit",
+									"sid": 254644680192630,
+									"behaviorType": "Physics",
+									"parameters": {
+										"angular-damping": "0.01"
+									}
+								}
+							],
+							"sid": 418227252862298
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-animation-playing",
+									"objectClass": "Fruit",
+									"sid": 415660004056457,
+									"parameters": {
+										"animation": "\"2_orange\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-density",
+									"objectClass": "Fruit",
+									"sid": 481940417422442,
+									"behaviorType": "Physics",
+									"parameters": {
+										"density": "0.5"
+									}
+								},
+								{
+									"id": "set-friction",
+									"objectClass": "Fruit",
+									"sid": 760289967114101,
+									"behaviorType": "Physics",
+									"parameters": {
+										"friction": "0.2"
+									}
+								},
+								{
+									"id": "set-elasticity",
+									"objectClass": "Fruit",
+									"sid": 888476324339961,
+									"behaviorType": "Physics",
+									"parameters": {
+										"elasticity": "0.25"
+									}
+								},
+								{
+									"id": "set-linear-damping",
+									"objectClass": "Fruit",
+									"sid": 905319112760076,
+									"behaviorType": "Physics",
+									"parameters": {
+										"linear-damping": "0.03"
+									}
+								},
+								{
+									"id": "set-angular-damping",
+									"objectClass": "Fruit",
+									"sid": 112122455395505,
+									"behaviorType": "Physics",
+									"parameters": {
+										"angular-damping": "0.02"
+									}
+								}
+							],
+							"sid": 682671985837241
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-animation-playing",
+									"objectClass": "Fruit",
+									"sid": 113747691172917,
+									"parameters": {
+										"animation": "\"3_tomato\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-density",
+									"objectClass": "Fruit",
+									"sid": 168824802313848,
+									"behaviorType": "Physics",
+									"parameters": {
+										"density": "0.5"
+									}
+								},
+								{
+									"id": "set-friction",
+									"objectClass": "Fruit",
+									"sid": 360560777687285,
+									"behaviorType": "Physics",
+									"parameters": {
+										"friction": "0.2"
+									}
+								},
+								{
+									"id": "set-elasticity",
+									"objectClass": "Fruit",
+									"sid": 576848908473680,
+									"behaviorType": "Physics",
+									"parameters": {
+										"elasticity": "0.25"
+									}
+								},
+								{
+									"id": "set-linear-damping",
+									"objectClass": "Fruit",
+									"sid": 631631063406416,
+									"behaviorType": "Physics",
+									"parameters": {
+										"linear-damping": "0.03"
+									}
+								},
+								{
+									"id": "set-angular-damping",
+									"objectClass": "Fruit",
+									"sid": 896559137123260,
+									"behaviorType": "Physics",
+									"parameters": {
+										"angular-damping": "0.02"
+									}
+								}
+							],
+							"sid": 917148616703097
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-animation-playing",
+									"objectClass": "Fruit",
+									"sid": 725356861236478,
+									"parameters": {
+										"animation": "\"4_melon\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-density",
+									"objectClass": "Fruit",
+									"sid": 274563302967691,
+									"behaviorType": "Physics",
+									"parameters": {
+										"density": "1"
+									}
+								},
+								{
+									"id": "set-friction",
+									"objectClass": "Fruit",
+									"sid": 737509502024601,
+									"behaviorType": "Physics",
+									"parameters": {
+										"friction": "0.3"
+									}
+								},
+								{
+									"id": "set-elasticity",
+									"objectClass": "Fruit",
+									"sid": 169150534828271,
+									"behaviorType": "Physics",
+									"parameters": {
+										"elasticity": "0.2"
+									}
+								},
+								{
+									"id": "set-linear-damping",
+									"objectClass": "Fruit",
+									"sid": 944087505602314,
+									"behaviorType": "Physics",
+									"parameters": {
+										"linear-damping": "0.05"
+									}
+								},
+								{
+									"id": "set-angular-damping",
+									"objectClass": "Fruit",
+									"sid": 862952762279768,
+									"behaviorType": "Physics",
+									"parameters": {
+										"angular-damping": "0.03"
+									}
+								}
+							],
+							"sid": 754515866066444
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-animation-playing",
+									"objectClass": "Fruit",
+									"sid": 399104453684973,
+									"parameters": {
+										"animation": "\"5_coconut\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-density",
+									"objectClass": "Fruit",
+									"sid": 718936308265769,
+									"behaviorType": "Physics",
+									"parameters": {
+										"density": "1"
+									}
+								},
+								{
+									"id": "set-friction",
+									"objectClass": "Fruit",
+									"sid": 754139125006580,
+									"behaviorType": "Physics",
+									"parameters": {
+										"friction": "0.3"
+									}
+								},
+								{
+									"id": "set-elasticity",
+									"objectClass": "Fruit",
+									"sid": 862493446408082,
+									"behaviorType": "Physics",
+									"parameters": {
+										"elasticity": "0.2"
+									}
+								},
+								{
+									"id": "set-linear-damping",
+									"objectClass": "Fruit",
+									"sid": 425303821180267,
+									"behaviorType": "Physics",
+									"parameters": {
+										"linear-damping": "0.05"
+									}
+								},
+								{
+									"id": "set-angular-damping",
+									"objectClass": "Fruit",
+									"sid": 581428240676642,
+									"behaviorType": "Physics",
+									"parameters": {
+										"angular-damping": "0.03"
+									}
+								}
+							],
+							"sid": 253766361045309
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-animation-playing",
+									"objectClass": "Fruit",
+									"sid": 520232118251739,
+									"parameters": {
+										"animation": "\"6_pumpkin\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-density",
+									"objectClass": "Fruit",
+									"sid": 839579844099777,
+									"behaviorType": "Physics",
+									"parameters": {
+										"density": "1.8"
+									}
+								},
+								{
+									"id": "set-friction",
+									"objectClass": "Fruit",
+									"sid": 407059136063075,
+									"behaviorType": "Physics",
+									"parameters": {
+										"friction": "0.4"
+									}
+								},
+								{
+									"id": "set-elasticity",
+									"objectClass": "Fruit",
+									"sid": 407775157643644,
+									"behaviorType": "Physics",
+									"parameters": {
+										"elasticity": "0.15"
+									}
+								},
+								{
+									"id": "set-linear-damping",
+									"objectClass": "Fruit",
+									"sid": 310826072625367,
+									"behaviorType": "Physics",
+									"parameters": {
+										"linear-damping": "0.07"
+									}
+								},
+								{
+									"id": "set-angular-damping",
+									"objectClass": "Fruit",
+									"sid": 568587801578873,
+									"behaviorType": "Physics",
+									"parameters": {
+										"angular-damping": "0.04"
+									}
+								}
+							],
+							"sid": 897084279512002
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-animation-playing",
+									"objectClass": "Fruit",
+									"sid": 111645622966694,
+									"parameters": {
+										"animation": "\"7_watermelon\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-density",
+									"objectClass": "Fruit",
+									"sid": 426157855797918,
+									"behaviorType": "Physics",
+									"parameters": {
+										"density": "2.7"
+									}
+								},
+								{
+									"id": "set-friction",
+									"objectClass": "Fruit",
+									"sid": 201332480513174,
+									"behaviorType": "Physics",
+									"parameters": {
+										"friction": "0.5"
+									}
+								},
+								{
+									"id": "set-elasticity",
+									"objectClass": "Fruit",
+									"sid": 146677563045419,
+									"behaviorType": "Physics",
+									"parameters": {
+										"elasticity": "0.09"
+									}
+								},
+								{
+									"id": "set-linear-damping",
+									"objectClass": "Fruit",
+									"sid": 300444478341796,
+									"behaviorType": "Physics",
+									"parameters": {
+										"linear-damping": "0.1"
+									}
+								},
+								{
+									"id": "set-angular-damping",
+									"objectClass": "Fruit",
+									"sid": 556085761172911,
+									"behaviorType": "Physics",
+									"parameters": {
+										"angular-damping": "0.06"
+									}
+								}
+							],
+							"sid": 684381055263115
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-animation-playing",
+									"objectClass": "Fruit",
+									"sid": 829907803667333,
+									"parameters": {
+										"animation": "\"8_x1\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-density",
+									"objectClass": "Fruit",
+									"sid": 397310018265626,
+									"behaviorType": "Physics",
+									"parameters": {
+										"density": "2.7"
+									}
+								},
+								{
+									"id": "set-friction",
+									"objectClass": "Fruit",
+									"sid": 782159825773992,
+									"behaviorType": "Physics",
+									"parameters": {
+										"friction": "0.5"
+									}
+								},
+								{
+									"id": "set-elasticity",
+									"objectClass": "Fruit",
+									"sid": 209808747093991,
+									"behaviorType": "Physics",
+									"parameters": {
+										"elasticity": "0.09"
+									}
+								},
+								{
+									"id": "set-linear-damping",
+									"objectClass": "Fruit",
+									"sid": 715042612470530,
+									"behaviorType": "Physics",
+									"parameters": {
+										"linear-damping": "0.1"
+									}
+								},
+								{
+									"id": "set-angular-damping",
+									"objectClass": "Fruit",
+									"sid": 697287875788597,
+									"behaviorType": "Physics",
+									"parameters": {
+										"angular-damping": "0.06"
+									}
+								}
+							],
+							"sid": 664508099723949
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-animation-playing",
+									"objectClass": "Fruit",
+									"sid": 929662755855258,
+									"parameters": {
+										"animation": "\"9_x1\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-density",
+									"objectClass": "Fruit",
+									"sid": 468870958268330,
+									"behaviorType": "Physics",
+									"parameters": {
+										"density": "4"
+									}
+								},
+								{
+									"id": "set-friction",
+									"objectClass": "Fruit",
+									"sid": 259128322144508,
+									"behaviorType": "Physics",
+									"parameters": {
+										"friction": "0.65"
+									}
+								},
+								{
+									"id": "set-elasticity",
+									"objectClass": "Fruit",
+									"sid": 328176395182232,
+									"behaviorType": "Physics",
+									"parameters": {
+										"elasticity": "0.03"
+									}
+								},
+								{
+									"id": "set-linear-damping",
+									"objectClass": "Fruit",
+									"sid": 752942567392484,
+									"behaviorType": "Physics",
+									"parameters": {
+										"linear-damping": "0.12"
+									}
+								},
+								{
+									"id": "set-angular-damping",
+									"objectClass": "Fruit",
+									"sid": 658788162237760,
+									"behaviorType": "Physics",
+									"parameters": {
+										"angular-damping": "0.08"
+									}
+								}
+							],
+							"sid": 948730106062072
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-animation-playing",
+									"objectClass": "Fruit",
+									"sid": 253971421752767,
+									"parameters": {
+										"animation": "\"10_1\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-density",
+									"objectClass": "Fruit",
+									"sid": 979268847328905,
+									"behaviorType": "Physics",
+									"parameters": {
+										"density": "4"
+									}
+								},
+								{
+									"id": "set-friction",
+									"objectClass": "Fruit",
+									"sid": 180838452701519,
+									"behaviorType": "Physics",
+									"parameters": {
+										"friction": "0.65"
+									}
+								},
+								{
+									"id": "set-elasticity",
+									"objectClass": "Fruit",
+									"sid": 266476318771061,
+									"behaviorType": "Physics",
+									"parameters": {
+										"elasticity": "0.03"
+									}
+								},
+								{
+									"id": "set-linear-damping",
+									"objectClass": "Fruit",
+									"sid": 120779679826504,
+									"behaviorType": "Physics",
+									"parameters": {
+										"linear-damping": "0.12"
+									}
+								},
+								{
+									"id": "set-angular-damping",
+									"objectClass": "Fruit",
+									"sid": 537243529344746,
+									"behaviorType": "Physics",
+									"parameters": {
+										"angular-damping": "0.08"
+									}
+								}
+							],
+							"sid": 554768543960296
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-animation-playing",
+									"objectClass": "Fruit",
+									"sid": 243472244075160,
+									"parameters": {
+										"animation": "\"11_1\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-density",
+									"objectClass": "Fruit",
+									"sid": 536367666302165,
+									"behaviorType": "Physics",
+									"parameters": {
+										"density": "1.8"
+									}
+								},
+								{
+									"id": "set-friction",
+									"objectClass": "Fruit",
+									"sid": 557933333968851,
+									"behaviorType": "Physics",
+									"parameters": {
+										"friction": "0.4"
+									}
+								},
+								{
+									"id": "set-elasticity",
+									"objectClass": "Fruit",
+									"sid": 948331703711558,
+									"behaviorType": "Physics",
+									"parameters": {
+										"elasticity": "0.15"
+									}
+								},
+								{
+									"id": "set-linear-damping",
+									"objectClass": "Fruit",
+									"sid": 550971332102082,
+									"behaviorType": "Physics",
+									"parameters": {
+										"linear-damping": "0.07"
+									}
+								},
+								{
+									"id": "set-angular-damping",
+									"objectClass": "Fruit",
+									"sid": 724931954291980,
+									"behaviorType": "Physics",
+									"parameters": {
+										"angular-damping": "0.04"
+									}
+								}
+							],
+							"sid": 815590168783133
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-animation-playing",
+									"objectClass": "Fruit",
+									"sid": 863619098312924,
+									"parameters": {
+										"animation": "\"12_1\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-density",
+									"objectClass": "Fruit",
+									"sid": 813516961347752,
+									"behaviorType": "Physics",
+									"parameters": {
+										"density": "2.7"
+									}
+								},
+								{
+									"id": "set-friction",
+									"objectClass": "Fruit",
+									"sid": 133424237285539,
+									"behaviorType": "Physics",
+									"parameters": {
+										"friction": "0.5"
+									}
+								},
+								{
+									"id": "set-elasticity",
+									"objectClass": "Fruit",
+									"sid": 453133690713432,
+									"behaviorType": "Physics",
+									"parameters": {
+										"elasticity": "0.09"
+									}
+								},
+								{
+									"id": "set-linear-damping",
+									"objectClass": "Fruit",
+									"sid": 557884905095257,
+									"behaviorType": "Physics",
+									"parameters": {
+										"linear-damping": "0.1"
+									}
+								},
+								{
+									"id": "set-angular-damping",
+									"objectClass": "Fruit",
+									"sid": 777342952015497,
+									"behaviorType": "Physics",
+									"parameters": {
+										"angular-damping": "0.06"
+									}
+								}
+							],
+							"sid": 793917473345169
 						}
 					]
 				},
@@ -21504,6 +23177,10 @@
 									"script": [
 										"runtime.callFunction(\"set_boosters_text\");"
 									]
+								},
+								{
+									"callFunction": "set_physics_fruit",
+									"sid": 478561075793787
 								}
 							],
 							"sid": 235201106937880,
@@ -21898,6 +23575,17 @@
 								},
 								{
 									"id": "apply-impulse",
+									"objectClass": "props",
+									"sid": 231471812184509,
+									"behaviorType": "Physics",
+									"parameters": {
+										"impulse-x": "1",
+										"implulse-y": "1",
+										"image-point": "0"
+									}
+								},
+								{
+									"id": "apply-impulse",
 									"objectClass": "props_wood_rectangle",
 									"sid": 528038037396016,
 									"behaviorType": "Physics",
@@ -21905,6 +23593,15 @@
 										"impulse-x": "50",
 										"implulse-y": "50",
 										"image-point": "0"
+									}
+								},
+								{
+									"id": "set-density",
+									"objectClass": "props",
+									"sid": 805141812433834,
+									"behaviorType": "Physics",
+									"parameters": {
+										"density": "100"
 									}
 								},
 								{
@@ -22243,6 +23940,15 @@
 													"id": "set-density",
 													"objectClass": "FruitFamily",
 													"sid": 510214368065149,
+													"behaviorType": "Physics",
+													"parameters": {
+														"density": "1"
+													}
+												},
+												{
+													"id": "set-density",
+													"objectClass": "props",
+													"sid": 318574448662535,
 													"behaviorType": "Physics",
 													"parameters": {
 														"density": "1"
@@ -23064,45 +24770,114 @@
 									"eventType": "block",
 									"conditions": [
 										{
-											"id": "pick-last-created",
+											"id": "compare-boolean-eventvar",
 											"objectClass": "System",
-											"sid": 584372091936679,
+											"sid": 989907232219350,
 											"parameters": {
-												"object": "Fruit"
-											}
-										},
-										{
-											"id": "is-timer-running",
-											"objectClass": "Fruit",
-											"sid": 355097189634788,
-											"behaviorType": "Timer",
-											"parameters": {
-												"tag": "\"FruitActive\""
-											},
-											"isInverted": true
-										},
-										{
-											"id": "is-timer-running",
-											"objectClass": "Fruit",
-											"sid": 594059190950935,
-											"behaviorType": "Timer",
-											"parameters": {
-												"tag": "\"FruitHit\""
+												"variable": "shake_activated"
 											},
 											"isInverted": true
 										}
 									],
-									"actions": [
+									"actions": [],
+									"sid": 406693863035643,
+									"children": [
 										{
-											"callFunction": "no_activites",
-											"sid": 639980927790588
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "pick-last-created",
+													"objectClass": "System",
+													"sid": 794298537648798,
+													"parameters": {
+														"object": "Fruit"
+													}
+												},
+												{
+													"id": "is-timer-running",
+													"objectClass": "Fruit",
+													"sid": 906119026503641,
+													"behaviorType": "Timer",
+													"parameters": {
+														"tag": "\"FruitActive\""
+													},
+													"isInverted": true
+												},
+												{
+													"id": "is-timer-running",
+													"objectClass": "Fruit",
+													"sid": 371540484856825,
+													"behaviorType": "Timer",
+													"parameters": {
+														"tag": "\"FruitHit\""
+													},
+													"isInverted": true
+												}
+											],
+											"actions": [
+												{
+													"callFunction": "no_activites",
+													"sid": 374145458051493
+												}
+											],
+											"sid": 435264609220678
 										}
-									],
-									"sid": 372479139627848
+									]
 								}
 							]
 						}
 					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 847014645926057,
+							"parameters": {
+								"variable": "game_mode",
+								"comparison": 0,
+								"value": "\"adventure\""
+							}
+						},
+						{
+							"id": "compare-boolean-eventvar",
+							"objectClass": "System",
+							"sid": 852207415719678,
+							"parameters": {
+								"variable": "level_completed"
+							}
+						},
+						{
+							"id": "compare-boolean-eventvar",
+							"objectClass": "System",
+							"sid": 420398924136834,
+							"parameters": {
+								"variable": "shake_activated"
+							},
+							"isInverted": true
+						}
+					],
+					"actions": [
+						{
+							"id": "set-boolean-eventvar",
+							"objectClass": "System",
+							"sid": 317480719383932,
+							"parameters": {
+								"variable": "level_completed",
+								"value": "false"
+							}
+						},
+						{
+							"callFunction": "gameOver",
+							"sid": 496254663975584,
+							"parameters": [
+								"\"completed\""
+							]
+						}
+					],
+					"sid": 133348138006878
 				},
 				{
 					"functionName": "check_goals_completed",
@@ -23196,8 +24971,9 @@
 										"}",
 										"",
 										"if(goals_completed == 0){",
+										"\truntime.globalVars.level_completed = true;",
 										"\tconsole.log(\"GameOver\");",
-										"\truntime.callFunction(\"gameOver\", \"completed\");",
+										"\t// runtime.callFunction(\"gameOver\", \"completed\");",
 										"}"
 									]
 								}
