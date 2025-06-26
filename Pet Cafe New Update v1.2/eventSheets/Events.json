@@ -14773,7 +14773,7 @@
 										{
 											"id": "set-density",
 											"objectClass": "Fruit",
-											"sid": 640476614736476,
+											"sid": 210862925434290,
 											"behaviorType": "Physics",
 											"parameters": {
 												"density": "0.2"
@@ -14782,10 +14782,10 @@
 										{
 											"id": "set-friction",
 											"objectClass": "Fruit",
-											"sid": 240827011583030,
+											"sid": 545649607512662,
 											"behaviorType": "Physics",
 											"parameters": {
-												"friction": "0.1"
+												"friction": "0.2"
 											}
 										},
 										{
@@ -14800,19 +14800,19 @@
 										{
 											"id": "set-linear-damping",
 											"objectClass": "Fruit",
-											"sid": 612381087991940,
+											"sid": 917501170802392,
 											"behaviorType": "Physics",
 											"parameters": {
-												"linear-damping": "0.005"
+												"linear-damping": "0.05"
 											}
 										},
 										{
 											"id": "set-angular-damping",
 											"objectClass": "Fruit",
-											"sid": 910598759758113,
+											"sid": 288854658508743,
 											"behaviorType": "Physics",
 											"parameters": {
-												"angular-damping": "0.005"
+												"angular-damping": "0.05"
 											}
 										}
 									],
@@ -14834,7 +14834,7 @@
 										{
 											"id": "set-density",
 											"objectClass": "Fruit",
-											"sid": 247018817591318,
+											"sid": 916078920002428,
 											"behaviorType": "Physics",
 											"parameters": {
 												"density": "0.2"
@@ -14843,10 +14843,10 @@
 										{
 											"id": "set-friction",
 											"objectClass": "Fruit",
-											"sid": 354126392415143,
+											"sid": 593114265819872,
 											"behaviorType": "Physics",
 											"parameters": {
-												"friction": "0.1"
+												"friction": "0.2"
 											}
 										},
 										{
@@ -14861,19 +14861,19 @@
 										{
 											"id": "set-linear-damping",
 											"objectClass": "Fruit",
-											"sid": 131086660892438,
+											"sid": 508442962520411,
 											"behaviorType": "Physics",
 											"parameters": {
-												"linear-damping": "0.005"
+												"linear-damping": "0.05"
 											}
 										},
 										{
 											"id": "set-angular-damping",
 											"objectClass": "Fruit",
-											"sid": 919119112941489,
+											"sid": 896872524643493,
 											"behaviorType": "Physics",
 											"parameters": {
-												"angular-damping": "0.005"
+												"angular-damping": "0.05"
 											}
 										}
 									],
@@ -14895,7 +14895,7 @@
 										{
 											"id": "set-density",
 											"objectClass": "Fruit",
-											"sid": 756044391057757,
+											"sid": 959167916031970,
 											"behaviorType": "Physics",
 											"parameters": {
 												"density": "0.5"
@@ -14904,10 +14904,10 @@
 										{
 											"id": "set-friction",
 											"objectClass": "Fruit",
-											"sid": 399232832593007,
+											"sid": 954135801188078,
 											"behaviorType": "Physics",
 											"parameters": {
-												"friction": "0.15"
+												"friction": "0.25"
 											}
 										},
 										{
@@ -14922,19 +14922,19 @@
 										{
 											"id": "set-linear-damping",
 											"objectClass": "Fruit",
-											"sid": 407451581072953,
+											"sid": 258266196203472,
 											"behaviorType": "Physics",
 											"parameters": {
-												"linear-damping": "0.01"
+												"linear-damping": "0.07"
 											}
 										},
 										{
 											"id": "set-angular-damping",
 											"objectClass": "Fruit",
-											"sid": 949764601038579,
+											"sid": 263343893768461,
 											"behaviorType": "Physics",
 											"parameters": {
-												"angular-damping": "\t0.008"
+												"angular-damping": "0.06"
 											}
 										}
 									],
@@ -14956,7 +14956,7 @@
 										{
 											"id": "set-density",
 											"objectClass": "Fruit",
-											"sid": 462812345775133,
+											"sid": 977075593058460,
 											"behaviorType": "Physics",
 											"parameters": {
 												"density": "0.5"
@@ -14965,10 +14965,10 @@
 										{
 											"id": "set-friction",
 											"objectClass": "Fruit",
-											"sid": 499411670072330,
+											"sid": 107069785331664,
 											"behaviorType": "Physics",
 											"parameters": {
-												"friction": "0.15"
+												"friction": "0.25"
 											}
 										},
 										{
@@ -14983,19 +14983,19 @@
 										{
 											"id": "set-linear-damping",
 											"objectClass": "Fruit",
-											"sid": 374001562238919,
+											"sid": 907967311867796,
 											"behaviorType": "Physics",
 											"parameters": {
-												"linear-damping": "0.01"
+												"linear-damping": "0.07"
 											}
 										},
 										{
 											"id": "set-angular-damping",
 											"objectClass": "Fruit",
-											"sid": 820101140447079,
+											"sid": 770043567726955,
 											"behaviorType": "Physics",
 											"parameters": {
-												"angular-damping": "\t0.008"
+												"angular-damping": "0.06"
 											}
 										}
 									],
@@ -15017,7 +15017,7 @@
 										{
 											"id": "set-density",
 											"objectClass": "Fruit",
-											"sid": 621764356792066,
+											"sid": 950922836218559,
 											"behaviorType": "Physics",
 											"parameters": {
 												"density": "1"
@@ -15026,10 +15026,10 @@
 										{
 											"id": "set-friction",
 											"objectClass": "Fruit",
-											"sid": 543430960739748,
+											"sid": 722376941122784,
 											"behaviorType": "Physics",
 											"parameters": {
-												"friction": "\t0.2"
+												"friction": "0.3"
 											}
 										},
 										{
@@ -15044,19 +15044,19 @@
 										{
 											"id": "set-linear-damping",
 											"objectClass": "Fruit",
-											"sid": 430577372827157,
+											"sid": 828645277495044,
 											"behaviorType": "Physics",
 											"parameters": {
-												"linear-damping": "0.015"
+												"linear-damping": "0.1"
 											}
 										},
 										{
 											"id": "set-angular-damping",
 											"objectClass": "Fruit",
-											"sid": 582906061158586,
+											"sid": 889680810624641,
 											"behaviorType": "Physics",
 											"parameters": {
-												"angular-damping": "0.01"
+												"angular-damping": "0.08"
 											}
 										}
 									],
@@ -15078,7 +15078,7 @@
 										{
 											"id": "set-density",
 											"objectClass": "Fruit",
-											"sid": 842597390721595,
+											"sid": 411706008712269,
 											"behaviorType": "Physics",
 											"parameters": {
 												"density": "1"
@@ -15087,10 +15087,10 @@
 										{
 											"id": "set-friction",
 											"objectClass": "Fruit",
-											"sid": 244236910287281,
+											"sid": 112573190216382,
 											"behaviorType": "Physics",
 											"parameters": {
-												"friction": "\t0.2"
+												"friction": "0.3"
 											}
 										},
 										{
@@ -15105,19 +15105,19 @@
 										{
 											"id": "set-linear-damping",
 											"objectClass": "Fruit",
-											"sid": 181374019138103,
+											"sid": 682271925913875,
 											"behaviorType": "Physics",
 											"parameters": {
-												"linear-damping": "0.015"
+												"linear-damping": "0.1"
 											}
 										},
 										{
 											"id": "set-angular-damping",
 											"objectClass": "Fruit",
-											"sid": 990478612050187,
+											"sid": 571202793447485,
 											"behaviorType": "Physics",
 											"parameters": {
-												"angular-damping": "0.01"
+												"angular-damping": "0.08"
 											}
 										}
 									],
@@ -15139,7 +15139,7 @@
 										{
 											"id": "set-density",
 											"objectClass": "Fruit",
-											"sid": 304012498223212,
+											"sid": 733767527445318,
 											"behaviorType": "Physics",
 											"parameters": {
 												"density": "1.8"
@@ -15148,10 +15148,10 @@
 										{
 											"id": "set-friction",
 											"objectClass": "Fruit",
-											"sid": 578460424295583,
+											"sid": 193624941080386,
 											"behaviorType": "Physics",
 											"parameters": {
-												"friction": "\t0.25"
+												"friction": "0.35"
 											}
 										},
 										{
@@ -15166,19 +15166,19 @@
 										{
 											"id": "set-linear-damping",
 											"objectClass": "Fruit",
-											"sid": 894370400668304,
+											"sid": 803357643435552,
 											"behaviorType": "Physics",
 											"parameters": {
-												"linear-damping": "0.02"
+												"linear-damping": "0.12"
 											}
 										},
 										{
 											"id": "set-angular-damping",
 											"objectClass": "Fruit",
-											"sid": 116355412364304,
+											"sid": 447243374748016,
 											"behaviorType": "Physics",
 											"parameters": {
-												"angular-damping": "0.015"
+												"angular-damping": "0.1"
 											}
 										}
 									],
@@ -15200,7 +15200,7 @@
 										{
 											"id": "set-density",
 											"objectClass": "Fruit",
-											"sid": 600128066677308,
+											"sid": 115742223358640,
 											"behaviorType": "Physics",
 											"parameters": {
 												"density": "1.8"
@@ -15209,10 +15209,10 @@
 										{
 											"id": "set-friction",
 											"objectClass": "Fruit",
-											"sid": 777893604122958,
+											"sid": 666392461371611,
 											"behaviorType": "Physics",
 											"parameters": {
-												"friction": "\t0.25"
+												"friction": "0.35"
 											}
 										},
 										{
@@ -15227,19 +15227,19 @@
 										{
 											"id": "set-linear-damping",
 											"objectClass": "Fruit",
-											"sid": 896830887848799,
+											"sid": 280848616277935,
 											"behaviorType": "Physics",
 											"parameters": {
-												"linear-damping": "0.02"
+												"linear-damping": "0.12"
 											}
 										},
 										{
 											"id": "set-angular-damping",
 											"objectClass": "Fruit",
-											"sid": 361456880331132,
+											"sid": 548229101483035,
 											"behaviorType": "Physics",
 											"parameters": {
-												"angular-damping": "0.015"
+												"angular-damping": "0.1"
 											}
 										}
 									],
@@ -15261,7 +15261,7 @@
 										{
 											"id": "set-density",
 											"objectClass": "Fruit",
-											"sid": 431159319698993,
+											"sid": 764899920724530,
 											"behaviorType": "Physics",
 											"parameters": {
 												"density": "2.7"
@@ -15270,37 +15270,37 @@
 										{
 											"id": "set-friction",
 											"objectClass": "Fruit",
-											"sid": 437595311013353,
+											"sid": 350294871483930,
 											"behaviorType": "Physics",
 											"parameters": {
-												"friction": "0.3"
+												"friction": "0.4"
 											}
 										},
 										{
 											"id": "set-elasticity",
 											"objectClass": "Fruit",
-											"sid": 923064213484921,
+											"sid": 589340677301334,
 											"behaviorType": "Physics",
 											"parameters": {
-												"elasticity": "0.05"
+												"elasticity": "0.06"
 											}
 										},
 										{
 											"id": "set-linear-damping",
 											"objectClass": "Fruit",
-											"sid": 956797832342521,
+											"sid": 700176845028461,
 											"behaviorType": "Physics",
 											"parameters": {
-												"linear-damping": "0.1"
+												"linear-damping": "0.15"
 											}
 										},
 										{
 											"id": "set-angular-damping",
 											"objectClass": "Fruit",
-											"sid": 556625114936847,
+											"sid": 801233887775824,
 											"behaviorType": "Physics",
 											"parameters": {
-												"angular-damping": "0.06"
+												"angular-damping": "0.02"
 											}
 										}
 									],
@@ -15322,19 +15322,19 @@
 										{
 											"id": "set-density",
 											"objectClass": "Fruit",
-											"sid": 521388948705560,
+											"sid": 377835576696545,
 											"behaviorType": "Physics",
 											"parameters": {
-												"density": "4"
+												"density": "2.7"
 											}
 										},
 										{
 											"id": "set-friction",
 											"objectClass": "Fruit",
-											"sid": 600784360344386,
+											"sid": 566393056554270,
 											"behaviorType": "Physics",
 											"parameters": {
-												"friction": "0.65"
+												"friction": "0.4"
 											}
 										},
 										{
@@ -15349,16 +15349,16 @@
 										{
 											"id": "set-linear-damping",
 											"objectClass": "Fruit",
-											"sid": 435161162024309,
+											"sid": 746571225577897,
 											"behaviorType": "Physics",
 											"parameters": {
-												"linear-damping": "0.03"
+												"linear-damping": "0.15"
 											}
 										},
 										{
 											"id": "set-angular-damping",
 											"objectClass": "Fruit",
-											"sid": 598559398484721,
+											"sid": 436138058938639,
 											"behaviorType": "Physics",
 											"parameters": {
 												"angular-damping": "0.02"
@@ -15383,7 +15383,7 @@
 										{
 											"id": "set-density",
 											"objectClass": "Fruit",
-											"sid": 131038121708165,
+											"sid": 268125729307043,
 											"behaviorType": "Physics",
 											"parameters": {
 												"density": "4"
@@ -15392,37 +15392,37 @@
 										{
 											"id": "set-friction",
 											"objectClass": "Fruit",
-											"sid": 539153947676059,
+											"sid": 632360245737404,
 											"behaviorType": "Physics",
 											"parameters": {
-												"friction": "0.65"
+												"friction": "0.45"
 											}
 										},
 										{
 											"id": "set-elasticity",
 											"objectClass": "Fruit",
-											"sid": 969527409065127,
+											"sid": 671152615175149,
 											"behaviorType": "Physics",
 											"parameters": {
-												"elasticity": "0.06"
+												"elasticity": "0.03"
 											}
 										},
 										{
 											"id": "set-linear-damping",
 											"objectClass": "Fruit",
-											"sid": 513791496850282,
+											"sid": 630868689985919,
 											"behaviorType": "Physics",
 											"parameters": {
-												"linear-damping": "0.03"
+												"linear-damping": "0.18"
 											}
 										},
 										{
 											"id": "set-angular-damping",
 											"objectClass": "Fruit",
-											"sid": 692286608888475,
+											"sid": 885005216480278,
 											"behaviorType": "Physics",
 											"parameters": {
-												"angular-damping": "0.02"
+												"angular-damping": "0.15"
 											}
 										}
 									],
@@ -15453,10 +15453,10 @@
 										{
 											"id": "set-friction",
 											"objectClass": "Fruit",
-											"sid": 199870463819602,
+											"sid": 431976215729285,
 											"behaviorType": "Physics",
 											"parameters": {
-												"friction": "\t0.25"
+												"friction": "0.35"
 											}
 										},
 										{
@@ -15471,19 +15471,19 @@
 										{
 											"id": "set-linear-damping",
 											"objectClass": "Fruit",
-											"sid": 947958170822665,
+											"sid": 633560113023585,
 											"behaviorType": "Physics",
 											"parameters": {
-												"linear-damping": "0.02"
+												"linear-damping": "0.08"
 											}
 										},
 										{
 											"id": "set-angular-damping",
 											"objectClass": "Fruit",
-											"sid": 628229727939256,
+											"sid": 404010174370003,
 											"behaviorType": "Physics",
 											"parameters": {
-												"angular-damping": "0.015"
+												"angular-damping": "0.12"
 											}
 										}
 									],
@@ -15514,10 +15514,10 @@
 										{
 											"id": "set-friction",
 											"objectClass": "Fruit",
-											"sid": 484667864706707,
+											"sid": 760916314637095,
 											"behaviorType": "Physics",
 											"parameters": {
-												"friction": "0.35"
+												"friction": "0.4"
 											}
 										},
 										{
@@ -15532,19 +15532,19 @@
 										{
 											"id": "set-linear-damping",
 											"objectClass": "Fruit",
-											"sid": 837503015118263,
+											"sid": 583918850814596,
 											"behaviorType": "Physics",
 											"parameters": {
-												"linear-damping": "0.4"
+												"linear-damping": "0.15"
 											}
 										},
 										{
 											"id": "set-angular-damping",
 											"objectClass": "Fruit",
-											"sid": 395406770448369,
+											"sid": 576677354193659,
 											"behaviorType": "Physics",
 											"parameters": {
-												"angular-damping": "0.03"
+												"angular-damping": "0.12"
 											}
 										}
 									],
@@ -15638,7 +15638,7 @@
 								{
 									"id": "set-density",
 									"objectClass": "Fruit",
-									"sid": 749857625490947,
+									"sid": 982696200864308,
 									"behaviorType": "Physics",
 									"parameters": {
 										"density": "0.2"
@@ -15647,10 +15647,10 @@
 								{
 									"id": "set-friction",
 									"objectClass": "Fruit",
-									"sid": 527860786585706,
+									"sid": 458659221425758,
 									"behaviorType": "Physics",
 									"parameters": {
-										"friction": "0.1"
+										"friction": "0.2"
 									}
 								},
 								{
@@ -15665,19 +15665,19 @@
 								{
 									"id": "set-linear-damping",
 									"objectClass": "Fruit",
-									"sid": 192897054873197,
+									"sid": 384021127715657,
 									"behaviorType": "Physics",
 									"parameters": {
-										"linear-damping": "0.005"
+										"linear-damping": "0.05"
 									}
 								},
 								{
 									"id": "set-angular-damping",
 									"objectClass": "Fruit",
-									"sid": 548182854044884,
+									"sid": 752439116895251,
 									"behaviorType": "Physics",
 									"parameters": {
-										"angular-damping": "0.005"
+										"angular-damping": "0.05"
 									}
 								}
 							],
@@ -15699,7 +15699,7 @@
 								{
 									"id": "set-density",
 									"objectClass": "Fruit",
-									"sid": 293084858706986,
+									"sid": 236903206871824,
 									"behaviorType": "Physics",
 									"parameters": {
 										"density": "0.2"
@@ -15708,10 +15708,10 @@
 								{
 									"id": "set-friction",
 									"objectClass": "Fruit",
-									"sid": 426081653100618,
+									"sid": 237711821382650,
 									"behaviorType": "Physics",
 									"parameters": {
-										"friction": "\t0.1"
+										"friction": "0.2"
 									}
 								},
 								{
@@ -15726,19 +15726,19 @@
 								{
 									"id": "set-linear-damping",
 									"objectClass": "Fruit",
-									"sid": 365541408805928,
+									"sid": 340333570775335,
 									"behaviorType": "Physics",
 									"parameters": {
-										"linear-damping": "0.005"
+										"linear-damping": "0.05"
 									}
 								},
 								{
 									"id": "set-angular-damping",
 									"objectClass": "Fruit",
-									"sid": 463955265944208,
+									"sid": 236855916668341,
 									"behaviorType": "Physics",
 									"parameters": {
-										"angular-damping": "0.005"
+										"angular-damping": "0.05"
 									}
 								}
 							],
@@ -15760,7 +15760,7 @@
 								{
 									"id": "set-density",
 									"objectClass": "Fruit",
-									"sid": 481940417422442,
+									"sid": 123417658680558,
 									"behaviorType": "Physics",
 									"parameters": {
 										"density": "0.5"
@@ -15769,10 +15769,10 @@
 								{
 									"id": "set-friction",
 									"objectClass": "Fruit",
-									"sid": 667911825371621,
+									"sid": 775915915511591,
 									"behaviorType": "Physics",
 									"parameters": {
-										"friction": "0.15"
+										"friction": "0.25"
 									}
 								},
 								{
@@ -15787,19 +15787,19 @@
 								{
 									"id": "set-linear-damping",
 									"objectClass": "Fruit",
-									"sid": 302474382599071,
+									"sid": 471157533965610,
 									"behaviorType": "Physics",
 									"parameters": {
-										"linear-damping": "0.01"
+										"linear-damping": "0.07"
 									}
 								},
 								{
 									"id": "set-angular-damping",
 									"objectClass": "Fruit",
-									"sid": 918331168771841,
+									"sid": 810674622659566,
 									"behaviorType": "Physics",
 									"parameters": {
-										"angular-damping": "\t0.008"
+										"angular-damping": "0.06"
 									}
 								}
 							],
@@ -15821,7 +15821,7 @@
 								{
 									"id": "set-density",
 									"objectClass": "Fruit",
-									"sid": 168824802313848,
+									"sid": 401118796654570,
 									"behaviorType": "Physics",
 									"parameters": {
 										"density": "0.5"
@@ -15830,10 +15830,10 @@
 								{
 									"id": "set-friction",
 									"objectClass": "Fruit",
-									"sid": 749876279478651,
+									"sid": 318242716688983,
 									"behaviorType": "Physics",
 									"parameters": {
-										"friction": "0.15"
+										"friction": "0.25"
 									}
 								},
 								{
@@ -15848,19 +15848,19 @@
 								{
 									"id": "set-linear-damping",
 									"objectClass": "Fruit",
-									"sid": 118458923042719,
+									"sid": 693417345213289,
 									"behaviorType": "Physics",
 									"parameters": {
-										"linear-damping": "0.01"
+										"linear-damping": "0.07"
 									}
 								},
 								{
 									"id": "set-angular-damping",
 									"objectClass": "Fruit",
-									"sid": 428080308261916,
+									"sid": 288236541168061,
 									"behaviorType": "Physics",
 									"parameters": {
-										"angular-damping": "\t0.008"
+										"angular-damping": "0.06"
 									}
 								}
 							],
@@ -15882,7 +15882,7 @@
 								{
 									"id": "set-density",
 									"objectClass": "Fruit",
-									"sid": 274563302967691,
+									"sid": 194748784408782,
 									"behaviorType": "Physics",
 									"parameters": {
 										"density": "1"
@@ -15891,10 +15891,10 @@
 								{
 									"id": "set-friction",
 									"objectClass": "Fruit",
-									"sid": 507418775061294,
+									"sid": 565723807229154,
 									"behaviorType": "Physics",
 									"parameters": {
-										"friction": "\t0.2"
+										"friction": "0.3"
 									}
 								},
 								{
@@ -15909,19 +15909,19 @@
 								{
 									"id": "set-linear-damping",
 									"objectClass": "Fruit",
-									"sid": 726015200771080,
+									"sid": 707168944240136,
 									"behaviorType": "Physics",
 									"parameters": {
-										"linear-damping": "0.015"
+										"linear-damping": "0.1"
 									}
 								},
 								{
 									"id": "set-angular-damping",
 									"objectClass": "Fruit",
-									"sid": 866659374550761,
+									"sid": 212937897685611,
 									"behaviorType": "Physics",
 									"parameters": {
-										"angular-damping": "0.01"
+										"angular-damping": "0.08"
 									}
 								}
 							],
@@ -15943,7 +15943,7 @@
 								{
 									"id": "set-density",
 									"objectClass": "Fruit",
-									"sid": 718936308265769,
+									"sid": 908507263738246,
 									"behaviorType": "Physics",
 									"parameters": {
 										"density": "1"
@@ -15952,10 +15952,10 @@
 								{
 									"id": "set-friction",
 									"objectClass": "Fruit",
-									"sid": 947856345992191,
+									"sid": 668181221114610,
 									"behaviorType": "Physics",
 									"parameters": {
-										"friction": "0.2"
+										"friction": "\t0.3"
 									}
 								},
 								{
@@ -15970,19 +15970,19 @@
 								{
 									"id": "set-linear-damping",
 									"objectClass": "Fruit",
-									"sid": 700121161422814,
+									"sid": 753396734853372,
 									"behaviorType": "Physics",
 									"parameters": {
-										"linear-damping": "\t0.015"
+										"linear-damping": "0.1"
 									}
 								},
 								{
 									"id": "set-angular-damping",
 									"objectClass": "Fruit",
-									"sid": 906320729865703,
+									"sid": 674016515966545,
 									"behaviorType": "Physics",
 									"parameters": {
-										"angular-damping": "0.01"
+										"angular-damping": "0.08"
 									}
 								}
 							],
@@ -16004,7 +16004,7 @@
 								{
 									"id": "set-density",
 									"objectClass": "Fruit",
-									"sid": 839579844099777,
+									"sid": 230259877293332,
 									"behaviorType": "Physics",
 									"parameters": {
 										"density": "1.8"
@@ -16013,10 +16013,10 @@
 								{
 									"id": "set-friction",
 									"objectClass": "Fruit",
-									"sid": 415119310723933,
+									"sid": 359837293764605,
 									"behaviorType": "Physics",
 									"parameters": {
-										"friction": "\t0.25"
+										"friction": "0.35"
 									}
 								},
 								{
@@ -16031,19 +16031,19 @@
 								{
 									"id": "set-linear-damping",
 									"objectClass": "Fruit",
-									"sid": 299505435507346,
+									"sid": 751903267105357,
 									"behaviorType": "Physics",
 									"parameters": {
-										"linear-damping": "0.02"
+										"linear-damping": "0.12"
 									}
 								},
 								{
 									"id": "set-angular-damping",
 									"objectClass": "Fruit",
-									"sid": 865152489246235,
+									"sid": 608653373749957,
 									"behaviorType": "Physics",
 									"parameters": {
-										"angular-damping": "0.015"
+										"angular-damping": "0.1"
 									}
 								}
 							],
@@ -16065,7 +16065,7 @@
 								{
 									"id": "set-density",
 									"objectClass": "Fruit",
-									"sid": 314245065732100,
+									"sid": 278417310460246,
 									"behaviorType": "Physics",
 									"parameters": {
 										"density": "1.8"
@@ -16074,10 +16074,10 @@
 								{
 									"id": "set-friction",
 									"objectClass": "Fruit",
-									"sid": 135923415404784,
+									"sid": 875514785666746,
 									"behaviorType": "Physics",
 									"parameters": {
-										"friction": "0.25"
+										"friction": "0.35"
 									}
 								},
 								{
@@ -16092,19 +16092,19 @@
 								{
 									"id": "set-linear-damping",
 									"objectClass": "Fruit",
-									"sid": 129063612106063,
+									"sid": 160825306619471,
 									"behaviorType": "Physics",
 									"parameters": {
-										"linear-damping": "\t0.02"
+										"linear-damping": "0.12"
 									}
 								},
 								{
 									"id": "set-angular-damping",
 									"objectClass": "Fruit",
-									"sid": 428302091745466,
+									"sid": 250340156967179,
 									"behaviorType": "Physics",
 									"parameters": {
-										"angular-damping": "0.015"
+										"angular-damping": "0.1"
 									}
 								}
 							],
@@ -16126,7 +16126,7 @@
 								{
 									"id": "set-density",
 									"objectClass": "Fruit",
-									"sid": 397310018265626,
+									"sid": 400072558959903,
 									"behaviorType": "Physics",
 									"parameters": {
 										"density": "2.7"
@@ -16135,10 +16135,10 @@
 								{
 									"id": "set-friction",
 									"objectClass": "Fruit",
-									"sid": 149926591548195,
+									"sid": 822083933016608,
 									"behaviorType": "Physics",
 									"parameters": {
-										"friction": "\t0.3"
+										"friction": "0.4"
 									}
 								},
 								{
@@ -16153,10 +16153,10 @@
 								{
 									"id": "set-linear-damping",
 									"objectClass": "Fruit",
-									"sid": 251139173807381,
+									"sid": 451856877060782,
 									"behaviorType": "Physics",
 									"parameters": {
-										"linear-damping": "0.03"
+										"linear-damping": "0.15"
 									}
 								},
 								{
@@ -16187,7 +16187,7 @@
 								{
 									"id": "set-density",
 									"objectClass": "Fruit",
-									"sid": 341288084983659,
+									"sid": 765440608005724,
 									"behaviorType": "Physics",
 									"parameters": {
 										"density": "2.7"
@@ -16196,10 +16196,10 @@
 								{
 									"id": "set-friction",
 									"objectClass": "Fruit",
-									"sid": 963177476626620,
+									"sid": 135959158093113,
 									"behaviorType": "Physics",
 									"parameters": {
-										"friction": "\t0.3"
+										"friction": "0.4"
 									}
 								},
 								{
@@ -16214,10 +16214,10 @@
 								{
 									"id": "set-linear-damping",
 									"objectClass": "Fruit",
-									"sid": 800164237284240,
+									"sid": 261214738137339,
 									"behaviorType": "Physics",
 									"parameters": {
-										"linear-damping": "0.03"
+										"linear-damping": "0.15"
 									}
 								},
 								{
@@ -16248,7 +16248,7 @@
 								{
 									"id": "set-density",
 									"objectClass": "Fruit",
-									"sid": 979268847328905,
+									"sid": 915118163087762,
 									"behaviorType": "Physics",
 									"parameters": {
 										"density": "4"
@@ -16257,10 +16257,10 @@
 								{
 									"id": "set-friction",
 									"objectClass": "Fruit",
-									"sid": 417263635979591,
+									"sid": 448187046411643,
 									"behaviorType": "Physics",
 									"parameters": {
-										"friction": "0.35"
+										"friction": "\t0.45"
 									}
 								},
 								{
@@ -16275,19 +16275,19 @@
 								{
 									"id": "set-linear-damping",
 									"objectClass": "Fruit",
-									"sid": 962576611356003,
+									"sid": 953851024839034,
 									"behaviorType": "Physics",
 									"parameters": {
-										"linear-damping": "0.04"
+										"linear-damping": "\t0.18"
 									}
 								},
 								{
 									"id": "set-angular-damping",
 									"objectClass": "Fruit",
-									"sid": 492796383841504,
+									"sid": 706071604781065,
 									"behaviorType": "Physics",
 									"parameters": {
-										"angular-damping": "0.03"
+										"angular-damping": "\t0.15"
 									}
 								}
 							],
@@ -16309,7 +16309,7 @@
 								{
 									"id": "set-density",
 									"objectClass": "Fruit",
-									"sid": 536367666302165,
+									"sid": 217813455610892,
 									"behaviorType": "Physics",
 									"parameters": {
 										"density": "1.8"
@@ -16318,10 +16318,10 @@
 								{
 									"id": "set-friction",
 									"objectClass": "Fruit",
-									"sid": 536582571826589,
+									"sid": 972031243022024,
 									"behaviorType": "Physics",
 									"parameters": {
-										"friction": "\t0.25"
+										"friction": "\t0.35"
 									}
 								},
 								{
@@ -16336,19 +16336,19 @@
 								{
 									"id": "set-linear-damping",
 									"objectClass": "Fruit",
-									"sid": 745871282479770,
+									"sid": 319463521503402,
 									"behaviorType": "Physics",
 									"parameters": {
-										"linear-damping": "0.02"
+										"linear-damping": "0.12"
 									}
 								},
 								{
 									"id": "set-angular-damping",
 									"objectClass": "Fruit",
-									"sid": 802174817266628,
+									"sid": 449834717324212,
 									"behaviorType": "Physics",
 									"parameters": {
-										"angular-damping": "0.015"
+										"angular-damping": "0.1"
 									}
 								}
 							],
@@ -16370,7 +16370,7 @@
 								{
 									"id": "set-density",
 									"objectClass": "Fruit",
-									"sid": 813516961347752,
+									"sid": 270840196493805,
 									"behaviorType": "Physics",
 									"parameters": {
 										"density": "2.7"
@@ -16379,10 +16379,10 @@
 								{
 									"id": "set-friction",
 									"objectClass": "Fruit",
-									"sid": 317669786182953,
+									"sid": 423597138681243,
 									"behaviorType": "Physics",
 									"parameters": {
-										"friction": "0.35"
+										"friction": "\t0.4"
 									}
 								},
 								{
@@ -16397,19 +16397,19 @@
 								{
 									"id": "set-linear-damping",
 									"objectClass": "Fruit",
-									"sid": 943219929555211,
+									"sid": 420360983246989,
 									"behaviorType": "Physics",
 									"parameters": {
-										"linear-damping": "0.4"
+										"linear-damping": "0.15"
 									}
 								},
 								{
 									"id": "set-angular-damping",
 									"objectClass": "Fruit",
-									"sid": 205945469159127,
+									"sid": 849809699563559,
 									"behaviorType": "Physics",
 									"parameters": {
-										"angular-damping": "0.03"
+										"angular-damping": "0.12"
 									}
 								}
 							],
