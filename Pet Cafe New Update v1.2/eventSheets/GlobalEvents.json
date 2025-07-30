@@ -5753,7 +5753,7 @@
 										{
 											"id": "create-object",
 											"objectClass": "System",
-											"sid": 945285014636313,
+											"sid": 322303298275758,
 											"parameters": {
 												"object-to-create": "dollarIcon",
 												"layer": "progress_box_daily_bonus.LayerName",
@@ -5792,12 +5792,12 @@
 										{
 											"id": "create-object",
 											"objectClass": "System",
-											"sid": 668038628804763,
+											"sid": 804205300036095,
 											"parameters": {
 												"object-to-create": "missionIconPack",
 												"layer": "progress_box_daily_bonus.LayerName",
-												"x": "progress_box_daily_bonus.X",
-												"y": "progress_box_daily_bonus.Y",
+												"x": "progress_box_daily_bonus.X-10",
+												"y": "progress_box_daily_bonus.Y+random(-5, 5)",
 												"create-hierarchy": false,
 												"template-name": "\"\""
 											}
@@ -5848,12 +5848,12 @@
 										{
 											"id": "tween-two-properties",
 											"objectClass": "dollarIcon",
-											"sid": 910481421774295,
+											"sid": 351646718102358,
 											"behaviorType": "Tween",
 											"parameters": {
 												"tags": "\"move\"",
 												"property": "position",
-												"end-x": "LayoutWidth/2",
+												"end-x": "(LayoutWidth/2)+25",
 												"end-y": "ViewportHeight(Self.LayerName)",
 												"time": "1",
 												"ease": "easeoutsine",
@@ -5866,12 +5866,12 @@
 										{
 											"id": "tween-two-properties",
 											"objectClass": "missionIconPack",
-											"sid": 850652723165868,
+											"sid": 576663998181181,
 											"behaviorType": "Tween",
 											"parameters": {
 												"tags": "\"move\"",
 												"property": "position",
-												"end-x": "(LayoutWidth/2)-10",
+												"end-x": "(LayoutWidth/2)-25",
 												"end-y": "ViewportHeight(Self.LayerName)",
 												"time": "1",
 												"ease": "easeoutsine",

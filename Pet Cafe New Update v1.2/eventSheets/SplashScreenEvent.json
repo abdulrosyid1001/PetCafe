@@ -406,7 +406,8 @@
 								"runtime.callFunction(\"get_storage\", \"local_storage\", \"sound\");",
 								"runtime.callFunction(\"get_storage\", \"local_storage\", \"vibrate\");",
 								"runtime.callFunction(\"get_storage\", \"local_storage\", \"gift_banner_seq\");"
-							]
+							],
+							"disabled": true
 						},
 						{
 							"id": "wait",
