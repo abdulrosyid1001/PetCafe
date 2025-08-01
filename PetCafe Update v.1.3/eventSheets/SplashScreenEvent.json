@@ -1,0 +1,628 @@
+{
+	"name": "SplashScreenEvent",
+	"events": [
+		{
+			"eventType": "include",
+			"includeSheet": "GlobalEvents"
+		},
+		{
+			"eventType": "variable",
+			"name": "is_init_data",
+			"type": "boolean",
+			"initialValue": "false",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 345167533314854
+		},
+		{
+			"eventType": "variable",
+			"name": "loading_progress",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 455232250181517
+		},
+		{
+			"functionName": "god_mode",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "set-group-active",
+					"objectClass": "System",
+					"sid": 280737864088358,
+					"parameters": {
+						"group-name": "\"DEBUGGING\"",
+						"state": "activated"
+					}
+				}
+			],
+			"sid": 637150371337112
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-start-of-layout",
+					"objectClass": "System",
+					"sid": 172357568526022
+				}
+			],
+			"actions": [
+				{
+					"type": "script",
+					"language": "javascript",
+					"script": [
+						"hideAdBanner();"
+					]
+				},
+				{
+					"id": "set-scale",
+					"objectClass": "petCafeTittleLogo",
+					"sid": 518867423620360,
+					"disabled": true,
+					"parameters": {
+						"scale": "0.5"
+					}
+				},
+				{
+					"id": "set-opacity",
+					"objectClass": "petCafeTittleLogo",
+					"sid": 137864131320305,
+					"disabled": true,
+					"parameters": {
+						"opacity": "0"
+					}
+				},
+				{
+					"id": "tween-two-properties",
+					"objectClass": "petCafeTittleLogo",
+					"sid": 590338766970000,
+					"disabled": true,
+					"behaviorType": "Tween",
+					"parameters": {
+						"tags": "\"scale\"",
+						"property": "scale",
+						"end-x": "1.2",
+						"end-y": "1.2",
+						"time": "1",
+						"ease": "default",
+						"destroy-on-complete": "no",
+						"loop": "no",
+						"ping-pong": "no",
+						"repeat-count": "1"
+					}
+				},
+				{
+					"id": "tween-one-property",
+					"objectClass": "petCafeTittleLogo",
+					"sid": 788975303043024,
+					"disabled": true,
+					"behaviorType": "Tween",
+					"parameters": {
+						"tags": "\"fade\"",
+						"property": "offsetOpacity",
+						"end-value": "100",
+						"time": "1",
+						"ease": "default",
+						"destroy-on-complete": "no",
+						"loop": "no",
+						"ping-pong": "no",
+						"repeat-count": "1"
+					}
+				},
+				{
+					"callFunction": "create_unlocked_mission_pack",
+					"sid": 119034373398091
+				},
+				{
+					"callFunction": "create_locked_booster",
+					"sid": 492757013632414
+				},
+				{
+					"type": "script",
+					"language": "javascript",
+					"script": [
+						"if(god_mode == \"on\"){",
+						"\truntime.callFunction(\"god_mode\");",
+						"}"
+					]
+				}
+			],
+			"sid": 608962909240162,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-boolean-eventvar",
+							"objectClass": "System",
+							"sid": 544699470638501,
+							"parameters": {
+								"variable": "is_init_data"
+							},
+							"isInverted": true
+						}
+					],
+					"actions": [
+						{
+							"id": "set-boolean-eventvar",
+							"objectClass": "System",
+							"sid": 253227140873893,
+							"parameters": {
+								"variable": "is_init_data",
+								"value": "true"
+							}
+						},
+						{
+							"callFunction": "init_data",
+							"sid": 910175641558239,
+							"parameters": [
+								"0"
+							]
+						}
+					],
+					"sid": 377074644483527
+				},
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "wait",
+							"objectClass": "System",
+							"sid": 674259898933480,
+							"parameters": {
+								"seconds": "1",
+								"use-timescale": true
+							}
+						},
+						{
+							"id": "set-boolean-instvar",
+							"objectClass": "overlay",
+							"sid": 273905381153306,
+							"parameters": {
+								"instance-variable": "active",
+								"value": "true"
+							}
+						}
+					],
+					"sid": 904032652975803,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-empty",
+									"objectClass": "itemStoreData",
+									"sid": 572012047040504
+								}
+							],
+							"actions": [
+								{
+									"id": "request-project-file",
+									"objectClass": "AJAX",
+									"sid": 225722861692510,
+									"parameters": {
+										"tag": "\"item_store_data\"",
+										"file": "itemStoreData.json"
+									}
+								}
+							],
+							"sid": 796804734389774
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-empty",
+									"objectClass": "bannerStoreData",
+									"sid": 302941083535964
+								}
+							],
+							"actions": [
+								{
+									"id": "request-project-file",
+									"objectClass": "AJAX",
+									"sid": 265248822945603,
+									"parameters": {
+										"tag": "\"banner_store_data\"",
+										"file": "bannerStoreData.json"
+									}
+								}
+							],
+							"sid": 138961164052784
+						}
+					]
+				}
+			]
+		},
+		{
+			"functionName": "get_loading_perc",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "number",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "set-function-return-value",
+					"objectClass": "Functions",
+					"sid": 711140800114869,
+					"parameters": {
+						"value": "loading_progress"
+					}
+				}
+			],
+			"sid": 898931407775092
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "every-tick",
+					"objectClass": "System",
+					"sid": 826598643101819
+				}
+			],
+			"actions": [
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 947041010218092,
+					"parameters": {
+						"variable": "loading_progress",
+						"value": "loadingprogress*100"
+					}
+				},
+				{
+					"type": "script",
+					"language": "javascript",
+					"script": [
+						"if(typeof FBInstant !== 'undefined'){",
+						"\t// Informs the SDK of loading progress",
+						"\tFBInstant.setLoadingProgress(runtime.globalVars.loading_progress);",
+						"\tconsole.log(runtime.globalVars.loading_progress);",
+						"}",
+						"\t\t// Once all assets are loaded, tells the SDK ",
+						"\t\t// to end loading view and start the game"
+					]
+				}
+			],
+			"sid": 429753486462212
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-opacity",
+					"objectClass": "overlay",
+					"sid": 624611022424366,
+					"parameters": {
+						"comparison": 1,
+						"opacity": "100"
+					}
+				},
+				{
+					"id": "is-boolean-instance-variable-set",
+					"objectClass": "overlay",
+					"sid": 657512304807266,
+					"parameters": {
+						"instance-variable": "active"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-opacity",
+					"objectClass": "overlay",
+					"sid": 572600285498039,
+					"parameters": {
+						"opacity": "lerp(Self.Opacity, 100, 2*dt)"
+					}
+				}
+			],
+			"sid": 495071320216676,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-opacity",
+							"objectClass": "overlay",
+							"sid": 193539911276757,
+							"parameters": {
+								"comparison": 4,
+								"opacity": "99"
+							}
+						},
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 133475672885651,
+							"parameters": {
+								"variable": "loading_progress",
+								"comparison": 5,
+								"value": "100"
+							}
+						},
+						{
+							"id": "trigger-once-while-true",
+							"objectClass": "System",
+							"sid": 906209049150330
+						}
+					],
+					"actions": [
+						{
+							"type": "script",
+							"language": "javascript",
+							"script": [
+								"game_loading_completed(100);"
+							]
+						},
+						{
+							"id": "set-boolean-instvar",
+							"objectClass": "overlay",
+							"sid": 800559171862887,
+							"parameters": {
+								"instance-variable": "active",
+								"value": "false"
+							}
+						},
+						{
+							"callFunction": "init_data",
+							"sid": 505129457465338,
+							"parameters": [
+								"1"
+							]
+						},
+						{
+							"id": "go-to-layout",
+							"objectClass": "System",
+							"sid": 514830110935208,
+							"disabled": true,
+							"parameters": {
+								"layout": "Homepage"
+							}
+						}
+					],
+					"sid": 439654236164379
+				}
+			]
+		},
+		{
+			"functionName": "init_data",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "ID",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 924214512619982
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 323950553863239,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 112315539376250,
+							"parameters": {
+								"variable": "ID",
+								"comparison": 0,
+								"value": "0"
+							}
+						}
+					],
+					"actions": [
+						{
+							"type": "script",
+							"language": "javascript",
+							"script": [
+								"weekly_arr = default_weekly_arr;",
+								"for (let i=0; i<levelMissionDataArr.length; i++){",
+								"\tvar obj = {\"level\": i+1, \"star\":0};",
+								"\tstarLevelCollectedArr[i] = obj;",
+								"}",
+								"let unlockedBoosterData = runtime.objects.unlockedBoosterData.getFirstInstance();",
+								"for (let i=0; i<tutorialCompletedArr.length; i++){",
+								"\tunlockedBoosterData.setAt(tutorialCompletedArr[i], 0, i);",
+								"}",
+								"",
+								"for (let i=0; i<runtime.globalVars.level_stage_max; i++){",
+								"\tvar obj = {\"level\": i+1, \"atempt\":0};",
+								"\tatemptEachLevel[i] = obj;",
+								"}",
+								"runtime.globalVars.curr_lang = get_lang;",
+								"runtime.callFunction(\"localization\");"
+							]
+						},
+						{
+							"type": "script",
+							"language": "javascript",
+							"script": [
+								"runtime.callFunction(\"get_storage\", \"local_storage\", \"tutorial_completed_arr\");",
+								"runtime.callFunction(\"get_storage\", \"local_storage\", \"expire_time\");",
+								"runtime.callFunction(\"get_storage\", \"local_storage\", \"day\");",
+								"runtime.callFunction(\"get_storage\", \"local_storage\", \"total_day\");",
+								"runtime.callFunction(\"get_storage\", \"local_storage\", \"is_daily_bonus\");",
+								"runtime.callFunction(\"get_storage\", \"local_storage\", \"high_score\");",
+								"runtime.callFunction(\"get_storage\", \"local_storage\", \"player_level\");",
+								"runtime.callFunction(\"get_storage\", \"local_storage\", \"level_stage\");",
+								"runtime.callFunction(\"get_storage\", \"local_storage\", \"weekly_arr\");",
+								"runtime.callFunction(\"get_storage\", \"local_storage\", \"star_level_collected_arr\");",
+								"runtime.callFunction(\"get_storage\", \"local_storage\", \"star\");",
+								"runtime.callFunction(\"get_storage\", \"local_storage\", \"checkpoint_save\");",
+								"runtime.callFunction(\"get_storage\", \"local_storage\", \"enabled_starter_pack\");",
+								"runtime.callFunction(\"get_storage\", \"local_storage\", \"boosters_data\");",
+								"runtime.callFunction(\"get_storage\", \"local_storage\", \"item_store\");",
+								"runtime.callFunction(\"get_storage\", \"local_storage\", \"banner_store\");",
+								"runtime.callFunction(\"get_storage\", \"local_storage\", \"coin\");",
+								"runtime.callFunction(\"get_storage\", \"local_storage\", \"music\");",
+								"runtime.callFunction(\"get_storage\", \"local_storage\", \"sound\");",
+								"runtime.callFunction(\"get_storage\", \"local_storage\", \"vibrate\");",
+								"runtime.callFunction(\"get_storage\", \"local_storage\", \"gift_banner_seq\");",
+								"runtime.callFunction(\"get_storage\", \"local_storage\", \"atempt_each_level\");",
+								"runtime.callFunction(\"get_storage\", \"local_storage\", \"classic_round\");",
+								"runtime.callFunction(\"get_storage\", \"local_storage\", \"checkpoint_classic_tile\");",
+								"runtime.callFunction(\"get_storage\", \"local_storage\", \"checkpoint_classic_data\");"
+							],
+							"disabled": true
+						},
+						{
+							"id": "wait",
+							"objectClass": "System",
+							"sid": 182853353432035,
+							"parameters": {
+								"seconds": "1",
+								"use-timescale": true
+							}
+						},
+						{
+							"callFunction": "get_offer_time",
+							"sid": 976672293962648
+						}
+					],
+					"sid": 652243590740839
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 514809418579949,
+							"parameters": {
+								"variable": "ID",
+								"comparison": 0,
+								"value": "1"
+							}
+						}
+					],
+					"actions": [
+						{
+							"type": "script",
+							"language": "javascript",
+							"script": [
+								"if(tutorialCompletedArr[0] == 1){",
+								"\truntime.globalVars.game_mode = \"adventure\";",
+								"\truntime.goToLayout(\"Game\");",
+								"}",
+								"else{",
+								"\truntime.goToLayout(\"Homepage\");",
+								"}"
+							]
+						}
+					],
+					"sid": 898187623456838
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 664218698825322,
+							"parameters": {
+								"variable": "ID",
+								"comparison": 0,
+								"value": "2"
+							}
+						}
+					],
+					"actions": [
+						{
+							"type": "script",
+							"language": "javascript",
+							"script": [
+								"weekly_arr = default_weekly_arr;",
+								"for (let i=0; i<levelMissionDataArr.length; i++){",
+								"\tvar obj = {\"level\": i+1, \"star\":0};",
+								"\tstarLevelCollectedArr[i] = obj;",
+								"}",
+								"",
+								"let unlockedBoosterData = runtime.objects.unlockedBoosterData.getFirstInstance();",
+								"for (let i=0; i<tutorialCompletedArr.length; i++){",
+								"\tunlockedBoosterData.setAt(tutorialCompletedArr[i], 0, i);",
+								"}",
+								"for (let i=0; i<runtime.globalVars.level_stage_max; i++){",
+								"\tvar obj = {\"level\": i+1, \"atempt\":0};",
+								"\tatemptEachLevel[i] = obj;",
+								"}"
+							]
+						},
+						{
+							"type": "script",
+							"language": "javascript",
+							"script": [
+								"runtime.callFunction(\"get_storage\", \"local_storage\", \"tutorial_completed_arr\");",
+								"runtime.callFunction(\"get_storage\", \"local_storage\", \"expire_time\");",
+								"runtime.callFunction(\"get_storage\", \"local_storage\", \"day\");",
+								"runtime.callFunction(\"get_storage\", \"local_storage\", \"total_day\");",
+								"runtime.callFunction(\"get_storage\", \"local_storage\", \"is_daily_bonus\");",
+								"runtime.callFunction(\"get_storage\", \"local_storage\", \"high_score\");",
+								"runtime.callFunction(\"get_storage\", \"local_storage\", \"player_level\");",
+								"runtime.callFunction(\"get_storage\", \"local_storage\", \"level_stage\");",
+								"runtime.callFunction(\"get_storage\", \"local_storage\", \"weekly_arr\");",
+								"runtime.callFunction(\"get_storage\", \"local_storage\", \"star_level_collected_arr\");",
+								"runtime.callFunction(\"get_storage\", \"local_storage\", \"star\");",
+								"runtime.callFunction(\"get_storage\", \"local_storage\", \"checkpoint_save\");",
+								"runtime.callFunction(\"get_storage\", \"local_storage\", \"enabled_starter_pack\");",
+								"runtime.callFunction(\"get_storage\", \"local_storage\", \"boosters_data\");",
+								"runtime.callFunction(\"get_storage\", \"local_storage\", \"item_store\");",
+								"runtime.callFunction(\"get_storage\", \"local_storage\", \"banner_store\");",
+								"runtime.callFunction(\"get_storage\", \"local_storage\", \"coin\");",
+								"runtime.callFunction(\"get_storage\", \"local_storage\", \"music\");",
+								"runtime.callFunction(\"get_storage\", \"local_storage\", \"sound\");",
+								"runtime.callFunction(\"get_storage\", \"local_storage\", \"vibrate\");",
+								"runtime.callFunction(\"get_storage\", \"local_storage\", \"gift_banner_seq\");",
+								"runtime.callFunction(\"get_storage\", \"local_storage\", \"atempt_each_level\");",
+								"runtime.callFunction(\"get_storage\", \"local_storage\", \"classic_round\");",
+								"runtime.callFunction(\"get_storage\", \"local_storage\", \"checkpoint_classic_tile\");",
+								"runtime.callFunction(\"get_storage\", \"local_storage\", \"checkpoint_classic_data\");"
+							]
+						},
+						{
+							"id": "wait",
+							"objectClass": "System",
+							"sid": 185412342054898,
+							"parameters": {
+								"seconds": "1",
+								"use-timescale": true
+							}
+						},
+						{
+							"callFunction": "get_offer_time",
+							"sid": 714157834773689
+						}
+					],
+					"sid": 104286320549286
+				}
+			]
+		}
+	],
+	"sid": 254461062679589
+}

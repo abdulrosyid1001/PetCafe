@@ -1,0 +1,30 @@
+{
+	"name": "labelSubBannerStatus",
+	"plugin-id": "Text",
+	"sid": 674087001103439,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [
+		{
+			"name": "ID_case",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 973483364363561
+		},
+		{
+			"name": "ID_number",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 215200776251289
+		}
+	],
+	"behaviorTypes": [],
+	"effectTypes": [
+		{
+			"effectId": "skymen_BetterOutline",
+			"name": "BetterOutline"
+		}
+	]
+}

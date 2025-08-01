@@ -1,0 +1,63 @@
+{
+	"name": "goalsTracer",
+	"plugin-id": "Sprite",
+	"sid": 253899624501788,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Fade",
+			"name": "Fade",
+			"sid": 905882238804008
+		}
+	],
+	"effectTypes": [
+		{
+			"effectId": "radialblur",
+			"name": "RadialBlur"
+		}
+	],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 128,
+						"height": 32,
+						"originX": 1,
+						"originY": 0.5,
+						"originalSource": "H:\\ИГРОСТРОЙ\\Будущие_игры\\046_BrickOut\\Textures\\BallTrace.png",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 269968,
+						"collisionPoly": {
+							"points": [
+								1,
+								0,
+								1,
+								1,
+								0,
+								1,
+								0,
+								0
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 449226181278030,
+				"name": "Default",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 0
+			}
+		],
+		"subfolders": []
+	}
+}

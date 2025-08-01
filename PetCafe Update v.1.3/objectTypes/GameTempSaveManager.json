@@ -1,0 +1,90 @@
+{
+	"name": "GameTempSaveManager",
+	"plugin-id": "Sprite",
+	"sid": 464500911925068,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [
+		{
+			"name": "BestFruit",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 695991495468878
+		},
+		{
+			"name": "NextFruit",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 541566740913318
+		},
+		{
+			"name": "BeforeNextFruit",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 728193116644681
+		},
+		{
+			"name": "Score",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 118642113110664
+		},
+		{
+			"name": "TempScore",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 686809990209283
+		},
+		{
+			"name": "LevelPlayerProgression",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 496304467847387
+		},
+		{
+			"name": "HasGameOver",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 204787688310199
+		}
+	],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 128,
+						"height": 128,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 2246107,
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 494098236178877,
+				"name": "Animation 1",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 0
+			}
+		],
+		"subfolders": []
+	}
+}
