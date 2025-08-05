@@ -6,7 +6,7 @@
 	"editorNewInstanceIsReplica": true,
 	"instanceVariables": [
 		{
-			"name": "PetInBox",
+			"name": "petBoxLevel",
 			"type": "number",
 			"desc": "",
 			"show": true,

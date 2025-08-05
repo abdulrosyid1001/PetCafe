@@ -11503,7 +11503,7 @@
 														"x": "props.X",
 														"y": "props.Y",
 														"create-hierarchy": true,
-														"template-name": "str(props.PetInBox)"
+														"template-name": "str(props.PetBoxLevel)"
 													}
 												},
 												{
@@ -13902,9 +13902,9 @@
 						{
 							"id": "evaluate-expression",
 							"objectClass": "System",
-							"sid": 808005024410129,
+							"sid": 484419477620465,
 							"parameters": {
-								"value": "Fruit.AnimationName <> \"12\""
+								"value": "Fruit.AnimationName <> \"13\""
 							}
 						},
 						{
@@ -13993,11 +13993,11 @@
 								{
 									"id": "compare-two-values",
 									"objectClass": "System",
-									"sid": 571260416784272,
+									"sid": 949385195411829,
 									"parameters": {
 										"first-value": "Fruit.AnimationName",
 										"comparison": 5,
-										"second-value": "8"
+										"second-value": "9"
 									}
 								}
 							],
@@ -14018,11 +14018,11 @@
 								{
 									"id": "compare-two-values",
 									"objectClass": "System",
-									"sid": 444726046057810,
+									"sid": 371652882278605,
 									"parameters": {
 										"first-value": "Fruit.AnimationName",
 										"comparison": 0,
-										"second-value": "10"
+										"second-value": "11"
 									}
 								}
 							],
@@ -14044,11 +14044,11 @@
 								{
 									"id": "compare-two-values",
 									"objectClass": "System",
-									"sid": 319471588738437,
+									"sid": 709121880770737,
 									"parameters": {
 										"first-value": "Fruit.AnimationName",
 										"comparison": 0,
-										"second-value": "11"
+										"second-value": "12"
 									}
 								}
 							],
@@ -14728,9 +14728,9 @@
 								{
 									"id": "evaluate-expression",
 									"objectClass": "System",
-									"sid": 901913722442618,
+									"sid": 503138241657400,
 									"parameters": {
-										"value": "FruitFamily.AnimationName<> \"12\""
+										"value": "FruitFamily.AnimationName<> \"13\""
 									}
 								},
 								{
@@ -15063,9 +15063,9 @@
 								{
 									"id": "is-animation-playing",
 									"objectClass": "FruitFamily",
-									"sid": 949163107246540,
+									"sid": 709345120702362,
 									"parameters": {
-										"animation": "\"12\""
+										"animation": "\"13\""
 									}
 								},
 								{
@@ -16754,9 +16754,9 @@
 										{
 											"id": "is-animation-playing",
 											"objectClass": "Fruit",
-											"sid": 533046773616150,
+											"sid": 658435901236024,
 											"parameters": {
-												"animation": "\"0\""
+												"animation": "\"1\""
 											}
 										}
 									],
@@ -16815,9 +16815,9 @@
 										{
 											"id": "is-animation-playing",
 											"objectClass": "Fruit",
-											"sid": 386944859043999,
+											"sid": 190225079890231,
 											"parameters": {
-												"animation": "\"1\""
+												"animation": "\"2\""
 											}
 										}
 									],
@@ -16876,9 +16876,9 @@
 										{
 											"id": "is-animation-playing",
 											"objectClass": "Fruit",
-											"sid": 898142020100685,
+											"sid": 958364872748364,
 											"parameters": {
-												"animation": "\"2\""
+												"animation": "\"3\""
 											}
 										}
 									],
@@ -16937,9 +16937,9 @@
 										{
 											"id": "is-animation-playing",
 											"objectClass": "Fruit",
-											"sid": 806217007383640,
+											"sid": 857057628474725,
 											"parameters": {
-												"animation": "\"3\""
+												"animation": "\"4\""
 											}
 										}
 									],
@@ -16998,9 +16998,9 @@
 										{
 											"id": "is-animation-playing",
 											"objectClass": "Fruit",
-											"sid": 523768753244570,
+											"sid": 200044810137060,
 											"parameters": {
-												"animation": "\"4\""
+												"animation": "\"5\""
 											}
 										}
 									],
@@ -17059,9 +17059,9 @@
 										{
 											"id": "is-animation-playing",
 											"objectClass": "Fruit",
-											"sid": 562609060589818,
+											"sid": 596703519477333,
 											"parameters": {
-												"animation": "\"5\""
+												"animation": "\"6\""
 											}
 										}
 									],
@@ -17120,9 +17120,9 @@
 										{
 											"id": "is-animation-playing",
 											"objectClass": "Fruit",
-											"sid": 653296361183024,
+											"sid": 761629558112471,
 											"parameters": {
-												"animation": "\"6\""
+												"animation": "\"7\""
 											}
 										}
 									],
@@ -17181,9 +17181,9 @@
 										{
 											"id": "is-animation-playing",
 											"objectClass": "Fruit",
-											"sid": 141324890428207,
+											"sid": 790563081541502,
 											"parameters": {
-												"animation": "\"7\""
+												"animation": "\"8\""
 											}
 										}
 									],
@@ -17242,9 +17242,9 @@
 										{
 											"id": "is-animation-playing",
 											"objectClass": "Fruit",
-											"sid": 179578557831499,
+											"sid": 862165073501665,
 											"parameters": {
-												"animation": "\"8\""
+												"animation": "\"9\""
 											}
 										}
 									],
@@ -17303,9 +17303,9 @@
 										{
 											"id": "is-animation-playing",
 											"objectClass": "Fruit",
-											"sid": 182394937362883,
+											"sid": 854745021544948,
 											"parameters": {
-												"animation": "\"9\""
+												"animation": "\"10\""
 											}
 										}
 									],
@@ -17364,9 +17364,9 @@
 										{
 											"id": "is-animation-playing",
 											"objectClass": "Fruit",
-											"sid": 187539973501816,
+											"sid": 499081929380781,
 											"parameters": {
-												"animation": "\"10\""
+												"animation": "\"11\""
 											}
 										}
 									],
@@ -17425,9 +17425,9 @@
 										{
 											"id": "is-animation-playing",
 											"objectClass": "Fruit",
-											"sid": 649245592421046,
+											"sid": 259875729664967,
 											"parameters": {
-												"animation": "\"11\""
+												"animation": "\"12\""
 											}
 										}
 									],
@@ -17486,9 +17486,9 @@
 										{
 											"id": "is-animation-playing",
 											"objectClass": "Fruit",
-											"sid": 619365143258708,
+											"sid": 891854828480773,
 											"parameters": {
-												"animation": "\"12\""
+												"animation": "\"13\""
 											}
 										}
 									],
@@ -17839,9 +17839,9 @@
 								{
 									"id": "is-animation-playing",
 									"objectClass": "Fruit",
-									"sid": 503247317481530,
+									"sid": 114007160592888,
 									"parameters": {
-										"animation": "\"0\""
+										"animation": "\"1\""
 									}
 								}
 							],
@@ -17900,9 +17900,9 @@
 								{
 									"id": "is-animation-playing",
 									"objectClass": "Fruit",
-									"sid": 850691214449297,
+									"sid": 777061010094100,
 									"parameters": {
-										"animation": "\"1\""
+										"animation": "\"2\""
 									}
 								}
 							],
@@ -17961,9 +17961,9 @@
 								{
 									"id": "is-animation-playing",
 									"objectClass": "Fruit",
-									"sid": 249120849202638,
+									"sid": 318737747565621,
 									"parameters": {
-										"animation": "\"2\""
+										"animation": "\"3\""
 									}
 								}
 							],
@@ -18022,9 +18022,9 @@
 								{
 									"id": "is-animation-playing",
 									"objectClass": "Fruit",
-									"sid": 746659291029456,
+									"sid": 890161882766689,
 									"parameters": {
-										"animation": "\"3\""
+										"animation": "\"4\"\n"
 									}
 								}
 							],
@@ -18083,9 +18083,9 @@
 								{
 									"id": "is-animation-playing",
 									"objectClass": "Fruit",
-									"sid": 823579926008726,
+									"sid": 998746002828609,
 									"parameters": {
-										"animation": "\"4\""
+										"animation": "\"5\""
 									}
 								}
 							],
@@ -18144,9 +18144,9 @@
 								{
 									"id": "is-animation-playing",
 									"objectClass": "Fruit",
-									"sid": 403857440716845,
+									"sid": 122489075083326,
 									"parameters": {
-										"animation": "\"5\""
+										"animation": "\"6\""
 									}
 								}
 							],
@@ -18205,9 +18205,9 @@
 								{
 									"id": "is-animation-playing",
 									"objectClass": "Fruit",
-									"sid": 167057849637850,
+									"sid": 106450110124087,
 									"parameters": {
-										"animation": "\"6\""
+										"animation": "\"7\""
 									}
 								}
 							],
@@ -18266,9 +18266,9 @@
 								{
 									"id": "is-animation-playing",
 									"objectClass": "Fruit",
-									"sid": 983644482286376,
+									"sid": 934406574469288,
 									"parameters": {
-										"animation": "\"7\""
+										"animation": "\"8\""
 									}
 								}
 							],
@@ -18327,9 +18327,9 @@
 								{
 									"id": "is-animation-playing",
 									"objectClass": "Fruit",
-									"sid": 643236099219778,
+									"sid": 287792674100826,
 									"parameters": {
-										"animation": "\"8\""
+										"animation": "\"9\""
 									}
 								}
 							],
@@ -18388,9 +18388,9 @@
 								{
 									"id": "is-animation-playing",
 									"objectClass": "Fruit",
-									"sid": 292494907096499,
+									"sid": 549236720745075,
 									"parameters": {
-										"animation": "\"9\""
+										"animation": "\"10\""
 									}
 								}
 							],
@@ -18449,9 +18449,9 @@
 								{
 									"id": "is-animation-playing",
 									"objectClass": "Fruit",
-									"sid": 726232888207377,
+									"sid": 618488622065552,
 									"parameters": {
-										"animation": "\"10\""
+										"animation": "\"11\""
 									}
 								}
 							],
@@ -18510,9 +18510,9 @@
 								{
 									"id": "is-animation-playing",
 									"objectClass": "Fruit",
-									"sid": 932753333219735,
+									"sid": 741025658047588,
 									"parameters": {
-										"animation": "\"11\""
+										"animation": "\"12\""
 									}
 								}
 							],
@@ -18571,9 +18571,9 @@
 								{
 									"id": "is-animation-playing",
 									"objectClass": "Fruit",
-									"sid": 488821976952699,
+									"sid": 636365748414878,
 									"parameters": {
-										"animation": "\"12\""
+										"animation": "\"13\""
 									}
 								}
 							],
@@ -24064,15 +24064,7 @@
 																{
 																	"id": "is-animation-playing",
 																	"objectClass": "FruitFamily",
-																	"sid": 950264974323288,
-																	"parameters": {
-																		"animation": "\"0\""
-																	}
-																},
-																{
-																	"id": "is-animation-playing",
-																	"objectClass": "FruitFamily",
-																	"sid": 564415425456437,
+																	"sid": 341222072842698,
 																	"parameters": {
 																		"animation": "\"1\""
 																	}
@@ -24080,9 +24072,17 @@
 																{
 																	"id": "is-animation-playing",
 																	"objectClass": "FruitFamily",
-																	"sid": 303515371763560,
+																	"sid": 622715881542387,
 																	"parameters": {
 																		"animation": "\"2\""
+																	}
+																},
+																{
+																	"id": "is-animation-playing",
+																	"objectClass": "FruitFamily",
+																	"sid": 778762927665146,
+																	"parameters": {
+																		"animation": "\"3\""
 																	}
 																}
 															],
@@ -24722,15 +24722,7 @@
 														{
 															"id": "is-animation-playing",
 															"objectClass": "FruitFamily",
-															"sid": 220033138860646,
-															"parameters": {
-																"animation": "\"0\""
-															}
-														},
-														{
-															"id": "is-animation-playing",
-															"objectClass": "FruitFamily",
-															"sid": 803846724666025,
+															"sid": 165853067421415,
 															"parameters": {
 																"animation": "\"1\""
 															}
@@ -24738,9 +24730,17 @@
 														{
 															"id": "is-animation-playing",
 															"objectClass": "FruitFamily",
-															"sid": 501105005614603,
+															"sid": 331768881562046,
 															"parameters": {
 																"animation": "\"2\""
+															}
+														},
+														{
+															"id": "is-animation-playing",
+															"objectClass": "FruitFamily",
+															"sid": 515917753275784,
+															"parameters": {
+																"animation": "\"3\""
 															}
 														}
 													],
@@ -25610,15 +25610,7 @@
 														{
 															"id": "is-animation-playing",
 															"objectClass": "FruitFamily",
-															"sid": 503360402183615,
-															"parameters": {
-																"animation": "\"0\""
-															}
-														},
-														{
-															"id": "is-animation-playing",
-															"objectClass": "FruitFamily",
-															"sid": 370855414677681,
+															"sid": 211037632455426,
 															"parameters": {
 																"animation": "\"1\""
 															}
@@ -25626,9 +25618,17 @@
 														{
 															"id": "is-animation-playing",
 															"objectClass": "FruitFamily",
-															"sid": 155144554633779,
+															"sid": 950497481436569,
 															"parameters": {
 																"animation": "\"2\""
+															}
+														},
+														{
+															"id": "is-animation-playing",
+															"objectClass": "FruitFamily",
+															"sid": 525412065587713,
+															"parameters": {
+																"animation": "\"3\""
 															}
 														}
 													],
