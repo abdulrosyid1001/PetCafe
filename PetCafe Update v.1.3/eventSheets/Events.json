@@ -11491,7 +11491,28 @@
 												{
 													"id": "destroy",
 													"objectClass": "props",
-													"sid": 303940752197791
+													"sid": 829157133090794
+												},
+												{
+													"id": "create-object",
+													"objectClass": "System",
+													"sid": 573373090574283,
+													"parameters": {
+														"object-to-create": "Fruit",
+														"layer": "\"Game\"",
+														"x": "props.X",
+														"y": "props.Y",
+														"create-hierarchy": true,
+														"template-name": "str(props.PetInBox)"
+													}
+												},
+												{
+													"id": "set-scale",
+													"objectClass": "Fruit",
+													"sid": 529241602886991,
+													"parameters": {
+														"scale": "0"
+													}
 												},
 												{
 													"callFunction": "vibrate_settings",
@@ -11507,27 +11528,6 @@
 														"\"play\"",
 														"\"Tile_Pop1\""
 													]
-												},
-												{
-													"id": "create-object",
-													"objectClass": "System",
-													"sid": 319956022612850,
-													"parameters": {
-														"object-to-create": "Fruit",
-														"layer": "\"Game\"",
-														"x": "mean_X",
-														"y": "mean_Y",
-														"create-hierarchy": true,
-														"template-name": "str(round(random(1,8)))"
-													}
-												},
-												{
-													"id": "set-scale",
-													"objectClass": "Fruit",
-													"sid": 555863039277399,
-													"parameters": {
-														"scale": "0"
-													}
 												},
 												{
 													"id": "tween-two-properties",

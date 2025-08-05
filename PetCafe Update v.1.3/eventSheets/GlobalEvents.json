@@ -2498,65 +2498,74 @@
 									"eventType": "block",
 									"conditions": [
 										{
-											"id": "compare-eventvar",
-											"objectClass": "System",
-											"sid": 108695285599762,
+											"id": "pick-children",
+											"objectClass": "Button",
+											"sid": 206089769834697,
 											"parameters": {
-												"variable": "curr_lang",
-												"comparison": 0,
-												"value": "\"ru\""
+												"child": "supportIcon",
+												"which": "own"
 											}
 										}
 									],
-									"actions": [],
-									"sid": 909040570944682,
+									"actions": [
+										{
+											"id": "remove-from-parent",
+											"objectClass": "supportIcon",
+											"sid": 330802597151950
+										}
+									],
+									"sid": 967548319597587,
 									"children": [
 										{
 											"eventType": "block",
 											"conditions": [
 												{
-													"id": "pick-children",
-													"objectClass": "Button",
-													"sid": 760752409314296,
+													"id": "compare-eventvar",
+													"objectClass": "System",
+													"sid": 789145661920360,
 													"parameters": {
-														"child": "supportIcon",
-														"which": "own"
+														"variable": "curr_lang",
+														"comparison": 0,
+														"value": "\"ru\""
 													}
 												}
 											],
-											"actions": [
+											"actions": [],
+											"sid": 146043921306789,
+											"children": [
 												{
-													"id": "set-x",
-													"objectClass": "supportIcon",
-													"sid": 863213462536423,
-													"parameters": {
-														"x": "Self.X-16"
-													}
-												},
-												{
-													"id": "remove-from-parent",
-													"objectClass": "supportIcon",
-													"sid": 241254798150683
+													"eventType": "block",
+													"conditions": [],
+													"actions": [
+														{
+															"id": "set-x",
+															"objectClass": "supportIcon",
+															"sid": 715407694560604,
+															"parameters": {
+																"x": "Self.X-16"
+															}
+														},
+														{
+															"id": "set-width",
+															"objectClass": "Button",
+															"sid": 115548254562517,
+															"parameters": {
+																"width": "189"
+															}
+														}
+													],
+													"sid": 941275929633832
 												}
-											],
-											"sid": 330570278754042
+											]
 										},
 										{
 											"eventType": "block",
 											"conditions": [],
 											"actions": [
 												{
-													"id": "set-width",
-													"objectClass": "Button",
-													"sid": 666494409837899,
-													"parameters": {
-														"width": "189"
-													}
-												},
-												{
 													"id": "add-child",
 													"objectClass": "Button",
-													"sid": 408696152530806,
+													"sid": 744146026531851,
 													"parameters": {
 														"child": "supportIcon",
 														"transform-x": true,
@@ -2571,7 +2580,7 @@
 													}
 												}
 											],
-											"sid": 681476804189796
+											"sid": 827119265147874
 										}
 									]
 								}
