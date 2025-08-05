@@ -14414,9 +14414,9 @@
 								},
 								{
 									"callFunction": "check_goals_completed",
-									"sid": 943626993965756,
+									"sid": 970868545141111,
 									"parameters": [
-										"int(Fruit.TemplateName)",
+										"int(Fruit.AnimationName)-1",
 										"meanX",
 										"meanY"
 									]
@@ -14987,9 +14987,9 @@
 										},
 										{
 											"callFunction": "check_goals_completed",
-											"sid": 602839485951784,
+											"sid": 100069045641897,
 											"parameters": [
-												"int(Fruit.TemplateName)",
+												"int(Fruit.AnimationName)-1",
 												"meanX",
 												"meanY"
 											]
