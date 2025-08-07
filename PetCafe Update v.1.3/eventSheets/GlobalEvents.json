@@ -363,6 +363,11 @@
 						{
 							"type": "script",
 							"language": "javascript",
+							"script": []
+						},
+						{
+							"type": "script",
+							"language": "javascript",
 							"script": [
 								"var getdataStr = \"\";",
 								"var keyName = localVars.keyName;",
@@ -370,6 +375,11 @@
 								"\tgetdataStr = await runtime.storage.getItem(keyName);",
 								"\tif(getdataStr !== null && getdataStr !== undefined){",
 								"\t\tawait runtime.callFunction(\"check_storage\", keyName, getdataStr);",
+								"\t}",
+								"\telse{",
+								"\t\tif(keyName == \"ftue_splashscreen\"){",
+								"\t\t\tprogression_event(\"start\", \"ftue_splashscreen\");",
+								"\t\t}",
 								"\t}",
 								"}"
 							]
@@ -514,6 +524,8 @@
 								"\tcase \"checkpoint_classic_data\":",
 								"\t\truntime.globalVars.tempData_JSON = localVars.dataStr;",
 								"\t\tbreak;",
+								"\tcase \"ftue_splashscreen\":",
+								"\t\truntime.globalVars.FTUE_splashscreen = false;",
 								"}"
 							]
 						}
@@ -10528,6 +10540,16 @@
 			"isStatic": false,
 			"isConstant": false,
 			"sid": 286570888256114
+		},
+		{
+			"eventType": "variable",
+			"name": "click_count_gameplay",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 698362003594920
 		},
 		{
 			"eventType": "group",

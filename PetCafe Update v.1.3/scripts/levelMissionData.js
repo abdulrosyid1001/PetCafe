@@ -534,14 +534,18 @@ export const levelMissionDataArr =
     },
     {
         "level": 42,
-        "goals": [
+         "goals": [
             {
-                "goalsID": 13,
-                "qty": 6,
+                "goalsID": 6,
+                "qty": 2,
+            },
+            {
+                "goalsID": 7,
+                "qty": 1,
             }
         ],
-        "moves": 25,
-        "probabilities" :[0.50, 0.20, 0.20, 0.10, 0.00, 0.00]
+        "moves": 50,
+        "probabilities" :[0.30, 0.30, 0.20, 0.10, 0.10, 0.00]
     },
     {
         "level": 43,

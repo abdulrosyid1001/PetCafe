@@ -1,5 +1,5 @@
 // Configuration and state variables
-export let platform_ad = "Facebook";
+export let platform_ad = "Test";
 export let parent = window.parent.window;
 export let get_lang = new URLSearchParams(window.location.search).get('lang') || "en"; // Default to English
 export let god_mode = new URLSearchParams(window.location.search).get('gm') || "off"; // Default to no

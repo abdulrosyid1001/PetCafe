@@ -26,6 +26,16 @@
 			"sid": 455232250181517
 		},
 		{
+			"eventType": "variable",
+			"name": "FTUE_splashscreen",
+			"type": "boolean",
+			"initialValue": "true",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 171967357606722
+		},
+		{
 			"functionName": "god_mode",
 			"functionDescription": "",
 			"functionCategory": "",
@@ -66,61 +76,6 @@
 					]
 				},
 				{
-					"id": "set-scale",
-					"objectClass": "petCafeTittleLogo",
-					"sid": 518867423620360,
-					"disabled": true,
-					"parameters": {
-						"scale": "0.5"
-					}
-				},
-				{
-					"id": "set-opacity",
-					"objectClass": "petCafeTittleLogo",
-					"sid": 137864131320305,
-					"disabled": true,
-					"parameters": {
-						"opacity": "0"
-					}
-				},
-				{
-					"id": "tween-two-properties",
-					"objectClass": "petCafeTittleLogo",
-					"sid": 590338766970000,
-					"disabled": true,
-					"behaviorType": "Tween",
-					"parameters": {
-						"tags": "\"scale\"",
-						"property": "scale",
-						"end-x": "1.2",
-						"end-y": "1.2",
-						"time": "1",
-						"ease": "default",
-						"destroy-on-complete": "no",
-						"loop": "no",
-						"ping-pong": "no",
-						"repeat-count": "1"
-					}
-				},
-				{
-					"id": "tween-one-property",
-					"objectClass": "petCafeTittleLogo",
-					"sid": 788975303043024,
-					"disabled": true,
-					"behaviorType": "Tween",
-					"parameters": {
-						"tags": "\"fade\"",
-						"property": "offsetOpacity",
-						"end-value": "100",
-						"time": "1",
-						"ease": "default",
-						"destroy-on-complete": "no",
-						"loop": "no",
-						"ping-pong": "no",
-						"repeat-count": "1"
-					}
-				},
-				{
 					"callFunction": "create_unlocked_mission_pack",
 					"sid": 119034373398091
 				},
@@ -154,15 +109,6 @@
 						}
 					],
 					"actions": [
-						{
-							"id": "set-boolean-eventvar",
-							"objectClass": "System",
-							"sid": 253227140873893,
-							"parameters": {
-								"variable": "is_init_data",
-								"value": "true"
-							}
-						},
 						{
 							"callFunction": "init_data",
 							"sid": 910175641558239,
@@ -403,6 +349,41 @@
 			]
 		},
 		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-any-touch-start",
+					"objectClass": "Touch",
+					"sid": 286028391843263
+				},
+				{
+					"id": "compare-boolean-eventvar",
+					"objectClass": "System",
+					"sid": 406929483126691,
+					"parameters": {
+						"variable": "is_init_data"
+					}
+				}
+			],
+			"actions": [
+				{
+					"type": "script",
+					"language": "javascript",
+					"script": [
+						"game_loading_completed(100);"
+					]
+				},
+				{
+					"callFunction": "init_data",
+					"sid": 354339178364393,
+					"parameters": [
+						"1"
+					]
+				}
+			],
+			"sid": 669912265751053
+		},
+		{
 			"functionName": "init_data",
 			"functionDescription": "",
 			"functionCategory": "",
@@ -465,6 +446,7 @@
 							"language": "javascript",
 							"script": [
 								"runtime.callFunction(\"get_storage\", \"local_storage\", \"tutorial_completed_arr\");",
+								"runtime.callFunction(\"get_storage\", \"local_storage\", \"ftue_splashscreen\");",
 								"runtime.callFunction(\"get_storage\", \"local_storage\", \"expire_time\");",
 								"runtime.callFunction(\"get_storage\", \"local_storage\", \"day\");",
 								"runtime.callFunction(\"get_storage\", \"local_storage\", \"total_day\");",
@@ -488,9 +470,10 @@
 								"runtime.callFunction(\"get_storage\", \"local_storage\", \"atempt_each_level\");",
 								"runtime.callFunction(\"get_storage\", \"local_storage\", \"classic_round\");",
 								"runtime.callFunction(\"get_storage\", \"local_storage\", \"checkpoint_classic_tile\");",
-								"runtime.callFunction(\"get_storage\", \"local_storage\", \"checkpoint_classic_data\");"
-							],
-							"disabled": true
+								"runtime.callFunction(\"get_storage\", \"local_storage\", \"checkpoint_classic_data\");",
+								"",
+								"// await runtime.callFunction(\"get_offer_time\");"
+							]
 						},
 						{
 							"id": "wait",
@@ -523,6 +506,17 @@
 						}
 					],
 					"actions": [
+						{
+							"type": "script",
+							"language": "javascript",
+							"script": [
+								"if(runtime.globalVars.FTUE_splashscreen == true){",
+								"\truntime.globalVars.FTUE_splashscreen = false;",
+								"\truntime.callFunction(\"save_storage\", \"local_storage\", \"ftue_splashscreen\", \"0\");",
+								"\tprogression_event(\"completed\", \"ftue_splashscreen\");",
+								"}"
+							]
+						},
 						{
 							"type": "script",
 							"language": "javascript",
@@ -579,6 +573,7 @@
 							"language": "javascript",
 							"script": [
 								"runtime.callFunction(\"get_storage\", \"local_storage\", \"tutorial_completed_arr\");",
+								"runtime.callFunction(\"get_storage\", \"local_storage\", \"ftue_splashscreen\");",
 								"runtime.callFunction(\"get_storage\", \"local_storage\", \"expire_time\");",
 								"runtime.callFunction(\"get_storage\", \"local_storage\", \"day\");",
 								"runtime.callFunction(\"get_storage\", \"local_storage\", \"total_day\");",
@@ -602,7 +597,9 @@
 								"runtime.callFunction(\"get_storage\", \"local_storage\", \"atempt_each_level\");",
 								"runtime.callFunction(\"get_storage\", \"local_storage\", \"classic_round\");",
 								"runtime.callFunction(\"get_storage\", \"local_storage\", \"checkpoint_classic_tile\");",
-								"runtime.callFunction(\"get_storage\", \"local_storage\", \"checkpoint_classic_data\");"
+								"runtime.callFunction(\"get_storage\", \"local_storage\", \"checkpoint_classic_data\");",
+								"",
+								"// await runtime.callFunction(\"get_offer_time\");"
 							]
 						},
 						{

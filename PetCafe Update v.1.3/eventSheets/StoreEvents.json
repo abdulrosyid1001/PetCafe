@@ -72,6 +72,36 @@
 			"sid": 150420121932342
 		},
 		{
+			"eventType": "variable",
+			"name": "FTUE_shop_coins",
+			"type": "boolean",
+			"initialValue": "false",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 746944976230124
+		},
+		{
+			"eventType": "variable",
+			"name": "FTUE_shop_adv",
+			"type": "boolean",
+			"initialValue": "false",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 635901284162490
+		},
+		{
+			"eventType": "variable",
+			"name": "FTUE_shop_classic",
+			"type": "boolean",
+			"initialValue": "false",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 219049978894101
+		},
+		{
 			"eventType": "include",
 			"includeSheet": "GlobalEvents"
 		},

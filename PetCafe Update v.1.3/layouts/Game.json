@@ -5303,7 +5303,7 @@
 					"type": "NextEyePet",
 					"properties": {
 						"initially-visible": true,
-						"initial-animation": "11",
+						"initial-animation": "12",
 						"initial-frame": 0,
 						"enable-collisions": true,
 						"live-preview": false
@@ -5407,7 +5407,7 @@
 					"type": "NextEyePet",
 					"properties": {
 						"initially-visible": true,
-						"initial-animation": "12",
+						"initial-animation": "13",
 						"initial-frame": 0,
 						"enable-collisions": true,
 						"live-preview": false

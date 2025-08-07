@@ -2365,11 +2365,11 @@
 										{
 											"id": "compare-two-values",
 											"objectClass": "System",
-											"sid": 897098589684815,
+											"sid": 495026599003173,
 											"parameters": {
 												"first-value": "start_created_frame",
 												"comparison": 2,
-												"second-value": "unlockedMission.Width-3"
+												"second-value": "unlockedMission.Width"
 											}
 										}
 									],
@@ -2382,1236 +2382,16 @@
 												{
 													"id": "compare-two-values",
 													"objectClass": "System",
-													"sid": 583891543256680,
+													"sid": 400711270663697,
 													"parameters": {
 														"first-value": "start_created_frame",
 														"comparison": 2,
-														"second-value": "unlockedMission.Width-4"
+														"second-value": "unlockedMission.Width-2"
 													}
-												}
-											],
-											"actions": [
-												{
-													"id": "add-to-eventvar",
-													"objectClass": "System",
-													"sid": 489357483695900,
-													"disabled": true,
-													"parameters": {
-														"variable": "loop_frame",
-														"value": "1"
-													}
-												}
-											],
-											"sid": 148934918586302,
-											"children": [
-												{
-													"eventType": "block",
-													"conditions": [
-														{
-															"id": "compare-at-xy",
-															"objectClass": "unlockedBoosterData",
-															"sid": 659403769715623,
-															"parameters": {
-																"x": "0",
-																"y": "3",
-																"comparison": 0,
-																"value": "0"
-															}
-														}
-													],
-													"actions": [],
-													"sid": 453964522204716,
-													"children": [
-														{
-															"eventType": "block",
-															"conditions": [
-																{
-																	"id": "compare-at-xy",
-																	"objectClass": "unlockedBoosterData",
-																	"sid": 296683771735888,
-																	"parameters": {
-																		"x": "0",
-																		"y": "6",
-																		"comparison": 0,
-																		"value": "0"
-																	}
-																}
-															],
-															"actions": [],
-															"sid": 463587511845608,
-															"children": [
-																{
-																	"eventType": "block",
-																	"conditions": [
-																		{
-																			"id": "for",
-																			"objectClass": "System",
-																			"sid": 964431928870749,
-																			"parameters": {
-																				"name": "\"create\"",
-																				"start-index": "start_created_frame+1",
-																				"end-index": "start_created_frame+2"
-																			}
-																		}
-																	],
-																	"actions": [
-																		{
-																			"id": "add-to-eventvar",
-																			"objectClass": "System",
-																			"sid": 277905633109240,
-																			"parameters": {
-																				"variable": "loop_Y",
-																				"value": "1"
-																			}
-																		},
-																		{
-																			"id": "create-object",
-																			"objectClass": "System",
-																			"sid": 356954307631471,
-																			"parameters": {
-																				"object-to-create": "unlockedMissionFrame",
-																				"layer": "\"UI_Float\"",
-																				"x": "LayoutWidth-unlockedMissionFrame.ImageWidth-50",
-																				"y": "(LayoutHeight/2)-250+((loop_Y)*80)",
-																				"create-hierarchy": true,
-																				"template-name": "\"\""
-																			}
-																		}
-																	],
-																	"sid": 321456519170736,
-																	"children": [
-																		{
-																			"eventType": "block",
-																			"conditions": [
-																				{
-																					"id": "compare-two-values",
-																					"objectClass": "System",
-																					"sid": 923606225031629,
-																					"parameters": {
-																						"first-value": "loopindex+loop_frame",
-																						"comparison": 0,
-																						"second-value": "1"
-																					}
-																				}
-																			],
-																			"actions": [],
-																			"sid": 615305074078274,
-																			"children": [
-																				{
-																					"eventType": "block",
-																					"conditions": [
-																						{
-																							"id": "compare-at-xy",
-																							"objectClass": "unlockedBoosterData",
-																							"sid": 466909978957859,
-																							"parameters": {
-																								"x": "0",
-																								"y": "2",
-																								"comparison": 0,
-																								"value": "0"
-																							}
-																						}
-																					],
-																					"actions": [
-																						{
-																							"id": "add-to-eventvar",
-																							"objectClass": "System",
-																							"sid": 709597804144785,
-																							"parameters": {
-																								"variable": "loop_frame",
-																								"value": "1"
-																							}
-																						},
-																						{
-																							"id": "set-animation-frame",
-																							"objectClass": "missionIconPack",
-																							"sid": 530580435164501,
-																							"disabled": true,
-																							"parameters": {
-																								"frame-number": "str(unlockedMission.At((loopindex-1)+loop_frame, 2)-1)"
-																							}
-																						},
-																						{
-																							"id": "set-text",
-																							"objectClass": "labelUnlockedMission",
-																							"sid": 855931340470003,
-																							"disabled": true,
-																							"parameters": {
-																								"text": "\"Unlock Level \"&unlockedMission.At((loopindex-1)+loop_frame,3)"
-																							}
-																						}
-																					],
-																					"sid": 761386144771013
-																				}
-																			]
-																		},
-																		{
-																			"eventType": "block",
-																			"conditions": [
-																				{
-																					"id": "compare-two-values",
-																					"objectClass": "System",
-																					"sid": 881415012956065,
-																					"parameters": {
-																						"first-value": "loopindex+loop_frame",
-																						"comparison": 0,
-																						"second-value": "3"
-																					}
-																				}
-																			],
-																			"actions": [],
-																			"sid": 474117798854240,
-																			"children": [
-																				{
-																					"eventType": "block",
-																					"conditions": [
-																						{
-																							"id": "compare-at-xy",
-																							"objectClass": "unlockedBoosterData",
-																							"sid": 210904344002902,
-																							"parameters": {
-																								"x": "0",
-																								"y": "3",
-																								"comparison": 0,
-																								"value": "0"
-																							}
-																						}
-																					],
-																					"actions": [
-																						{
-																							"id": "add-to-eventvar",
-																							"objectClass": "System",
-																							"sid": 521655400268097,
-																							"parameters": {
-																								"variable": "loop_frame",
-																								"value": "1"
-																							}
-																						},
-																						{
-																							"id": "set-animation-frame",
-																							"objectClass": "missionIconPack",
-																							"sid": 485469764967462,
-																							"disabled": true,
-																							"parameters": {
-																								"frame-number": "str(unlockedMission.At((loopindex-1)+loop_frame, 2)-1)"
-																							}
-																						},
-																						{
-																							"id": "set-text",
-																							"objectClass": "labelUnlockedMission",
-																							"sid": 826183228350784,
-																							"disabled": true,
-																							"parameters": {
-																								"text": "\"Unlock Level \"&unlockedMission.At((loopindex-1)+loop_frame,3)"
-																							}
-																						}
-																					],
-																					"sid": 973507786444990
-																				}
-																			]
-																		},
-																		{
-																			"eventType": "block",
-																			"conditions": [
-																				{
-																					"id": "compare-two-values",
-																					"objectClass": "System",
-																					"sid": 374879282882740,
-																					"parameters": {
-																						"first-value": "loopindex+loop_frame",
-																						"comparison": 0,
-																						"second-value": "5"
-																					}
-																				}
-																			],
-																			"actions": [],
-																			"sid": 598129083111832,
-																			"children": [
-																				{
-																					"eventType": "block",
-																					"conditions": [
-																						{
-																							"id": "compare-at-xy",
-																							"objectClass": "unlockedBoosterData",
-																							"sid": 780438805589366,
-																							"parameters": {
-																								"x": "0",
-																								"y": "5",
-																								"comparison": 0,
-																								"value": "0"
-																							}
-																						}
-																					],
-																					"actions": [
-																						{
-																							"id": "add-to-eventvar",
-																							"objectClass": "System",
-																							"sid": 262275359429921,
-																							"parameters": {
-																								"variable": "loop_frame",
-																								"value": "1"
-																							}
-																						},
-																						{
-																							"id": "set-animation-frame",
-																							"objectClass": "missionIconPack",
-																							"sid": 480134622182245,
-																							"disabled": true,
-																							"parameters": {
-																								"frame-number": "str(unlockedMission.At((loopindex-1)+loop_frame, 2)-1)"
-																							}
-																						},
-																						{
-																							"id": "set-text",
-																							"objectClass": "labelUnlockedMission",
-																							"sid": 814718290679784,
-																							"disabled": true,
-																							"parameters": {
-																								"text": "\"Unlock Level \"&unlockedMission.At((loopindex-1)+loop_frame,3)"
-																							}
-																						}
-																					],
-																					"sid": 850698324138644
-																				}
-																			]
-																		},
-																		{
-																			"eventType": "block",
-																			"conditions": [],
-																			"actions": [
-																				{
-																					"id": "set-animation-frame",
-																					"objectClass": "missionIconPack",
-																					"sid": 876935259444280,
-																					"parameters": {
-																						"frame-number": "str(unlockedMission.At((loopindex-1)+loop_frame, 2)-1)"
-																					}
-																				},
-																				{
-																					"id": "set-text",
-																					"objectClass": "labelUnlockedMission",
-																					"sid": 878487861457632,
-																					"parameters": {
-																						"text": "replace(JSON.Get(curr_lang&\".unlock_level\"), \"<X>\", str(unlockedMission.At((loopindex-1)+loop_Frame,3)))"
-																					}
-																				}
-																			],
-																			"sid": 876246104175607
-																		}
-																	]
-																}
-															]
-														},
-														{
-															"eventType": "block",
-															"conditions": [
-																{
-																	"id": "else",
-																	"objectClass": "System",
-																	"sid": 351771735099617
-																}
-															],
-															"actions": [],
-															"sid": 881863894899610,
-															"children": [
-																{
-																	"eventType": "block",
-																	"conditions": [
-																		{
-																			"id": "compare-eventvar",
-																			"objectClass": "System",
-																			"sid": 925000475128106,
-																			"parameters": {
-																				"variable": "level_stage",
-																				"comparison": 5,
-																				"value": "6"
-																			}
-																		}
-																	],
-																	"actions": [],
-																	"sid": 659426595458091,
-																	"children": [
-																		{
-																			"eventType": "block",
-																			"conditions": [
-																				{
-																					"id": "for",
-																					"objectClass": "System",
-																					"sid": 749874387512686,
-																					"parameters": {
-																						"name": "\"create\"",
-																						"start-index": "start_created_frame+1",
-																						"end-index": "start_created_frame+2"
-																					}
-																				}
-																			],
-																			"actions": [
-																				{
-																					"id": "add-to-eventvar",
-																					"objectClass": "System",
-																					"sid": 906755287377947,
-																					"parameters": {
-																						"variable": "loop_Y",
-																						"value": "1"
-																					}
-																				},
-																				{
-																					"id": "create-object",
-																					"objectClass": "System",
-																					"sid": 309015582714635,
-																					"parameters": {
-																						"object-to-create": "unlockedMissionFrame",
-																						"layer": "\"UI_Float\"",
-																						"x": "LayoutWidth-unlockedMissionFrame.ImageWidth-50",
-																						"y": "(LayoutHeight/2)-250+((loop_Y)*80)",
-																						"create-hierarchy": true,
-																						"template-name": "\"\""
-																					}
-																				},
-																				{
-																					"id": "set-animation-frame",
-																					"objectClass": "missionIconPack",
-																					"sid": 498752790237748,
-																					"disabled": true,
-																					"parameters": {
-																						"frame-number": "str(unlockedMission.At((loopindex-1)+loop_frame, 2)-1)"
-																					}
-																				},
-																				{
-																					"id": "set-text",
-																					"objectClass": "labelUnlockedMission",
-																					"sid": 176604238082593,
-																					"disabled": true,
-																					"parameters": {
-																						"text": "\"Unlock Level \"&unlockedMission.At((loopindex-1)+loop_Frame,3)"
-																					}
-																				}
-																			],
-																			"sid": 690162610228298,
-																			"children": [
-																				{
-																					"eventType": "block",
-																					"conditions": [
-																						{
-																							"id": "compare-two-values",
-																							"objectClass": "System",
-																							"sid": 689038726831456,
-																							"parameters": {
-																								"first-value": "loopindex+loop_frame",
-																								"comparison": 0,
-																								"second-value": "1"
-																							}
-																						}
-																					],
-																					"actions": [],
-																					"sid": 199694030244464,
-																					"children": [
-																						{
-																							"eventType": "block",
-																							"conditions": [
-																								{
-																									"id": "compare-at-xy",
-																									"objectClass": "unlockedBoosterData",
-																									"sid": 824299979293321,
-																									"parameters": {
-																										"x": "0",
-																										"y": "2",
-																										"comparison": 0,
-																										"value": "0"
-																									}
-																								}
-																							],
-																							"actions": [
-																								{
-																									"id": "add-to-eventvar",
-																									"objectClass": "System",
-																									"sid": 460351521154130,
-																									"parameters": {
-																										"variable": "loop_frame",
-																										"value": "1"
-																									}
-																								},
-																								{
-																									"id": "set-animation-frame",
-																									"objectClass": "missionIconPack",
-																									"sid": 577106068866716,
-																									"disabled": true,
-																									"parameters": {
-																										"frame-number": "str(unlockedMission.At((loopindex-1)+loop_frame, 2)-1)"
-																									}
-																								},
-																								{
-																									"id": "set-text",
-																									"objectClass": "labelUnlockedMission",
-																									"sid": 583012809735219,
-																									"disabled": true,
-																									"parameters": {
-																										"text": "\"Unlock Level \"&unlockedMission.At((loopindex-1)+loop_frame,3)"
-																									}
-																								}
-																							],
-																							"sid": 709671806198822
-																						}
-																					]
-																				},
-																				{
-																					"eventType": "block",
-																					"conditions": [
-																						{
-																							"id": "compare-two-values",
-																							"objectClass": "System",
-																							"sid": 176191249819528,
-																							"parameters": {
-																								"first-value": "loopindex+loop_frame",
-																								"comparison": 0,
-																								"second-value": "3"
-																							}
-																						}
-																					],
-																					"actions": [],
-																					"sid": 561751500612179,
-																					"children": [
-																						{
-																							"eventType": "block",
-																							"conditions": [
-																								{
-																									"id": "compare-at-xy",
-																									"objectClass": "unlockedBoosterData",
-																									"sid": 468836172796132,
-																									"parameters": {
-																										"x": "0",
-																										"y": "3",
-																										"comparison": 0,
-																										"value": "0"
-																									}
-																								}
-																							],
-																							"actions": [
-																								{
-																									"id": "add-to-eventvar",
-																									"objectClass": "System",
-																									"sid": 998342479966463,
-																									"parameters": {
-																										"variable": "loop_frame",
-																										"value": "1"
-																									}
-																								},
-																								{
-																									"id": "set-animation-frame",
-																									"objectClass": "missionIconPack",
-																									"sid": 855719481790319,
-																									"disabled": true,
-																									"parameters": {
-																										"frame-number": "str(unlockedMission.At((loopindex-1)+loop_frame, 2)-1)"
-																									}
-																								},
-																								{
-																									"id": "set-text",
-																									"objectClass": "labelUnlockedMission",
-																									"sid": 740220192813179,
-																									"disabled": true,
-																									"parameters": {
-																										"text": "\"Unlock Level \"&unlockedMission.At((loopindex-1)+loop_frame,3)"
-																									}
-																								}
-																							],
-																							"sid": 168698448580323
-																						}
-																					]
-																				},
-																				{
-																					"eventType": "block",
-																					"conditions": [
-																						{
-																							"id": "compare-two-values",
-																							"objectClass": "System",
-																							"sid": 297050131948951,
-																							"parameters": {
-																								"first-value": "loopindex+loop_frame",
-																								"comparison": 0,
-																								"second-value": "5"
-																							}
-																						}
-																					],
-																					"actions": [],
-																					"sid": 567047928622476,
-																					"children": [
-																						{
-																							"eventType": "block",
-																							"conditions": [
-																								{
-																									"id": "compare-at-xy",
-																									"objectClass": "unlockedBoosterData",
-																									"sid": 573830093810249,
-																									"parameters": {
-																										"x": "0",
-																										"y": "5",
-																										"comparison": 0,
-																										"value": "0"
-																									}
-																								}
-																							],
-																							"actions": [
-																								{
-																									"id": "add-to-eventvar",
-																									"objectClass": "System",
-																									"sid": 762958279698503,
-																									"parameters": {
-																										"variable": "loop_frame",
-																										"value": "1"
-																									}
-																								},
-																								{
-																									"id": "set-animation-frame",
-																									"objectClass": "missionIconPack",
-																									"sid": 343526214098877,
-																									"disabled": true,
-																									"parameters": {
-																										"frame-number": "str(unlockedMission.At((loopindex-1)+loop_frame, 2)-1)"
-																									}
-																								},
-																								{
-																									"id": "set-text",
-																									"objectClass": "labelUnlockedMission",
-																									"sid": 289576145777088,
-																									"disabled": true,
-																									"parameters": {
-																										"text": "\"Unlock Level \"&unlockedMission.At((loopindex-1)+loop_frame,3)"
-																									}
-																								}
-																							],
-																							"sid": 247684463718267
-																						}
-																					]
-																				},
-																				{
-																					"eventType": "block",
-																					"conditions": [],
-																					"actions": [
-																						{
-																							"id": "set-animation-frame",
-																							"objectClass": "missionIconPack",
-																							"sid": 681337502400218,
-																							"parameters": {
-																								"frame-number": "str(unlockedMission.At((loopindex-1)+loop_frame, 2)-1)"
-																							}
-																						},
-																						{
-																							"id": "set-text",
-																							"objectClass": "labelUnlockedMission",
-																							"sid": 446794401668390,
-																							"parameters": {
-																								"text": "replace(JSON.Get(curr_lang&\".unlock_level\"), \"<X>\", str(unlockedMission.At((loopindex-1)+loop_Frame,3)))"
-																							}
-																						}
-																					],
-																					"sid": 268353011532010
-																				}
-																			]
-																		}
-																	]
-																},
-																{
-																	"eventType": "block",
-																	"conditions": [
-																		{
-																			"id": "else",
-																			"objectClass": "System",
-																			"sid": 297563067711108
-																		}
-																	],
-																	"actions": [],
-																	"sid": 693118605532865,
-																	"children": [
-																		{
-																			"eventType": "block",
-																			"conditions": [
-																				{
-																					"id": "for",
-																					"objectClass": "System",
-																					"sid": 695437250720029,
-																					"parameters": {
-																						"name": "\"create\"",
-																						"start-index": "start_created_frame+1",
-																						"end-index": "start_created_frame+3"
-																					}
-																				}
-																			],
-																			"actions": [
-																				{
-																					"id": "add-to-eventvar",
-																					"objectClass": "System",
-																					"sid": 834717736857024,
-																					"parameters": {
-																						"variable": "loop_Y",
-																						"value": "1"
-																					}
-																				},
-																				{
-																					"id": "create-object",
-																					"objectClass": "System",
-																					"sid": 430982584974439,
-																					"parameters": {
-																						"object-to-create": "unlockedMissionFrame",
-																						"layer": "\"UI_Float\"",
-																						"x": "LayoutWidth-unlockedMissionFrame.ImageWidth-50",
-																						"y": "(LayoutHeight/2)-250+((loop_Y)*80)",
-																						"create-hierarchy": true,
-																						"template-name": "\"\""
-																					}
-																				},
-																				{
-																					"id": "set-animation-frame",
-																					"objectClass": "missionIconPack",
-																					"sid": 726044711625275,
-																					"disabled": true,
-																					"parameters": {
-																						"frame-number": "str(unlockedMission.At((loopindex-1)+loop_frame, 2)-1)"
-																					}
-																				},
-																				{
-																					"id": "set-text",
-																					"objectClass": "labelUnlockedMission",
-																					"sid": 868639476165620,
-																					"disabled": true,
-																					"parameters": {
-																						"text": "\"Unlock Level \"&unlockedMission.At((loopindex-1)+loop_Frame,3)"
-																					}
-																				}
-																			],
-																			"sid": 477186777412534,
-																			"children": [
-																				{
-																					"eventType": "block",
-																					"conditions": [
-																						{
-																							"id": "compare-two-values",
-																							"objectClass": "System",
-																							"sid": 329833652070309,
-																							"parameters": {
-																								"first-value": "loopindex+loop_frame",
-																								"comparison": 0,
-																								"second-value": "1"
-																							}
-																						}
-																					],
-																					"actions": [],
-																					"sid": 561213094675094,
-																					"children": [
-																						{
-																							"eventType": "block",
-																							"conditions": [
-																								{
-																									"id": "compare-at-xy",
-																									"objectClass": "unlockedBoosterData",
-																									"sid": 792711633806628,
-																									"parameters": {
-																										"x": "0",
-																										"y": "2",
-																										"comparison": 0,
-																										"value": "0"
-																									}
-																								}
-																							],
-																							"actions": [
-																								{
-																									"id": "add-to-eventvar",
-																									"objectClass": "System",
-																									"sid": 226053604064193,
-																									"parameters": {
-																										"variable": "loop_frame",
-																										"value": "1"
-																									}
-																								},
-																								{
-																									"id": "set-animation-frame",
-																									"objectClass": "missionIconPack",
-																									"sid": 223766331598083,
-																									"disabled": true,
-																									"parameters": {
-																										"frame-number": "str(unlockedMission.At((loopindex-1)+loop_frame, 2)-1)"
-																									}
-																								},
-																								{
-																									"id": "set-text",
-																									"objectClass": "labelUnlockedMission",
-																									"sid": 914888035922923,
-																									"disabled": true,
-																									"parameters": {
-																										"text": "\"Unlock Level \"&unlockedMission.At((loopindex-1)+loop_frame,3)"
-																									}
-																								}
-																							],
-																							"sid": 987715106942963
-																						}
-																					]
-																				},
-																				{
-																					"eventType": "block",
-																					"conditions": [
-																						{
-																							"id": "compare-two-values",
-																							"objectClass": "System",
-																							"sid": 732830607347575,
-																							"parameters": {
-																								"first-value": "loopindex+loop_frame",
-																								"comparison": 0,
-																								"second-value": "3"
-																							}
-																						}
-																					],
-																					"actions": [],
-																					"sid": 171833359070599,
-																					"children": [
-																						{
-																							"eventType": "block",
-																							"conditions": [
-																								{
-																									"id": "compare-at-xy",
-																									"objectClass": "unlockedBoosterData",
-																									"sid": 802655813846161,
-																									"parameters": {
-																										"x": "0",
-																										"y": "3",
-																										"comparison": 0,
-																										"value": "0"
-																									}
-																								}
-																							],
-																							"actions": [
-																								{
-																									"id": "add-to-eventvar",
-																									"objectClass": "System",
-																									"sid": 323298848366915,
-																									"parameters": {
-																										"variable": "loop_frame",
-																										"value": "1"
-																									}
-																								},
-																								{
-																									"id": "set-animation-frame",
-																									"objectClass": "missionIconPack",
-																									"sid": 825908043299227,
-																									"disabled": true,
-																									"parameters": {
-																										"frame-number": "str(unlockedMission.At((loopindex-1)+loop_frame, 2)-1)"
-																									}
-																								},
-																								{
-																									"id": "set-text",
-																									"objectClass": "labelUnlockedMission",
-																									"sid": 823306824728553,
-																									"disabled": true,
-																									"parameters": {
-																										"text": "\"Unlock Level \"&unlockedMission.At((loopindex-1)+loop_frame,3)"
-																									}
-																								}
-																							],
-																							"sid": 866332031521192
-																						}
-																					]
-																				},
-																				{
-																					"eventType": "block",
-																					"conditions": [
-																						{
-																							"id": "compare-two-values",
-																							"objectClass": "System",
-																							"sid": 697112538086499,
-																							"parameters": {
-																								"first-value": "loopindex+loop_frame",
-																								"comparison": 0,
-																								"second-value": "5"
-																							}
-																						}
-																					],
-																					"actions": [],
-																					"sid": 159528973867619,
-																					"children": [
-																						{
-																							"eventType": "block",
-																							"conditions": [
-																								{
-																									"id": "compare-at-xy",
-																									"objectClass": "unlockedBoosterData",
-																									"sid": 629979418468647,
-																									"parameters": {
-																										"x": "0",
-																										"y": "5",
-																										"comparison": 0,
-																										"value": "0"
-																									}
-																								}
-																							],
-																							"actions": [
-																								{
-																									"id": "add-to-eventvar",
-																									"objectClass": "System",
-																									"sid": 763886844532877,
-																									"parameters": {
-																										"variable": "loop_frame",
-																										"value": "1"
-																									}
-																								},
-																								{
-																									"id": "set-animation-frame",
-																									"objectClass": "missionIconPack",
-																									"sid": 335992642930337,
-																									"disabled": true,
-																									"parameters": {
-																										"frame-number": "str(unlockedMission.At((loopindex-1)+loop_frame, 2)-1)"
-																									}
-																								},
-																								{
-																									"id": "set-text",
-																									"objectClass": "labelUnlockedMission",
-																									"sid": 864179553489076,
-																									"disabled": true,
-																									"parameters": {
-																										"text": "\"Unlock Level \"&unlockedMission.At((loopindex-1)+loop_frame,3)"
-																									}
-																								}
-																							],
-																							"sid": 585394169464219
-																						}
-																					]
-																				},
-																				{
-																					"eventType": "block",
-																					"conditions": [],
-																					"actions": [
-																						{
-																							"id": "set-animation-frame",
-																							"objectClass": "missionIconPack",
-																							"sid": 763089988893435,
-																							"parameters": {
-																								"frame-number": "str(unlockedMission.At((loopindex-1)+loop_frame, 2)-1)"
-																							}
-																						},
-																						{
-																							"id": "set-text",
-																							"objectClass": "labelUnlockedMission",
-																							"sid": 931722152067634,
-																							"parameters": {
-																								"text": "replace(JSON.Get(curr_lang&\".unlock_level\"), \"<X>\", str(unlockedMission.At((loopindex-1)+loop_Frame,3)))"
-																							}
-																						}
-																					],
-																					"sid": 913583289871520
-																				}
-																			]
-																		}
-																	]
-																}
-															]
-														}
-													]
-												},
-												{
-													"eventType": "block",
-													"conditions": [
-														{
-															"id": "else",
-															"objectClass": "System",
-															"sid": 299089087371930
-														}
-													],
-													"actions": [],
-													"sid": 881516281853165,
-													"children": [
-														{
-															"eventType": "block",
-															"conditions": [
-																{
-																	"id": "for",
-																	"objectClass": "System",
-																	"sid": 691217895307498,
-																	"parameters": {
-																		"name": "\"create\"",
-																		"start-index": "start_created_frame+1",
-																		"end-index": "start_created_frame+3"
-																	}
-																}
-															],
-															"actions": [
-																{
-																	"id": "add-to-eventvar",
-																	"objectClass": "System",
-																	"sid": 420679076876467,
-																	"parameters": {
-																		"variable": "loop_Y",
-																		"value": "1"
-																	}
-																},
-																{
-																	"id": "create-object",
-																	"objectClass": "System",
-																	"sid": 970489946784069,
-																	"parameters": {
-																		"object-to-create": "unlockedMissionFrame",
-																		"layer": "\"UI_Float\"",
-																		"x": "LayoutWidth-unlockedMissionFrame.ImageWidth-50",
-																		"y": "(LayoutHeight/2)-250+((loop_Y)*80)",
-																		"create-hierarchy": true,
-																		"template-name": "\"\""
-																	}
-																},
-																{
-																	"id": "set-animation-frame",
-																	"objectClass": "missionIconPack",
-																	"sid": 118247900602438,
-																	"disabled": true,
-																	"parameters": {
-																		"frame-number": "str(unlockedMission.At((loopindex-1)+loop_frame, 2)-1)"
-																	}
-																},
-																{
-																	"id": "set-text",
-																	"objectClass": "labelUnlockedMission",
-																	"sid": 311692754150697,
-																	"disabled": true,
-																	"parameters": {
-																		"text": "\"Unlock Level \"&unlockedMission.At((loopindex-1)+loop_Frame,3)"
-																	}
-																}
-															],
-															"sid": 810538098590864,
-															"children": [
-																{
-																	"eventType": "block",
-																	"conditions": [
-																		{
-																			"id": "compare-two-values",
-																			"objectClass": "System",
-																			"sid": 981802053525306,
-																			"parameters": {
-																				"first-value": "loopindex+loop_frame",
-																				"comparison": 0,
-																				"second-value": "1"
-																			}
-																		}
-																	],
-																	"actions": [],
-																	"sid": 622880501601078,
-																	"children": [
-																		{
-																			"eventType": "block",
-																			"conditions": [
-																				{
-																					"id": "compare-at-xy",
-																					"objectClass": "unlockedBoosterData",
-																					"sid": 641358182420853,
-																					"parameters": {
-																						"x": "0",
-																						"y": "2",
-																						"comparison": 0,
-																						"value": "0"
-																					}
-																				}
-																			],
-																			"actions": [
-																				{
-																					"id": "add-to-eventvar",
-																					"objectClass": "System",
-																					"sid": 743699145002505,
-																					"parameters": {
-																						"variable": "loop_frame",
-																						"value": "1"
-																					}
-																				},
-																				{
-																					"id": "set-animation-frame",
-																					"objectClass": "missionIconPack",
-																					"sid": 542864017786009,
-																					"disabled": true,
-																					"parameters": {
-																						"frame-number": "str(unlockedMission.At((loopindex-1)+loop_frame, 2)-1)"
-																					}
-																				},
-																				{
-																					"id": "set-text",
-																					"objectClass": "labelUnlockedMission",
-																					"sid": 481551640656247,
-																					"disabled": true,
-																					"parameters": {
-																						"text": "\"Unlock Level \"&unlockedMission.At((loopindex-1)+loop_frame,3)"
-																					}
-																				}
-																			],
-																			"sid": 262049741080382
-																		}
-																	]
-																},
-																{
-																	"eventType": "block",
-																	"conditions": [
-																		{
-																			"id": "compare-two-values",
-																			"objectClass": "System",
-																			"sid": 140702742998363,
-																			"parameters": {
-																				"first-value": "loopindex+loop_frame",
-																				"comparison": 0,
-																				"second-value": "3"
-																			}
-																		}
-																	],
-																	"actions": [],
-																	"sid": 471622182104989,
-																	"children": [
-																		{
-																			"eventType": "block",
-																			"conditions": [
-																				{
-																					"id": "compare-at-xy",
-																					"objectClass": "unlockedBoosterData",
-																					"sid": 456241137744084,
-																					"parameters": {
-																						"x": "0",
-																						"y": "3",
-																						"comparison": 0,
-																						"value": "0"
-																					}
-																				}
-																			],
-																			"actions": [
-																				{
-																					"id": "add-to-eventvar",
-																					"objectClass": "System",
-																					"sid": 309773935291133,
-																					"parameters": {
-																						"variable": "loop_frame",
-																						"value": "1"
-																					}
-																				},
-																				{
-																					"id": "set-animation-frame",
-																					"objectClass": "missionIconPack",
-																					"sid": 615749570349197,
-																					"disabled": true,
-																					"parameters": {
-																						"frame-number": "str(unlockedMission.At((loopindex-1)+loop_frame, 2)-1)"
-																					}
-																				},
-																				{
-																					"id": "set-text",
-																					"objectClass": "labelUnlockedMission",
-																					"sid": 820240450068565,
-																					"disabled": true,
-																					"parameters": {
-																						"text": "\"Unlock Level \"&unlockedMission.At((loopindex-1)+loop_frame,3)"
-																					}
-																				}
-																			],
-																			"sid": 483922694710760
-																		}
-																	]
-																},
-																{
-																	"eventType": "block",
-																	"conditions": [
-																		{
-																			"id": "compare-two-values",
-																			"objectClass": "System",
-																			"sid": 588929048596220,
-																			"parameters": {
-																				"first-value": "loopindex+loop_frame",
-																				"comparison": 0,
-																				"second-value": "5"
-																			}
-																		}
-																	],
-																	"actions": [],
-																	"sid": 510401288114079,
-																	"children": [
-																		{
-																			"eventType": "block",
-																			"conditions": [
-																				{
-																					"id": "compare-at-xy",
-																					"objectClass": "unlockedBoosterData",
-																					"sid": 271342995548054,
-																					"parameters": {
-																						"x": "0",
-																						"y": "5",
-																						"comparison": 0,
-																						"value": "0"
-																					}
-																				}
-																			],
-																			"actions": [
-																				{
-																					"id": "add-to-eventvar",
-																					"objectClass": "System",
-																					"sid": 253648696728810,
-																					"parameters": {
-																						"variable": "loop_frame",
-																						"value": "1"
-																					}
-																				},
-																				{
-																					"id": "set-animation-frame",
-																					"objectClass": "missionIconPack",
-																					"sid": 790802028528974,
-																					"disabled": true,
-																					"parameters": {
-																						"frame-number": "str(unlockedMission.At((loopindex-1)+loop_frame, 2)-1)"
-																					}
-																				},
-																				{
-																					"id": "set-text",
-																					"objectClass": "labelUnlockedMission",
-																					"sid": 537707470580748,
-																					"disabled": true,
-																					"parameters": {
-																						"text": "\"Unlock Level \"&unlockedMission.At((loopindex-1)+loop_frame,3)"
-																					}
-																				}
-																			],
-																			"sid": 338248783257130
-																		}
-																	]
-																},
-																{
-																	"eventType": "block",
-																	"conditions": [],
-																	"actions": [
-																		{
-																			"id": "set-animation-frame",
-																			"objectClass": "missionIconPack",
-																			"sid": 347763807735468,
-																			"parameters": {
-																				"frame-number": "str(unlockedMission.At((loopindex-1)+loop_frame, 2)-1)"
-																			}
-																		},
-																		{
-																			"id": "set-text",
-																			"objectClass": "labelUnlockedMission",
-																			"sid": 393392397473126,
-																			"parameters": {
-																				"text": "replace(JSON.Get(curr_lang&\".unlock_level\"), \"<X>\", str(unlockedMission.At((loopindex-1)+loop_Frame,3)))"
-																			}
-																		}
-																	],
-																	"sid": 414512292906049
-																}
-															]
-														}
-													]
-												}
-											]
-										},
-										{
-											"eventType": "block",
-											"conditions": [
-												{
-													"id": "else",
-													"objectClass": "System",
-													"sid": 327781271460350
 												}
 											],
 											"actions": [],
-											"sid": 628276225995043,
+											"sid": 148934918586302,
 											"children": [
 												{
 													"eventType": "block",
@@ -3619,10 +2399,10 @@
 														{
 															"id": "for",
 															"objectClass": "System",
-															"sid": 158776275694378,
+															"sid": 998238658925203,
 															"parameters": {
 																"name": "\"create\"",
-																"start-index": "start_created_frame+1",
+																"start-index": "start_created_frame",
 																"end-index": "start_created_frame+2"
 															}
 														}
@@ -3631,7 +2411,7 @@
 														{
 															"id": "add-to-eventvar",
 															"objectClass": "System",
-															"sid": 596863379587733,
+															"sid": 144669936057185,
 															"parameters": {
 																"variable": "loop_Y",
 																"value": "1"
@@ -3640,7 +2420,7 @@
 														{
 															"id": "create-object",
 															"objectClass": "System",
-															"sid": 905105543033423,
+															"sid": 196660391148148,
 															"parameters": {
 																"object-to-create": "unlockedMissionFrame",
 																"layer": "\"UI_Float\"",
@@ -3649,27 +2429,9 @@
 																"create-hierarchy": true,
 																"template-name": "\"\""
 															}
-														},
-														{
-															"id": "set-animation-frame",
-															"objectClass": "missionIconPack",
-															"sid": 371417146340129,
-															"disabled": true,
-															"parameters": {
-																"frame-number": "str(unlockedMission.At((loopindex-1)+loop_frame, 2)-1)"
-															}
-														},
-														{
-															"id": "set-text",
-															"objectClass": "labelUnlockedMission",
-															"sid": 864852847137301,
-															"disabled": true,
-															"parameters": {
-																"text": "\"Unlock Level \"&unlockedMission.At((loopindex-1)+loop_Frame,3)"
-															}
 														}
 													],
-													"sid": 332290824324809,
+													"sid": 168129606215075,
 													"children": [
 														{
 															"eventType": "block",
@@ -3677,16 +2439,16 @@
 																{
 																	"id": "compare-two-values",
 																	"objectClass": "System",
-																	"sid": 886813146516685,
+																	"sid": 812888180419952,
 																	"parameters": {
 																		"first-value": "loopindex+loop_frame",
 																		"comparison": 0,
-																		"second-value": "1"
+																		"second-value": "2"
 																	}
 																}
 															],
 															"actions": [],
-															"sid": 973796781347743,
+															"sid": 172132876292000,
 															"children": [
 																{
 																	"eventType": "block",
@@ -3694,7 +2456,7 @@
 																		{
 																			"id": "compare-at-xy",
 																			"objectClass": "unlockedBoosterData",
-																			"sid": 850407808926393,
+																			"sid": 679342045485551,
 																			"parameters": {
 																				"x": "0",
 																				"y": "2",
@@ -3707,32 +2469,14 @@
 																		{
 																			"id": "add-to-eventvar",
 																			"objectClass": "System",
-																			"sid": 471629823588501,
+																			"sid": 641011832939154,
 																			"parameters": {
 																				"variable": "loop_frame",
 																				"value": "1"
 																			}
-																		},
-																		{
-																			"id": "set-animation-frame",
-																			"objectClass": "missionIconPack",
-																			"sid": 673394185468312,
-																			"disabled": true,
-																			"parameters": {
-																				"frame-number": "str(unlockedMission.At((loopindex-1)+loop_frame, 2)-1)"
-																			}
-																		},
-																		{
-																			"id": "set-text",
-																			"objectClass": "labelUnlockedMission",
-																			"sid": 838865414390982,
-																			"disabled": true,
-																			"parameters": {
-																				"text": "\"Unlock Level \"&unlockedMission.At((loopindex-1)+loop_frame,3)"
-																			}
 																		}
 																	],
-																	"sid": 589447616938833
+																	"sid": 711812836709477
 																}
 															]
 														},
@@ -3742,7 +2486,7 @@
 																{
 																	"id": "compare-two-values",
 																	"objectClass": "System",
-																	"sid": 295014483991390,
+																	"sid": 881510389357191,
 																	"parameters": {
 																		"first-value": "loopindex+loop_frame",
 																		"comparison": 0,
@@ -3751,7 +2495,7 @@
 																}
 															],
 															"actions": [],
-															"sid": 477234976127114,
+															"sid": 973773712314618,
 															"children": [
 																{
 																	"eventType": "block",
@@ -3759,7 +2503,7 @@
 																		{
 																			"id": "compare-at-xy",
 																			"objectClass": "unlockedBoosterData",
-																			"sid": 866173391619326,
+																			"sid": 255723702377331,
 																			"parameters": {
 																				"x": "0",
 																				"y": "3",
@@ -3772,32 +2516,14 @@
 																		{
 																			"id": "add-to-eventvar",
 																			"objectClass": "System",
-																			"sid": 589931859634247,
+																			"sid": 117794423683826,
 																			"parameters": {
 																				"variable": "loop_frame",
 																				"value": "1"
 																			}
-																		},
-																		{
-																			"id": "set-animation-frame",
-																			"objectClass": "missionIconPack",
-																			"sid": 455812017377234,
-																			"disabled": true,
-																			"parameters": {
-																				"frame-number": "str(unlockedMission.At((loopindex-1)+loop_frame, 2)-1)"
-																			}
-																		},
-																		{
-																			"id": "set-text",
-																			"objectClass": "labelUnlockedMission",
-																			"sid": 148000501397341,
-																			"disabled": true,
-																			"parameters": {
-																				"text": "\"Unlock Level \"&unlockedMission.At((loopindex-1)+loop_frame,3)"
-																			}
 																		}
 																	],
-																	"sid": 427086181359505
+																	"sid": 876192115947454
 																}
 															]
 														},
@@ -3807,7 +2533,7 @@
 																{
 																	"id": "compare-two-values",
 																	"objectClass": "System",
-																	"sid": 581195513645346,
+																	"sid": 325316431709759,
 																	"parameters": {
 																		"first-value": "loopindex+loop_frame",
 																		"comparison": 0,
@@ -3816,7 +2542,7 @@
 																}
 															],
 															"actions": [],
-															"sid": 782710029307021,
+															"sid": 509232195674971,
 															"children": [
 																{
 																	"eventType": "block",
@@ -3824,7 +2550,7 @@
 																		{
 																			"id": "compare-at-xy",
 																			"objectClass": "unlockedBoosterData",
-																			"sid": 298084261676513,
+																			"sid": 666011205362518,
 																			"parameters": {
 																				"x": "0",
 																				"y": "5",
@@ -3837,32 +2563,14 @@
 																		{
 																			"id": "add-to-eventvar",
 																			"objectClass": "System",
-																			"sid": 263999756409533,
+																			"sid": 700636888116993,
 																			"parameters": {
 																				"variable": "loop_frame",
 																				"value": "1"
 																			}
-																		},
-																		{
-																			"id": "set-animation-frame",
-																			"objectClass": "missionIconPack",
-																			"sid": 183366051413826,
-																			"disabled": true,
-																			"parameters": {
-																				"frame-number": "str(unlockedMission.At((loopindex-1)+loop_frame, 2)-1)"
-																			}
-																		},
-																		{
-																			"id": "set-text",
-																			"objectClass": "labelUnlockedMission",
-																			"sid": 502440093840490,
-																			"disabled": true,
-																			"parameters": {
-																				"text": "\"Unlock Level \"&unlockedMission.At((loopindex-1)+loop_frame,3)"
-																			}
 																		}
 																	],
-																	"sid": 317951468977472
+																	"sid": 577981220184791
 																}
 															]
 														},
@@ -3873,7 +2581,7 @@
 																{
 																	"id": "set-animation-frame",
 																	"objectClass": "missionIconPack",
-																	"sid": 561998881024873,
+																	"sid": 333946281801455,
 																	"parameters": {
 																		"frame-number": "str(unlockedMission.At((loopindex-1)+loop_frame, 2)-1)"
 																	}
@@ -3881,88 +2589,96 @@
 																{
 																	"id": "set-text",
 																	"objectClass": "labelUnlockedMission",
-																	"sid": 451561220283111,
+																	"sid": 324882161875570,
 																	"parameters": {
 																		"text": "replace(JSON.Get(curr_lang&\".unlock_level\"), \"<X>\", str(unlockedMission.At((loopindex-1)+loop_Frame,3)))"
 																	}
 																}
 															],
-															"sid": 767158371468308
+															"sid": 833679542817812
 														}
 													]
 												}
 											]
-										}
-									]
-								},
-								{
-									"eventType": "block",
-									"conditions": [
-										{
-											"id": "else",
-											"objectClass": "System",
-											"sid": 824473146819882
-										}
-									],
-									"actions": [],
-									"sid": 765793683492974,
-									"children": [
+										},
 										{
 											"eventType": "block",
 											"conditions": [
 												{
-													"id": "compare-two-values",
+													"id": "else",
 													"objectClass": "System",
-													"sid": 408400024582307,
-													"parameters": {
-														"first-value": "start_created_frame",
-														"comparison": 2,
-														"second-value": "unlockedMission.Width-2"
-													}
-												},
-												{
-													"id": "for",
-													"objectClass": "System",
-													"sid": 752798599005582,
-													"parameters": {
-														"name": "\"create\"",
-														"start-index": "1+start_created_frame",
-														"end-index": "7-2"
-													}
+													"sid": 745622663595795
 												}
 											],
-											"actions": [
+											"actions": [],
+											"sid": 902982412435972,
+											"children": [
 												{
-													"id": "create-object",
-													"objectClass": "System",
-													"sid": 894832567696654,
-													"parameters": {
-														"object-to-create": "unlockedMissionFrame",
-														"layer": "\"UI_Float\"",
-														"x": "LayoutWidth-unlockedMissionFrame.ImageWidth-50",
-														"y": "(LayoutHeight/2)-250+((loopindex-start_created_frame)*80)",
-														"create-hierarchy": true,
-														"template-name": "\"\""
-													}
-												},
-												{
-													"id": "set-animation-frame",
-													"objectClass": "missionIconPack",
-													"sid": 493707356258892,
-													"parameters": {
-														"frame-number": "str(unlockedMission.At(loopindex-1, 2)-1)"
-													}
-												},
-												{
-													"id": "set-text",
-													"objectClass": "labelUnlockedMission",
-													"sid": 525926502955053,
-													"parameters": {
-														"text": "replace(JSON.Get(curr_lang&\".unlock_level\"), \"<X>\", str(unlockedMission.At(loopindex-1,3)))"
-													}
+													"eventType": "block",
+													"conditions": [
+														{
+															"id": "for",
+															"objectClass": "System",
+															"sid": 664266330911462,
+															"parameters": {
+																"name": "\"create\"",
+																"start-index": "start_created_frame",
+																"end-index": "7"
+															}
+														}
+													],
+													"actions": [
+														{
+															"id": "add-to-eventvar",
+															"objectClass": "System",
+															"sid": 819963145250310,
+															"parameters": {
+																"variable": "loop_Y",
+																"value": "1"
+															}
+														},
+														{
+															"id": "create-object",
+															"objectClass": "System",
+															"sid": 956653902143563,
+															"parameters": {
+																"object-to-create": "unlockedMissionFrame",
+																"layer": "\"UI_Float\"",
+																"x": "LayoutWidth-unlockedMissionFrame.ImageWidth-50",
+																"y": "(LayoutHeight/2)-250+((loop_Y)*80)",
+																"create-hierarchy": true,
+																"template-name": "\"\""
+															}
+														}
+													],
+													"sid": 858897813259027,
+													"children": [
+														{
+															"eventType": "block",
+															"conditions": [],
+															"actions": [
+																{
+																	"id": "set-animation-frame",
+																	"objectClass": "missionIconPack",
+																	"sid": 189560880725455,
+																	"parameters": {
+																		"frame-number": "str(unlockedMission.At((loopindex-1)+loop_frame, 2)-1)"
+																	}
+																},
+																{
+																	"id": "set-text",
+																	"objectClass": "labelUnlockedMission",
+																	"sid": 334269589811523,
+																	"parameters": {
+																		"text": "replace(JSON.Get(curr_lang&\".unlock_level\"), \"<X>\", str(unlockedMission.At((loopindex-1)+loop_Frame,3)))"
+																	}
+																}
+															],
+															"sid": 333946675276252
+														}
+													]
 												}
-											],
-											"sid": 844645775010613
+											]
 										}
 									]
 								}
@@ -4263,21 +2979,21 @@
 										{
 											"id": "set-at-xy",
 											"objectClass": "unlockedMission",
-											"sid": 548349631248129,
+											"sid": 705855934586469,
 											"parameters": {
 												"x": "5",
 												"y": "3",
-												"value": "55"
+												"value": "43"
 											}
 										},
 										{
 											"id": "set-at-xy",
 											"objectClass": "unlockedMission",
-											"sid": 999178280915367,
+											"sid": 188825987144517,
 											"parameters": {
 												"x": "6",
 												"y": "3",
-												"value": "60"
+												"value": "50"
 											}
 										}
 									],
@@ -4328,34 +3044,6 @@
 											"eventType": "block",
 											"conditions": [
 												{
-													"id": "compare-two-values",
-													"objectClass": "System",
-													"sid": 162158323308298,
-													"parameters": {
-														"first-value": "player_level",
-														"comparison": 5,
-														"second-value": "unlockedMission.At(loopindex-1, 1)"
-													}
-												}
-											],
-											"actions": [
-												{
-													"id": "add-to-eventvar",
-													"objectClass": "System",
-													"sid": 331457543941274,
-													"parameters": {
-														"variable": "temp_start_created",
-														"value": "1"
-													}
-												}
-											],
-											"sid": 956638716178495,
-											"disabled": true
-										},
-										{
-											"eventType": "block",
-											"conditions": [
-												{
 													"id": "compare-at-xy",
 													"objectClass": "unlockedBoosterData",
 													"sid": 194676012226980,
@@ -4398,11 +3086,11 @@
 										{
 											"id": "for",
 											"objectClass": "System",
-											"sid": 495717670288823,
+											"sid": 108589135534502,
 											"parameters": {
 												"name": "\"\"",
-												"start-index": "1",
-												"end-index": "unlockedMission.Width-2"
+												"start-index": "0",
+												"end-index": "unlockedMission.Width"
 											}
 										}
 									],
@@ -4415,11 +3103,11 @@
 												{
 													"id": "compare-two-values",
 													"objectClass": "System",
-													"sid": 796448815939258,
+													"sid": 874060245798878,
 													"parameters": {
 														"first-value": "level_stage",
 														"comparison": 5,
-														"second-value": "unlockedMission.At(loopindex-1, 3)"
+														"second-value": "unlockedMission.At(loopindex, 3)"
 													}
 												}
 											],
@@ -4473,7 +3161,7 @@
 									"actions": [
 										{
 											"callFunction": "show_unlocked_mission_pack",
-											"sid": 656913153376345,
+											"sid": 884613287561582,
 											"parameters": [
 												"temp_start_created"
 											]

@@ -79,7 +79,7 @@ var atemptEachLevel = [];
 //**--------------------------------- */
 
 var tutorialCompletedArr = [1,1,1,1,1,1,1,1,1,1,1];
-const unlockedBoosterArr = [{"classic_level_min":[2,5,9]},{"adventure_level_min":[5,12,23]}];
+const unlockedBoosterArr = [{"classic_level_min":[2,5,9]},{"adventure_level_min":[5,12,23,32,43]}];
 var boosterDataArr = {"hammer":0,"shake":0,"brush":0,"rainbow":0};
 
 var ms_24 = 86400000;   	//86400000 = 24 hours   //180000 = 3 minutes    //600000 = 10 minutes

@@ -82,6 +82,16 @@
 			"sid": 402619174579966
 		},
 		{
+			"eventType": "variable",
+			"name": "FTUE_starjar_claim",
+			"type": "boolean",
+			"initialValue": "false",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 470951292535329
+		},
+		{
 			"eventType": "include",
 			"includeSheet": "GlobalEvents"
 		},
@@ -263,6 +273,7 @@
 						"s = s<10 ? \"0\"+s : s ;",
 						"runtime.callFunction(\"set_offer_time\", h, m, s);",
 						"",
+						"if(runtime.globalVars.is_init_data == false) runtime.globalVars.is_init_data = true;",
 						"// console.log(\"expire time:\", h, m, s);"
 					]
 				}
@@ -347,15 +358,6 @@
 						}
 					],
 					"actions": [
-						{
-							"id": "set-boolean-eventvar",
-							"objectClass": "System",
-							"sid": 776821466519811,
-							"parameters": {
-								"variable": "is_init_data",
-								"value": "true"
-							}
-						},
 						{
 							"callFunction": "init_data",
 							"sid": 170407589371511,
