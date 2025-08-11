@@ -675,8 +675,8 @@
 								"if(runtime.globalVars.gift_banner_seq>5){",
 								"\truntime.globalVars.gift_banner_seq = 1;",
 								"}",
-								"runtime.callFunction(\"save_storage\", \"local_storage\", \"gift_banner_seq\", String(runtime.globalVars.gift_banner_seq));",
-								"runtime.callFunction(\"save_storage\", \"local_storage\", \"coin\", String(runtime.globalVars.coin));",
+								"runtime.callFunction(\"save_storage\", storageType, \"gift_banner_seq\", String(runtime.globalVars.gift_banner_seq));",
+								"runtime.callFunction(\"save_storage\", storageType, \"coin\", String(runtime.globalVars.coin));",
 								"// runtime.callFunction(\"design_event\", \"Coins_Performance\", \"Earn_Free_Coins:FreeGift_Shop:\"+String(runtime.globalVars.gift_banner_value));"
 							]
 						},

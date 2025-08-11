@@ -563,8 +563,8 @@
 									"type": "script",
 									"language": "javascript",
 									"script": [
-										"runtime.callFunction(\"save_storage\", \"local_storage\", \"checkpoint_classic_tile\", runtime.globalVars.checkpoint_JSON);",
-										"runtime.callFunction(\"save_storage\", \"local_storage\", \"checkpoint_classic_data\", runtime.globalVars.tempData_JSON);"
+										"runtime.callFunction(\"save_storage\", storageType, \"checkpoint_classic_tile\", runtime.globalVars.checkpoint_JSON);",
+										"runtime.callFunction(\"save_storage\", storageType, \"checkpoint_classic_data\", runtime.globalVars.tempData_JSON);"
 									]
 								}
 							],
@@ -1354,7 +1354,7 @@
 											"type": "script",
 											"language": "javascript",
 											"script": [
-												"runtime.callFunction(\"save_storage\", \"local_storage\", \"classic_has_gameover\", String(runtime.globalVars.classic_has_gameover));"
+												"runtime.callFunction(\"save_storage\", storageType, \"classic_has_gameover\", String(runtime.globalVars.classic_has_gameover));"
 											]
 										}
 									],
@@ -1377,7 +1377,7 @@
 											"type": "script",
 											"language": "javascript",
 											"script": [
-												"runtime.callFunction(\"save_storage\", \"local_storage\", \"classic_round\", String(runtime.globalVars.classic_round));"
+												"runtime.callFunction(\"save_storage\", storageType, \"classic_round\", String(runtime.globalVars.classic_round));"
 											]
 										},
 										{
@@ -1459,7 +1459,7 @@
 											"language": "javascript",
 											"script": [
 												"atemptEachLevel[runtime.globalVars.level_select-1].atempt++;",
-												"runtime.callFunction(\"save_storage\", \"local_storage\", \"atempt_each_level\", JSON.stringify(atemptEachLevel));"
+												"runtime.callFunction(\"save_storage\", storageType, \"atempt_each_level\", JSON.stringify(atemptEachLevel));"
 											]
 										}
 									],
@@ -2837,7 +2837,7 @@
 						"\tunlockedBoosterData.setAt(tutorialCompletedArr[localVars.ID-1], 0, localVars.ID-1);",
 						"\truntime.callFunction(\"tutorial_popup\", localVars.ID, \"show\");",
 						"\truntime.callFunction(\"set_boosters_frame_unlocked\");",
-						"\truntime.callFunction(\"save_storage\", \"local_storage\", \"tutorial_completed_arr\", JSON.stringify(tutorialCompletedArr));",
+						"\truntime.callFunction(\"save_storage\", storageType, \"tutorial_completed_arr\", JSON.stringify(tutorialCompletedArr));",
 						"}",
 						"else{",
 						"\tif(runtime.globalVars.gameState == \"start\"){",
@@ -3930,6 +3930,31 @@
 										{
 											"id": "compare-eventvar",
 											"objectClass": "System",
+											"sid": 200148431325548,
+											"parameters": {
+												"variable": "game_mode",
+												"comparison": 0,
+												"value": "\"adventure\""
+											}
+										}
+									],
+									"actions": [
+										{
+											"callFunction": "level_adventure_info",
+											"sid": 563399415672922,
+											"parameters": [
+												false
+											]
+										}
+									],
+									"sid": 809831692067650
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-eventvar",
+											"objectClass": "System",
 											"sid": 442385868743883,
 											"parameters": {
 												"variable": "ID",
@@ -3952,7 +3977,7 @@
 											"type": "script",
 											"language": "javascript",
 											"script": [
-												"runtime.callFunction(\"save_storage\", \"local_storage\", \"checkpoint_save\", String(runtime.globalVars.checkpoint_save));"
+												"runtime.callFunction(\"save_storage\", storageType, \"checkpoint_save\", String(runtime.globalVars.checkpoint_save));"
 											]
 										},
 										{
@@ -4016,6 +4041,42 @@
 											"parameters": {
 												"variable": "FTUE_daily_bonus_claim",
 												"value": "true"
+											}
+										},
+										{
+											"id": "set-boolean-eventvar",
+											"objectClass": "System",
+											"sid": 134350682829004,
+											"parameters": {
+												"variable": "FTUE_shop_coins",
+												"value": "false"
+											}
+										},
+										{
+											"id": "set-boolean-eventvar",
+											"objectClass": "System",
+											"sid": 725271638912113,
+											"parameters": {
+												"variable": "FTUE_shop_classic",
+												"value": "false"
+											}
+										},
+										{
+											"id": "set-boolean-eventvar",
+											"objectClass": "System",
+											"sid": 348668927485773,
+											"parameters": {
+												"variable": "FTUE_shop_adv",
+												"value": "false"
+											}
+										},
+										{
+											"id": "set-boolean-eventvar",
+											"objectClass": "System",
+											"sid": 873052144684375,
+											"parameters": {
+												"variable": "FTUE_starjar_claim",
+												"value": "false"
 											}
 										},
 										{
@@ -4580,7 +4641,7 @@
 											"language": "javascript",
 											"script": [
 												"boosterDataArr[\"hammer\"] += 3;",
-												"runtime.callFunction(\"save_storage\", \"local_storage\", \"boosters_data\", JSON.stringify(boosterDataArr));"
+												"runtime.callFunction(\"save_storage\", storageType, \"boosters_data\", JSON.stringify(boosterDataArr));"
 											]
 										}
 									],
@@ -4939,7 +5000,7 @@
 											"language": "javascript",
 											"script": [
 												"boosterDataArr[\"shake\"] += 3;",
-												"runtime.callFunction(\"save_storage\", \"local_storage\", \"boosters_data\", JSON.stringify(boosterDataArr));"
+												"runtime.callFunction(\"save_storage\", storageType, \"boosters_data\", JSON.stringify(boosterDataArr));"
 											]
 										}
 									],
@@ -5298,7 +5359,7 @@
 											"language": "javascript",
 											"script": [
 												"boosterDataArr[\"brush\"] += 3;",
-												"runtime.callFunction(\"save_storage\", \"local_storage\", \"boosters_data\", JSON.stringify(boosterDataArr));"
+												"runtime.callFunction(\"save_storage\", storageType, \"boosters_data\", JSON.stringify(boosterDataArr));"
 											]
 										}
 									],
@@ -5657,7 +5718,7 @@
 											"language": "javascript",
 											"script": [
 												"boosterDataArr[\"rainbow\"] += 3;",
-												"runtime.callFunction(\"save_storage\", \"local_storage\", \"boosters_data\", JSON.stringify(boosterDataArr));"
+												"runtime.callFunction(\"save_storage\", storageType, \"boosters_data\", JSON.stringify(boosterDataArr));"
 											]
 										}
 									],
@@ -6888,49 +6949,94 @@
 										"variable": "temp_high_score",
 										"value": "high_score"
 									}
-								},
-								{
-									"id": "set-eventvar-value",
-									"objectClass": "System",
-									"sid": 591699862121096,
-									"parameters": {
-										"variable": "gameState",
-										"value": "\"play\""
-									}
-								},
-								{
-									"id": "set-group-active",
-									"objectClass": "System",
-									"sid": 600205498097582,
-									"parameters": {
-										"group-name": "\"Controls\"",
-										"state": "activated"
-									}
-								},
-								{
-									"id": "set-group-active",
-									"objectClass": "System",
-									"sid": 602034468770336,
-									"parameters": {
-										"group-name": "\"Fruit Collision\"",
-										"state": "activated"
-									}
-								},
-								{
-									"id": "set-group-active",
-									"objectClass": "System",
-									"sid": 289227183142576,
-									"parameters": {
-										"group-name": "\"Game Over\"",
-										"state": "deactivated"
-									}
-								},
-								{
-									"callFunction": "checkCollision",
-									"sid": 846048712497991
 								}
 							],
-							"sid": 681500606082650
+							"sid": 681500606082650,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-eventvar",
+											"objectClass": "System",
+											"sid": 378542087051589,
+											"parameters": {
+												"variable": "game_mode",
+												"comparison": 0,
+												"value": "\"classic\""
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 645940426720774,
+											"parameters": {
+												"variable": "gameState",
+												"value": "\"play\""
+											}
+										},
+										{
+											"id": "set-group-active",
+											"objectClass": "System",
+											"sid": 549485353046184,
+											"parameters": {
+												"group-name": "\"Controls\"",
+												"state": "activated"
+											}
+										},
+										{
+											"id": "set-group-active",
+											"objectClass": "System",
+											"sid": 675730118434688,
+											"parameters": {
+												"group-name": "\"Fruit Collision\"",
+												"state": "activated"
+											}
+										},
+										{
+											"id": "set-group-active",
+											"objectClass": "System",
+											"sid": 205948652976299,
+											"parameters": {
+												"group-name": "\"Game Over\"",
+												"state": "deactivated"
+											}
+										},
+										{
+											"callFunction": "checkCollision",
+											"sid": 754930605618575
+										}
+									],
+									"sid": 794580356998895
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-eventvar",
+											"objectClass": "System",
+											"sid": 211098649135393,
+											"parameters": {
+												"variable": "game_mode",
+												"comparison": 0,
+												"value": "\"adventure\""
+											}
+										}
+									],
+									"actions": [
+										{
+											"callFunction": "level_adventure_info",
+											"sid": 282449578609610,
+											"parameters": [
+												true
+											]
+										}
+									],
+									"sid": 115585050679677
+								}
+							]
 						}
 					]
 				}
@@ -6979,8 +7085,10 @@
 								"if(starLevelCollectedArr[runtime.globalVars.level_select-1] !== null && starLevelCollectedArr[runtime.globalVars.level_select-1].star !== undefined){",
 								"\tstar = starLevelCollectedArr[runtime.globalVars.level_select-1].star;",
 								"\tif(star_get > star){",
+								"\t\tstarLevelCollectedArr[runtime.globalVars.level_select-1] = obj;",
+								"\t\truntime.callFunction(\"save_storage\", storageType, \"star_level_collected_arr\", JSON.stringify(starLevelCollectedArr));",
 								"\t\truntime.globalVars.star += star_get-star;",
-								"\t\truntime.callFunction(\"save_storage\", \"local_storage\", \"star\", String(runtime.globalVars.star));",
+								"\t\truntime.callFunction(\"save_storage\", storageType, \"star\", String(runtime.globalVars.star));",
 								"",
 								"\t\tif(runtime.globalVars.level_select == runtime.globalVars.level_stage){",
 								"\t\t\truntime.callFunction(\"design_event\", \"adventure_performance\",\"level_\"+String(runtime.globalVars.level_select)+\":first_complete:star_result:\"+star_get);",
@@ -6992,15 +7100,13 @@
 								"}",
 								"else{",
 								"\truntime.globalVars.star += star_get;",
-								"\truntime.callFunction(\"save_storage\", \"local_storage\", \"star\", String(runtime.globalVars.star));",
+								"\truntime.callFunction(\"save_storage\", storageType, \"star\", String(runtime.globalVars.star));",
 								"}",
-								"starLevelCollectedArr[runtime.globalVars.level_select-1] = obj;",
-								"runtime.callFunction(\"save_storage\", \"local_storage\", \"star_level_collected_arr\", JSON.stringify(starLevelCollectedArr));",
 								"",
 								"if(runtime.globalVars.level_select == runtime.globalVars.level_stage){",
 								"\truntime.globalVars.level_stage++;",
 								"\truntime.globalVars.level_select++;",
-								"\truntime.callFunction(\"save_storage\", \"local_storage\", \"level_stage\", String(runtime.globalVars.level_stage));",
+								"\truntime.callFunction(\"save_storage\", storageType, \"level_stage\", String(runtime.globalVars.level_stage));",
 								"}"
 							]
 						}
@@ -7748,6 +7854,14 @@
 											}
 										},
 										{
+											"id": "set-animation-frame",
+											"objectClass": "subPanelEndAdventure",
+											"sid": 487643971764643,
+											"parameters": {
+												"frame-number": "1"
+											}
+										},
+										{
 											"id": "set-text",
 											"objectClass": "labelAdventureGameOver",
 											"sid": 327522163950790,
@@ -8345,7 +8459,7 @@
 													"type": "script",
 													"language": "javascript",
 													"script": [
-														"runtime.callFunction(\"save_storage\", \"local_storage\", \"high_score\", String(runtime.globalVars.high_score))"
+														"runtime.callFunction(\"save_storage\", storageType, \"high_score\", String(runtime.globalVars.high_score))"
 													]
 												},
 												{
@@ -8486,7 +8600,7 @@
 													"type": "script",
 													"language": "javascript",
 													"script": [
-														"runtime.callFunction(\"save_storage\", \"local_storage\", \"high_score\", String(runtime.globalVars.high_score))"
+														"runtime.callFunction(\"save_storage\", storageType, \"high_score\", String(runtime.globalVars.high_score))"
 													]
 												},
 												{
@@ -8781,7 +8895,7 @@
 											"type": "script",
 											"language": "javascript",
 											"script": [
-												"runtime.callFunction(\"save_storage\", \"local_storage\", \"player_level\", String(runtime.globalVars.player_level))"
+												"runtime.callFunction(\"save_storage\", storageType, \"player_level\", String(runtime.globalVars.player_level))"
 											]
 										}
 									],
@@ -8869,7 +8983,7 @@
 													"language": "javascript",
 													"script": [
 														"atemptEachLevel[runtime.globalVars.level_select-1].atempt = 0;",
-														"runtime.callFunction(\"save_storage\", \"local_storage\", \"atempt_each_level\", JSON.stringify(atemptEachLevel));"
+														"runtime.callFunction(\"save_storage\", storageType, \"atempt_each_level\", JSON.stringify(atemptEachLevel));"
 													]
 												},
 												{
@@ -9113,7 +9227,7 @@
 													"language": "javascript",
 													"script": [
 														"atemptEachLevel[runtime.globalVars.level_select-1].atempt = 0;",
-														"runtime.callFunction(\"save_storage\", \"local_storage\", \"atempt_each_level\", JSON.stringify(atemptEachLevel));"
+														"runtime.callFunction(\"save_storage\", storageType, \"atempt_each_level\", JSON.stringify(atemptEachLevel));"
 													]
 												},
 												{
@@ -9464,7 +9578,7 @@
 									"type": "script",
 									"language": "javascript",
 									"script": [
-										"runtime.callFunction(\"save_storage\", \"local_storage\", \"checkpoint_save\", String(runtime.globalVars.checkpoint_save));"
+										"runtime.callFunction(\"save_storage\", storageType, \"checkpoint_save\", String(runtime.globalVars.checkpoint_save));"
 									]
 								}
 							],
@@ -10964,7 +11078,7 @@
 									"type": "script",
 									"language": "javascript",
 									"script": [
-										"runtime.callFunction(\"save_storage\", \"local_storage\", \"checkpoint_save\", String(runtime.globalVars.checkpoint_save));"
+										"runtime.callFunction(\"save_storage\", storageType, \"checkpoint_save\", String(runtime.globalVars.checkpoint_save));"
 									]
 								}
 							],
@@ -11152,7 +11266,7 @@
 									"type": "script",
 									"language": "javascript",
 									"script": [
-										"runtime.callFunction(\"save_storage\", \"local_storage\", \"checkpoint_save\", String(runtime.globalVars.checkpoint_save));"
+										"runtime.callFunction(\"save_storage\", storageType, \"checkpoint_save\", String(runtime.globalVars.checkpoint_save));"
 									]
 								}
 							],
@@ -11354,7 +11468,7 @@
 									"type": "script",
 									"language": "javascript",
 									"script": [
-										"runtime.callFunction(\"save_storage\", \"local_storage\", \"checkpoint_save\", String(runtime.globalVars.checkpoint_save));"
+										"runtime.callFunction(\"save_storage\", storageType, \"checkpoint_save\", String(runtime.globalVars.checkpoint_save));"
 									]
 								}
 							],
@@ -12570,8 +12684,8 @@
 											"type": "script",
 											"language": "javascript",
 											"script": [
-												"runtime.callFunction(\"save_storage\", \"local_storage\", \"score\", String(runtime.globalVars.score));",
-												"runtime.callFunction(\"save_storage\", \"local_storage\", \"temp_score\", String(runtime.globalVars.temp_score));"
+												"runtime.callFunction(\"save_storage\", storageType, \"score\", String(runtime.globalVars.score));",
+												"runtime.callFunction(\"save_storage\", storageType, \"temp_score\", String(runtime.globalVars.temp_score));"
 											]
 										}
 									],
@@ -13523,8 +13637,8 @@
 											"type": "script",
 											"language": "javascript",
 											"script": [
-												"runtime.callFunction(\"save_storage\", \"local_storage\", \"score\", String(runtime.globalVars.score));",
-												"runtime.callFunction(\"save_storage\", \"local_storage\", \"temp_score\", String(runtime.globalVars.temp_score));"
+												"runtime.callFunction(\"save_storage\", storageType, \"score\", String(runtime.globalVars.score));",
+												"runtime.callFunction(\"save_storage\", storageType, \"temp_score\", String(runtime.globalVars.temp_score));"
 											]
 										}
 									],
@@ -21120,8 +21234,8 @@
 											"type": "script",
 											"language": "javascript",
 											"script": [
-												"runtime.callFunction(\"save_storage\", \"local_storage\", \"player_level\", String(runtime.globalVars.player_level));",
-												"runtime.callFunction(\"save_storage\", \"local_storage\", \"temp_score\", String(runtime.globalVars.temp_score));"
+												"runtime.callFunction(\"save_storage\", storageType, \"player_level\", String(runtime.globalVars.player_level));",
+												"runtime.callFunction(\"save_storage\", storageType, \"temp_score\", String(runtime.globalVars.temp_score));"
 											]
 										},
 										{
@@ -22364,7 +22478,6 @@
 											"type": "script",
 											"language": "javascript",
 											"script": [
-												"ad_event_GA(\"Clicked\", \"Interstitial\", platform_ad.toLowerCase(), \"clas_after_plevel\");",
 												"set_ad_placement(\"clas_after_plevel\");"
 											]
 										},
@@ -22469,7 +22582,7 @@
 											"type": "script",
 											"language": "javascript",
 											"script": [
-												"runtime.callFunction(\"save_storage\", \"local_storage\", \"coin\", runtime.globalVars.coin);"
+												"runtime.callFunction(\"save_storage\", storageType, \"coin\", runtime.globalVars.coin);"
 											]
 										},
 										{
@@ -22477,7 +22590,7 @@
 											"language": "javascript",
 											"script": [
 												"boosterDataArr[\"hammer\"] += 1;",
-												"runtime.callFunction(\"save_storage\", \"local_storage\", \"boosters_data\", JSON.stringify(boosterDataArr));"
+												"runtime.callFunction(\"save_storage\", storageType, \"boosters_data\", JSON.stringify(boosterDataArr));"
 											]
 										},
 										{
@@ -22675,7 +22788,7 @@
 											"type": "script",
 											"language": "javascript",
 											"script": [
-												"runtime.callFunction(\"save_storage\", \"local_storage\", \"coin\", runtime.globalVars.coin);"
+												"runtime.callFunction(\"save_storage\", storageType, \"coin\", runtime.globalVars.coin);"
 											]
 										},
 										{
@@ -22683,7 +22796,7 @@
 											"language": "javascript",
 											"script": [
 												"boosterDataArr[\"shake\"] += 1;",
-												"runtime.callFunction(\"save_storage\", \"local_storage\", \"boosters_data\", JSON.stringify(boosterDataArr));"
+												"runtime.callFunction(\"save_storage\", storageType, \"boosters_data\", JSON.stringify(boosterDataArr));"
 											]
 										},
 										{
@@ -22881,7 +22994,7 @@
 											"type": "script",
 											"language": "javascript",
 											"script": [
-												"runtime.callFunction(\"save_storage\", \"local_storage\", \"coin\", runtime.globalVars.coin);"
+												"runtime.callFunction(\"save_storage\", storageType, \"coin\", runtime.globalVars.coin);"
 											]
 										},
 										{
@@ -22889,7 +23002,7 @@
 											"language": "javascript",
 											"script": [
 												"boosterDataArr[\"brush\"] += 1;",
-												"runtime.callFunction(\"save_storage\", \"local_storage\", \"boosters_data\", JSON.stringify(boosterDataArr));"
+												"runtime.callFunction(\"save_storage\", storageType, \"boosters_data\", JSON.stringify(boosterDataArr));"
 											]
 										},
 										{
@@ -23087,7 +23200,7 @@
 											"type": "script",
 											"language": "javascript",
 											"script": [
-												"runtime.callFunction(\"save_storage\", \"local_storage\", \"coin\", runtime.globalVars.coin);"
+												"runtime.callFunction(\"save_storage\", storageType, \"coin\", runtime.globalVars.coin);"
 											]
 										},
 										{
@@ -23095,7 +23208,7 @@
 											"language": "javascript",
 											"script": [
 												"boosterDataArr[\"rainbow\"] += 1;",
-												"runtime.callFunction(\"save_storage\", \"local_storage\", \"boosters_data\", JSON.stringify(boosterDataArr));"
+												"runtime.callFunction(\"save_storage\", storageType, \"boosters_data\", JSON.stringify(boosterDataArr));"
 											]
 										},
 										{
@@ -23320,7 +23433,7 @@
 											"type": "script",
 											"language": "javascript",
 											"script": [
-												"runtime.callFunction(\"save_storage\", \"local_storage\", \"coin\", runtime.globalVars.coin);"
+												"runtime.callFunction(\"save_storage\", storageType, \"coin\", runtime.globalVars.coin);"
 											]
 										},
 										{
@@ -23530,6 +23643,16 @@
 								"variable": "gameState",
 								"comparison": 1,
 								"value": "\"gameover\""
+							}
+						},
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 701773627269764,
+							"parameters": {
+								"variable": "gameState",
+								"comparison": 1,
+								"value": "\"level_adv_info\""
 							}
 						},
 						{
@@ -25542,7 +25665,7 @@
 										"if(runtime.globalVars.tutorial_case != \"booster\" && localVars.is_continue == 0){",
 										"\tif(boosterDataArr[localVars.boosters_ID]>0){",
 										"\t\tboosterDataArr[localVars.boosters_ID]--;",
-										"\t\truntime.callFunction(\"save_storage\", \"local_storage\", \"boosters_data\", JSON.stringify(boosterDataArr));",
+										"\t\truntime.callFunction(\"save_storage\", storageType, \"boosters_data\", JSON.stringify(boosterDataArr));",
 										"\t}",
 										"}",
 										"runtime.callFunction(\"set_boosters_text\");"
@@ -28928,6 +29051,28 @@
 					"sid": 679111090516686
 				},
 				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-start-of-layout",
+							"objectClass": "System",
+							"sid": 396660054305807
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 454873370479245,
+							"parameters": {
+								"variable": "click_count_gameplay",
+								"value": "0"
+							}
+						}
+					],
+					"sid": 855528878552452
+				},
+				{
 					"functionName": "no_activities",
 					"functionDescription": "",
 					"functionCategory": "",
@@ -28947,6 +29092,303 @@
 						}
 					],
 					"sid": 567368877495018
+				},
+				{
+					"functionName": "level_adventure_info",
+					"functionDescription": "",
+					"functionCategory": "",
+					"functionReturnType": "none",
+					"functionCopyPicked": false,
+					"functionIsAsync": false,
+					"functionParameters": [
+						{
+							"name": "any_tutorial",
+							"type": "boolean",
+							"initialValue": "false",
+							"comment": "",
+							"sid": 194667719183011
+						}
+					],
+					"eventType": "function-block",
+					"conditions": [],
+					"actions": [],
+					"sid": 958094898133131,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-boolean-eventvar",
+									"objectClass": "System",
+									"sid": 983826862509953,
+									"parameters": {
+										"variable": "any_tutorial"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 769510296157818,
+									"parameters": {
+										"variable": "gameState",
+										"value": "\"level_adv_info\""
+									}
+								},
+								{
+									"id": "create-object",
+									"objectClass": "System",
+									"sid": 599200241241038,
+									"parameters": {
+										"object-to-create": "LevelAdvBoundaryLine",
+										"layer": "\"UI\"",
+										"x": "LayoutWidth/2",
+										"y": "LayoutHeight/2-100",
+										"create-hierarchy": true,
+										"template-name": "\"\""
+									}
+								},
+								{
+									"id": "set-scale",
+									"objectClass": "AdventureLevelHidePanel",
+									"sid": 723426887582180,
+									"parameters": {
+										"scale": "0"
+									}
+								},
+								{
+									"id": "set-text",
+									"objectClass": "AdventureLevelText",
+									"sid": 709050278347964,
+									"parameters": {
+										"text": "replace(JSON.Get(curr_lang&\".level\"), \"<X>\", str(level_select))"
+									}
+								},
+								{
+									"id": "tween-two-properties",
+									"objectClass": "AdventureLevelHidePanel",
+									"sid": 225202249376245,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"level_info\"",
+										"property": "size",
+										"end-x": "301",
+										"end-y": "74",
+										"time": "0.2",
+										"ease": "easeoutback",
+										"destroy-on-complete": "no",
+										"loop": "no",
+										"ping-pong": "no",
+										"repeat-count": "1"
+									}
+								},
+								{
+									"id": "wait",
+									"objectClass": "System",
+									"sid": 612947108063057,
+									"parameters": {
+										"seconds": "1",
+										"use-timescale": true
+									}
+								},
+								{
+									"id": "tween-two-properties",
+									"objectClass": "AdventureLevelHidePanel",
+									"sid": 432030530571750,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"size\"",
+										"property": "size",
+										"end-x": "80",
+										"end-y": "25",
+										"time": "0.7",
+										"ease": "noease",
+										"destroy-on-complete": "yes",
+										"loop": "no",
+										"ping-pong": "no",
+										"repeat-count": "1"
+									}
+								},
+								{
+									"id": "tween-two-properties",
+									"objectClass": "AdventureLevelHidePanel",
+									"sid": 301907445616063,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"move\"",
+										"property": "position",
+										"end-x": "LayoutWidth-90",
+										"end-y": "130",
+										"time": "0.6",
+										"ease": "noease",
+										"destroy-on-complete": "no",
+										"loop": "no",
+										"ping-pong": "no",
+										"repeat-count": "1"
+									}
+								},
+								{
+									"id": "wait-for-previous-actions",
+									"objectClass": "System",
+									"sid": 127805390837793
+								},
+								{
+									"id": "create-object",
+									"objectClass": "System",
+									"sid": 315997567124533,
+									"parameters": {
+										"object-to-create": "AdventureLevelHidePanel",
+										"layer": "\"UI\"",
+										"x": "LayoutWidth-90",
+										"y": "130",
+										"create-hierarchy": true,
+										"template-name": "\"\""
+									}
+								},
+								{
+									"id": "set-scale",
+									"objectClass": "AdventureLevelHidePanel",
+									"sid": 310606366178970,
+									"parameters": {
+										"scale": "0"
+									}
+								},
+								{
+									"id": "set-text",
+									"objectClass": "AdventureLevelText",
+									"sid": 716250071919508,
+									"parameters": {
+										"text": "replace(JSON.Get(curr_lang&\".level\"), \"<X>\", str(level_select))"
+									}
+								},
+								{
+									"id": "tween-two-properties",
+									"objectClass": "AdventureLevelHidePanel",
+									"sid": 884896617787515,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"size\"",
+										"property": "size",
+										"end-x": "150",
+										"end-y": "40",
+										"time": "0.4",
+										"ease": "easeoutback",
+										"destroy-on-complete": "no",
+										"loop": "no",
+										"ping-pong": "no",
+										"repeat-count": "1"
+									}
+								},
+								{
+									"id": "wait-for-previous-actions",
+									"objectClass": "System",
+									"sid": 251540939482836
+								},
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 670253001752495,
+									"parameters": {
+										"variable": "gameState",
+										"value": "\"play\""
+									}
+								},
+								{
+									"id": "set-group-active",
+									"objectClass": "System",
+									"sid": 681004220682563,
+									"parameters": {
+										"group-name": "\"Controls\"",
+										"state": "activated"
+									}
+								},
+								{
+									"id": "set-group-active",
+									"objectClass": "System",
+									"sid": 285627323954467,
+									"parameters": {
+										"group-name": "\"Fruit Collision\"",
+										"state": "activated"
+									}
+								},
+								{
+									"id": "set-group-active",
+									"objectClass": "System",
+									"sid": 317519140813350,
+									"parameters": {
+										"group-name": "\"Game Over\"",
+										"state": "deactivated"
+									}
+								},
+								{
+									"callFunction": "checkCollision",
+									"sid": 576146200980392
+								}
+							],
+							"sid": 556236708322114
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "else",
+									"objectClass": "System",
+									"sid": 652786495490796
+								}
+							],
+							"actions": [
+								{
+									"id": "create-object",
+									"objectClass": "System",
+									"sid": 926814922402791,
+									"parameters": {
+										"object-to-create": "AdventureLevelHidePanel",
+										"layer": "\"UI\"",
+										"x": "LayoutWidth-90",
+										"y": "130",
+										"create-hierarchy": true,
+										"template-name": "\"\""
+									}
+								},
+								{
+									"id": "set-scale",
+									"objectClass": "AdventureLevelHidePanel",
+									"sid": 878969880636106,
+									"parameters": {
+										"scale": "0"
+									}
+								},
+								{
+									"id": "set-text",
+									"objectClass": "AdventureLevelText",
+									"sid": 978039718843571,
+									"parameters": {
+										"text": "replace(JSON.Get(curr_lang&\".level\"), \"<X>\", str(level_select))"
+									}
+								},
+								{
+									"id": "tween-two-properties",
+									"objectClass": "AdventureLevelHidePanel",
+									"sid": 398363879345557,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"size\"",
+										"property": "size",
+										"end-x": "150",
+										"end-y": "40",
+										"time": "0.4",
+										"ease": "easeoutback",
+										"destroy-on-complete": "no",
+										"loop": "no",
+										"ping-pong": "no",
+										"repeat-count": "1"
+									}
+								}
+							],
+							"sid": 312281839628163
+						}
+					]
 				},
 				{
 					"eventType": "block",
@@ -29061,6 +29503,27 @@
 									]
 								}
 							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-any-touch-start",
+									"objectClass": "Touch",
+									"sid": 372828868770712
+								}
+							],
+							"actions": [
+								{
+									"type": "script",
+									"language": "javascript",
+									"script": [
+										"runtime.globalVars.click_count_gameplay++;",
+										"runtime.callFunction(\"design_event\", \"click\",\"level_\"+String(runtime.globalVars.level_select)+\":\"+String(runtime.globalVars.click_count_gameplay));"
+									]
+								}
+							],
+							"sid": 213830601219889
 						}
 					]
 				},

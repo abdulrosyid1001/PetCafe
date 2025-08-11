@@ -442,8 +442,9 @@ export function load_ad(_ad_format, _ad_reward_state = -1) {
 export function show_ad(_ad_format, _ad_reward_state = -1) {
     ad_format = _ad_format;
     ad_reward_state = _ad_reward_state;
-    console.log(`show_ad: ${_ad_format}`);
-
+    if(ad_format == "interstitial") ad_event_GA("Clicked", "Interstitial", platform_ad.toLowerCase(), ad_placement);
+    else if (ad_format == "rewarded") ad_event_GA("Clicked", "RewardedVideo", platform_ad.toLowerCase(), ad_placement);
+    
     switch (platform_ad) {
         case "Glance":
             if (_ad_format === "start_session") ad_format = "interstitial";
@@ -458,19 +459,27 @@ export function show_ad(_ad_format, _ad_reward_state = -1) {
             if (ad_format === "interstitial") {
                 tracking_ad_status = "started";
                 LaggedAPI.APIAds.show(() => {
-                    tracking_ad_status = "skipped";
-                    console.log("ad completed");
-                });
+                        tracking_ad_status = "skipped";
+                        ad_event_GA("Show", "Interstitial", platform_ad.toLowerCase(), ad_placement);
+                        console.log("ad completed");
+                    },
+                    (error) => {
+                        tracking_ad_status = "skipped";
+                         ad_event_GA("FailedShow", "Interstitial", platform_ad.toLowerCase(), ad_placement);
+                        console.error("Ad error:", error);
+                    }
+                );
             } else if (ad_format === "rewarded") {
                 LaggedAPI.GEvents.reward(
                     (success, showAdFn) => {
                         if (success) {
                             tracking_ad_status = "started";
-                            console.log("track_status_in_js", tracking_ad_status);
+                            ad_event_GA("Show", "RewardedVideo", platform_ad.toLowerCase(), ad_placement);
                             showAdFn();
                         } else {
-                            tracking_ad_status = "skipped";
-                            console.log("track_status_in_js", tracking_ad_status);
+                            ad_event_GA("FailedShow", "RewardedVideo", platform_ad.toLowerCase(), ad_placement);
+                            tracking_ad_status = "error";
+                            console.log("NOTviewed");
                         }
                     },
                     success => {
@@ -532,8 +541,8 @@ export function show_ad(_ad_format, _ad_reward_state = -1) {
 						tracking_ad_status = "skipped";
 
 					} else if (placementInfo.breakStatus !== "viewed") {
-                        ad_event_GA("FailedShow", "Interstitial", platform_ad.toLowerCase(), ad_placement);
                         tracking_ad_status = "skipped";
+                        ad_event_GA("FailedShow", "Interstitial", platform_ad.toLowerCase(), ad_placement);
 						console.log("NOTviewed");
 
 					}
@@ -564,8 +573,8 @@ export function show_ad(_ad_format, _ad_reward_state = -1) {
 						tracking_ad_status = "skipped";
 
 					} else if (placementInfo.breakStatus !== "viewed") {
-                        ad_event_GA("FailedShow", "Interstitial", platform_ad.toLowerCase(), ad_placement);
                         tracking_ad_status = "skipped";
+                        ad_event_GA("FailedShow", "Interstitial", platform_ad.toLowerCase(), ad_placement);
 						console.log("NOTviewed");
 
 					}
@@ -607,8 +616,8 @@ export function show_ad(_ad_format, _ad_reward_state = -1) {
 						tracking_ad_status = "skipped";
 
 					} else if (placementInfo.breakStatus !== "viewed") {
-                        ad_event_GA("FailedShow", "RewardedVideo", platform_ad.toLowerCase(), ad_placement);
                         tracking_ad_status = "error";
+                        ad_event_GA("FailedShow", "RewardedVideo", platform_ad.toLowerCase(), ad_placement);
 						console.log("NOTviewed");
 						return;
 					}

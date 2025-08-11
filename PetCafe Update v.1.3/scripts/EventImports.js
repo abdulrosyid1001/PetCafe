@@ -71,6 +71,14 @@ async function triggerHaptics() {
 }
 //**--------------------------------- */
 
+//STORAGE TYPE
+//1 local_storage
+//2 telcos_storage
+//3 facebook_storage
+var storageType = "local_storage"; 
+
+//**--------------------------------- */
+
 //LEVEL GOALS MISSION ADVENTURE MODE
 var tempLevelGoalsArr = [];
 var starLevelCollectedArr = [];

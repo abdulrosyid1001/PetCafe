@@ -460,10 +460,10 @@
 										{
 											"id": "create-object",
 											"objectClass": "System",
-											"sid": 809358349403240,
+											"sid": 873663127963627,
 											"parameters": {
 												"object-to-create": "starLevelFrame",
-												"layer": "\"UI_Mission\"",
+												"layer": "\"UI_LevelButton\"",
 												"x": "levelMission.ImagePointX(1)",
 												"y": "levelMission.ImagePointY(1)",
 												"create-hierarchy": false,
@@ -515,12 +515,14 @@
 								{
 									"id": "move-to-top",
 									"objectClass": "ButtonPlay",
-									"sid": 315648031558003
+									"sid": 315648031558003,
+									"disabled": true
 								},
 								{
 									"id": "move-to-top",
 									"objectClass": "labelButton",
-									"sid": 628346427125484
+									"sid": 628346427125484,
+									"disabled": true
 								}
 							],
 							"sid": 760344781528444,
@@ -886,10 +888,10 @@
 												{
 													"id": "create-object",
 													"objectClass": "System",
-													"sid": 804005787097642,
+													"sid": 472060954554097,
 													"parameters": {
 														"object-to-create": "starLevelFrame",
-														"layer": "\"UI_Mission\"",
+														"layer": "\"UI_LevelButton\"",
 														"x": "levelMission.ImagePointX(1)",
 														"y": "levelMission.ImagePointY(1)",
 														"create-hierarchy": false,
@@ -939,12 +941,14 @@
 										{
 											"id": "move-to-top",
 											"objectClass": "ButtonPlay",
-											"sid": 311575983410431
+											"sid": 311575983410431,
+											"disabled": true
 										},
 										{
 											"id": "move-to-top",
 											"objectClass": "labelButton",
-											"sid": 280827486203081
+											"sid": 280827486203081,
+											"disabled": true
 										}
 									],
 									"sid": 975847763962303,
@@ -1346,10 +1350,10 @@
 												{
 													"id": "create-object",
 													"objectClass": "System",
-													"sid": 990088356026477,
+													"sid": 983048385180677,
 													"parameters": {
 														"object-to-create": "starLevelFrame",
-														"layer": "\"UI_Mission\"",
+														"layer": "\"UI_LevelButton\"",
 														"x": "levelMission.ImagePointX(1)",
 														"y": "levelMission.ImagePointY(1)",
 														"create-hierarchy": false,
@@ -1399,12 +1403,14 @@
 										{
 											"id": "move-to-top",
 											"objectClass": "ButtonPlay",
-											"sid": 809513056759136
+											"sid": 809513056759136,
+											"disabled": true
 										},
 										{
 											"id": "move-to-top",
 											"objectClass": "labelButton",
-											"sid": 104774737940181
+											"sid": 104774737940181,
+											"disabled": true
 										}
 									],
 									"sid": 452653802312155,
@@ -2365,10 +2371,10 @@
 										{
 											"id": "compare-two-values",
 											"objectClass": "System",
-											"sid": 495026599003173,
+											"sid": 769357635268079,
 											"parameters": {
 												"first-value": "start_created_frame",
-												"comparison": 2,
+												"comparison": 3,
 												"second-value": "unlockedMission.Width"
 											}
 										}
@@ -2399,7 +2405,7 @@
 														{
 															"id": "for",
 															"objectClass": "System",
-															"sid": 998238658925203,
+															"sid": 863790629770146,
 															"parameters": {
 																"name": "\"create\"",
 																"start-index": "start_created_frame",
@@ -2439,11 +2445,11 @@
 																{
 																	"id": "compare-two-values",
 																	"objectClass": "System",
-																	"sid": 812888180419952,
+																	"sid": 314622682097942,
 																	"parameters": {
 																		"first-value": "loopindex+loop_frame",
 																		"comparison": 0,
-																		"second-value": "2"
+																		"second-value": "1"
 																	}
 																}
 															],
@@ -3123,35 +3129,6 @@
 												}
 											],
 											"sid": 284389506495671
-										},
-										{
-											"eventType": "block",
-											"conditions": [
-												{
-													"id": "compare-at-xy",
-													"objectClass": "unlockedBoosterData",
-													"sid": 585978921661051,
-													"parameters": {
-														"x": "0",
-														"y": "loopindex+1",
-														"comparison": 0,
-														"value": "1"
-													}
-												}
-											],
-											"actions": [
-												{
-													"id": "add-to-eventvar",
-													"objectClass": "System",
-													"sid": 180158467155154,
-													"parameters": {
-														"variable": "temp_start_created",
-														"value": "1"
-													}
-												}
-											],
-											"sid": 654748863856458,
-											"disabled": true
 										}
 									]
 								},

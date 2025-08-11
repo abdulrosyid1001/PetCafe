@@ -164,7 +164,7 @@
 					"language": "javascript",
 					"script": [
 						"runtime.globalVars.total_day++;",
-						"runtime.callFunction(\"save_storage\", \"local_storage\", \"total_day\", String(runtime.globalVars.total_day));"
+						"runtime.callFunction(\"save_storage\", storageType, \"total_day\", String(runtime.globalVars.total_day));"
 					]
 				}
 			],
@@ -232,16 +232,16 @@
 						"\t}",
 						"\t// runtime.globalVars.total_day++;",
 						"\truntime.globalVars.day = runtime.globalVars.day +d+1;",
-						"\truntime.callFunction(\"save_storage\", \"local_storage\", \"expire_time\", String(exp_time));",
-						"\truntime.callFunction(\"save_storage\", \"local_storage\", \"day\", String(runtime.globalVars.day));",
+						"\truntime.callFunction(\"save_storage\", storageType, \"expire_time\", String(exp_time));",
+						"\truntime.callFunction(\"save_storage\", storageType, \"day\", String(runtime.globalVars.day));",
 						"\t// runtime.callFunction(\"save_storage\", \"local_storage\", \"total_day\", String(runtime.globalVars.total_day));",
 						"\t// exp_time = expireTimeLocal-expireHour+30000; //for test",
 						"\tconsole.log('start exp time', (exp_time-time)/3600000);",
 						"\truntime.globalVars.is_daily_bonus = 1;",
 						"\truntime.globalVars.is_enabled_starter_pack = 1;",
 						"\truntime.globalVars.is_sent_login_analytics = 1;",
-						"\truntime.callFunction(\"save_storage\", \"local_storage\", \"is_daily_bonus\", String(runtime.globalVars.is_daily_bonus));",
-						"\truntime.callFunction(\"save_storage\", \"local_storage\", \"enabled_starter_pack\", String(runtime.globalVars.is_enabled_starter_pack));",
+						"\truntime.callFunction(\"save_storage\", storageType, \"is_daily_bonus\", String(runtime.globalVars.is_daily_bonus));",
+						"\truntime.callFunction(\"save_storage\", storageType, \"enabled_starter_pack\", String(runtime.globalVars.is_enabled_starter_pack));",
 						"",
 						"\truntime.callFunction(\"default_data\");",
 						"}",
@@ -255,8 +255,8 @@
 						"if(runtime.globalVars.day > 7){",
 						"\truntime.globalVars.day = 1;",
 						"\tweekly_arr=default_weekly_arr;",
-						"\truntime.callFunction(\"save_storage\", \"local_storage\", \"day\", String(runtime.globalVars.day));",
-						"\truntime.callFunction(\"save_storage\", \"local_storage\", \"weekly_arr\", JSON.stringify(weekly_arr));",
+						"\truntime.callFunction(\"save_storage\", storageType, \"day\", String(runtime.globalVars.day));",
+						"\truntime.callFunction(\"save_storage\", storageType, \"weekly_arr\", JSON.stringify(weekly_arr));",
 						"}",
 						"// if(runtime.globalVars.total_day > 30){",
 						"// \truntime.globalVars.total_day = 1;",
@@ -621,6 +621,99 @@
 				}
 			],
 			"sid": 500967683037741
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "every-x-seconds",
+					"objectClass": "System",
+					"sid": 569702880475761,
+					"parameters": {
+						"interval-seconds": "5"
+					}
+				}
+			],
+			"actions": [],
+			"sid": 166288654871323,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "lightEffect",
+							"sid": 348944824959305,
+							"parameters": {
+								"instance-variable": "ID",
+								"comparison": 0,
+								"value": "\"btnplay\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-visible",
+							"objectClass": "lightEffect",
+							"sid": 531783838064781,
+							"parameters": {
+								"visibility": "visible"
+							}
+						},
+						{
+							"id": "set-position",
+							"objectClass": "lightEffect",
+							"sid": 124915537109350,
+							"parameters": {
+								"x": "Self.selfX-200",
+								"y": "Self.selfY+100"
+							}
+						},
+						{
+							"id": "wait-for-previous-actions",
+							"objectClass": "System",
+							"sid": 145298549495633
+						},
+						{
+							"id": "tween-two-properties",
+							"objectClass": "lightEffect",
+							"sid": 188308984994549,
+							"behaviorType": "Tween",
+							"parameters": {
+								"tags": "\"light_effect\"",
+								"property": "position",
+								"end-x": "Self.selfX+200",
+								"end-y": "Self.selfY-100",
+								"time": "0.5",
+								"ease": "default",
+								"destroy-on-complete": "no",
+								"loop": "no",
+								"ping-pong": "no",
+								"repeat-count": "1"
+							}
+						},
+						{
+							"id": "tween-two-properties",
+							"objectClass": "ButtonPlay",
+							"sid": 830431523791413,
+							"behaviorType": "Tween",
+							"parameters": {
+								"tags": "\"idle\"",
+								"property": "scale",
+								"end-x": "1.1",
+								"end-y": "1.1",
+								"time": "0.2",
+								"ease": "default",
+								"destroy-on-complete": "no",
+								"loop": "no",
+								"ping-pong": "yes",
+								"repeat-count": "1"
+							}
+						}
+					],
+					"sid": 526400793704935
+				}
+			]
 		},
 		{
 			"eventType": "block",
@@ -1904,7 +1997,7 @@
 									"type": "script",
 									"language": "javascript",
 									"script": [
-										"runtime.callFunction(\"save_storage\", \"local_storage\", \"enabled_starter_pack\", String(runtime.globalVars.is_enabled_starter_pack))"
+										"runtime.callFunction(\"save_storage\", storageType, \"enabled_starter_pack\", String(runtime.globalVars.is_enabled_starter_pack))"
 									]
 								}
 							],
@@ -3194,7 +3287,7 @@
 							"type": "script",
 							"language": "javascript",
 							"script": [
-								"runtime.callFunction(\"save_storage\", \"local_storage\", \"star\", String(runtime.globalVars.star));"
+								"runtime.callFunction(\"save_storage\", storageType, \"star\", String(runtime.globalVars.star));"
 							]
 						},
 						{
@@ -3202,7 +3295,7 @@
 							"language": "javascript",
 							"script": [
 								"runtime.globalVars.coin += 100;",
-								"runtime.callFunction(\"save_storage\", \"local_storage\", \"coin\", String(runtime.globalVars.coin));"
+								"runtime.callFunction(\"save_storage\", storageType, \"coin\", String(runtime.globalVars.coin));"
 							]
 						},
 						{
@@ -3234,6 +3327,39 @@
 					],
 					"sid": 349298636429223,
 					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-boolean-eventvar",
+									"objectClass": "System",
+									"sid": 666749566765749,
+									"parameters": {
+										"variable": "FTUE_starjar_claim"
+									}
+								}
+							],
+							"actions": [
+								{
+									"type": "script",
+									"language": "javascript",
+									"script": [
+										"progression_event(\"start\", \"ftue_starjar_claim\");",
+										"progression_event(\"completed\",\"ftue_starjar_claim\");"
+									]
+								},
+								{
+									"id": "set-boolean-eventvar",
+									"objectClass": "System",
+									"sid": 272008497891369,
+									"parameters": {
+										"variable": "FTUE_starjar_claim",
+										"value": "false"
+									}
+								}
+							],
+							"sid": 858815902953589
+						},
 						{
 							"eventType": "block",
 							"conditions": [

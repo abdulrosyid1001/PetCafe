@@ -146,6 +146,16 @@
 			"sid": 483709553184691
 		},
 		{
+			"eventType": "variable",
+			"name": "storageType",
+			"type": "string",
+			"initialValue": "",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 121120581369790
+		},
+		{
 			"eventType": "block",
 			"conditions": [
 				{
@@ -190,7 +200,34 @@
 					}
 				}
 			],
-			"sid": 607733090914211
+			"sid": 607733090914211,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 662299656297412,
+							"parameters": {
+								"variable": "storageType",
+								"comparison": 0,
+								"value": "\"\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"type": "script",
+							"language": "javascript",
+							"script": [
+								"runtime.globalVars.storageType = storageType;"
+							]
+						}
+					],
+					"sid": 894029116202002
+				}
+			]
 		},
 		{
 			"eventType": "block",
@@ -220,9 +257,9 @@
 				},
 				{
 					"callFunction": "save_storage",
-					"sid": 199820186968437,
+					"sid": 390544177945050,
 					"parameters": [
-						"\"local_storage\"",
+						"storageType",
 						"\"item_store\"",
 						"itemStoreData.AsJSON"
 					]
@@ -265,9 +302,9 @@
 				},
 				{
 					"callFunction": "save_storage",
-					"sid": 138549152972565,
+					"sid": 625850110701373,
 					"parameters": [
-						"\"local_storage\"",
+						"storageType",
 						"\"banner_store\"",
 						"bannerStoreData.AsJSON"
 					]
@@ -846,6 +883,184 @@
 			"isActiveOnStart": true,
 			"children": [
 				{
+					"functionName": "play_game",
+					"functionDescription": "",
+					"functionCategory": "",
+					"functionReturnType": "none",
+					"functionCopyPicked": false,
+					"functionIsAsync": false,
+					"functionParameters": [],
+					"eventType": "function-block",
+					"conditions": [],
+					"actions": [],
+					"sid": 454585452281258,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 531125109485735,
+									"parameters": {
+										"variable": "game_mode",
+										"comparison": 0,
+										"value": "\"classic\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 462205499540805,
+									"parameters": {
+										"variable": "level_mode",
+										"value": "\"Normal\""
+									}
+								},
+								{
+									"id": "go-to-layout",
+									"objectClass": "System",
+									"sid": 607404016329689,
+									"parameters": {
+										"layout": "Game"
+									}
+								}
+							],
+							"sid": 226017806947228
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 277006299751668,
+									"parameters": {
+										"variable": "game_mode",
+										"comparison": 0,
+										"value": "\"adventure\""
+									}
+								}
+							],
+							"actions": [],
+							"sid": 965122245997509,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-eventvar",
+											"objectClass": "System",
+											"sid": 971763983769899,
+											"parameters": {
+												"variable": "level_select",
+												"comparison": 4,
+												"value": "level_stage_max"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 873715673168359,
+											"parameters": {
+												"variable": "level_select",
+												"value": "level_stage_max"
+											}
+										}
+									],
+									"sid": 351605167285844,
+									"isOrBlock": true
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-eventvar",
+											"objectClass": "System",
+											"sid": 540017695656156,
+											"parameters": {
+												"variable": "level_stage",
+												"comparison": 4,
+												"value": "10"
+											}
+										}
+									],
+									"actions": [
+										{
+											"type": "script",
+											"language": "javascript",
+											"script": [
+												"set_ad_placement(\"adv_after_play\");"
+											]
+										},
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 765402778899676,
+											"parameters": {
+												"variable": "get_ads_status",
+												"value": "\"adventure_play\""
+											}
+										},
+										{
+											"callFunction": "design_event",
+											"sid": 540693780183883,
+											"disabled": true,
+											"parameters": [
+												"\"Interstitial_Ads\"",
+												"\"Ads_Adventure_Play\""
+											]
+										},
+										{
+											"callFunction": "show_popup_loading_ads",
+											"sid": 818260918912487
+										},
+										{
+											"callFunction": "Interstitial_Ads",
+											"sid": 803408031914075
+										},
+										{
+											"id": "go-to-layout",
+											"objectClass": "System",
+											"sid": 577462376242039,
+											"disabled": true,
+											"parameters": {
+												"layout": "Game"
+											}
+										}
+									],
+									"sid": 584235194972411
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "else",
+											"objectClass": "System",
+											"sid": 909542599412128
+										}
+									],
+									"actions": [
+										{
+											"id": "go-to-layout",
+											"objectClass": "System",
+											"sid": 165710367577713,
+											"parameters": {
+												"layout": "Game"
+											}
+										}
+									],
+									"sid": 365688529191215
+								}
+							]
+						}
+					]
+				},
+				{
 					"eventType": "block",
 					"conditions": [
 						{
@@ -860,7 +1075,7 @@
 						{
 							"id": "is-playing",
 							"objectClass": "ButtonPlay",
-							"sid": 669070060881573,
+							"sid": 328320614988811,
 							"behaviorType": "Tween",
 							"parameters": {
 								"tags": "\"play\""
@@ -894,6 +1109,12 @@
 								"\"play\"",
 								"\"Button_Play\""
 							]
+						},
+						{
+							"id": "stop-all-tweens",
+							"objectClass": "ButtonPlay",
+							"sid": 201949326518636,
+							"behaviorType": "Tween"
 						}
 					],
 					"sid": 433148299469642,
@@ -913,12 +1134,21 @@
 							],
 							"actions": [
 								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 398465779265010,
+									"parameters": {
+										"variable": "game_mode",
+										"value": "\"classic\""
+									}
+								},
+								{
 									"id": "tween-two-properties",
 									"objectClass": "ButtonPlay",
-									"sid": 666072459435523,
+									"sid": 351776095551709,
 									"behaviorType": "Tween",
 									"parameters": {
-										"tags": "\"play_classic\"",
+										"tags": "\"play\"",
 										"property": "scale",
 										"end-x": "0.8",
 										"end-y": "0.8",
@@ -929,6 +1159,15 @@
 										"ping-pong": "yes",
 										"repeat-count": "1"
 									}
+								},
+								{
+									"id": "wait-for-previous-actions",
+									"objectClass": "System",
+									"sid": 527367615296967
+								},
+								{
+									"callFunction": "play_game",
+									"sid": 250191024769165
 								}
 							],
 							"sid": 468967491258391,
@@ -975,12 +1214,21 @@
 							],
 							"actions": [
 								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 572898894429817,
+									"parameters": {
+										"variable": "game_mode",
+										"value": "\"adventure\""
+									}
+								},
+								{
 									"id": "tween-two-properties",
 									"objectClass": "ButtonPlay",
-									"sid": 554332756350017,
+									"sid": 673609097871525,
 									"behaviorType": "Tween",
 									"parameters": {
-										"tags": "\"play_adventure\"",
+										"tags": "\"play\"",
 										"property": "scale",
 										"end-x": "0.8",
 										"end-y": "0.8",
@@ -991,6 +1239,15 @@
 										"ping-pong": "yes",
 										"repeat-count": "1"
 									}
+								},
+								{
+									"id": "wait-for-previous-actions",
+									"objectClass": "System",
+									"sid": 509038200532117
+								},
+								{
+									"callFunction": "play_game",
+									"sid": 559686910485546
 								}
 							],
 							"sid": 118527522034273,
@@ -1019,187 +1276,6 @@
 									"sid": 495512612724610
 								}
 							]
-						}
-					]
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "on-tweens-finished",
-							"objectClass": "ButtonPlay",
-							"sid": 737820817518434,
-							"behaviorType": "Tween",
-							"parameters": {
-								"tags": "\"play_classic\""
-							}
-						}
-					],
-					"actions": [
-						{
-							"id": "set-eventvar-value",
-							"objectClass": "System",
-							"sid": 524550487525331,
-							"parameters": {
-								"variable": "game_mode",
-								"value": "\"classic\""
-							}
-						},
-						{
-							"id": "set-eventvar-value",
-							"objectClass": "System",
-							"sid": 657498694379613,
-							"parameters": {
-								"variable": "level_mode",
-								"value": "\"Normal\""
-							}
-						},
-						{
-							"id": "go-to-layout",
-							"objectClass": "System",
-							"sid": 319483729003487,
-							"parameters": {
-								"layout": "Game"
-							}
-						}
-					],
-					"sid": 392407187561132
-				},
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "on-tweens-finished",
-							"objectClass": "ButtonPlay",
-							"sid": 180085712528017,
-							"behaviorType": "Tween",
-							"parameters": {
-								"tags": "\"play_adventure\""
-							}
-						}
-					],
-					"actions": [
-						{
-							"id": "set-eventvar-value",
-							"objectClass": "System",
-							"sid": 868083605570151,
-							"parameters": {
-								"variable": "game_mode",
-								"value": "\"adventure\""
-							}
-						}
-					],
-					"sid": 504138170699866,
-					"children": [
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "compare-eventvar",
-									"objectClass": "System",
-									"sid": 338588641568324,
-									"parameters": {
-										"variable": "level_select",
-										"comparison": 4,
-										"value": "level_stage_max"
-									}
-								}
-							],
-							"actions": [
-								{
-									"id": "set-eventvar-value",
-									"objectClass": "System",
-									"sid": 734377637059895,
-									"parameters": {
-										"variable": "level_select",
-										"value": "level_stage_max"
-									}
-								}
-							],
-							"sid": 895727210316350,
-							"isOrBlock": true
-						},
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "compare-eventvar",
-									"objectClass": "System",
-									"sid": 198980749110896,
-									"parameters": {
-										"variable": "level_stage",
-										"comparison": 4,
-										"value": "10"
-									}
-								}
-							],
-							"actions": [
-								{
-									"type": "script",
-									"language": "javascript",
-									"script": [
-										"ad_event_GA(\"Clicked\", \"Interstitial\", platform_ad.toLowerCase(), \"adv_after_play\");",
-										"set_ad_placement(\"adv_after_play\");"
-									]
-								},
-								{
-									"id": "set-eventvar-value",
-									"objectClass": "System",
-									"sid": 875865008040295,
-									"parameters": {
-										"variable": "get_ads_status",
-										"value": "\"adventure_play\""
-									}
-								},
-								{
-									"callFunction": "design_event",
-									"sid": 693867088986412,
-									"disabled": true,
-									"parameters": [
-										"\"Interstitial_Ads\"",
-										"\"Ads_Adventure_Play\""
-									]
-								},
-								{
-									"callFunction": "show_popup_loading_ads",
-									"sid": 975189049362424
-								},
-								{
-									"callFunction": "Interstitial_Ads",
-									"sid": 962900187023666
-								},
-								{
-									"id": "go-to-layout",
-									"objectClass": "System",
-									"sid": 766455324964055,
-									"disabled": true,
-									"parameters": {
-										"layout": "Game"
-									}
-								}
-							],
-							"sid": 500062950642648
-						},
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "else",
-									"objectClass": "System",
-									"sid": 702987141740527
-								}
-							],
-							"actions": [
-								{
-									"id": "go-to-layout",
-									"objectClass": "System",
-									"sid": 766455324964055,
-									"parameters": {
-										"layout": "Game"
-									}
-								}
-							],
-							"sid": 489856867140683
 						}
 					]
 				},
@@ -1269,6 +1345,16 @@
 								"variable": "gameState",
 								"comparison": 1,
 								"value": "\"gameover\""
+							}
+						},
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 773295379903088,
+							"parameters": {
+								"variable": "gameState",
+								"comparison": 1,
+								"value": "\"level_adv_info\""
 							}
 						},
 						{
@@ -1782,7 +1868,6 @@
 									"type": "script",
 									"language": "javascript",
 									"script": [
-										"ad_event_GA(\"Clicked\", \"RewardedVideo\", platform_ad.toLowerCase(), \"shop_gift\");",
 										"set_ad_placement(\"shop_gift\");"
 									]
 								}
@@ -1821,6 +1906,154 @@
 										}
 									],
 									"sid": 868612366084891
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-two-values",
+											"objectClass": "System",
+											"sid": 277289169232753,
+											"parameters": {
+												"first-value": "LayoutName",
+												"comparison": 0,
+												"second-value": "\"Store\""
+											}
+										},
+										{
+											"id": "compare-boolean-eventvar",
+											"objectClass": "System",
+											"sid": 287508929851111,
+											"parameters": {
+												"variable": "FTUE_shop_coins"
+											}
+										}
+									],
+									"actions": [
+										{
+											"type": "script",
+											"language": "javascript",
+											"script": [
+												"progression_event(\"start\", \"ftue_shop_coins\");",
+												"progression_event(\"completed\", \"ftue_shop_coins\");"
+											]
+										},
+										{
+											"id": "set-boolean-eventvar",
+											"objectClass": "System",
+											"sid": 789079446939885,
+											"parameters": {
+												"variable": "FTUE_shop_coins",
+												"value": "false"
+											}
+										}
+									],
+									"sid": 162376925966549
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-two-values",
+											"objectClass": "System",
+											"sid": 934537870992615,
+											"parameters": {
+												"first-value": "LayoutName",
+												"comparison": 0,
+												"second-value": "\"Game\""
+											}
+										}
+									],
+									"actions": [],
+									"sid": 988515982091401,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-eventvar",
+													"objectClass": "System",
+													"sid": 757858752803370,
+													"parameters": {
+														"variable": "game_mode",
+														"comparison": 0,
+														"value": "\"classic\""
+													}
+												},
+												{
+													"id": "compare-boolean-eventvar",
+													"objectClass": "System",
+													"sid": 228495929442603,
+													"parameters": {
+														"variable": "FTUE_shop_classic"
+													}
+												}
+											],
+											"actions": [
+												{
+													"type": "script",
+													"language": "javascript",
+													"script": [
+														"progression_event(\"start\", \"ftue_in_coins_clas\");",
+														"progression_event(\"completed\",\"ftue_in_coins_clas\");"
+													]
+												},
+												{
+													"id": "set-boolean-eventvar",
+													"objectClass": "System",
+													"sid": 718105372222368,
+													"parameters": {
+														"variable": "FTUE_shop_classic",
+														"value": "false"
+													}
+												}
+											],
+											"sid": 271589047159661
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-eventvar",
+													"objectClass": "System",
+													"sid": 691877791551570,
+													"parameters": {
+														"variable": "game_mode",
+														"comparison": 0,
+														"value": "\"adventure\""
+													}
+												},
+												{
+													"id": "compare-boolean-eventvar",
+													"objectClass": "System",
+													"sid": 335510565565142,
+													"parameters": {
+														"variable": "FTUE_shop_adv"
+													}
+												}
+											],
+											"actions": [
+												{
+													"type": "script",
+													"language": "javascript",
+													"script": [
+														"progression_event(\"start\", \"ftue_in_coins_adv\");",
+														"progression_event(\"completed\",\"ftue_in_coins_adv\");"
+													]
+												},
+												{
+													"id": "set-boolean-eventvar",
+													"objectClass": "System",
+													"sid": 806642467343631,
+													"parameters": {
+														"variable": "FTUE_shop_adv",
+														"value": "false"
+													}
+												}
+											],
+											"sid": 834454319462071
+										}
+									]
 								},
 								{
 									"eventType": "block",
@@ -2020,7 +2253,6 @@
 													"type": "script",
 													"language": "javascript",
 													"script": [
-														"ad_event_GA(\"Clicked\", \"RewardedVideo\", platform_ad.toLowerCase(), \"shop_coins_50\");",
 														"set_ad_placement(\"shop_coins_50\");"
 													]
 												}
@@ -2046,7 +2278,6 @@
 													"type": "script",
 													"language": "javascript",
 													"script": [
-														"ad_event_GA(\"Clicked\", \"RewardedVideo\", platform_ad.toLowerCase(), \"shop_coins_300\");",
 														"set_ad_placement(\"shop_coins_300\");"
 													]
 												}
@@ -2072,7 +2303,6 @@
 													"type": "script",
 													"language": "javascript",
 													"script": [
-														"ad_event_GA(\"Clicked\", \"RewardedVideo\", platform_ad.toLowerCase(), \"shop_coins_1100\");",
 														"set_ad_placement(\"shop_coins_1100\");"
 													]
 												}
@@ -2233,7 +2463,6 @@
 															"type": "script",
 															"language": "javascript",
 															"script": [
-																"ad_event_GA(\"Clicked\", \"RewardedVideo\", platform_ad.toLowerCase(), \"clas_in_coins_50\");",
 																"set_ad_placement(\"clas_in_coins_50\");"
 															]
 														}
@@ -2259,7 +2488,6 @@
 															"type": "script",
 															"language": "javascript",
 															"script": [
-																"ad_event_GA(\"Clicked\", \"RewardedVideo\", platform_ad.toLowerCase(), \"clas_in_coins_300\");",
 																"set_ad_placement(\"clas_in_coins_300\");"
 															]
 														}
@@ -2285,7 +2513,6 @@
 															"type": "script",
 															"language": "javascript",
 															"script": [
-																"ad_event_GA(\"Clicked\", \"RewardedVideo\", platform_ad.toLowerCase(), \"clas_in_coins_1100\");",
 																"set_ad_placement(\"clas_in_coins_1100\");"
 															]
 														}
@@ -2330,7 +2557,6 @@
 															"type": "script",
 															"language": "javascript",
 															"script": [
-																"ad_event_GA(\"Clicked\", \"RewardedVideo\", platform_ad.toLowerCase(), \"adv_in_coins_50\");",
 																"set_ad_placement(\"adv_in_coins_50\");"
 															]
 														}
@@ -2356,7 +2582,6 @@
 															"type": "script",
 															"language": "javascript",
 															"script": [
-																"ad_event_GA(\"Clicked\", \"RewardedVideo\", platform_ad.toLowerCase(), \"adv_in_coins_300\");",
 																"set_ad_placement(\"adv_in_coins_300\");"
 															]
 														}
@@ -2382,7 +2607,6 @@
 															"type": "script",
 															"language": "javascript",
 															"script": [
-																"ad_event_GA(\"Clicked\", \"RewardedVideo\", platform_ad.toLowerCase(), \"adv_in_coins_1100\");",
 																"set_ad_placement(\"adv_in_coins_1100\");"
 															]
 														}
@@ -2756,7 +2980,7 @@
 											"type": "script",
 											"language": "javascript",
 											"script": [
-												"runtime.callFunction(\"save_storage\", \"local_storage\", \"music\", String(runtime.globalVars.music));"
+												"runtime.callFunction(\"save_storage\", storageType, \"music\", String(runtime.globalVars.music));"
 											]
 										},
 										{
@@ -2799,7 +3023,7 @@
 											"type": "script",
 											"language": "javascript",
 											"script": [
-												"runtime.callFunction(\"save_storage\", \"local_storage\", \"music\", String(runtime.globalVars.music));"
+												"runtime.callFunction(\"save_storage\", storageType, \"music\", String(runtime.globalVars.music));"
 											]
 										},
 										{
@@ -2861,7 +3085,7 @@
 											"type": "script",
 											"language": "javascript",
 											"script": [
-												"runtime.callFunction(\"save_storage\", \"local_storage\", \"sound\", String(runtime.globalVars.sound));"
+												"runtime.callFunction(\"save_storage\", storageType, \"sound\", String(runtime.globalVars.sound));"
 											]
 										},
 										{
@@ -2908,7 +3132,7 @@
 											"type": "script",
 											"language": "javascript",
 											"script": [
-												"runtime.callFunction(\"save_storage\", \"local_storage\", \"sound\", String(runtime.globalVars.sound));"
+												"runtime.callFunction(\"save_storage\", storageType, \"sound\", String(runtime.globalVars.sound));"
 											]
 										},
 										{
@@ -2974,7 +3198,7 @@
 											"type": "script",
 											"language": "javascript",
 											"script": [
-												"runtime.callFunction(\"save_storage\", \"local_storage\", \"vibrate\", String(runtime.globalVars.vibrate));"
+												"runtime.callFunction(\"save_storage\", storageType, \"vibrate\", String(runtime.globalVars.vibrate));"
 											]
 										},
 										{
@@ -3020,7 +3244,7 @@
 											"type": "script",
 											"language": "javascript",
 											"script": [
-												"runtime.callFunction(\"save_storage\", \"local_storage\", \"vibrate\", String(runtime.globalVars.vibrate));"
+												"runtime.callFunction(\"save_storage\", storageType, \"vibrate\", String(runtime.globalVars.vibrate));"
 											]
 										},
 										{
@@ -3162,7 +3386,7 @@
 											"type": "script",
 											"language": "javascript",
 											"script": [
-												"runtime.callFunction(\"save_storage\", \"local_storage\", \"checkpoint_save\", String(runtime.globalVars.checkpoint_save));"
+												"runtime.callFunction(\"save_storage\", storageType, \"checkpoint_save\", String(runtime.globalVars.checkpoint_save));"
 											]
 										}
 									],
@@ -4319,7 +4543,6 @@
 									"type": "script",
 									"language": "javascript",
 									"script": [
-										"ad_event_GA(\"Clicked\", \"RewardedVideo\", platform_ad.toLowerCase(), \"login_double\");",
 										"set_ad_placement(\"login_double\");"
 									]
 								},
@@ -4353,25 +4576,60 @@
 								{
 									"id": "compare-instance-variable",
 									"objectClass": "blueButton",
-									"sid": 919905247889418,
+									"sid": 343080035343047,
 									"parameters": {
 										"instance-variable": "ID",
 										"comparison": 0,
-										"value": "\"missions\""
+										"value": "\"continue_missions\""
 									}
 								}
 							],
-							"actions": [
+							"actions": [],
+							"sid": 213720611335597,
+							"children": [
 								{
-									"id": "go-to-layout",
-									"objectClass": "System",
-									"sid": 262090605482350,
-									"parameters": {
-										"layout": "Missions"
-									}
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-eventvar",
+											"objectClass": "System",
+											"sid": 170983351244371,
+											"parameters": {
+												"variable": "level_select",
+												"comparison": 1,
+												"value": "level_stage"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "add-to-eventvar",
+											"objectClass": "System",
+											"sid": 551022517685501,
+											"parameters": {
+												"variable": "level_select",
+												"value": "1"
+											}
+										}
+									],
+									"sid": 856098045212116
+								},
+								{
+									"eventType": "block",
+									"conditions": [],
+									"actions": [
+										{
+											"id": "go-to-layout",
+											"objectClass": "System",
+											"sid": 924583847322262,
+											"parameters": {
+												"layout": "Game"
+											}
+										}
+									],
+									"sid": 102278505470918
 								}
-							],
-							"sid": 213720611335597
+							]
 						},
 						{
 							"eventType": "block",
@@ -4710,7 +4968,6 @@
 											"type": "script",
 											"language": "javascript",
 											"script": [
-												"ad_event_GA(\"Clicked\", \"Interstitial\", platform_ad.toLowerCase(), \"adv_retry\");",
 												"set_ad_placement(\"adv_retry\");"
 											]
 										},
@@ -5032,7 +5289,6 @@
 									"type": "script",
 									"language": "javascript",
 									"script": [
-										"ad_event_GA(\"Clicked\", \"RewardedVideo\", platform_ad.toLowerCase(), \"clas_continue\");",
 										"set_ad_placement(\"clas_continue\");"
 									]
 								},
@@ -6533,9 +6789,9 @@
 								},
 								{
 									"callFunction": "save_storage",
-									"sid": 547166803907270,
+									"sid": 163845200958837,
 									"parameters": [
-										"\"local_storage\"",
+										"storageType",
 										"\"banner_store\"",
 										"bannerStoreData.AsJSON"
 									]
@@ -6710,7 +6966,7 @@
 											"type": "script",
 											"language": "javascript",
 											"script": [
-												"runtime.callFunction(\"save_storage\", \"local_storage\", \"coin\", runtime.globalVars.coin);"
+												"runtime.callFunction(\"save_storage\", storageType, \"coin\", runtime.globalVars.coin);"
 											]
 										},
 										{
@@ -6851,9 +7107,9 @@
 												},
 												{
 													"callFunction": "save_storage",
-													"sid": 223467174321127,
+													"sid": 635374244462587,
 													"parameters": [
-														"\"local_storage\"",
+														"storageType",
 														"\"item_store\"",
 														"itemStoreData.AsJSON"
 													]
@@ -6892,7 +7148,7 @@
 											"type": "script",
 											"language": "javascript",
 											"script": [
-												"runtime.callFunction(\"save_storage\", \"local_storage\", \"ticket\", runtime.globalVars.ticket);"
+												"runtime.callFunction(\"save_storage\", storageType, \"ticket\", runtime.globalVars.ticket);"
 											]
 										}
 									],
@@ -7026,9 +7282,9 @@
 												},
 												{
 													"callFunction": "save_storage",
-													"sid": 290061130777870,
+													"sid": 256590861686308,
 													"parameters": [
-														"\"local_storage\"",
+														"storageType",
 														"\"item_store\"",
 														"itemStoreData.AsJSON"
 													]
@@ -7216,9 +7472,9 @@
 								},
 								{
 									"callFunction": "save_storage",
-									"sid": 791924611987975,
+									"sid": 271017953254286,
 									"parameters": [
-										"\"local_storage\"",
+										"storageType",
 										"\"is_daily_bonus\"",
 										"str(is_daily_bonus)"
 									]
@@ -7528,7 +7784,7 @@
 															"script": [
 																"localVars.missionIconFrame = weekly_arr[runtime.globalVars.day-1].bonus_face;",
 																"weekly_arr[runtime.globalVars.day-1].status = 1;",
-																"runtime.callFunction(\"save_storage\", \"local_storage\", \"weekly_arr\", JSON.stringify(weekly_arr));"
+																"runtime.callFunction(\"save_storage\", storageType, \"weekly_arr\", JSON.stringify(weekly_arr));"
 															]
 														}
 													],
@@ -7579,7 +7835,7 @@
 																	"type": "script",
 																	"language": "javascript",
 																	"script": [
-																		"runtime.callFunction(\"save_storage\", \"local_storage\", \"coin\", runtime.globalVars.coin);"
+																		"runtime.callFunction(\"save_storage\", storageType, \"coin\", runtime.globalVars.coin);"
 																	]
 																},
 																{
@@ -7724,7 +7980,7 @@
 																	"language": "javascript",
 																	"script": [
 																		"boosterDataArr[\"hammer\"] += localVars.temp_value;",
-																		"runtime.callFunction(\"save_storage\", \"local_storage\", \"boosters_data\", JSON.stringify(boosterDataArr));"
+																		"runtime.callFunction(\"save_storage\", storageType, \"boosters_data\", JSON.stringify(boosterDataArr));"
 																	]
 																},
 																{
@@ -7885,7 +8141,7 @@
 																	"language": "javascript",
 																	"script": [
 																		"boosterDataArr[\"rainbow\"] += localVars.temp_value;",
-																		"runtime.callFunction(\"save_storage\", \"local_storage\", \"boosters_data\", JSON.stringify(boosterDataArr));"
+																		"runtime.callFunction(\"save_storage\", storageType, \"boosters_data\", JSON.stringify(boosterDataArr));"
 																	]
 																},
 																{
@@ -8206,7 +8462,7 @@
 																			"type": "script",
 																			"language": "javascript",
 																			"script": [
-																				"runtime.callFunction(\"save_storage\", \"local_storage\", \"coin\", runtime.globalVars.coin);"
+																				"runtime.callFunction(\"save_storage\", storageType, \"coin\", runtime.globalVars.coin);"
 																			]
 																		},
 																		{
@@ -8214,7 +8470,7 @@
 																			"language": "javascript",
 																			"script": [
 																				"boosterDataArr[\"hammer\"] += 1;",
-																				"runtime.callFunction(\"save_storage\", \"local_storage\", \"boosters_data\", JSON.stringify(boosterDataArr));"
+																				"runtime.callFunction(\"save_storage\", storageType, \"boosters_data\", JSON.stringify(boosterDataArr));"
 																			]
 																		},
 																		{
@@ -8617,7 +8873,7 @@
 																			"script": [
 																				"boosterDataArr[\"hammer\"] += 1;",
 																				"boosterDataArr[\"rainbow\"] += 1;",
-																				"runtime.callFunction(\"save_storage\", \"local_storage\", \"boosters_data\", JSON.stringify(boosterDataArr));"
+																				"runtime.callFunction(\"save_storage\", storageType, \"boosters_data\", JSON.stringify(boosterDataArr));"
 																			]
 																		},
 																		{
@@ -9028,7 +9284,7 @@
 																			"type": "script",
 																			"language": "javascript",
 																			"script": [
-																				"runtime.callFunction(\"save_storage\", \"local_storage\", \"coin\", runtime.globalVars.coin);"
+																				"runtime.callFunction(\"save_storage\", storageType, \"coin\", runtime.globalVars.coin);"
 																			]
 																		},
 																		{
@@ -9036,7 +9292,7 @@
 																			"language": "javascript",
 																			"script": [
 																				"boosterDataArr[\"hammer\"] += 2;",
-																				"runtime.callFunction(\"save_storage\", \"local_storage\", \"boosters_data\", JSON.stringify(boosterDataArr));"
+																				"runtime.callFunction(\"save_storage\", storageType, \"boosters_data\", JSON.stringify(boosterDataArr));"
 																			]
 																		},
 																		{
@@ -9437,7 +9693,7 @@
 																			"type": "script",
 																			"language": "javascript",
 																			"script": [
-																				"runtime.callFunction(\"save_storage\", \"local_storage\", \"coin\", runtime.globalVars.coin);"
+																				"runtime.callFunction(\"save_storage\", storageType, \"coin\", runtime.globalVars.coin);"
 																			]
 																		},
 																		{
@@ -9446,7 +9702,7 @@
 																			"script": [
 																				"boosterDataArr[\"shake\"] += 1;",
 																				"boosterDataArr[\"brush\"] += 1;",
-																				"runtime.callFunction(\"save_storage\", \"local_storage\", \"boosters_data\", JSON.stringify(boosterDataArr));"
+																				"runtime.callFunction(\"save_storage\", storageType, \"boosters_data\", JSON.stringify(boosterDataArr));"
 																			]
 																		},
 																		{
@@ -11874,633 +12130,19 @@
 										"create-hierarchy": true,
 										"template-name": "\"Level_1\""
 									}
+								},
+								{
+									"id": "wait-for-previous-actions",
+									"objectClass": "System",
+									"sid": 334147978184181
+								},
+								{
+									"id": "destroy",
+									"objectClass": "levelDesignFrame",
+									"sid": 322476916403312
 								}
 							],
 							"sid": 126752272138277
-						},
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "on-key-pressed",
-									"objectClass": "Keyboard",
-									"sid": 981742575083257,
-									"parameters": {
-										"key": 66
-									}
-								}
-							],
-							"actions": [
-								{
-									"id": "create-object",
-									"objectClass": "System",
-									"sid": 444979997963949,
-									"parameters": {
-										"object-to-create": "levelDesignFrame",
-										"layer": "\"Game\"",
-										"x": "limitsFrame.X",
-										"y": "limitsFrame.Y",
-										"create-hierarchy": true,
-										"template-name": "\"Level_2\""
-									}
-								}
-							],
-							"sid": 256009909795109
-						},
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "on-key-pressed",
-									"objectClass": "Keyboard",
-									"sid": 869664762798051,
-									"parameters": {
-										"key": 67
-									}
-								}
-							],
-							"actions": [
-								{
-									"id": "create-object",
-									"objectClass": "System",
-									"sid": 377649766537471,
-									"parameters": {
-										"object-to-create": "levelDesignFrame",
-										"layer": "\"Game\"",
-										"x": "limitsFrame.X",
-										"y": "limitsFrame.Y",
-										"create-hierarchy": true,
-										"template-name": "\"Level_3\""
-									}
-								}
-							],
-							"sid": 522182956890620
-						},
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "on-key-pressed",
-									"objectClass": "Keyboard",
-									"sid": 680799896826165,
-									"parameters": {
-										"key": 68
-									}
-								}
-							],
-							"actions": [
-								{
-									"id": "create-object",
-									"objectClass": "System",
-									"sid": 748279953191256,
-									"parameters": {
-										"object-to-create": "levelDesignFrame",
-										"layer": "\"Game\"",
-										"x": "limitsFrame.X",
-										"y": "limitsFrame.Y",
-										"create-hierarchy": true,
-										"template-name": "\"Level_4\""
-									}
-								}
-							],
-							"sid": 252790697920561
-						},
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "on-key-pressed",
-									"objectClass": "Keyboard",
-									"sid": 258918078664478,
-									"parameters": {
-										"key": 69
-									}
-								}
-							],
-							"actions": [
-								{
-									"id": "create-object",
-									"objectClass": "System",
-									"sid": 726884750556369,
-									"parameters": {
-										"object-to-create": "levelDesignFrame",
-										"layer": "\"Game\"",
-										"x": "limitsFrame.X",
-										"y": "limitsFrame.Y",
-										"create-hierarchy": true,
-										"template-name": "\"Level_5\""
-									}
-								}
-							],
-							"sid": 275452388904618
-						},
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "on-key-pressed",
-									"objectClass": "Keyboard",
-									"sid": 442872989613473,
-									"parameters": {
-										"key": 70
-									}
-								}
-							],
-							"actions": [
-								{
-									"id": "create-object",
-									"objectClass": "System",
-									"sid": 333453019776935,
-									"parameters": {
-										"object-to-create": "levelDesignFrame",
-										"layer": "\"Game\"",
-										"x": "limitsFrame.X",
-										"y": "limitsFrame.Y",
-										"create-hierarchy": true,
-										"template-name": "\"Level_6\""
-									}
-								}
-							],
-							"sid": 828242015945310
-						},
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "on-key-pressed",
-									"objectClass": "Keyboard",
-									"sid": 881386265628580,
-									"parameters": {
-										"key": 70
-									}
-								}
-							],
-							"actions": [
-								{
-									"id": "create-object",
-									"objectClass": "System",
-									"sid": 933302155235772,
-									"parameters": {
-										"object-to-create": "levelDesignFrame",
-										"layer": "\"Game\"",
-										"x": "limitsFrame.X",
-										"y": "limitsFrame.Y",
-										"create-hierarchy": true,
-										"template-name": "\"Level_6\""
-									}
-								}
-							],
-							"sid": 701243320180169
-						},
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "on-key-pressed",
-									"objectClass": "Keyboard",
-									"sid": 958941791044892,
-									"parameters": {
-										"key": 71
-									}
-								}
-							],
-							"actions": [
-								{
-									"id": "create-object",
-									"objectClass": "System",
-									"sid": 194104137997952,
-									"parameters": {
-										"object-to-create": "levelDesignFrame",
-										"layer": "\"Game\"",
-										"x": "limitsFrame.X",
-										"y": "limitsFrame.Y",
-										"create-hierarchy": true,
-										"template-name": "\"Level_7\""
-									}
-								}
-							],
-							"sid": 636670289216530
-						},
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "on-key-pressed",
-									"objectClass": "Keyboard",
-									"sid": 965161778821686,
-									"parameters": {
-										"key": 72
-									}
-								}
-							],
-							"actions": [
-								{
-									"id": "create-object",
-									"objectClass": "System",
-									"sid": 306518198466089,
-									"parameters": {
-										"object-to-create": "levelDesignFrame",
-										"layer": "\"Game\"",
-										"x": "limitsFrame.X",
-										"y": "limitsFrame.Y",
-										"create-hierarchy": true,
-										"template-name": "\"Level_8\""
-									}
-								}
-							],
-							"sid": 862247108362514
-						},
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "on-key-pressed",
-									"objectClass": "Keyboard",
-									"sid": 744268826275378,
-									"parameters": {
-										"key": 73
-									}
-								}
-							],
-							"actions": [
-								{
-									"id": "create-object",
-									"objectClass": "System",
-									"sid": 130149889903112,
-									"parameters": {
-										"object-to-create": "levelDesignFrame",
-										"layer": "\"Game\"",
-										"x": "limitsFrame.X",
-										"y": "limitsFrame.Y",
-										"create-hierarchy": true,
-										"template-name": "\"Level_9\""
-									}
-								}
-							],
-							"sid": 422479270157796
-						},
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "on-key-pressed",
-									"objectClass": "Keyboard",
-									"sid": 750664552874011,
-									"parameters": {
-										"key": 74
-									}
-								}
-							],
-							"actions": [
-								{
-									"id": "create-object",
-									"objectClass": "System",
-									"sid": 929800796298739,
-									"parameters": {
-										"object-to-create": "levelDesignFrame",
-										"layer": "\"Game\"",
-										"x": "limitsFrame.X",
-										"y": "limitsFrame.Y",
-										"create-hierarchy": true,
-										"template-name": "\"Level_10\""
-									}
-								}
-							],
-							"sid": 207437282514380
-						},
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "on-key-pressed",
-									"objectClass": "Keyboard",
-									"sid": 929071344366442,
-									"parameters": {
-										"key": 75
-									}
-								}
-							],
-							"actions": [
-								{
-									"id": "create-object",
-									"objectClass": "System",
-									"sid": 824787639294438,
-									"parameters": {
-										"object-to-create": "levelDesignFrame",
-										"layer": "\"Game\"",
-										"x": "limitsFrame.X",
-										"y": "limitsFrame.Y",
-										"create-hierarchy": true,
-										"template-name": "\"Level_11\""
-									}
-								}
-							],
-							"sid": 969090544613336
-						},
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "on-key-pressed",
-									"objectClass": "Keyboard",
-									"sid": 438845912886053,
-									"parameters": {
-										"key": 76
-									}
-								}
-							],
-							"actions": [
-								{
-									"id": "create-object",
-									"objectClass": "System",
-									"sid": 220344995237890,
-									"parameters": {
-										"object-to-create": "levelDesignFrame",
-										"layer": "\"Game\"",
-										"x": "limitsFrame.X",
-										"y": "limitsFrame.Y",
-										"create-hierarchy": true,
-										"template-name": "\"Level_12\""
-									}
-								}
-							],
-							"sid": 431715653943503
-						},
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "on-key-pressed",
-									"objectClass": "Keyboard",
-									"sid": 431629393029056,
-									"parameters": {
-										"key": 77
-									}
-								}
-							],
-							"actions": [
-								{
-									"id": "create-object",
-									"objectClass": "System",
-									"sid": 905201084300302,
-									"parameters": {
-										"object-to-create": "levelDesignFrame",
-										"layer": "\"Game\"",
-										"x": "limitsFrame.X",
-										"y": "limitsFrame.Y",
-										"create-hierarchy": true,
-										"template-name": "\"Level_13\""
-									}
-								}
-							],
-							"sid": 508069869360108
-						},
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "on-key-pressed",
-									"objectClass": "Keyboard",
-									"sid": 370015554107224,
-									"parameters": {
-										"key": 78
-									}
-								}
-							],
-							"actions": [
-								{
-									"id": "create-object",
-									"objectClass": "System",
-									"sid": 939148926249564,
-									"parameters": {
-										"object-to-create": "levelDesignFrame",
-										"layer": "\"Game\"",
-										"x": "limitsFrame.X",
-										"y": "limitsFrame.Y",
-										"create-hierarchy": true,
-										"template-name": "\"Level_14\""
-									}
-								}
-							],
-							"sid": 377962847830691
-						},
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "on-key-pressed",
-									"objectClass": "Keyboard",
-									"sid": 202766720603460,
-									"parameters": {
-										"key": 79
-									}
-								}
-							],
-							"actions": [
-								{
-									"id": "create-object",
-									"objectClass": "System",
-									"sid": 257942699315523,
-									"parameters": {
-										"object-to-create": "levelDesignFrame",
-										"layer": "\"Game\"",
-										"x": "limitsFrame.X",
-										"y": "limitsFrame.Y",
-										"create-hierarchy": true,
-										"template-name": "\"Level_15\""
-									}
-								}
-							],
-							"sid": 925301278998788
-						},
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "on-key-pressed",
-									"objectClass": "Keyboard",
-									"sid": 754416941462535,
-									"parameters": {
-										"key": 80
-									}
-								}
-							],
-							"actions": [
-								{
-									"id": "create-object",
-									"objectClass": "System",
-									"sid": 115781713036101,
-									"parameters": {
-										"object-to-create": "levelDesignFrame",
-										"layer": "\"Game\"",
-										"x": "limitsFrame.X",
-										"y": "limitsFrame.Y",
-										"create-hierarchy": true,
-										"template-name": "\"Level_16\""
-									}
-								}
-							],
-							"sid": 820437193576305
-						},
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "on-key-pressed",
-									"objectClass": "Keyboard",
-									"sid": 901626404596358,
-									"parameters": {
-										"key": 81
-									}
-								}
-							],
-							"actions": [
-								{
-									"id": "create-object",
-									"objectClass": "System",
-									"sid": 729651174273332,
-									"parameters": {
-										"object-to-create": "levelDesignFrame",
-										"layer": "\"Game\"",
-										"x": "limitsFrame.X",
-										"y": "limitsFrame.Y",
-										"create-hierarchy": true,
-										"template-name": "\"Level_17\""
-									}
-								}
-							],
-							"sid": 699935198919103
-						},
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "on-key-pressed",
-									"objectClass": "Keyboard",
-									"sid": 951898274078657,
-									"parameters": {
-										"key": 82
-									}
-								}
-							],
-							"actions": [
-								{
-									"id": "create-object",
-									"objectClass": "System",
-									"sid": 411133190488366,
-									"parameters": {
-										"object-to-create": "levelDesignFrame",
-										"layer": "\"Game\"",
-										"x": "limitsFrame.X",
-										"y": "limitsFrame.Y",
-										"create-hierarchy": true,
-										"template-name": "\"Level_18\""
-									}
-								}
-							],
-							"sid": 447981471441760
-						},
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "on-key-pressed",
-									"objectClass": "Keyboard",
-									"sid": 209235688786718,
-									"parameters": {
-										"key": 83
-									}
-								}
-							],
-							"actions": [
-								{
-									"id": "create-object",
-									"objectClass": "System",
-									"sid": 411400846994380,
-									"parameters": {
-										"object-to-create": "levelDesignFrame",
-										"layer": "\"Game\"",
-										"x": "limitsFrame.X",
-										"y": "limitsFrame.Y",
-										"create-hierarchy": true,
-										"template-name": "\"Level_19\""
-									}
-								}
-							],
-							"sid": 162049437054250
-						},
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "on-key-pressed",
-									"objectClass": "Keyboard",
-									"sid": 652684674264144,
-									"parameters": {
-										"key": 84
-									}
-								}
-							],
-							"actions": [
-								{
-									"id": "create-object",
-									"objectClass": "System",
-									"sid": 288368024656632,
-									"parameters": {
-										"object-to-create": "levelDesignFrame",
-										"layer": "\"Game\"",
-										"x": "limitsFrame.X",
-										"y": "limitsFrame.Y",
-										"create-hierarchy": true,
-										"template-name": "\"Level_20\""
-									}
-								}
-							],
-							"sid": 139625459100162
-						},
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "on-key-pressed",
-									"objectClass": "Keyboard",
-									"sid": 302247950775317,
-									"parameters": {
-										"key": 89
-									}
-								}
-							],
-							"actions": [
-								{
-									"id": "create-object",
-									"objectClass": "System",
-									"sid": 228661637162638,
-									"parameters": {
-										"object-to-create": "levelDesignFrame",
-										"layer": "\"Game\"",
-										"x": "limitsFrame.X",
-										"y": "limitsFrame.Y",
-										"create-hierarchy": true,
-										"template-name": "\"All_Props\""
-									}
-								}
-							],
-							"sid": 461984112716192
-						},
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "on-key-pressed",
-									"objectClass": "Keyboard",
-									"sid": 509024413587201,
-									"parameters": {
-										"key": 88
-									}
-								}
-							],
-							"actions": [],
-							"sid": 659210823776925
 						},
 						{
 							"eventType": "block",

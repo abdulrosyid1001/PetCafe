@@ -1314,6 +1314,60 @@
 						"angle": 0,
 						"zElevation": 0
 					}
+				},
+				{
+					"type": "lightEffect",
+					"properties": {
+						"initially-visible": true,
+						"initial-animation": "Animation 1",
+						"initial-frame": 0,
+						"enable-collisions": true,
+						"live-preview": false
+					},
+					"uid": 3022,
+					"sid": 739903308955954,
+					"tags": "",
+					"instanceVariables": {
+						"selfX": 0,
+						"selfY": 0,
+						"ID": "btnplay"
+					},
+					"behaviors": {
+						"Tween": {
+							"properties": {
+								"enabled": true
+							}
+						}
+					},
+					"effects": {
+						"Overlay": {
+							"isEnabled": true,
+							"parameters": {}
+						}
+					},
+					"instanceFolderItem": {
+						"sid": 739903308955954,
+						"expanded": true
+					},
+					"showing": true,
+					"locked": false,
+					"world": {
+						"x": 217,
+						"y": 667,
+						"width": 217.71402259942715,
+						"height": 137.4429980034335,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							0.8
+						],
+						"angle": 1.0687584692515721,
+						"zElevation": 0,
+						"blendMode": "source-atop"
+					}
 				}
 			],
 			"sid": 479327086159573,
@@ -1337,7 +1391,7 @@
 			"parallaxX": 0,
 			"parallaxY": 0,
 			"scaleRate": 1,
-			"forceOwnTexture": false,
+			"forceOwnTexture": true,
 			"renderingMode": "3d",
 			"drawOrder": "z-order",
 			"useRenderCells": false,

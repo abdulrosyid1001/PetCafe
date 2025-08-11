@@ -403,7 +403,9 @@
 			"ParticlesStar",
 			"Smoke_brush_seq_2",
 			"COMINGSOONTEXT",
-			"GameTempSaveManager"
+			"GameTempSaveManager",
+			"LevelAdvBoundaryLine",
+			"AdventureLevelHidePanel"
 		],
 		"subfolders": [
 			{
@@ -472,7 +474,8 @@
 					"labelAdventureGameOver",
 					"labelProgressCake",
 					"TextTutorial2",
-					"labelSubBannerStatus"
+					"labelSubBannerStatus",
+					"AdventureLevelText"
 				],
 				"subfolders": [],
 				"name": "Texts"
