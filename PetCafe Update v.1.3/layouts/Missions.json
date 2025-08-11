@@ -129,7 +129,7 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 211.79417940740296,
+						"x": 215.51490696586396,
 						"y": -4000.3067451033553,
 						"width": 11,
 						"height": 78.079861,
@@ -2477,7 +2477,7 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 182.62399449510644,
+						"x": 186.34472205356744,
 						"y": -3866.1559986237767,
 						"width": 11,
 						"height": 95.07986074194211,
@@ -2516,7 +2516,7 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 217.62399449510644,
+						"x": 221.34472205356744,
 						"y": -3766.1559986237767,
 						"width": 11,
 						"height": 82.25159562552273,
@@ -2555,7 +2555,7 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 275.62399449510644,
+						"x": 279.3447220535674,
 						"y": -3658.1559986237767,
 						"width": 11,
 						"height": 82.25159562552273,
@@ -2594,7 +2594,7 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 217.62399449510644,
+						"x": 221.34472205356744,
 						"y": -3543.1559986237767,
 						"width": 11,
 						"height": 82.25159562552273,
@@ -2633,7 +2633,7 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 154.62399449510644,
+						"x": 158.34472205356744,
 						"y": -3433.1559986237767,
 						"width": 11,
 						"height": 82.25159562552273,
@@ -2672,7 +2672,7 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 218.62399449510644,
+						"x": 222.34472205356744,
 						"y": -3314.1559986237767,
 						"width": 11,
 						"height": 82.25159562552273,
@@ -2711,7 +2711,7 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 219.62399449510644,
+						"x": 223.34472205356744,
 						"y": -3221.1559986237767,
 						"width": 11,
 						"height": 82.25159562552273,
@@ -2750,7 +2750,7 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 202.62399449510644,
+						"x": 206.34472205356744,
 						"y": -3109.1559986237767,
 						"width": 11,
 						"height": 127.65187874716946,
@@ -2854,7 +2854,7 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 280.62399449510644,
+						"x": 284.3447220535674,
 						"y": -3056.1559986237767,
 						"width": 99,
 						"height": 80,
@@ -2958,7 +2958,7 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 157.62399449510644,
+						"x": 161.34472205356744,
 						"y": -3171.1559986237767,
 						"width": 99,
 						"height": 80,
@@ -3062,7 +3062,7 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 281.62399449510644,
+						"x": 285.3447220535674,
 						"y": -3263.1559986237767,
 						"width": 99,
 						"height": 80,
@@ -3181,7 +3181,7 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 155.62399449510644,
+						"x": 159.34472205356744,
 						"y": -3357.1559986237767,
 						"width": 100,
 						"height": 81,
@@ -3285,7 +3285,7 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 155.62399449510644,
+						"x": 159.34472205356744,
 						"y": -3491.1559986237767,
 						"width": 99,
 						"height": 80,
@@ -3389,7 +3389,7 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 275.62399449510644,
+						"x": 279.3447220535674,
 						"y": -3589.1559986237767,
 						"width": 99,
 						"height": 80,
@@ -3493,7 +3493,7 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 275.62399449510644,
+						"x": 279.3447220535674,
 						"y": -3723.1559986237767,
 						"width": 99,
 						"height": 80,
@@ -3574,7 +3574,7 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 276.62399449510644,
+						"x": 280.3447220535674,
 						"y": -3751.1559986237767,
 						"width": 69,
 						"height": 54.14575507137499,
@@ -3655,7 +3655,7 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 276.62399449510644,
+						"x": 280.3447220535674,
 						"y": -3617.1559986237767,
 						"width": 69,
 						"height": 54.14575507137499,
@@ -3736,7 +3736,7 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 157.62399449510644,
+						"x": 161.34472205356744,
 						"y": -3518.1559986237767,
 						"width": 69,
 						"height": 54.14575507137499,
@@ -3817,7 +3817,7 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 157.62399449510644,
+						"x": 161.34472205356744,
 						"y": -3385.1559986237767,
 						"width": 69,
 						"height": 54.14575507137499,
@@ -3898,7 +3898,7 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 282.62399449510644,
+						"x": 286.3447220535674,
 						"y": -3290.1559986237767,
 						"width": 69,
 						"height": 54.14575507137499,
@@ -3979,7 +3979,7 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 157.62399449510644,
+						"x": 161.34472205356744,
 						"y": -3197.1559986237767,
 						"width": 69,
 						"height": 54.14575507137499,
@@ -4060,7 +4060,7 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 282.62399449510644,
+						"x": 286.3447220535674,
 						"y": -3083.1559986237767,
 						"width": 69,
 						"height": 54.14575507137499,
@@ -4164,7 +4164,7 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 155.62399449510644,
+						"x": 159.34472205356744,
 						"y": -3805.1559986237767,
 						"width": 99,
 						"height": 80,
@@ -4245,7 +4245,7 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 156.62399449510644,
+						"x": 160.34472205356744,
 						"y": -3833.1559986237767,
 						"width": 69,
 						"height": 54.14575507137499,
@@ -4364,7 +4364,7 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 211.62399449510644,
+						"x": 215.34472205356744,
 						"y": -3930.1559986237767,
 						"width": 100,
 						"height": 81,
@@ -4445,7 +4445,7 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 212.62399449510644,
+						"x": 216.34472205356744,
 						"y": -3958.1559986237767,
 						"width": 69,
 						"height": 54.14575507137499,
@@ -4510,7 +4510,7 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 154.62399449510644,
+						"x": 158.34472205356744,
 						"y": -3326.1559986237767,
 						"width": 26,
 						"height": 26,
@@ -4575,7 +4575,7 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 208.62399449510644,
+						"x": 212.34472205356744,
 						"y": -3900.1559986237767,
 						"width": 26,
 						"height": 26,
@@ -5154,8 +5154,8 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 215,
-						"y": -6665,
+						"x": 216,
+						"y": -6598,
 						"width": 1287.9110937103585,
 						"height": 7491.127412,
 						"originX": 0.5,
@@ -10161,7 +10161,7 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 204.29631065906096,
+						"x": 220.49881620815668,
 						"y": -6286.459113901086,
 						"width": 11,
 						"height": 95.079861,
@@ -10200,7 +10200,7 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 149.29631065906096,
+						"x": 160.63696180008313,
 						"y": -4584.459113901086,
 						"width": 11,
 						"height": 82.25159562552273,
@@ -10239,7 +10239,7 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 213.29631065906096,
+						"x": 224.63696180008313,
 						"y": -4465.459113901086,
 						"width": 11,
 						"height": 82.25159562552273,
@@ -10278,7 +10278,7 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 206.29631065906096,
+						"x": 217.63696180008313,
 						"y": -5138.459113901086,
 						"width": 11,
 						"height": 82.25159562552273,
@@ -10317,7 +10317,7 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 242.29631065906096,
+						"x": 246.01703821752204,
 						"y": -4137.459113901086,
 						"width": 11,
 						"height": 115.30746079827405,
@@ -10421,7 +10421,7 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 210.29631065906096,
+						"x": 214.01703821752196,
 						"y": -4072.459113901086,
 						"width": 99,
 						"height": 80,
@@ -10502,7 +10502,7 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 211.29631065906096,
+						"x": 215.01703821752204,
 						"y": -4100.459113901086,
 						"width": 69,
 						"height": 54.14575507137499,
@@ -10541,7 +10541,7 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 177.29631065906096,
+						"x": 188.63696180008313,
 						"y": -5017.459113901086,
 						"width": 11,
 						"height": 95.07986074194211,
@@ -10580,7 +10580,7 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 212.29631065906096,
+						"x": 223.63696180008313,
 						"y": -4917.459113901086,
 						"width": 11,
 						"height": 82.25159562552273,
@@ -10619,7 +10619,7 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 270.29631065906096,
+						"x": 281.63696180008316,
 						"y": -4809.459113901086,
 						"width": 11,
 						"height": 82.25159562552273,
@@ -10658,7 +10658,7 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 212.29631065906096,
+						"x": 223.63696180008313,
 						"y": -4694.459113901086,
 						"width": 11,
 						"height": 82.25159562552273,
@@ -10697,7 +10697,7 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 214.29631065906096,
+						"x": 225.63696180008313,
 						"y": -4372.459113901086,
 						"width": 11,
 						"height": 82.25159562552273,
@@ -10736,7 +10736,7 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 197.29631065906096,
+						"x": 208.63696180008313,
 						"y": -4260.459113901086,
 						"width": 11,
 						"height": 127.65187874716946,
@@ -10840,7 +10840,7 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 275.29631065906096,
+						"x": 286.63696180008316,
 						"y": -4207.459113901086,
 						"width": 99,
 						"height": 80,
@@ -10944,7 +10944,7 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 276.29631065906096,
+						"x": 287.63696180008316,
 						"y": -4414.459113901086,
 						"width": 99,
 						"height": 80,
@@ -11048,7 +11048,7 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 150.29631065906096,
+						"x": 161.63696180008313,
 						"y": -4642.459113901086,
 						"width": 99,
 						"height": 80,
@@ -11152,7 +11152,7 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 270.29631065906096,
+						"x": 281.63696180008316,
 						"y": -4740.459113901086,
 						"width": 99,
 						"height": 80,
@@ -11256,7 +11256,7 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 270.29631065906096,
+						"x": 281.63696180008316,
 						"y": -4874.459113901086,
 						"width": 99,
 						"height": 80,
@@ -11337,7 +11337,7 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 271.29631065906096,
+						"x": 282.63696180008316,
 						"y": -4902.459113901086,
 						"width": 69,
 						"height": 54.14575507137499,
@@ -11418,7 +11418,7 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 271.29631065906096,
+						"x": 282.63696180008316,
 						"y": -4768.459113901086,
 						"width": 69,
 						"height": 54.14575507137499,
@@ -11499,7 +11499,7 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 152.29631065906096,
+						"x": 163.63696180008313,
 						"y": -4669.459113901086,
 						"width": 69,
 						"height": 54.14575507137499,
@@ -11580,7 +11580,7 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 277.29631065906096,
+						"x": 288.63696180008316,
 						"y": -4441.459113901086,
 						"width": 69,
 						"height": 54.14575507137499,
@@ -11661,7 +11661,7 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 277.29631065906096,
+						"x": 288.63696180008316,
 						"y": -4234.459113901086,
 						"width": 69,
 						"height": 54.14575507137499,
@@ -11765,7 +11765,7 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 150.29631065906096,
+						"x": 161.63696180008313,
 						"y": -4956.459113901086,
 						"width": 99,
 						"height": 80,
@@ -11846,277 +11846,12 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 151.29631065906096,
+						"x": 162.63696180008313,
 						"y": -4984.459113901086,
 						"width": 69,
 						"height": 54.14575507137499,
 						"originX": 0.5,
 						"originY": 0,
-						"color": [
-							1,
-							1,
-							1,
-							1
-						],
-						"angle": 0,
-						"zElevation": 0
-					}
-				},
-				{
-					"type": "levelMission",
-					"properties": {
-						"initially-visible": true,
-						"initial-animation": "Hard",
-						"initial-frame": 1,
-						"enable-collisions": true,
-						"live-preview": false
-					},
-					"uid": 2750,
-					"sid": 622504866542375,
-					"tags": "",
-					"instanceVariables": {
-						"lev": 50
-					},
-					"behaviors": {
-						"Tween": {
-							"properties": {
-								"enabled": true
-							}
-						},
-						"Sine": {
-							"properties": {
-								"movement": "horizontal",
-								"wave": "triangle",
-								"period": 0.2,
-								"period-random": 0,
-								"period-offset": 0,
-								"period-offset-random": 0,
-								"magnitude": 2,
-								"magnitude-random": 0,
-								"enabled": false,
-								"live-preview": false
-							}
-						}
-					},
-					"sceneGraphData": {
-						"parent-uid": null,
-						"uid": 2750,
-						"children": [
-							{
-								"uid": 2751,
-								"flags": {
-									"x": true,
-									"y": true,
-									"z": true,
-									"w": true,
-									"h": true,
-									"a": true,
-									"o": false,
-									"v": false,
-									"d": true,
-									"sm": "normal"
-								}
-							},
-							{
-								"uid": 2752,
-								"flags": {
-									"x": true,
-									"y": true,
-									"z": true,
-									"w": true,
-									"h": true,
-									"a": true,
-									"o": false,
-									"v": false,
-									"d": true,
-									"sm": "normal"
-								}
-							}
-						],
-						"flags": {
-							"x": true,
-							"y": true,
-							"z": true,
-							"w": true,
-							"h": true,
-							"a": true,
-							"o": false,
-							"v": false,
-							"d": true,
-							"sm": "normal"
-						},
-						"preview": {
-							"transformX": 0,
-							"transformY": 0,
-							"transformZElevation": 0,
-							"transformW": 0,
-							"transformH": 0,
-							"transformA": 0,
-							"transformSX": 0,
-							"transformSY": 0,
-							"transformO": 0,
-							"previewSceneGraph": false
-						}
-					},
-					"instanceFolderItem": {
-						"sid": 622504866542375,
-						"expanded": true
-					},
-					"showing": true,
-					"locked": false,
-					"world": {
-						"x": 206.29631065906096,
-						"y": -5081.459113901086,
-						"width": 100,
-						"height": 81,
-						"originX": 0.5,
-						"originY": 0.5,
-						"color": [
-							1,
-							1,
-							1,
-							1
-						],
-						"angle": 0,
-						"zElevation": 0
-					}
-				},
-				{
-					"type": "labelMission",
-					"properties": {
-						"text": "50",
-						"enable-bbcode": true,
-						"font": "Coiny-Regular",
-						"size": 24,
-						"line-height": 0,
-						"bold": false,
-						"italic": false,
-						"color": [
-							1,
-							1,
-							1,
-							1
-						],
-						"horizontal-alignment": "center",
-						"vertical-alignment": "top",
-						"wrapping": "word",
-						"text-direction": "ltr",
-						"icon-set": -1,
-						"initially-visible": true,
-						"origin": "top",
-						"read-aloud": false
-					},
-					"uid": 2751,
-					"sid": 916566877737981,
-					"tags": "",
-					"instanceVariables": {},
-					"behaviors": {},
-					"sceneGraphData": {
-						"parent-uid": 2750,
-						"uid": 2751,
-						"flags": {
-							"x": true,
-							"y": true,
-							"z": true,
-							"w": true,
-							"h": true,
-							"a": true,
-							"o": false,
-							"v": false,
-							"d": true,
-							"sm": "normal"
-						},
-						"preview": {
-							"transformX": 0,
-							"transformY": 0,
-							"transformZElevation": 0,
-							"transformW": 0,
-							"transformH": 0,
-							"transformA": 0,
-							"transformSX": 0,
-							"transformSY": 0,
-							"transformO": 0,
-							"previewSceneGraph": false
-						}
-					},
-					"instanceFolderItem": {
-						"sid": 916566877737981,
-						"expanded": true
-					},
-					"showing": true,
-					"locked": false,
-					"world": {
-						"x": 207.29631065906096,
-						"y": -5109.459113901086,
-						"width": 69,
-						"height": 54.14575507137499,
-						"originX": 0.5,
-						"originY": 0,
-						"color": [
-							1,
-							1,
-							1,
-							1
-						],
-						"angle": 0,
-						"zElevation": 0
-					}
-				},
-				{
-					"type": "cat_Icon",
-					"properties": {
-						"initially-visible": true,
-						"initial-animation": "Default",
-						"initial-frame": 0,
-						"enable-collisions": true,
-						"live-preview": false
-					},
-					"uid": 2752,
-					"sid": 391500004707902,
-					"tags": "",
-					"instanceVariables": {},
-					"behaviors": {},
-					"sceneGraphData": {
-						"parent-uid": 2750,
-						"uid": 2752,
-						"flags": {
-							"x": true,
-							"y": true,
-							"z": true,
-							"w": true,
-							"h": true,
-							"a": true,
-							"o": false,
-							"v": false,
-							"d": true,
-							"sm": "normal"
-						},
-						"preview": {
-							"transformX": 0,
-							"transformY": 0,
-							"transformZElevation": 0,
-							"transformW": 0,
-							"transformH": 0,
-							"transformA": 0,
-							"transformSX": 0,
-							"transformSY": 0,
-							"transformO": 0,
-							"previewSceneGraph": false
-						}
-					},
-					"instanceFolderItem": {
-						"sid": 391500004707902,
-						"expanded": true
-					},
-					"showing": true,
-					"locked": false,
-					"world": {
-						"x": 203.29631065906096,
-						"y": -5051.459113901086,
-						"width": 26,
-						"height": 26,
-						"originX": 0.5,
-						"originY": 0.5,
 						"color": [
 							1,
 							1,
@@ -12150,7 +11885,7 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 237.29631065906096,
+						"x": 248.63696180008313,
 						"y": -5284.459113901086,
 						"width": 11,
 						"height": 115.30746079827405,
@@ -12254,7 +11989,7 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 205.29631065906096,
+						"x": 216.63696180008313,
 						"y": -5219.459113901086,
 						"width": 99,
 						"height": 80,
@@ -12335,7 +12070,7 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 206.29631065906096,
+						"x": 217.63696180008313,
 						"y": -5247.459113901086,
 						"width": 69,
 						"height": 54.14575507137499,
@@ -12374,7 +12109,7 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 172.29631065906096,
+						"x": 188.49881620815668,
 						"y": -6164.459113901086,
 						"width": 11,
 						"height": 95.07986074194211,
@@ -12413,7 +12148,7 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 207.29631065906096,
+						"x": 223.49881620815668,
 						"y": -6064.459113901086,
 						"width": 11,
 						"height": 82.25159562552273,
@@ -12452,7 +12187,7 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 265.29631065906096,
+						"x": 281.4988162081567,
 						"y": -5956.459113901086,
 						"width": 11,
 						"height": 82.25159562552273,
@@ -12491,7 +12226,7 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 207.29631065906096,
+						"x": 223.49881620815668,
 						"y": -5841.459113901086,
 						"width": 11,
 						"height": 82.25159562552273,
@@ -12530,7 +12265,7 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 144.29631065906096,
+						"x": 160.49881620815668,
 						"y": -5731.459113901086,
 						"width": 11,
 						"height": 82.25159562552273,
@@ -12569,7 +12304,7 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 208.29631065906096,
+						"x": 224.49881620815668,
 						"y": -5612.459113901086,
 						"width": 11,
 						"height": 82.25159562552273,
@@ -12608,7 +12343,7 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 209.29631065906096,
+						"x": 225.49881620815668,
 						"y": -5519.459113901086,
 						"width": 11,
 						"height": 82.25159562552273,
@@ -12647,7 +12382,7 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 192.29631065906096,
+						"x": 208.49881620815668,
 						"y": -5407.459113901086,
 						"width": 11,
 						"height": 127.65187874716946,
@@ -12751,7 +12486,7 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 270.29631065906096,
+						"x": 286.4988162081567,
 						"y": -5354.459113901086,
 						"width": 99,
 						"height": 80,
@@ -12855,7 +12590,7 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 147.29631065906096,
+						"x": 163.49881620815668,
 						"y": -5469.459113901086,
 						"width": 99,
 						"height": 80,
@@ -12959,7 +12694,7 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 271.29631065906096,
+						"x": 287.4988162081567,
 						"y": -5561.459113901086,
 						"width": 99,
 						"height": 80,
@@ -13078,7 +12813,7 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 145.29631065906096,
+						"x": 161.49881620815668,
 						"y": -5655.459113901086,
 						"width": 100,
 						"height": 81,
@@ -13182,7 +12917,7 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 145.29631065906096,
+						"x": 161.49881620815668,
 						"y": -5789.459113901086,
 						"width": 99,
 						"height": 80,
@@ -13286,7 +13021,7 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 265.29631065906096,
+						"x": 281.4988162081567,
 						"y": -5887.459113901086,
 						"width": 99,
 						"height": 80,
@@ -13390,7 +13125,7 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 265.29631065906096,
+						"x": 281.4988162081567,
 						"y": -6021.459113901086,
 						"width": 99,
 						"height": 80,
@@ -13471,7 +13206,7 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 266.29631065906096,
+						"x": 282.4988162081567,
 						"y": -6049.459113901086,
 						"width": 69,
 						"height": 54.14575507137499,
@@ -13552,7 +13287,7 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 266.29631065906096,
+						"x": 282.4988162081567,
 						"y": -5915.459113901086,
 						"width": 69,
 						"height": 54.14575507137499,
@@ -13633,7 +13368,7 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 147.29631065906096,
+						"x": 163.49881620815668,
 						"y": -5816.459113901086,
 						"width": 69,
 						"height": 54.14575507137499,
@@ -13714,7 +13449,7 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 147.29631065906096,
+						"x": 163.49881620815668,
 						"y": -5683.459113901086,
 						"width": 69,
 						"height": 54.14575507137499,
@@ -13795,7 +13530,7 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 272.29631065906096,
+						"x": 288.4988162081567,
 						"y": -5588.459113901086,
 						"width": 69,
 						"height": 54.14575507137499,
@@ -13876,7 +13611,7 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 147.29631065906096,
+						"x": 163.49881620815668,
 						"y": -5495.459113901086,
 						"width": 69,
 						"height": 54.14575507137499,
@@ -13957,7 +13692,7 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 272.29631065906096,
+						"x": 288.4988162081567,
 						"y": -5381.459113901086,
 						"width": 69,
 						"height": 54.14575507137499,
@@ -14061,7 +13796,7 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 145.29631065906096,
+						"x": 161.49881620815668,
 						"y": -6103.459113901086,
 						"width": 99,
 						"height": 80,
@@ -14142,7 +13877,7 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 146.29631065906096,
+						"x": 162.49881620815668,
 						"y": -6131.459113901086,
 						"width": 69,
 						"height": 54.14575507137499,
@@ -14261,7 +13996,7 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 201.29631065906096,
+						"x": 217.49881620815668,
 						"y": -6228.459113901086,
 						"width": 100,
 						"height": 81,
@@ -14342,7 +14077,7 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 202.29631065906096,
+						"x": 218.49881620815668,
 						"y": -6256.459113901086,
 						"width": 69,
 						"height": 54.14575507137499,
@@ -14407,7 +14142,7 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 144.29631065906096,
+						"x": 160.49881620815668,
 						"y": -5624.459113901086,
 						"width": 26,
 						"height": 26,
@@ -14472,7 +14207,7 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 198.29631065906096,
+						"x": 214.49881620815668,
 						"y": -6198.459113901086,
 						"width": 26,
 						"height": 26,
@@ -14576,7 +14311,7 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 152.29631065906096,
+						"x": 163.63696180008313,
 						"y": -4322.459113901086,
 						"width": 99,
 						"height": 80,
@@ -14657,7 +14392,7 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 152.29631065906096,
+						"x": 163.63696180008313,
 						"y": -4348.459113901086,
 						"width": 69,
 						"height": 54.14575507137499,
@@ -14776,7 +14511,7 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 148.29631065906096,
+						"x": 159.63696180008313,
 						"y": -4508.459113901086,
 						"width": 100,
 						"height": 81,
@@ -14857,7 +14592,7 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 150.29631065906096,
+						"x": 161.63696180008313,
 						"y": -4536.459113901086,
 						"width": 69,
 						"height": 54.14575507137499,
@@ -14922,7 +14657,7 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 147.29631065906096,
+						"x": 158.63696180008313,
 						"y": -4477.459113901086,
 						"width": 26,
 						"height": 26,
@@ -15005,12 +14740,197 @@
 					"showing": true,
 					"locked": false,
 					"world": {
-						"x": 204.29631065906096,
+						"x": 221.00718998261266,
 						"y": -6356.941793612319,
 						"width": 397,
 						"height": 72,
 						"originX": 0.5,
 						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "levelMission",
+					"properties": {
+						"initially-visible": true,
+						"initial-animation": "Normal",
+						"initial-frame": 1,
+						"enable-collisions": true,
+						"live-preview": false
+					},
+					"uid": 2750,
+					"sid": 739090332803895,
+					"tags": "",
+					"instanceVariables": {
+						"lev": 50
+					},
+					"behaviors": {
+						"Tween": {
+							"properties": {
+								"enabled": true
+							}
+						},
+						"Sine": {
+							"properties": {
+								"movement": "horizontal",
+								"wave": "triangle",
+								"period": 0.2,
+								"period-random": 0,
+								"period-offset": 0,
+								"period-offset-random": 0,
+								"magnitude": 2,
+								"magnitude-random": 0,
+								"enabled": false,
+								"live-preview": false
+							}
+						}
+					},
+					"sceneGraphData": {
+						"parent-uid": null,
+						"uid": 2750,
+						"children": [
+							{
+								"uid": 2751,
+								"flags": {
+									"x": true,
+									"y": true,
+									"z": true,
+									"w": true,
+									"h": true,
+									"a": true,
+									"o": false,
+									"v": false,
+									"d": true,
+									"sm": "normal"
+								}
+							}
+						],
+						"flags": {
+							"x": true,
+							"y": true,
+							"z": true,
+							"w": true,
+							"h": true,
+							"a": true,
+							"o": false,
+							"v": false,
+							"d": true,
+							"sm": "normal"
+						},
+						"preview": {
+							"transformX": 0,
+							"transformY": 0,
+							"transformZElevation": 0,
+							"transformW": 0,
+							"transformH": 0,
+							"transformA": 0,
+							"transformSX": 0,
+							"transformSY": 0,
+							"transformO": 0,
+							"previewSceneGraph": false
+						}
+					},
+					"instanceFolderItem": {
+						"sid": 739090332803895,
+						"expanded": true
+					},
+					"showing": true,
+					"locked": false,
+					"world": {
+						"x": 218.59637103924217,
+						"y": -5080.610873282419,
+						"width": 99,
+						"height": 80,
+						"originX": 0.5,
+						"originY": 0.5,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"angle": 0,
+						"zElevation": 0
+					}
+				},
+				{
+					"type": "labelMission",
+					"properties": {
+						"text": "50",
+						"enable-bbcode": true,
+						"font": "Coiny-Regular",
+						"size": 24,
+						"line-height": 0,
+						"bold": false,
+						"italic": false,
+						"color": [
+							1,
+							1,
+							1,
+							1
+						],
+						"horizontal-alignment": "center",
+						"vertical-alignment": "top",
+						"wrapping": "word",
+						"text-direction": "ltr",
+						"icon-set": -1,
+						"initially-visible": true,
+						"origin": "top",
+						"read-aloud": false
+					},
+					"uid": 2751,
+					"sid": 341775159474224,
+					"tags": "",
+					"instanceVariables": {},
+					"behaviors": {},
+					"sceneGraphData": {
+						"parent-uid": 2750,
+						"uid": 2751,
+						"flags": {
+							"x": true,
+							"y": true,
+							"z": true,
+							"w": true,
+							"h": true,
+							"a": true,
+							"o": false,
+							"v": false,
+							"d": true,
+							"sm": "normal"
+						},
+						"preview": {
+							"transformX": 0,
+							"transformY": 0,
+							"transformZElevation": 0,
+							"transformW": 0,
+							"transformH": 0,
+							"transformA": 0,
+							"transformSX": 0,
+							"transformSY": 0,
+							"transformO": 0,
+							"previewSceneGraph": false
+						}
+					},
+					"instanceFolderItem": {
+						"sid": 341775159474224,
+						"expanded": true
+					},
+					"showing": true,
+					"locked": false,
+					"world": {
+						"x": 219.59637103924217,
+						"y": -5108.610873282419,
+						"width": 69,
+						"height": 54.14575507137499,
+						"originX": 0.5,
+						"originY": 0,
 						"color": [
 							1,
 							1,
