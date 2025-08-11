@@ -1,4 +1,4 @@
-//v1.2
+//v1.4
 export const levelMissionDataArr = 
 [
     {
@@ -514,215 +514,218 @@ export const levelMissionDataArr =
                 "qty": 1,
             }
         ],
-        "moves": 40,
+        "moves": 60,
         "probabilities" :[0.45, 0.40, 0.10, 0.05, 0.00, 0.00]
     },
     {
         "level": 41,
         "goals": [
             {
-                "goalsID": 7,
-                "qty": 1,
-            },
-            {
                 "goalsID": 6,
                 "qty": 2,
+            },
+            {
+                "goalsID": 7,
+                "qty": 1,
             }
         ],
         "moves": 45,
-        "probabilities" :[0.30, 0.20, 0.25, 0.10, 0.15, 0.00]
+        "probabilities" :[0.10, 0.20, 0.35, 0.10, 0.20, 0.15]
     },
     {
         "level": 42,
          "goals": [
             {
                 "goalsID": 6,
-                "qty": 2,
-            },
-            {
-                "goalsID": 7,
                 "qty": 1,
             }
         ],
-        "moves": 50,
-        "probabilities" :[0.30, 0.30, 0.20, 0.10, 0.10, 0.00]
+        "moves": 25,
+        "probabilities" :[0.50, 0.20, 0.20, 0.10, 0.00, 0.00]
     },
     {
         "level": 43,
         "goals": [
             {
-                "goalsID": 8,
-                "qty": 1,
+                "goalsID": 15,
+                "qty": 5,
             }
         ],
         "moves": 50,
-        "probabilities" :[0.20, 0.30, 0.20, 0.10, 0.10, 0.10]
+        "probabilities" :[0.30, 0.40, 0.30, 0.00, 0.00, 0.00]
     },
     {
         "level": 44,
         "goals": [
             {
-                "goalsID": 7,
-                "qty": 2,
+                "goalsID": 15,
+                "qty": 7,
             }
         ],
-        "moves": 40,
-        "probabilities" :[0.30, 0.25, 0.20, 0.10, 0.10, 0.00]
+        "moves": 35,
+        "probabilities" :[0.20, 0.20, 0.40, 0.20, 0.00, 0.00]
     },
-    {
+        {
         "level": 45,
         "goals": [
             {
-                "goalsID": 7,
-                "qty": 1,
-            },
-            {
-                "goalsID": 13,
-                "qty": 3,
+                "goalsID": 4,
+                "qty": 5,
             }
         ],
-        "moves": 46,
-        "probabilities" :[0.30, 0.20, 0.15, 0.10, 0.10, 0.05]
+        "moves": 60,
+        "probabilities" :[0.55, 0.40, 0.05, 0.00, 0.00, 0.00]
     },
     {
         "level": 46,
         "goals": [
             {
-                "goalsID": 7,
-                "qty": 1
+                "goalsID": 13,
+                "qty": 5,
+            },
+            {
+                "goalsID": 15,
+                "qty": 4,
             }
         ],
-        "moves": 50,
-        "probabilities" :[0.20, 0.20, 0.20, 0.00, 0.40, 0.00]
+        "moves": 40,
+        "probabilities" :[0.30, 0.30, 0.20, 0.20, 0.00, 0.00]
     },
     {
         "level": 47,
         "goals": [
             {
+                "goalsID": 14,
+                "qty": 2,
+            },
+            {
                 "goalsID": 5,
-                "qty": 3,
-            },
-            {
-                "goalsID": 6,
-                "qty": 1,
-            },
-            {
-                "goalsID": 7,
-                "qty": 1,
+                "qty": 2,
             }
         ],
-        "moves": 35,
-        "probabilities" :[0.40, 0.40, 0.10, 0.05, 0.05, 0.00]
+        "moves": 50,
+        "probabilities" :[0.30, 0.40, 0.20, 0.05, 0.05, 0.00]
     },
     {
         "level": 48,
         "goals": [
             {
-                "goalsID": 7,
-                "qty": 1
+                "goalsID": 5,
+                "qty": 1,
             }
         ],
-        "moves": 50,
-        "probabilities" :[0.20, 0.20, 0.20, 0.00, 0.40, 0.00]
+        "moves": 25,
+        "probabilities" :[0.50, 0.50, 0.00, 0.00, 0.00, 0.00]
     },
     {
         "level": 49,
         "goals": [
             {
-                "goalsID": 5,
-                "qty": 7,
+                "goalsID": 13,
+                "qty": 4,
+            },
+            {
+                "goalsID": 14,
+                "qty": 3,
             }
         ],
-        "moves": 30,
-        "probabilities" :[0.50, 0.40, 0.10, 0.00, 0.00, 0.00]
+        "moves": 20,
+        "probabilities" :[0.40, 0.40, 0.10, 0.10, 0.00, 0.00]
     },
     {
         "level": 50,
         "goals": [
             {
-                "goalsID": 8,
-                "qty": 1,
-            },
-            {
-                "goalsID": 6,
-                "qty": 1,
+                "goalsID": 16,
+                "qty": 3,
             }
         ],
         "moves": 50,
-        "probabilities" :[0.40, 0.40, 0.15, 0.05, 0.00, 0.00]
+        "probabilities" :[0.50, 0.50, 0.00, 0.00, 0.00, 0.00]
     },
     {
         "level": 51,
         "goals": [
             {
                 "goalsID": 6,
-                "qty": 1,
+                "qty": 2,
             },
-            {
-                "goalsID": 8,
+             {
+                "goalsID": 7,
                 "qty": 1,
             }
         ],
-        "moves": 50,
-        "probabilities" :[0.40, 0.40, 0.15, 0.05, 0.00, 0.00]
+        "moves": 20,
+        "probabilities" :[0.50, 0.50, 0.00, 0.00, 0.00, 0.00]
     },
     {
         "level": 52,
         "goals": [
             {
-                "goalsID": 14,
-                "qty": 3,
+                "goalsID": 7,
+                "qty": 1,
             }
         ],
-        "moves": 50,
-        "probabilities" :[0.50, 0.30, 0.20, 0.00, 0.00, 0.00]
+        "moves": 45,
+        "probabilities" :[0.40, 0.35, 0.25, 0.00, 0.00, 0.00]
     },
     {
         "level": 53,
         "goals": [
             {
-                "goalsID": 14,
-                "qty": 5,
+                "goalsID": 13,
+                "qty": 7,
+            },
+            {
+                "goalsID": 6,
+                "qty": 1,
             }
         ],
-        "moves": 35,
+        "moves": 40,
         "probabilities" :[0.40, 0.40, 0.10, 0.10, 0.00, 0.00]
     },
     {
         "level": 54,
         "goals": [
             {
-                "goalsID": 6,
-                "qty": 2,
-            },
-            {
-                "goalsID": 14,
-                "qty": 3,
+                "goalsID": 9,
+                "qty": 1,
             }
         ],
-        "moves": 50,
-        "probabilities" :[0.20, 0.20, 0.30, 0.30, 0.00, 0.00]
+        "moves": 40,
+        "probabilities" :[0.10, 0.10, 0.25, 0.30, 0.10, 0.15]
     },
 {
         "level": 55,
-        "goals": [
-            {
-                "goalsID": 13,
-                "qty": 11,
-            }
-        ],
-        "moves": 50,
-        "probabilities" :[0.20, 0.20, 0.30, 0.30, 0.00, 0.00]
-    },
-    {
-        "level": 56,
         "goals": [
             {
                 "goalsID": 6,
                 "qty": 1,
             },
             {
-                "goalsID": 7,
+                "goalsID": 10,
+                "qty": 1,
+            }
+        ],
+        "moves": 45,
+        "probabilities" :[0.50, 0.40, 0.10, 0.00, 0.00, 0.00]
+    },
+    {
+        "level": 56,
+        "goals": [
+            {
+                "goalsID": 15,
+                "qty": 5,
+            }
+        ],
+        "moves": 25,
+        "probabilities" :[0.50, 0.50, 0.00, 0.00, 0.00, 0.00]
+    },
+    {
+        "level": 57,
+        "goals": [
+            {
+                "goalsID": 8,
                 "qty": 1,
             }
         ],
@@ -730,56 +733,49 @@ export const levelMissionDataArr =
         "probabilities" :[0.40, 0.40, 0.10, 0.10, 0.00, 0.00]
     },
     {
-        "level": 57,
-        "goals": [
-            {
-                "goalsID": 5,
-                "qty": 1,
-            },
-            {
-                "goalsID": 13,
-                "qty": 1,
-            },
-            {
-                "goalsID": 14,
-                "qty": 1,
-            }
-        ],
-        "moves": 50,
-        "probabilities" :[0.45, 0.40, 0.15, 0.05, 0.00, 0.00]
-    },
-    {
         "level": 58,
         "goals": [
             {
                 "goalsID": 14,
-                "qty": 6,
+                "qty": 1,
+            },
+                       {
+                "goalsID": 13,
+                "qty": 3,
+            },
+            {
+                "goalsID": 15,
+                "qty": 3,
             }
         ],
         "moves": 35,
-        "probabilities" :[0.30, 0.10, 0.30, 0.30, 0.00, 0.00]
+        "probabilities" :[0.30, 0.30, 0.30, 0.10, 0.00, 0.00]
     },
     {
         "level": 59,
         "goals": [
             {
-                "goalsID": 9,
+                "goalsID": 6,
                 "qty": 1,
+            },
+            {
+                "goalsID": 15,
+                "qty": 12,
             }
         ],
-        "moves": 70,
-        "probabilities" :[0.25, 0.20, 0.10, 0.20, 0.15, 0.10]
+        "moves": 20,
+        "probabilities" :[0.50, 0.50, 0.00, 0.00, 0.00, 0.00]
     },
     {
         "level": 60,
         "goals": [
             {
-                "goalsID": 9,
-                "qty": 1,
+                "goalsID": 14,
+                "qty": 5,
             }
         ],
-        "moves": 40,
-        "probabilities" :[0.45, 0.40, 0.10, 0.05, 0.00, 0.00]
+        "moves": 25,
+        "probabilities" :[0.50, 0.40, 0.10, 0.00, 0.00, 0.00]
     }
 ]
 
