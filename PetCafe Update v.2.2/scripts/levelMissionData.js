@@ -36,8 +36,9 @@ export const levelMissionDataArr =
             }
         ],
         "moves": 40,
+         "isprobabilites" : false,
         "probabilities" :[0.30, 0.30, 0.20, 0.10, 0.10, 0.00],
-        "nexttileseq" : [0,1,2,3,4,5,0,1,2,3,4,5,0,1,2,3,4,5,0,1,2,3,4,5,0,1,2,3,4,5]
+        "nexttileseq" : [2,1,1,2,2,5,3,2,1,3,4,5,0,1,2,3,4,5,0,1,2,3,4,5,0,1,2,3,4,5]
     },
     {
         "level": 4,

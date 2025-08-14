@@ -1464,7 +1464,10 @@
 										},
 										{
 											"callFunction": "nextFruitProbability",
-											"sid": 225924783213782
+											"sid": 446004304149643,
+											"parameters": [
+												true
+											]
 										},
 										{
 											"callFunction": "set_level_design",
@@ -16577,7 +16580,15 @@
 					"functionReturnType": "none",
 					"functionCopyPicked": false,
 					"functionIsAsync": false,
-					"functionParameters": [],
+					"functionParameters": [
+						{
+							"name": "firstCreate",
+							"type": "boolean",
+							"initialValue": "false",
+							"comment": "",
+							"sid": 350185173820174
+						}
+					],
 					"eventType": "function-block",
 					"conditions": [],
 					"actions": [
@@ -16585,11 +16596,11 @@
 							"type": "script",
 							"language": "javascript",
 							"script": [
-								"runtime.globalVars.beforeNextFruit = runtime.globalVars.nextFruit;",
-								"",
 								"const curr_level = runtime.globalVars.level_select-1;",
 								"let use_probabilites = levelMissionDataArr[curr_level].isprobabilites ?? true;",
-								"console.log(\"use probabilites\", use_probabilites);",
+								"",
+								"runtime.globalVars.beforeNextFruit = runtime.globalVars.nextFruit;",
+								"",
 								"if(use_probabilites){",
 								"\tconst probabilities = levelMissionDataArr[curr_level].probabilities;",
 								"\tconst variables = ['0', '1', '2', '3', '4', '5'];",
@@ -16611,6 +16622,10 @@
 								"\tif(runtime.globalVars.nextTileIndexAdventure > levelMissionDataArr[curr_level].nexttileseq.length){",
 								"\t\truntime.globalVars.nextTileIndexAdventure = 0;",
 								"\t}",
+								"}",
+								"",
+								"if(localVars.firstCreate){",
+								"\truntime.callFunction(\"nextFruitProbability\", false);",
 								"}"
 							]
 						}
@@ -16706,7 +16721,10 @@
 							"actions": [
 								{
 									"callFunction": "nextFruitProbability",
-									"sid": 969198506573264
+									"sid": 969198506573264,
+									"parameters": [
+										false
+									]
 								}
 							],
 							"sid": 360001969013766
