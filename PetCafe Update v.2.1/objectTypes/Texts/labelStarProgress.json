@@ -1,0 +1,18 @@
+{
+	"name": "labelStarProgress",
+	"plugin-id": "Text",
+	"sid": 591690753041780,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [
+		{
+			"name": "ID",
+			"type": "string",
+			"desc": "",
+			"show": true,
+			"sid": 870361601260593
+		}
+	],
+	"behaviorTypes": [],
+	"effectTypes": []
+}

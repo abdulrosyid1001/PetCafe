@@ -1,0 +1,52 @@
+{
+	"name": "starterPackBG",
+	"plugin-id": "Sprite",
+	"sid": 594904427410323,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 392,
+						"height": 384,
+						"originX": 0.5,
+						"originY": 1,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 4643365,
+						"collisionPoly": {
+							"points": [
+								0.002551020408163265,
+								0.0026041666666666665,
+								1,
+								0.0026041666666666665,
+								1,
+								1,
+								0.002551020408163265,
+								1
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 639670876655383,
+				"name": "Default",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}

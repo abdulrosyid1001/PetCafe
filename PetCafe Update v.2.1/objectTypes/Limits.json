@@ -1,0 +1,42 @@
+{
+	"name": "Limits",
+	"plugin-id": "TiledBg",
+	"sid": 517222639893619,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [
+		{
+			"name": "ID",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 791794712560746
+		}
+	],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Physics",
+			"name": "Physics",
+			"sid": 895809380783667
+		},
+		{
+			"behaviorId": "solid",
+			"name": "Solid",
+			"sid": 330650606111130
+		}
+	],
+	"effectTypes": [],
+	"image": {
+		"width": 250,
+		"height": 250,
+		"originX": 0.5,
+		"originY": 0.5,
+		"originalSource": "",
+		"exportFormat": "lossless",
+		"exportQuality": 0.8,
+		"fileType": "image/png",
+		"imageSpriteId": 5791900,
+		"useCollisionPoly": true,
+		"tag": ""
+	}
+}

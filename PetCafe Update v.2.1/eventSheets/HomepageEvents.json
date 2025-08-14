@@ -1,0 +1,4108 @@
+{
+	"name": "HomepageEvents",
+	"events": [
+		{
+			"eventType": "variable",
+			"name": "star",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 996681540535150
+		},
+		{
+			"eventType": "variable",
+			"name": "is_daily_bonus",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 869287477410011
+		},
+		{
+			"eventType": "variable",
+			"name": "day",
+			"type": "number",
+			"initialValue": "1",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 368404113134713
+		},
+		{
+			"eventType": "variable",
+			"name": "total_day",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 159005337721840
+		},
+		{
+			"eventType": "variable",
+			"name": "is_enabled_starter_pack",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 743704376193263
+		},
+		{
+			"eventType": "variable",
+			"name": "go_homepage_count",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 931513072883528
+		},
+		{
+			"eventType": "variable",
+			"name": "is_sent_login_analytics",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 922921974638540
+		},
+		{
+			"eventType": "variable",
+			"name": "FTUE_homepage",
+			"type": "boolean",
+			"initialValue": "false",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 402619174579966
+		},
+		{
+			"eventType": "variable",
+			"name": "FTUE_starjar_claim",
+			"type": "boolean",
+			"initialValue": "false",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 470951292535329
+		},
+		{
+			"eventType": "variable",
+			"name": "FTUE_starjar",
+			"type": "boolean",
+			"initialValue": "false",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 881731032133508
+		},
+		{
+			"eventType": "include",
+			"includeSheet": "GlobalEvents"
+		},
+		{
+			"functionName": "set_offer_time",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "h",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"sid": 340120991277251
+				},
+				{
+					"name": "m",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"sid": 227584508636423
+				},
+				{
+					"name": "s",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"sid": 192254402090375
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "set-text",
+					"objectClass": "labelOfferTime",
+					"sid": 457674427641719,
+					"parameters": {
+						"text": "h&\"h\"&\" \"&m&\"m\""
+					}
+				},
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 398944879232430,
+					"parameters": {
+						"variable": "exp_time",
+						"value": "h&\"h\"&\" \"&m&\"m\""
+					}
+				}
+			],
+			"sid": 439151859651135
+		},
+		{
+			"functionName": "save_total_day",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"type": "script",
+					"language": "javascript",
+					"script": [
+						"runtime.globalVars.total_day++;",
+						"runtime.callFunction(\"save_storage\", storageType, \"total_day\", String(runtime.globalVars.total_day));"
+					]
+				}
+			],
+			"sid": 322615091224284
+		},
+		{
+			"functionName": "get_offer_time",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"type": "script",
+					"language": "javascript",
+					"script": [
+						"var now = new Date();",
+						"var time = now.getTime();",
+						"var timezoneoffset = (-1*now.getTimezoneOffset())*60000;   //minutes to milliseconds",
+						"var expired_str =\"; expires=\" + now.toGMTString();",
+						"var hours = now.getHours()*3600000;",
+						"var minutes = now.getMinutes()*60000;",
+						"var seconds = now.getSeconds()*1000;",
+						"var expireHour = ms_24 - (hours+minutes+seconds);",
+						"var expireTimeUTC = time + expireHour + timezoneoffset;",
+						"var expireTimeLocal = time + expireHour;",
+						"runtime.globalVars.now_time = time;",
+						"",
+						"if(time > exp_time){",
+						"\tconsole.log(\"timers change\");",
+						"\t// exp_time = time-30000; //for test",
+						"\tvar d = Math.floor((time-exp_time)/(3600000*24));",
+						"\tconsole.log(\"d\", d);",
+						"\texp_time = expireTimeLocal;",
+						"\tvar d2 = Math.floor((time-exp_time)/(3600000*24));",
+						"\tconsole.log(\"d2\", d2);",
+						"\t// exp_time = time+60000; //for test",
+						"\tif(runtime.globalVars.total_day == 0){",
+						"\t\tsetTimeout(() => {",
+						"\t\t\truntime.callFunction(\"design_event\", \"retention\", \"retention_D0\");",
+						"\t\t\tdimension_event_GA(\"new_user\");",
+						"\t\t}, timeout_GA);",
+						"\t}",
+						"\telse{",
+						"\t\tif(runtime.globalVars.total_day > 0 && runtime.globalVars.total_day <= 21){",
+						"\t\t\tif(d <= 21){",
+						"\t\t\t\tsetTimeout(() => {",
+						"\t\t\t\t\tdimension_event_GA(\"new_user\");",
+						"\t\t\t\t}, timeout_GA);",
+						"\t\t\t}",
+						"\t\t\telse if(d>21 && d<=30){",
+						"\t\t\t\tsetTimeout(() => {",
+						"\t\t\t\t\tdimension_event_GA(\"returning_user\");",
+						"\t\t\t\t}, timeout_GA);",
+						"\t\t\t}",
+						"\t\t\telse if(d>30){",
+						"\t\t\t\tsetTimeout(() => {",
+						"\t\t\t\t\tdimension_event_GA(\"old_user\");",
+						"\t\t\t\t}, timeout_GA);",
+						"\t\t\t}",
+						"\t\t}",
+						"\t\telse if(runtime.globalVars.total_day > 21 && runtime.globalVars.total_day <= 30){",
+						"\t\t\tsetTimeout(() => {",
+						"\t\t\t\tdimension_event_GA(\"returning_user\");",
+						"\t\t\t}, timeout_GA);",
+						"\t\t}",
+						"\t\telse if(runtime.globalVars.total_day >30){",
+						"\t\t\tsetTimeout(() => {",
+						"\t\t\t\tdimension_event_GA(\"old_user\");",
+						"\t\t\t}, timeout_GA);",
+						"\t\t}",
+						"\t\truntime.callFunction(\"design_event\", \"retention\", `retention_D${runtime.globalVars.total_day}`);",
+						"\t}",
+						"\t// runtime.globalVars.total_day++;",
+						"\truntime.globalVars.day = runtime.globalVars.day +d+1;",
+						"\truntime.callFunction(\"save_storage\", storageType, \"expire_time\", String(exp_time));",
+						"\truntime.callFunction(\"save_storage\", storageType, \"day\", String(runtime.globalVars.day));",
+						"\t// runtime.callFunction(\"save_storage\", \"local_storage\", \"total_day\", String(runtime.globalVars.total_day));",
+						"\t// exp_time = expireTimeLocal-expireHour+30000; //for test",
+						"\tconsole.log('start exp time', (exp_time-time)/3600000);",
+						"\truntime.globalVars.is_daily_bonus = 1;",
+						"\truntime.globalVars.is_enabled_starter_pack = 1;",
+						"\truntime.globalVars.is_sent_login_analytics = 1;",
+						"\truntime.callFunction(\"save_storage\", storageType, \"is_daily_bonus\", String(runtime.globalVars.is_daily_bonus));",
+						"\truntime.callFunction(\"save_storage\", storageType, \"enabled_starter_pack\", String(runtime.globalVars.is_enabled_starter_pack));",
+						"",
+						"\truntime.callFunction(\"default_data\");",
+						"}",
+						"else{",
+						"\tif(runtime.globalVars.is_sent_login_analytics==0){",
+						"\t\truntime.globalVars.is_sent_login_analytics = 1;",
+						"\t\truntime.callFunction(\"design_event\", \"retention\", `retention_D${runtime.globalVars.total_day}`);",
+						"\t}",
+						"}",
+						"",
+						"if(runtime.globalVars.day > 7){",
+						"\truntime.globalVars.day = 1;",
+						"\tweekly_arr=default_weekly_arr;",
+						"\truntime.callFunction(\"save_storage\", storageType, \"day\", String(runtime.globalVars.day));",
+						"\truntime.callFunction(\"save_storage\", storageType, \"weekly_arr\", JSON.stringify(weekly_arr));",
+						"}",
+						"// if(runtime.globalVars.total_day > 30){",
+						"// \truntime.globalVars.total_day = 1;",
+						"// \truntime.callFunction(\"save_storage\", \"local_storage\", \"total_day\", String(runtime.globalVars.total_day));",
+						"// }",
+						"",
+						"",
+						"var h = String(Math.floor(expireHour/3600000));",
+						"var m = String(Math.ceil(expireHour/60000)-(h*60));",
+						"var s = String(Math.ceil(expireHour/1000)-((h*3600)+(m*60)-60));",
+						"// console.log(\"expireHour\"+expireHour/3600000+\"expireTime\"+expireTimeUTC, \"timelocal\", expireTimeLocal);",
+						"h = h<10 ? \"0\"+h : h ;",
+						"m = m<10 ? \"0\"+m : m ;",
+						"s = s<10 ? \"0\"+s : s ;",
+						"runtime.callFunction(\"set_offer_time\", h, m, s);",
+						"",
+						"// if(runtime.globalVars.is_init_data == false) runtime.globalVars.is_init_data = true;",
+						"// console.log(\"expire time:\", h, m, s);"
+					]
+				}
+			],
+			"sid": 971114247321406
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-start-of-layout",
+					"objectClass": "System",
+					"sid": 642706834516353
+				}
+			],
+			"actions": [
+				{
+					"type": "script",
+					"language": "javascript",
+					"script": [
+						"hideAdBanner();"
+					]
+				},
+				{
+					"id": "set-visible",
+					"objectClass": "lightEffect",
+					"sid": 911447690245739,
+					"parameters": {
+						"visibility": "invisible"
+					}
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "lightEffect",
+					"sid": 309678131915262,
+					"parameters": {
+						"instance-variable": "selfX",
+						"value": "Self.X"
+					}
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "lightEffect",
+					"sid": 764748388689443,
+					"parameters": {
+						"instance-variable": "selfY",
+						"value": "Self.Y"
+					}
+				},
+				{
+					"id": "set-layer-visible",
+					"objectClass": "System",
+					"sid": 714014194967455,
+					"parameters": {
+						"layer": "\"Settings\"",
+						"visibility": "invisible"
+					}
+				},
+				{
+					"id": "set-layer-visible",
+					"objectClass": "System",
+					"sid": 768236864052862,
+					"parameters": {
+						"layer": "\"PopUp\"",
+						"visibility": "invisible"
+					}
+				}
+			],
+			"sid": 905947639483000,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 817739610350309,
+							"parameters": {
+								"first-value": "LayoutName",
+								"comparison": 0,
+								"second-value": "\"Homepage\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"callFunction": "anim_navbar_button",
+							"sid": 310293987925300,
+							"parameters": [
+								"\"home\""
+							]
+						},
+						{
+							"id": "add-to-eventvar",
+							"objectClass": "System",
+							"sid": 750426032057593,
+							"parameters": {
+								"variable": "go_homepage_count",
+								"value": "1"
+							}
+						}
+					],
+					"sid": 503078160765742,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-boolean-eventvar",
+									"objectClass": "System",
+									"sid": 705453640991049,
+									"parameters": {
+										"variable": "FTUE_homepage"
+									}
+								}
+							],
+							"actions": [
+								{
+									"type": "script",
+									"language": "javascript",
+									"script": [
+										"progression_event(\"start\", \"ftue_home\");"
+									]
+								}
+							],
+							"sid": 999379833239989
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-two-values",
+							"objectClass": "System",
+							"sid": 806180869525123,
+							"parameters": {
+								"first-value": "LayoutName",
+								"comparison": 0,
+								"second-value": "\"Missions\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"callFunction": "anim_navbar_button",
+							"sid": 926832870767524,
+							"parameters": [
+								"\"mission\""
+							]
+						}
+					],
+					"sid": 522135614081933,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-boolean-eventvar",
+									"objectClass": "System",
+									"sid": 763554442150626,
+									"parameters": {
+										"variable": "FTUE_challenge"
+									}
+								}
+							],
+							"actions": [
+								{
+									"type": "script",
+									"language": "javascript",
+									"script": [
+										"progression_event(\"start\", \"ftue_challenge\");"
+									]
+								}
+							],
+							"sid": 826153916469962
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "wait-for-previous-actions",
+							"objectClass": "System",
+							"sid": 844154269458100
+						},
+						{
+							"callFunction": "create_unlocked_mission_pack",
+							"sid": 103069025287886
+						},
+						{
+							"callFunction": "create_locked_booster",
+							"sid": 841910741595033
+						},
+						{
+							"callFunction": "anim_pack_icon",
+							"sid": 119046869792179
+						},
+						{
+							"id": "wait",
+							"objectClass": "System",
+							"sid": 928995152042015,
+							"parameters": {
+								"seconds": "0.2",
+								"use-timescale": true
+							}
+						},
+						{
+							"callFunction": "get_offer_time",
+							"sid": 393654394309278
+						}
+					],
+					"sid": 381729287935066,
+					"children": [
+						{
+							"eventType": "comment",
+							"text": "is_daily_bonus = true"
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 173213760696796,
+									"parameters": {
+										"variable": "is_daily_bonus",
+										"comparison": 0,
+										"value": "1"
+									}
+								},
+								{
+									"id": "compare-two-values",
+									"objectClass": "System",
+									"sid": 357099882876216,
+									"parameters": {
+										"first-value": "LayoutName",
+										"comparison": 0,
+										"second-value": "\"Homepage\""
+									}
+								},
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 804606861712933,
+									"disabled": true,
+									"parameters": {
+										"variable": "go_homepage_count",
+										"comparison": 4,
+										"value": "1"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "wait",
+									"objectClass": "System",
+									"sid": 445936191577188,
+									"parameters": {
+										"seconds": "0.2",
+										"use-timescale": true
+									}
+								},
+								{
+									"callFunction": "show_popup_daily_bonus",
+									"sid": 188892165400847,
+									"parameters": [
+										"\"daily_bonus\""
+									]
+								}
+							],
+							"sid": 520928257861785,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-boolean-eventvar",
+											"objectClass": "System",
+											"sid": 948498174991248,
+											"parameters": {
+												"variable": "isFTUE"
+											}
+										}
+									],
+									"actions": [
+										{
+											"type": "script",
+											"language": "javascript",
+											"script": [
+												"progression_event(\"start\", \"ftue_dailybonus_show\");"
+											]
+										}
+									],
+									"sid": 327342139293236
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "every-x-seconds",
+					"objectClass": "System",
+					"sid": 228675664115501,
+					"parameters": {
+						"interval-seconds": "1"
+					}
+				}
+			],
+			"actions": [
+				{
+					"callFunction": "get_offer_time",
+					"sid": 335326132536662
+				}
+			],
+			"sid": 500967683037741
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "every-x-seconds",
+					"objectClass": "System",
+					"sid": 569702880475761,
+					"parameters": {
+						"interval-seconds": "5"
+					}
+				}
+			],
+			"actions": [],
+			"sid": 166288654871323,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "lightEffect",
+							"sid": 348944824959305,
+							"parameters": {
+								"instance-variable": "ID",
+								"comparison": 0,
+								"value": "\"btnplay\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-visible",
+							"objectClass": "lightEffect",
+							"sid": 531783838064781,
+							"parameters": {
+								"visibility": "visible"
+							}
+						},
+						{
+							"id": "set-position",
+							"objectClass": "lightEffect",
+							"sid": 124915537109350,
+							"parameters": {
+								"x": "Self.selfX-200",
+								"y": "Self.selfY+100"
+							}
+						},
+						{
+							"id": "wait-for-previous-actions",
+							"objectClass": "System",
+							"sid": 145298549495633
+						},
+						{
+							"id": "tween-two-properties",
+							"objectClass": "lightEffect",
+							"sid": 188308984994549,
+							"behaviorType": "Tween",
+							"parameters": {
+								"tags": "\"light_effect\"",
+								"property": "position",
+								"end-x": "Self.selfX+200",
+								"end-y": "Self.selfY-100",
+								"time": "0.5",
+								"ease": "default",
+								"destroy-on-complete": "no",
+								"loop": "no",
+								"ping-pong": "no",
+								"repeat-count": "1"
+							}
+						},
+						{
+							"id": "tween-two-properties",
+							"objectClass": "ButtonPlay",
+							"sid": 830431523791413,
+							"behaviorType": "Tween",
+							"parameters": {
+								"tags": "\"idle\"",
+								"property": "scale",
+								"end-x": "1.1",
+								"end-y": "1.1",
+								"time": "0.2",
+								"ease": "default",
+								"destroy-on-complete": "no",
+								"loop": "no",
+								"ping-pong": "yes",
+								"repeat-count": "1"
+							}
+						}
+					],
+					"sid": 526400793704935
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "every-tick",
+					"objectClass": "System",
+					"sid": 979593692254044
+				}
+			],
+			"actions": [
+				{
+					"id": "set-text",
+					"objectClass": "HighScore",
+					"sid": 257385555764964,
+					"parameters": {
+						"text": "high_score"
+					}
+				},
+				{
+					"id": "set-text",
+					"objectClass": "TextTickets",
+					"sid": 733404290591093,
+					"parameters": {
+						"text": "ticket"
+					}
+				},
+				{
+					"id": "set-text",
+					"objectClass": "TextCoin",
+					"sid": 692093942551851,
+					"parameters": {
+						"text": "coin"
+					}
+				}
+			],
+			"sid": 277885171185636,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 740665896245338,
+							"parameters": {
+								"variable": "star",
+								"comparison": 2,
+								"value": "20"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-text",
+							"objectClass": "labelStarProgress",
+							"sid": 444297701601810,
+							"parameters": {
+								"text": "star&\"/20\""
+							}
+						}
+					],
+					"sid": 339307656693291,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "star_fill_progress",
+									"sid": 154553798204604,
+									"parameters": {
+										"instance-variable": "ID",
+										"comparison": 0,
+										"value": "1"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-width",
+									"objectClass": "star_fill_progress",
+									"sid": 639069596440418,
+									"parameters": {
+										"width": "8+star*(61/20)"
+									}
+								}
+							],
+							"sid": 847971710903099
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "star_fill_progress",
+									"sid": 495126399445683,
+									"parameters": {
+										"instance-variable": "ID",
+										"comparison": 0,
+										"value": "2"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-width",
+									"objectClass": "star_fill_progress",
+									"sid": 581134957634216,
+									"parameters": {
+										"width": "star*(96/20)"
+									}
+								}
+							],
+							"sid": 185190384963527
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "shine",
+									"sid": 645843882613205,
+									"parameters": {
+										"instance-variable": "ID",
+										"comparison": 0,
+										"value": "\"jar\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-visible",
+									"objectClass": "shine",
+									"sid": 270655691175395,
+									"parameters": {
+										"visibility": "invisible"
+									}
+								}
+							],
+							"sid": 649164178620256
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 568462953332336
+						}
+					],
+					"actions": [
+						{
+							"id": "set-text",
+							"objectClass": "labelStarProgress",
+							"sid": 445224894911605,
+							"parameters": {
+								"text": "\"FULL\""
+							}
+						}
+					],
+					"sid": 834584535592769,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "star_fill_progress",
+									"sid": 912950486588693,
+									"parameters": {
+										"instance-variable": "ID",
+										"comparison": 0,
+										"value": "1"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-width",
+									"objectClass": "star_fill_progress",
+									"sid": 409606770444243,
+									"parameters": {
+										"width": "8+20*(61/20)"
+									}
+								}
+							],
+							"sid": 988872857724083
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "star_fill_progress",
+									"sid": 414502038338848,
+									"parameters": {
+										"instance-variable": "ID",
+										"comparison": 0,
+										"value": "2"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-width",
+									"objectClass": "star_fill_progress",
+									"sid": 911536032558085,
+									"parameters": {
+										"width": "20*(96/20)"
+									}
+								}
+							],
+							"sid": 304624422227349
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "shine",
+									"sid": 665310707869624,
+									"parameters": {
+										"instance-variable": "ID",
+										"comparison": 0,
+										"value": "\"jar\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-visible",
+									"objectClass": "shine",
+									"sid": 273293192087868,
+									"parameters": {
+										"visibility": "visible"
+									}
+								}
+							],
+							"sid": 667446903503694
+						}
+					]
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "every-x-seconds",
+					"objectClass": "System",
+					"sid": 973155531463193,
+					"parameters": {
+						"interval-seconds": "round(random(5, 7))"
+					}
+				}
+			],
+			"actions": [
+				{
+					"callFunction": "anim_pack_icon",
+					"sid": 553728962361259
+				}
+			],
+			"sid": 976610515717703
+		},
+		{
+			"functionName": "anim_pack_icon",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 201895829386499,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-animation-playing",
+							"objectClass": "packIcon",
+							"sid": 309740397001288,
+							"parameters": {
+								"animation": "\"jar\""
+							}
+						}
+					],
+					"actions": [],
+					"sid": 677928616840586,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 946310999722832,
+									"parameters": {
+										"variable": "star",
+										"comparison": 2,
+										"value": "20"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-active",
+									"objectClass": "packIcon",
+									"sid": 234651390436535,
+									"behaviorType": "Sine2",
+									"parameters": {
+										"state": "active"
+									}
+								},
+								{
+									"id": "wait",
+									"objectClass": "System",
+									"sid": 897802737590380,
+									"parameters": {
+										"seconds": "1.5",
+										"use-timescale": true
+									}
+								},
+								{
+									"id": "set-active",
+									"objectClass": "packIcon",
+									"sid": 486651879594554,
+									"behaviorType": "Sine2",
+									"parameters": {
+										"state": "inactive"
+									}
+								},
+								{
+									"id": "set-angle",
+									"objectClass": "packIcon",
+									"sid": 462583157754181,
+									"parameters": {
+										"angle": "0"
+									}
+								}
+							],
+							"sid": 511573276045419,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "ParticlesSpark",
+											"sid": 993550268053020,
+											"parameters": {
+												"instance-variable": "ID",
+												"comparison": 0,
+												"value": "\"jar\""
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-visible",
+											"objectClass": "ParticlesSpark",
+											"sid": 617250987101625,
+											"parameters": {
+												"visibility": "invisible"
+											}
+										}
+									],
+									"sid": 592706384784728
+								}
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "else",
+									"objectClass": "System",
+									"sid": 516938845766218
+								}
+							],
+							"actions": [
+								{
+									"id": "set-active",
+									"objectClass": "packIcon",
+									"sid": 421533134420238,
+									"behaviorType": "Sine",
+									"parameters": {
+										"state": "active"
+									}
+								},
+								{
+									"id": "wait",
+									"objectClass": "System",
+									"sid": 706769825722675,
+									"parameters": {
+										"seconds": "1",
+										"use-timescale": true
+									}
+								},
+								{
+									"id": "set-active",
+									"objectClass": "packIcon",
+									"sid": 305570175924141,
+									"behaviorType": "Sine",
+									"parameters": {
+										"state": "inactive"
+									}
+								},
+								{
+									"id": "set-scale",
+									"objectClass": "packIcon",
+									"sid": 828659681543776,
+									"parameters": {
+										"scale": "1"
+									}
+								}
+							],
+							"sid": 650811302444886,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "ParticlesSpark",
+											"sid": 466706652500174,
+											"parameters": {
+												"instance-variable": "ID",
+												"comparison": 0,
+												"value": "\"jar\""
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-visible",
+											"objectClass": "ParticlesSpark",
+											"sid": 310301646962715,
+											"parameters": {
+												"visibility": "visible"
+											}
+										}
+									],
+									"sid": 784435683921298
+								}
+							]
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-animation-playing",
+							"objectClass": "packIcon",
+							"sid": 971773883566868,
+							"parameters": {
+								"animation": "\"starter_pack\""
+							}
+						}
+					],
+					"actions": [],
+					"sid": 812010929224847,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 587253193340691,
+									"parameters": {
+										"variable": "is_enabled_starter_pack",
+										"comparison": 0,
+										"value": "1"
+									}
+								}
+							],
+							"actions": [],
+							"sid": 205566960066638,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "pick-children",
+											"objectClass": "packIcon",
+											"sid": 558163206898557,
+											"parameters": {
+												"child": "labelOfferTime",
+												"which": "own"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-visible",
+											"objectClass": "labelOfferTime",
+											"sid": 727463004192074,
+											"parameters": {
+												"visibility": "invisible"
+											}
+										}
+									],
+									"sid": 845737701788043
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "pick-children",
+											"objectClass": "packIcon",
+											"sid": 274305816987407,
+											"parameters": {
+												"child": "time_icon",
+												"which": "own"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-visible",
+											"objectClass": "time_icon",
+											"sid": 671070862206865,
+											"parameters": {
+												"visibility": "invisible"
+											}
+										}
+									],
+									"sid": 365879364024693
+								}
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "else",
+									"objectClass": "System",
+									"sid": 781801309425238
+								}
+							],
+							"actions": [],
+							"sid": 176223533953215,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "pick-children",
+											"objectClass": "packIcon",
+											"sid": 738230614287613,
+											"parameters": {
+												"child": "labelOfferTime",
+												"which": "own"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-visible",
+											"objectClass": "labelOfferTime",
+											"sid": 578410462538960,
+											"parameters": {
+												"visibility": "visible"
+											}
+										}
+									],
+									"sid": 350026939974815
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "pick-children",
+											"objectClass": "packIcon",
+											"sid": 153742800029330,
+											"parameters": {
+												"child": "time_icon",
+												"which": "own"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-visible",
+											"objectClass": "time_icon",
+											"sid": 195003971005434,
+											"parameters": {
+												"visibility": "visible"
+											}
+										}
+									],
+									"sid": 845506853436560
+								}
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [],
+							"actions": [
+								{
+									"id": "wait",
+									"objectClass": "System",
+									"sid": 497111440621643,
+									"parameters": {
+										"seconds": "0.5",
+										"use-timescale": true
+									}
+								},
+								{
+									"id": "set-active",
+									"objectClass": "packIcon",
+									"sid": 133950095604290,
+									"behaviorType": "Sine",
+									"parameters": {
+										"state": "active"
+									}
+								},
+								{
+									"id": "wait",
+									"objectClass": "System",
+									"sid": 876857290855246,
+									"parameters": {
+										"seconds": "1",
+										"use-timescale": true
+									}
+								},
+								{
+									"id": "set-active",
+									"objectClass": "packIcon",
+									"sid": 887602135704935,
+									"behaviorType": "Sine",
+									"parameters": {
+										"state": "inactive"
+									}
+								},
+								{
+									"id": "set-scale",
+									"objectClass": "packIcon",
+									"sid": 181296475116667,
+									"parameters": {
+										"scale": "1"
+									}
+								}
+							],
+							"sid": 429549569751693
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-animation-playing",
+							"objectClass": "packIcon",
+							"sid": 259547308374253,
+							"parameters": {
+								"animation": "\"noads\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "wait",
+							"objectClass": "System",
+							"sid": 358292409791579,
+							"parameters": {
+								"seconds": "1",
+								"use-timescale": true
+							}
+						},
+						{
+							"id": "set-active",
+							"objectClass": "packIcon",
+							"sid": 145333609614892,
+							"behaviorType": "Sine",
+							"parameters": {
+								"state": "active"
+							}
+						},
+						{
+							"id": "wait",
+							"objectClass": "System",
+							"sid": 714199269538071,
+							"parameters": {
+								"seconds": "1",
+								"use-timescale": true
+							}
+						},
+						{
+							"id": "set-active",
+							"objectClass": "packIcon",
+							"sid": 428188198954244,
+							"behaviorType": "Sine",
+							"parameters": {
+								"state": "inactive"
+							}
+						},
+						{
+							"id": "set-scale",
+							"objectClass": "packIcon",
+							"sid": 915891330876062,
+							"parameters": {
+								"scale": "1"
+							}
+						}
+					],
+					"sid": 979077740928227
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "lightEffect",
+							"sid": 265852073346546,
+							"parameters": {
+								"instance-variable": "ID",
+								"comparison": 0,
+								"value": "\"jar\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-visible",
+							"objectClass": "lightEffect",
+							"sid": 705033746244399,
+							"parameters": {
+								"visibility": "visible"
+							}
+						},
+						{
+							"id": "set-position",
+							"objectClass": "lightEffect",
+							"sid": 424354301561443,
+							"parameters": {
+								"x": "Self.selfX-100",
+								"y": "Self.selfY+100"
+							}
+						},
+						{
+							"id": "wait-for-previous-actions",
+							"objectClass": "System",
+							"sid": 192745596158253
+						},
+						{
+							"id": "tween-two-properties",
+							"objectClass": "lightEffect",
+							"sid": 311488356730256,
+							"behaviorType": "Tween",
+							"parameters": {
+								"tags": "\"light_effect\"",
+								"property": "position",
+								"end-x": "Self.selfX+100",
+								"end-y": "Self.selfY-100",
+								"time": "0.7",
+								"ease": "default",
+								"destroy-on-complete": "no",
+								"loop": "no",
+								"ping-pong": "no",
+								"repeat-count": "1"
+							}
+						}
+					],
+					"sid": 173249753131998
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "lightEffect",
+							"sid": 855049359155852,
+							"parameters": {
+								"instance-variable": "ID",
+								"comparison": 0,
+								"value": "\"offer\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "wait",
+							"objectClass": "System",
+							"sid": 963794212965003,
+							"parameters": {
+								"seconds": "0.5",
+								"use-timescale": true
+							}
+						},
+						{
+							"id": "set-visible",
+							"objectClass": "lightEffect",
+							"sid": 794206913353824,
+							"parameters": {
+								"visibility": "visible"
+							}
+						},
+						{
+							"id": "set-position",
+							"objectClass": "lightEffect",
+							"sid": 764769523161889,
+							"parameters": {
+								"x": "Self.selfX-100",
+								"y": "Self.selfY+100"
+							}
+						},
+						{
+							"id": "wait-for-previous-actions",
+							"objectClass": "System",
+							"sid": 941986608608920
+						},
+						{
+							"id": "tween-two-properties",
+							"objectClass": "lightEffect",
+							"sid": 266864901215325,
+							"behaviorType": "Tween",
+							"parameters": {
+								"tags": "\"light_effect\"",
+								"property": "position",
+								"end-x": "Self.selfX+100",
+								"end-y": "Self.selfY-100",
+								"time": "0.7",
+								"ease": "default",
+								"destroy-on-complete": "no",
+								"loop": "no",
+								"ping-pong": "no",
+								"repeat-count": "1"
+							}
+						}
+					],
+					"sid": 422110073509482
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "lightEffect",
+							"sid": 611509609190253,
+							"parameters": {
+								"instance-variable": "ID",
+								"comparison": 0,
+								"value": "\"removeads\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "wait",
+							"objectClass": "System",
+							"sid": 121210654098423,
+							"parameters": {
+								"seconds": "1",
+								"use-timescale": true
+							}
+						},
+						{
+							"id": "set-visible",
+							"objectClass": "lightEffect",
+							"sid": 727902619664806,
+							"parameters": {
+								"visibility": "visible"
+							}
+						},
+						{
+							"id": "set-position",
+							"objectClass": "lightEffect",
+							"sid": 296535091135728,
+							"parameters": {
+								"x": "Self.selfX-100",
+								"y": "Self.selfY+100"
+							}
+						},
+						{
+							"id": "wait-for-previous-actions",
+							"objectClass": "System",
+							"sid": 661587752995462
+						},
+						{
+							"id": "tween-two-properties",
+							"objectClass": "lightEffect",
+							"sid": 286708950766942,
+							"behaviorType": "Tween",
+							"parameters": {
+								"tags": "\"light_effect\"",
+								"property": "position",
+								"end-x": "Self.selfX+100",
+								"end-y": "Self.selfY-100",
+								"time": "0.7",
+								"ease": "default",
+								"destroy-on-complete": "no",
+								"loop": "no",
+								"ping-pong": "no",
+								"repeat-count": "1"
+							}
+						}
+					],
+					"sid": 238206964487154
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-touched-object",
+					"objectClass": "Touch",
+					"sid": 834572758315577,
+					"parameters": {
+						"object": "packIcon",
+						"type": "start"
+					}
+				},
+				{
+					"id": "layer-is-visible",
+					"objectClass": "System",
+					"sid": 726567978220007,
+					"parameters": {
+						"layer": "\"PopUp\""
+					},
+					"isInverted": true
+				},
+				{
+					"id": "layer-is-visible",
+					"objectClass": "System",
+					"sid": 563870809494508,
+					"parameters": {
+						"layer": "\"Settings\""
+					},
+					"isInverted": true
+				},
+				{
+					"id": "is-touching-object",
+					"objectClass": "Touch",
+					"sid": 250097040090457,
+					"parameters": {
+						"object": "black_ads_loading"
+					},
+					"isInverted": true
+				}
+			],
+			"actions": [],
+			"sid": 699464627727974,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-animation-playing",
+							"objectClass": "packIcon",
+							"sid": 229860674628681,
+							"parameters": {
+								"animation": "\"jar\""
+							}
+						}
+					],
+					"actions": [],
+					"sid": 990241107580898,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 628926739758138,
+									"parameters": {
+										"variable": "star",
+										"comparison": 2,
+										"value": "20"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "add-to-eventvar",
+									"objectClass": "System",
+									"sid": 121424332706254,
+									"disabled": true,
+									"parameters": {
+										"variable": "star",
+										"value": "1"
+									}
+								},
+								{
+									"callFunction": "show_popup_pack",
+									"sid": 732697732250728,
+									"parameters": [
+										"packIcon.AnimationName"
+									]
+								}
+							],
+							"sid": 166750319576373
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "else",
+									"objectClass": "System",
+									"sid": 839686107733333
+								}
+							],
+							"actions": [
+								{
+									"callFunction": "popup_pack",
+									"sid": 215799431190552,
+									"parameters": [
+										"packIcon.AnimationName"
+									]
+								}
+							],
+							"sid": 782744021936714
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-boolean-eventvar",
+									"objectClass": "System",
+									"sid": 886631971467191,
+									"parameters": {
+										"variable": "FTUE_starjar"
+									}
+								}
+							],
+							"actions": [
+								{
+									"type": "script",
+									"language": "javascript",
+									"script": [
+										"progression_event(\"start\", \"ftue_starjar\");",
+										"progression_event(\"completed\",\"ftue_starjar\");"
+									]
+								},
+								{
+									"id": "set-boolean-eventvar",
+									"objectClass": "System",
+									"sid": 909440694076492,
+									"parameters": {
+										"variable": "FTUE_starjar",
+										"value": "false"
+									}
+								}
+							],
+							"sid": 666114773243493
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-animation-playing",
+							"objectClass": "packIcon",
+							"sid": 333404403166189,
+							"parameters": {
+								"animation": "\"starter_pack\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"callFunction": "show_popup_pack",
+							"sid": 737051623809974,
+							"parameters": [
+								"packIcon.AnimationName"
+							]
+						}
+					],
+					"sid": 601692551507025
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-touched-object",
+					"objectClass": "Touch",
+					"sid": 107290937379975,
+					"parameters": {
+						"object": "greenButton",
+						"type": "start"
+					}
+				},
+				{
+					"id": "is-playing",
+					"objectClass": "greenButton",
+					"sid": 756629091309572,
+					"behaviorType": "Tween",
+					"parameters": {
+						"tags": "\"button\""
+					},
+					"isInverted": true
+				},
+				{
+					"id": "is-effect-enabled",
+					"objectClass": "greenButton",
+					"sid": 845594575019348,
+					"parameters": {
+						"effect": "\"Brightness\""
+					},
+					"isInverted": true
+				}
+			],
+			"actions": [],
+			"sid": 372437347030544,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "greenButton",
+							"sid": 274234719916365,
+							"parameters": {
+								"instance-variable": "ID",
+								"comparison": 0,
+								"value": "\"starter_pack\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"callFunction": "audio_settings",
+							"sid": 373252854272499,
+							"parameters": [
+								"\"play\"",
+								"\"Button_Tap\""
+							]
+						},
+						{
+							"id": "tween-two-properties",
+							"objectClass": "greenButton",
+							"sid": 366310472006217,
+							"behaviorType": "Tween",
+							"parameters": {
+								"tags": "\"button\"",
+								"property": "scale",
+								"end-x": "0.9",
+								"end-y": "0.9",
+								"time": "0.1",
+								"ease": "easeoutsine",
+								"destroy-on-complete": "no",
+								"loop": "no",
+								"ping-pong": "yes",
+								"repeat-count": "1"
+							}
+						},
+						{
+							"id": "wait-for-previous-actions",
+							"objectClass": "System",
+							"sid": 759146107706809
+						},
+						{
+							"id": "set-effect-enabled",
+							"objectClass": "greenButton",
+							"sid": 801985685630116,
+							"parameters": {
+								"mode": "enable",
+								"effect": "\"Brightness\""
+							}
+						},
+						{
+							"id": "set-effect-parameter",
+							"objectClass": "greenButton",
+							"sid": 234413975302542,
+							"parameters": {
+								"effect": "\"Brightness\"",
+								"parameter-index": "0",
+								"value": "75"
+							}
+						}
+					],
+					"sid": 188863587131826,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [],
+							"actions": [
+								{
+									"id": "wait-for-previous-actions",
+									"objectClass": "System",
+									"sid": 384556841581088
+								}
+							],
+							"sid": 108069862242843,
+							"disabled": true,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "pick-children",
+											"objectClass": "greenButton",
+											"sid": 516834768443944,
+											"parameters": {
+												"child": "labelButton",
+												"which": "all"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-text",
+											"objectClass": "labelButton",
+											"sid": 870906748960368,
+											"parameters": {
+												"text": "\"12h 45m\""
+											}
+										},
+										{
+											"id": "set-x",
+											"objectClass": "labelButton",
+											"sid": 808853068959318,
+											"parameters": {
+												"x": "Self.X+20"
+											}
+										},
+										{
+											"id": "create-object",
+											"objectClass": "System",
+											"sid": 951964156118490,
+											"parameters": {
+												"object-to-create": "time_icon",
+												"layer": "\"PopUp\"",
+												"x": "labelButton.X-30",
+												"y": "labelButton.Y+6",
+												"create-hierarchy": false,
+												"template-name": "\"\""
+											}
+										},
+										{
+											"id": "set-animation-frame",
+											"objectClass": "time_icon",
+											"sid": 634626387380324,
+											"parameters": {
+												"frame-number": "1"
+											}
+										},
+										{
+											"id": "set-position",
+											"objectClass": "time_icon",
+											"sid": 953100068365513,
+											"parameters": {
+												"x": "Self.X-40",
+												"y": "Self.Y+5"
+											}
+										},
+										{
+											"id": "set-size",
+											"objectClass": "time_icon",
+											"sid": 567031370751490,
+											"parameters": {
+												"width": "Self.Width+10",
+												"height": "Self.Height+10"
+											}
+										},
+										{
+											"id": "add-child",
+											"objectClass": "labelButton",
+											"sid": 815271916159968,
+											"parameters": {
+												"child": "time_icon",
+												"transform-x": true,
+												"transform-y": true,
+												"transform-w": true,
+												"transform-h": true,
+												"transform-a": true,
+												"transform-o": false,
+												"transform-z-elevation": true,
+												"transform-visibility": false,
+												"destroy-with-parent": false
+											}
+										}
+									],
+									"sid": 172902222050283,
+									"disabled": true
+								}
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-animation-playing",
+									"objectClass": "packIcon",
+									"sid": 151797248750531,
+									"parameters": {
+										"animation": "\"starter_pack\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 767017084775082,
+									"parameters": {
+										"variable": "is_enabled_starter_pack",
+										"value": "0"
+									}
+								},
+								{
+									"type": "script",
+									"language": "javascript",
+									"script": [
+										"runtime.callFunction(\"save_storage\", storageType, \"enabled_starter_pack\", String(runtime.globalVars.is_enabled_starter_pack))"
+									]
+								}
+							],
+							"sid": 157598894187719
+						},
+						{
+							"eventType": "block",
+							"conditions": [],
+							"actions": [
+								{
+									"id": "set-visible",
+									"objectClass": "labelOfferTime",
+									"sid": 189836487227743,
+									"parameters": {
+										"visibility": "visible"
+									}
+								},
+								{
+									"id": "set-visible",
+									"objectClass": "time_icon",
+									"sid": 151455086888544,
+									"parameters": {
+										"visibility": "visible"
+									}
+								}
+							],
+							"sid": 985237763336436
+						}
+					]
+				}
+			]
+		},
+		{
+			"functionName": "show_popup_loading_ads",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "set-layer-visible",
+					"objectClass": "System",
+					"sid": 685985900391519,
+					"parameters": {
+						"layer": "\"PopUp\"",
+						"visibility": "visible"
+					}
+				},
+				{
+					"id": "create-object",
+					"objectClass": "System",
+					"sid": 116290419245032,
+					"parameters": {
+						"object-to-create": "black_ads_loading",
+						"layer": "\"PopUp\"",
+						"x": "LayoutWidth/2",
+						"y": "LayoutHeight/2",
+						"create-hierarchy": true,
+						"template-name": "\"\""
+					}
+				},
+				{
+					"id": "set-size",
+					"objectClass": "black_ads_loading",
+					"sid": 595797111303461,
+					"parameters": {
+						"width": "ViewportWidth(Self.LayerName)",
+						"height": "ViewportHeight(Self.LayerName)"
+					}
+				}
+			],
+			"sid": 607536697878612
+		},
+		{
+			"functionName": "show_popup_pack",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "ID",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"sid": 387739439662420
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"callFunction": "audio_settings",
+					"sid": 365375230465392,
+					"parameters": [
+						"\"play\"",
+						"\"PopUp_Appear\""
+					]
+				},
+				{
+					"id": "set-layer-visible",
+					"objectClass": "System",
+					"sid": 560214425486941,
+					"parameters": {
+						"layer": "\"PopUp\"",
+						"visibility": "visible"
+					}
+				},
+				{
+					"id": "create-object",
+					"objectClass": "System",
+					"sid": 526298426321132,
+					"parameters": {
+						"object-to-create": "black_shadow",
+						"layer": "\"PopUp\"",
+						"x": "LayoutWidth/2",
+						"y": "LayoutHeight/2",
+						"create-hierarchy": false,
+						"template-name": "\"\""
+					}
+				},
+				{
+					"id": "set-size",
+					"objectClass": "black_shadow",
+					"sid": 640827808487492,
+					"parameters": {
+						"width": "ViewportWidth(Self.LayerName)",
+						"height": "ViewportHeight(Self.LayerName)"
+					}
+				},
+				{
+					"id": "create-object",
+					"objectClass": "System",
+					"sid": 483780983174618,
+					"parameters": {
+						"object-to-create": "framePopUp",
+						"layer": "\"PopUp\"",
+						"x": "LayoutWidth/2",
+						"y": "(LayoutHeight/2)+50",
+						"create-hierarchy": true,
+						"template-name": "ID"
+					}
+				},
+				{
+					"id": "set-scale",
+					"objectClass": "framePopUp",
+					"sid": 672882108352024,
+					"parameters": {
+						"scale": "0"
+					}
+				},
+				{
+					"id": "tween-two-properties",
+					"objectClass": "framePopUp",
+					"sid": 474390602774683,
+					"behaviorType": "Tween",
+					"parameters": {
+						"tags": "\"popUp\"",
+						"property": "scale",
+						"end-x": "1",
+						"end-y": "1",
+						"time": "0.5",
+						"ease": "easeoutback",
+						"destroy-on-complete": "no",
+						"loop": "no",
+						"ping-pong": "no",
+						"repeat-count": "1"
+					}
+				}
+			],
+			"sid": 526300302371910,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-animation-playing",
+							"objectClass": "packIcon",
+							"sid": 216192085439151,
+							"parameters": {
+								"animation": "\"starter_pack\""
+							}
+						}
+					],
+					"actions": [],
+					"sid": 541451938978669,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 358642577701774,
+									"parameters": {
+										"variable": "is_enabled_starter_pack",
+										"comparison": 0,
+										"value": "1"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-visible",
+									"objectClass": "time_icon",
+									"sid": 555018724885106,
+									"parameters": {
+										"visibility": "invisible"
+									}
+								},
+								{
+									"id": "set-visible",
+									"objectClass": "labelOfferTime",
+									"sid": 237520761241217,
+									"parameters": {
+										"visibility": "invisible"
+									}
+								}
+							],
+							"sid": 966537880301755
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "else",
+									"objectClass": "System",
+									"sid": 201666270092141
+								}
+							],
+							"actions": [
+								{
+									"id": "set-effect-enabled",
+									"objectClass": "greenButton",
+									"sid": 949910680673069,
+									"parameters": {
+										"mode": "enable",
+										"effect": "\"Brightness\""
+									}
+								},
+								{
+									"id": "set-effect-parameter",
+									"objectClass": "greenButton",
+									"sid": 411993532037712,
+									"parameters": {
+										"effect": "\"Brightness\"",
+										"parameter-index": "0",
+										"value": "75"
+									}
+								}
+							],
+							"sid": 278547178982408
+						}
+					]
+				}
+			]
+		},
+		{
+			"functionName": "set_X_check_icon_daily_bonus",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 774912402188365,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "for-each",
+							"objectClass": "System",
+							"sid": 837373098476430,
+							"parameters": {
+								"object": "panel_daily_login"
+							}
+						}
+					],
+					"actions": [],
+					"sid": 519320602605616,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "panel_daily_login",
+									"sid": 435238683836622,
+									"parameters": {
+										"instance-variable": "day",
+										"comparison": 2,
+										"value": "day"
+									}
+								}
+							],
+							"actions": [],
+							"sid": 460011136551457,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-animation-frame",
+											"objectClass": "panel_daily_login",
+											"sid": 502400183493939,
+											"parameters": {
+												"comparison": 0,
+												"number": "1"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "create-object",
+											"objectClass": "System",
+											"sid": 512178919679459,
+											"parameters": {
+												"object-to-create": "check_icon",
+												"layer": "panel_daily_login.LayerName",
+												"x": "panel_daily_login.X",
+												"y": "panel_daily_login.Y+10",
+												"create-hierarchy": false,
+												"template-name": "\"\""
+											}
+										},
+										{
+											"id": "set-scale",
+											"objectClass": "check_icon",
+											"sid": 721817199184521,
+											"parameters": {
+												"scale": "2"
+											}
+										},
+										{
+											"id": "tween-two-properties",
+											"objectClass": "check_icon",
+											"sid": 905928406246919,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "\"scale\"",
+												"property": "scale",
+												"end-x": "1.2",
+												"end-y": "1.2",
+												"time": "1",
+												"ease": "easeoutbounce",
+												"destroy-on-complete": "no",
+												"loop": "no",
+												"ping-pong": "no",
+												"repeat-count": "1"
+											}
+										}
+									],
+									"sid": 438986800563209
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"functionName": "set_frame_daily_bonus",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 541483511674297,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "for-each",
+							"objectClass": "System",
+							"sid": 922835482026458,
+							"parameters": {
+								"object": "panel_daily_login"
+							}
+						}
+					],
+					"actions": [],
+					"sid": 584117893479502,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "panel_daily_login",
+									"sid": 200318821709130,
+									"parameters": {
+										"instance-variable": "day",
+										"comparison": 2,
+										"value": "day"
+									}
+								}
+							],
+							"actions": [],
+							"sid": 368134164448170,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-animation-frame",
+											"objectClass": "panel_daily_login",
+											"sid": 810433622910028,
+											"parameters": {
+												"comparison": 0,
+												"number": "0"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-effect-enabled",
+											"objectClass": "panel_daily_login",
+											"sid": 302398257659373,
+											"parameters": {
+												"mode": "enable",
+												"effect": "\"Brightness\""
+											}
+										},
+										{
+											"id": "set-effect-parameter",
+											"objectClass": "panel_daily_login",
+											"sid": 572552873142635,
+											"parameters": {
+												"effect": "\"Brightness\"",
+												"parameter-index": "0",
+												"value": "65"
+											}
+										}
+									],
+									"sid": 259316876721155,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "pick-children",
+													"objectClass": "panel_daily_login",
+													"sid": 758888503411294,
+													"parameters": {
+														"child": "dollarIcon",
+														"which": "all"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-effect-enabled",
+													"objectClass": "dollarIcon",
+													"sid": 607277314613669,
+													"parameters": {
+														"mode": "enable",
+														"effect": "\"Brightness\""
+													}
+												},
+												{
+													"id": "set-effect-parameter",
+													"objectClass": "dollarIcon",
+													"sid": 212646813246135,
+													"parameters": {
+														"effect": "\"Brightness\"",
+														"parameter-index": "0",
+														"value": "50"
+													}
+												},
+												{
+													"id": "set-effect-enabled",
+													"objectClass": "dollarIcon",
+													"sid": 664964833154259,
+													"parameters": {
+														"mode": "enable",
+														"effect": "\"Contrast\""
+													}
+												},
+												{
+													"id": "set-effect-parameter",
+													"objectClass": "dollarIcon",
+													"sid": 955946209819006,
+													"parameters": {
+														"effect": "\"Contrast\"",
+														"parameter-index": "0",
+														"value": "75"
+													}
+												}
+											],
+											"sid": 352779985287842
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "pick-children",
+													"objectClass": "panel_daily_login",
+													"sid": 603990791608707,
+													"parameters": {
+														"child": "missionIconPack",
+														"which": "all"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-effect-enabled",
+													"objectClass": "missionIconPack",
+													"sid": 208381844120436,
+													"parameters": {
+														"mode": "enable",
+														"effect": "\"Brightness\""
+													}
+												},
+												{
+													"id": "set-effect-parameter",
+													"objectClass": "missionIconPack",
+													"sid": 191642836700627,
+													"parameters": {
+														"effect": "\"Brightness\"",
+														"parameter-index": "0",
+														"value": "50"
+													}
+												},
+												{
+													"id": "set-effect-enabled",
+													"objectClass": "missionIconPack",
+													"sid": 205795522503083,
+													"parameters": {
+														"mode": "enable",
+														"effect": "\"Contrast\""
+													}
+												},
+												{
+													"id": "set-effect-parameter",
+													"objectClass": "missionIconPack",
+													"sid": 832106203964893,
+													"parameters": {
+														"effect": "\"Contrast\"",
+														"parameter-index": "0",
+														"value": "75"
+													}
+												}
+											],
+											"sid": 496293243985809
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "pick-children",
+													"objectClass": "panel_daily_login",
+													"sid": 129330138613200,
+													"parameters": {
+														"child": "labelBundleItem",
+														"which": "all"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-effect-enabled",
+													"objectClass": "labelBundleItem",
+													"sid": 601105220252861,
+													"parameters": {
+														"mode": "enable",
+														"effect": "\"Brightness\""
+													}
+												},
+												{
+													"id": "set-effect-parameter",
+													"objectClass": "labelBundleItem",
+													"sid": 581453619795570,
+													"parameters": {
+														"effect": "\"Brightness\"",
+														"parameter-index": "0",
+														"value": "50"
+													}
+												}
+											],
+											"sid": 387582322665140
+										}
+									]
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-animation-frame",
+											"objectClass": "panel_daily_login",
+											"sid": 254725180140750,
+											"parameters": {
+												"comparison": 0,
+												"number": "1"
+											}
+										}
+									],
+									"actions": [],
+									"sid": 132391279903837,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "pick-children",
+													"objectClass": "panel_daily_login",
+													"sid": 652420893041774,
+													"parameters": {
+														"child": "dollarIcon",
+														"which": "all"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "destroy",
+													"objectClass": "dollarIcon",
+													"sid": 607808792313258
+												}
+											],
+											"sid": 743976941716379
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "pick-children",
+													"objectClass": "panel_daily_login",
+													"sid": 184312082235298,
+													"parameters": {
+														"child": "missionIconPack",
+														"which": "all"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "destroy",
+													"objectClass": "missionIconPack",
+													"sid": 925768925384487
+												}
+											],
+											"sid": 346478649394158
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "pick-children",
+													"objectClass": "panel_daily_login",
+													"sid": 699566291110939,
+													"parameters": {
+														"child": "labelBundleItem",
+														"which": "all"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "destroy",
+													"objectClass": "labelBundleItem",
+													"sid": 632504320131964
+												}
+											],
+											"sid": 135667328840715
+										}
+									]
+								}
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "panel_daily_login",
+									"sid": 630033564734008,
+									"parameters": {
+										"instance-variable": "day",
+										"comparison": 0,
+										"value": "day"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-animation-frame",
+									"objectClass": "panel_daily_login",
+									"sid": 667884374684493,
+									"parameters": {
+										"frame-number": "2"
+									}
+								}
+							],
+							"sid": 204541124683887
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "for-each",
+							"objectClass": "System",
+							"sid": 219343555747673,
+							"parameters": {
+								"object": "progress_box_daily_bonus"
+							}
+						}
+					],
+					"actions": [],
+					"sid": 900145196621716,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "pick-children",
+									"objectClass": "progress_box_daily_bonus",
+									"sid": 686621475943255,
+									"parameters": {
+										"child": "PopupDetailInfoDailyLogin",
+										"which": "own"
+									}
+								}
+							],
+							"actions": [],
+							"sid": 308560268013480,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "PopupDetailInfoDailyLogin",
+											"sid": 287995121753983,
+											"parameters": {
+												"instance-variable": "day",
+												"comparison": 2,
+												"value": "total_day-1"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-animation",
+											"objectClass": "progress_box_daily_bonus",
+											"sid": 803265750533896,
+											"parameters": {
+												"animation": "\"open\"",
+												"from": "current-frame"
+											}
+										}
+									],
+									"sid": 829967340784757
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-instance-variable",
+											"objectClass": "PopupDetailInfoDailyLogin",
+											"sid": 882336004233490,
+											"parameters": {
+												"instance-variable": "day",
+												"comparison": 0,
+												"value": "total_day"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "spawn-another-object",
+											"objectClass": "progress_box_daily_bonus",
+											"sid": 721460134379671,
+											"disabled": true,
+											"parameters": {
+												"object": "green_shine",
+												"layer": "Self.LayerName",
+												"image-point": "1",
+												"create-hierarchy": false,
+												"template-name": "\"\""
+											}
+										},
+										{
+											"id": "move-to-object",
+											"objectClass": "green_shine",
+											"sid": 161451368085840,
+											"disabled": true,
+											"parameters": {
+												"where": "behind",
+												"object": "progress_box_daily_bonus"
+											}
+										}
+									],
+									"sid": 914645331325270
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"functionName": "set_daily_bonus_value",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "set-width",
+					"objectClass": "green_fillbar_dailybonus",
+					"sid": 953475942979936,
+					"parameters": {
+						"width": "(198/30)*(((total_day-1)%30)+1)"
+					}
+				},
+				{
+					"type": "script",
+					"language": "javascript",
+					"script": [
+						"for (let i = 1; i < runtime.globalVars.day; i++){",
+						"\truntime.objects.panel_daily_login.getPickedInstances()[-(i-7)].animationFrame = weekly_arr[i-1].status;",
+						"}",
+						"runtime.callFunction(\"set_frame_daily_bonus\");"
+					]
+				}
+			],
+			"sid": 694338319305923,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "panel_daily_login",
+							"sid": 521011401750033,
+							"parameters": {
+								"instance-variable": "day",
+								"comparison": 2,
+								"value": "day"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-animation-frame",
+							"objectClass": "panel_daily_login",
+							"sid": 112477503499413,
+							"parameters": {
+								"frame-number": "1"
+							}
+						}
+					],
+					"sid": 400904370798598,
+					"disabled": true
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "panel_daily_login",
+							"sid": 598370781158770,
+							"parameters": {
+								"instance-variable": "day",
+								"comparison": 0,
+								"value": "day+1"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-animation-frame",
+							"objectClass": "panel_daily_login",
+							"sid": 534464818361828,
+							"parameters": {
+								"frame-number": "2"
+							}
+						}
+					],
+					"sid": 794038951638810,
+					"disabled": true
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "panel_daily_login",
+							"sid": 474210560063733,
+							"parameters": {
+								"instance-variable": "day",
+								"comparison": 4,
+								"value": "day+1"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-animation-frame",
+							"objectClass": "panel_daily_login",
+							"sid": 642324706900818,
+							"parameters": {
+								"frame-number": "0"
+							}
+						}
+					],
+					"sid": 999529799626769,
+					"disabled": true
+				},
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [],
+					"sid": 276535751372888
+				}
+			]
+		},
+		{
+			"functionName": "show_popup_daily_bonus",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "ID",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"sid": 458996443518055
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"callFunction": "audio_settings",
+					"sid": 656667778032892,
+					"parameters": [
+						"\"play\"",
+						"\"PopUp_Appear\""
+					]
+				},
+				{
+					"id": "set-width",
+					"objectClass": "green_fillbar_dailybonus",
+					"sid": 873718178883640,
+					"parameters": {
+						"width": "0"
+					}
+				},
+				{
+					"id": "set-layer-visible",
+					"objectClass": "System",
+					"sid": 993865477224005,
+					"parameters": {
+						"layer": "\"PopUp\"",
+						"visibility": "visible"
+					}
+				},
+				{
+					"id": "create-object",
+					"objectClass": "System",
+					"sid": 923085480840303,
+					"parameters": {
+						"object-to-create": "black_shadow",
+						"layer": "\"PopUp\"",
+						"x": "LayoutWidth/2",
+						"y": "LayoutHeight/2",
+						"create-hierarchy": false,
+						"template-name": "\"\""
+					}
+				},
+				{
+					"id": "set-size",
+					"objectClass": "black_shadow",
+					"sid": 729305464656480,
+					"parameters": {
+						"width": "ViewportWidth(Self.LayerName)",
+						"height": "ViewportHeight(Self.LayerName)"
+					}
+				},
+				{
+					"id": "wait-for-previous-actions",
+					"objectClass": "System",
+					"sid": 909969404974984
+				},
+				{
+					"id": "create-object",
+					"objectClass": "System",
+					"sid": 370371463382573,
+					"parameters": {
+						"object-to-create": "framePopUp",
+						"layer": "\"PopUp\"",
+						"x": "LayoutWidth/2",
+						"y": "(LayoutHeight/2)-75",
+						"create-hierarchy": true,
+						"template-name": "ID"
+					}
+				},
+				{
+					"id": "set-scale",
+					"objectClass": "framePopUp",
+					"sid": 671525748859866,
+					"parameters": {
+						"scale": "0"
+					}
+				},
+				{
+					"id": "tween-two-properties",
+					"objectClass": "framePopUp",
+					"sid": 608823617847513,
+					"behaviorType": "Tween",
+					"parameters": {
+						"tags": "\"popUp\"",
+						"property": "scale",
+						"end-x": "1",
+						"end-y": "1",
+						"time": "0.5",
+						"ease": "easeoutback",
+						"destroy-on-complete": "no",
+						"loop": "no",
+						"ping-pong": "no",
+						"repeat-count": "1"
+					}
+				},
+				{
+					"id": "wait",
+					"objectClass": "System",
+					"sid": 111676003106862,
+					"parameters": {
+						"seconds": "0.2",
+						"use-timescale": true
+					}
+				},
+				{
+					"callFunction": "set_daily_bonus_value",
+					"sid": 785362024873777
+				},
+				{
+					"id": "wait",
+					"objectClass": "System",
+					"sid": 414674650481295,
+					"parameters": {
+						"seconds": "0.3",
+						"use-timescale": true
+					}
+				},
+				{
+					"callFunction": "set_X_check_icon_daily_bonus",
+					"sid": 288899797014967
+				}
+			],
+			"sid": 578149137109970
+		},
+		{
+			"functionName": "anim_box_pack",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "ID",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"sid": 421241134664597
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 602792028699078,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-instance-variable",
+							"objectClass": "JarClosedIcon",
+							"sid": 923938941560929,
+							"parameters": {
+								"instance-variable": "ID",
+								"comparison": 0,
+								"value": "\"popup\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-volume",
+							"objectClass": "Audio",
+							"sid": 467782976155685,
+							"parameters": {
+								"tag": "\"BGM_Homepage\"",
+								"db": "0.3"
+							}
+						},
+						{
+							"callFunction": "audio_settings",
+							"sid": 342644289984310,
+							"parameters": [
+								"\"play\"",
+								"\"Gift_Open\""
+							]
+						},
+						{
+							"id": "tween-one-property",
+							"objectClass": "JarClosedIcon",
+							"sid": 168057777445214,
+							"behaviorType": "Tween",
+							"parameters": {
+								"tags": "\"start_shake_anim\"",
+								"property": "offsetAngle",
+								"end-value": "-10",
+								"time": "0.1",
+								"ease": "default",
+								"destroy-on-complete": "no",
+								"loop": "no",
+								"ping-pong": "no",
+								"repeat-count": "1"
+							}
+						},
+						{
+							"id": "wait-for-previous-actions",
+							"objectClass": "System",
+							"sid": 999492103732020
+						},
+						{
+							"id": "tween-one-property",
+							"objectClass": "JarClosedIcon",
+							"sid": 640493782474515,
+							"behaviorType": "Tween",
+							"parameters": {
+								"tags": "\"shake_anim\"",
+								"property": "offsetAngle",
+								"end-value": "10",
+								"time": "0.1",
+								"ease": "default",
+								"destroy-on-complete": "no",
+								"loop": "no",
+								"ping-pong": "yes",
+								"repeat-count": "5"
+							}
+						},
+						{
+							"id": "tween-two-properties",
+							"objectClass": "JarClosedIcon",
+							"sid": 245170240029117,
+							"behaviorType": "Tween",
+							"parameters": {
+								"tags": "\"pos_anim\"",
+								"property": "position",
+								"end-x": "Self.X",
+								"end-y": "(LayoutHeight/2)-80",
+								"time": "0.5",
+								"ease": "default",
+								"destroy-on-complete": "no",
+								"loop": "no",
+								"ping-pong": "no",
+								"repeat-count": "1"
+							}
+						},
+						{
+							"id": "wait-for-previous-actions",
+							"objectClass": "System",
+							"sid": 384288202012549
+						},
+						{
+							"id": "tween-two-properties",
+							"objectClass": "JarClosedIcon",
+							"sid": 534954967459563,
+							"behaviorType": "Tween",
+							"parameters": {
+								"tags": "\"out\"",
+								"property": "scale",
+								"end-x": "0",
+								"end-y": "0",
+								"time": "0.1",
+								"ease": "easeinback",
+								"destroy-on-complete": "yes",
+								"loop": "no",
+								"ping-pong": "no",
+								"repeat-count": "1"
+							}
+						},
+						{
+							"id": "wait-for-previous-actions",
+							"objectClass": "System",
+							"sid": 895382971607627
+						},
+						{
+							"id": "create-object",
+							"objectClass": "System",
+							"sid": 491065971081207,
+							"parameters": {
+								"object-to-create": "JarOpenIcon",
+								"layer": "\"PopUp\"",
+								"x": "LayoutWidth/2",
+								"y": "(LayoutHeight/2)-50",
+								"create-hierarchy": false,
+								"template-name": "\"\""
+							}
+						},
+						{
+							"id": "set-scale",
+							"objectClass": "JarOpenIcon",
+							"sid": 986335727640899,
+							"parameters": {
+								"scale": "0"
+							}
+						},
+						{
+							"id": "tween-two-properties",
+							"objectClass": "JarOpenIcon",
+							"sid": 113404878971549,
+							"behaviorType": "Tween",
+							"parameters": {
+								"tags": "\"in\"",
+								"property": "scale",
+								"end-x": "1",
+								"end-y": "1",
+								"time": "0.2",
+								"ease": "default",
+								"destroy-on-complete": "no",
+								"loop": "no",
+								"ping-pong": "no",
+								"repeat-count": "1"
+							}
+						},
+						{
+							"id": "wait-for-previous-actions",
+							"objectClass": "System",
+							"sid": 337491799413874
+						},
+						{
+							"id": "add-child",
+							"objectClass": "black_shadow",
+							"sid": 840455646331379,
+							"parameters": {
+								"child": "JarOpenIcon",
+								"transform-x": true,
+								"transform-y": true,
+								"transform-w": true,
+								"transform-h": true,
+								"transform-a": true,
+								"transform-o": false,
+								"transform-z-elevation": true,
+								"transform-visibility": false,
+								"destroy-with-parent": true
+							}
+						},
+						{
+							"id": "subtract-from-eventvar",
+							"objectClass": "System",
+							"sid": 999816299965595,
+							"parameters": {
+								"variable": "star",
+								"value": "20"
+							}
+						},
+						{
+							"type": "script",
+							"language": "javascript",
+							"script": [
+								"runtime.callFunction(\"save_storage\", storageType, \"star\", String(runtime.globalVars.star));"
+							]
+						},
+						{
+							"type": "script",
+							"language": "javascript",
+							"script": [
+								"runtime.globalVars.coin += 100;",
+								"runtime.callFunction(\"save_storage\", storageType, \"coin\", String(runtime.globalVars.coin));"
+							]
+						},
+						{
+							"type": "script",
+							"language": "javascript",
+							"script": [
+								"runtime.callFunction(\"design_event\", \"Coins_Performance\", \"Earn_Free_Coins:ConvertStar_StarJar:\"+String(100));"
+							],
+							"disabled": true
+						},
+						{
+							"type": "script",
+							"language": "javascript",
+							"script": [
+								"runtime.callFunction(\"resource_event\", \"source\", \"star_jar\", \"star_jar_claim\", \"coins\", 100);"
+							]
+						},
+						{
+							"type": "script",
+							"language": "javascript",
+							"script": [
+								"boosterDataArr.hammer += 5;",
+								"boosterDataArr.shake += 5;",
+								"boosterDataArr.rainbow += 5;",
+								"runtime.callFunction(\"save_storage\", \"local_storage\", \"boosters_data\", JSON.stringify(boosterDataArr));"
+							],
+							"disabled": true
+						}
+					],
+					"sid": 349298636429223,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-boolean-eventvar",
+									"objectClass": "System",
+									"sid": 666749566765749,
+									"parameters": {
+										"variable": "FTUE_starjar_claim"
+									}
+								}
+							],
+							"actions": [
+								{
+									"type": "script",
+									"language": "javascript",
+									"script": [
+										"progression_event(\"start\", \"ftue_starjar_claim\");",
+										"progression_event(\"completed\",\"ftue_starjar_claim\");"
+									]
+								},
+								{
+									"id": "set-boolean-eventvar",
+									"objectClass": "System",
+									"sid": 272008497891369,
+									"parameters": {
+										"variable": "FTUE_starjar_claim",
+										"value": "false"
+									}
+								}
+							],
+							"sid": 858815902953589
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 618428418290278,
+									"parameters": {
+										"variable": "ID",
+										"comparison": 0,
+										"value": "\"free_gift\""
+									}
+								}
+							],
+							"actions": [],
+							"sid": 364018504948368,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "for",
+											"objectClass": "System",
+											"sid": 507539581206994,
+											"parameters": {
+												"name": "\"free_gift\"",
+												"start-index": "1",
+												"end-index": "1"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "create-object",
+											"objectClass": "System",
+											"sid": 910730809787294,
+											"parameters": {
+												"object-to-create": "Shine2",
+												"layer": "\"PopUp\"",
+												"x": "LayoutWidth/2",
+												"y": "(LayoutHeight/2)-100",
+												"create-hierarchy": false,
+												"template-name": "\"\""
+											}
+										},
+										{
+											"id": "create-object",
+											"objectClass": "System",
+											"sid": 205941370123147,
+											"parameters": {
+												"object-to-create": "dollarIcon",
+												"layer": "\"PopUp\"",
+												"x": "LayoutWidth/2",
+												"y": "(LayoutHeight/2)-100",
+												"create-hierarchy": false,
+												"template-name": "\"\""
+											}
+										},
+										{
+											"id": "create-object",
+											"objectClass": "System",
+											"sid": 830941750554683,
+											"parameters": {
+												"object-to-create": "labelGrantedInfo",
+												"layer": "\"PopUp\"",
+												"x": "LayoutWidth/2",
+												"y": "(LayoutHeight/2)-60",
+												"create-hierarchy": false,
+												"template-name": "\"\""
+											}
+										},
+										{
+											"id": "set-size",
+											"objectClass": "Shine2",
+											"sid": 463527128311247,
+											"parameters": {
+												"width": "100",
+												"height": "100"
+											}
+										},
+										{
+											"id": "set-size",
+											"objectClass": "dollarIcon",
+											"sid": 394104363930582,
+											"parameters": {
+												"width": "90",
+												"height": "90"
+											}
+										},
+										{
+											"id": "set-effect-enabled",
+											"objectClass": "dollarIcon",
+											"sid": 506157409380333,
+											"parameters": {
+												"mode": "enable",
+												"effect": "\"BetterOutline\""
+											}
+										},
+										{
+											"id": "add-child",
+											"objectClass": "black_shadow",
+											"sid": 548391096034213,
+											"parameters": {
+												"child": "Shine2",
+												"transform-x": true,
+												"transform-y": true,
+												"transform-w": true,
+												"transform-h": true,
+												"transform-a": true,
+												"transform-o": false,
+												"transform-z-elevation": true,
+												"transform-visibility": false,
+												"destroy-with-parent": true
+											}
+										},
+										{
+											"id": "add-child",
+											"objectClass": "black_shadow",
+											"sid": 257157059688133,
+											"parameters": {
+												"child": "dollarIcon",
+												"transform-x": true,
+												"transform-y": true,
+												"transform-w": true,
+												"transform-h": true,
+												"transform-a": true,
+												"transform-o": false,
+												"transform-z-elevation": true,
+												"transform-visibility": false,
+												"destroy-with-parent": true
+											}
+										},
+										{
+											"id": "add-child",
+											"objectClass": "black_shadow",
+											"sid": 747830386684241,
+											"parameters": {
+												"child": "labelGrantedInfo",
+												"transform-x": true,
+												"transform-y": true,
+												"transform-w": true,
+												"transform-h": true,
+												"transform-a": true,
+												"transform-o": false,
+												"transform-z-elevation": true,
+												"transform-visibility": false,
+												"destroy-with-parent": true
+											}
+										},
+										{
+											"id": "set-text",
+											"objectClass": "labelGrantedInfo",
+											"sid": 838896508950180,
+											"parameters": {
+												"text": "\"X100\""
+											}
+										},
+										{
+											"id": "set-font-size",
+											"objectClass": "labelGrantedInfo",
+											"sid": 260935268916039,
+											"parameters": {
+												"size-pt": "24"
+											}
+										}
+									],
+									"sid": 518861647766737
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "for",
+											"objectClass": "System",
+											"sid": 376328306868485,
+											"parameters": {
+												"name": "\"free_gift\"",
+												"start-index": "1",
+												"end-index": "3"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "create-object",
+											"objectClass": "System",
+											"sid": 602283742859821,
+											"parameters": {
+												"object-to-create": "Shine2",
+												"layer": "\"PopUp\"",
+												"x": "(LayoutWidth/3)+(85*(loopindex-1))",
+												"y": "(LayoutHeight/2)-100",
+												"create-hierarchy": false,
+												"template-name": "\"\""
+											}
+										},
+										{
+											"id": "create-object",
+											"objectClass": "System",
+											"sid": 615416623293401,
+											"parameters": {
+												"object-to-create": "missionIconPack",
+												"layer": "\"PopUp\"",
+												"x": "(LayoutWidth/3)+(85*(loopindex-1))",
+												"y": "(LayoutHeight/2)-100",
+												"create-hierarchy": false,
+												"template-name": "\"\""
+											}
+										},
+										{
+											"id": "create-object",
+											"objectClass": "System",
+											"sid": 355451567643724,
+											"parameters": {
+												"object-to-create": "labelGrantedInfo",
+												"layer": "\"PopUp\"",
+												"x": "(LayoutWidth/3)+(85*(loopindex-1))",
+												"y": "(LayoutHeight/2)-60",
+												"create-hierarchy": false,
+												"template-name": "\"\""
+											}
+										},
+										{
+											"id": "set-size",
+											"objectClass": "Shine2",
+											"sid": 327202732101860,
+											"parameters": {
+												"width": "100",
+												"height": "100"
+											}
+										},
+										{
+											"id": "set-size",
+											"objectClass": "missionIconPack",
+											"sid": 874997961168502,
+											"parameters": {
+												"width": "90",
+												"height": "90"
+											}
+										},
+										{
+											"id": "set-effect-enabled",
+											"objectClass": "missionIconPack",
+											"sid": 896814554478990,
+											"parameters": {
+												"mode": "enable",
+												"effect": "\"BetterOutline\""
+											}
+										},
+										{
+											"id": "add-child",
+											"objectClass": "black_shadow",
+											"sid": 960164063915579,
+											"parameters": {
+												"child": "Shine2",
+												"transform-x": true,
+												"transform-y": true,
+												"transform-w": true,
+												"transform-h": true,
+												"transform-a": true,
+												"transform-o": false,
+												"transform-z-elevation": true,
+												"transform-visibility": false,
+												"destroy-with-parent": true
+											}
+										},
+										{
+											"id": "add-child",
+											"objectClass": "black_shadow",
+											"sid": 906224754650279,
+											"parameters": {
+												"child": "missionIconPack",
+												"transform-x": true,
+												"transform-y": true,
+												"transform-w": true,
+												"transform-h": true,
+												"transform-a": true,
+												"transform-o": false,
+												"transform-z-elevation": true,
+												"transform-visibility": false,
+												"destroy-with-parent": true
+											}
+										},
+										{
+											"id": "add-child",
+											"objectClass": "black_shadow",
+											"sid": 231641029157966,
+											"parameters": {
+												"child": "labelGrantedInfo",
+												"transform-x": true,
+												"transform-y": true,
+												"transform-w": true,
+												"transform-h": true,
+												"transform-a": true,
+												"transform-o": false,
+												"transform-z-elevation": true,
+												"transform-visibility": false,
+												"destroy-with-parent": true
+											}
+										},
+										{
+											"id": "set-text",
+											"objectClass": "labelGrantedInfo",
+											"sid": 128418251081341,
+											"parameters": {
+												"text": "\"X5\""
+											}
+										},
+										{
+											"id": "set-font-size",
+											"objectClass": "labelGrantedInfo",
+											"sid": 928418487290657,
+											"parameters": {
+												"size-pt": "24"
+											}
+										}
+									],
+									"sid": 605323244255746,
+									"disabled": true,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "compare-two-values",
+													"objectClass": "System",
+													"sid": 713313983165524,
+													"parameters": {
+														"first-value": "loopindex",
+														"comparison": 3,
+														"second-value": "2"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "set-animation-frame",
+													"objectClass": "missionIconPack",
+													"sid": 683528463069250,
+													"parameters": {
+														"frame-number": "loopindex-1"
+													}
+												}
+											],
+											"sid": 781303027616201,
+											"disabled": true
+										},
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "else",
+													"objectClass": "System",
+													"sid": 408058400983613
+												}
+											],
+											"actions": [
+												{
+													"id": "set-animation-frame",
+													"objectClass": "missionIconPack",
+													"sid": 685524284347898,
+													"parameters": {
+														"frame-number": "loopindex"
+													}
+												}
+											],
+											"sid": 663103563833387,
+											"disabled": true
+										}
+									]
+								},
+								{
+									"eventType": "block",
+									"conditions": [],
+									"actions": [
+										{
+											"id": "wait-for-previous-actions",
+											"objectClass": "System",
+											"sid": 726599288947222
+										},
+										{
+											"id": "create-object",
+											"objectClass": "System",
+											"sid": 899595659654892,
+											"parameters": {
+												"object-to-create": "blueButton",
+												"layer": "\"PopUp\"",
+												"x": "LayoutWidth/2",
+												"y": "(LayoutHeight/2)+200",
+												"create-hierarchy": true,
+												"template-name": "\"\""
+											}
+										},
+										{
+											"id": "set-text",
+											"objectClass": "labelButton",
+											"sid": 139619928798216,
+											"parameters": {
+												"text": "JSON.Get(curr_lang&\".claim\")"
+											}
+										},
+										{
+											"id": "set-instvar-value",
+											"objectClass": "blueButton",
+											"sid": 352106722142413,
+											"parameters": {
+												"instance-variable": "ID",
+												"value": "\"claim\""
+											}
+										}
+									],
+									"sid": 701468311921874
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"functionName": "popup_pack",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "ID",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"sid": 490552275661934
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"callFunction": "audio_settings",
+					"sid": 725311000505472,
+					"parameters": [
+						"\"play\"",
+						"\"PopUp_Appear\""
+					]
+				},
+				{
+					"callFunction": "design_event",
+					"sid": 115860197183399,
+					"disabled": true,
+					"parameters": [
+						"\"StarJarReward\"",
+						"str(20)"
+					]
+				},
+				{
+					"id": "set-layer-visible",
+					"objectClass": "System",
+					"sid": 116087273505776,
+					"parameters": {
+						"layer": "\"PopUp\"",
+						"visibility": "visible"
+					}
+				},
+				{
+					"id": "create-object",
+					"objectClass": "System",
+					"sid": 223257558179979,
+					"parameters": {
+						"object-to-create": "black_shadow",
+						"layer": "\"PopUp\"",
+						"x": "LayoutWidth/2",
+						"y": "LayoutHeight/2",
+						"create-hierarchy": false,
+						"template-name": "\"\""
+					}
+				},
+				{
+					"id": "set-size",
+					"objectClass": "black_shadow",
+					"sid": 851671925564988,
+					"parameters": {
+						"width": "ViewportWidth(Self.LayerName)",
+						"height": "ViewportHeight(Self.LayerName)"
+					}
+				},
+				{
+					"id": "create-object",
+					"objectClass": "System",
+					"sid": 574449867564468,
+					"parameters": {
+						"object-to-create": "labelInfo",
+						"layer": "\"PopUp\"",
+						"x": "LayoutWidth/2",
+						"y": "(LayoutHeight/2)-300",
+						"create-hierarchy": false,
+						"template-name": "\"\""
+					}
+				},
+				{
+					"id": "set-text",
+					"objectClass": "labelInfo",
+					"sid": 967196617409190,
+					"parameters": {
+						"text": "JSON.Get(curr_lang&\".rewards\")"
+					}
+				},
+				{
+					"id": "set-font-size",
+					"objectClass": "labelInfo",
+					"sid": 676511352946767,
+					"parameters": {
+						"size-pt": "24"
+					}
+				},
+				{
+					"id": "set-height",
+					"objectClass": "labelInfo",
+					"sid": 234553272964072,
+					"parameters": {
+						"height": "48"
+					}
+				},
+				{
+					"id": "set-font-color",
+					"objectClass": "labelInfo",
+					"sid": 495677467006449,
+					"parameters": {
+						"color": "rgba255(255, 255, 255, 255)"
+					}
+				},
+				{
+					"id": "create-object",
+					"objectClass": "System",
+					"sid": 976644999076818,
+					"parameters": {
+						"object-to-create": "Shine2",
+						"layer": "\"PopUp\"",
+						"x": "LayoutWidth/2",
+						"y": "(LayoutHeight/2)-50",
+						"create-hierarchy": false,
+						"template-name": "\"\""
+					}
+				},
+				{
+					"id": "set-scale",
+					"objectClass": "Shine2",
+					"sid": 547670175160517,
+					"parameters": {
+						"scale": "1.8"
+					}
+				},
+				{
+					"id": "create-object",
+					"objectClass": "System",
+					"sid": 461069212484141,
+					"parameters": {
+						"object-to-create": "JarClosedIcon",
+						"layer": "\"PopUp\"",
+						"x": "LayoutWidth/2",
+						"y": "(LayoutHeight/2)-50",
+						"create-hierarchy": false,
+						"template-name": "\"\""
+					}
+				},
+				{
+					"id": "set-scale",
+					"objectClass": "JarClosedIcon",
+					"sid": 886982980463290,
+					"parameters": {
+						"scale": "1"
+					}
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "JarClosedIcon",
+					"sid": 142383678707684,
+					"parameters": {
+						"instance-variable": "ID",
+						"value": "\"popup\""
+					}
+				},
+				{
+					"id": "add-child",
+					"objectClass": "JarClosedIcon",
+					"sid": 964308772492463,
+					"parameters": {
+						"child": "Shine2",
+						"transform-x": true,
+						"transform-y": true,
+						"transform-w": true,
+						"transform-h": true,
+						"transform-a": false,
+						"transform-o": false,
+						"transform-z-elevation": true,
+						"transform-visibility": false,
+						"destroy-with-parent": true
+					}
+				},
+				{
+					"id": "create-object",
+					"objectClass": "System",
+					"sid": 600158319137311,
+					"parameters": {
+						"object-to-create": "ParticlesMerge",
+						"layer": "\"PopUp\"",
+						"x": "LayoutWidth/2",
+						"y": "(LayoutHeight/2)-50",
+						"create-hierarchy": false,
+						"template-name": "\"\""
+					}
+				},
+				{
+					"id": "set-size",
+					"objectClass": "ParticlesMerge",
+					"sid": 238071864319922,
+					"parameters": {
+						"size": "50"
+					}
+				},
+				{
+					"id": "set-speed",
+					"objectClass": "ParticlesMerge",
+					"sid": 202358626294925,
+					"parameters": {
+						"speed": "300"
+					}
+				},
+				{
+					"id": "create-object",
+					"objectClass": "System",
+					"sid": 417526215183275,
+					"parameters": {
+						"object-to-create": "blueButton",
+						"layer": "\"PopUp\"",
+						"x": "LayoutWidth/2",
+						"y": "(LayoutHeight/2)+200",
+						"create-hierarchy": true,
+						"template-name": "\"\""
+					}
+				},
+				{
+					"id": "set-text",
+					"objectClass": "labelButton",
+					"sid": 811020292421206,
+					"parameters": {
+						"text": "replace(JSON.Get(curr_lang&\".open\"), \"!\", \"\")"
+					}
+				},
+				{
+					"id": "set-instvar-value",
+					"objectClass": "blueButton",
+					"sid": 803440882747402,
+					"parameters": {
+						"instance-variable": "ID",
+						"value": "\"open\""
+					}
+				},
+				{
+					"id": "add-child",
+					"objectClass": "black_shadow",
+					"sid": 380460021133186,
+					"parameters": {
+						"child": "labelInfo",
+						"transform-x": true,
+						"transform-y": true,
+						"transform-w": true,
+						"transform-h": true,
+						"transform-a": true,
+						"transform-o": false,
+						"transform-z-elevation": true,
+						"transform-visibility": false,
+						"destroy-with-parent": true
+					}
+				},
+				{
+					"id": "add-child",
+					"objectClass": "black_shadow",
+					"sid": 305228626616259,
+					"parameters": {
+						"child": "Shine2",
+						"transform-x": true,
+						"transform-y": true,
+						"transform-w": true,
+						"transform-h": true,
+						"transform-a": true,
+						"transform-o": false,
+						"transform-z-elevation": true,
+						"transform-visibility": false,
+						"destroy-with-parent": true
+					}
+				},
+				{
+					"id": "add-child",
+					"objectClass": "black_shadow",
+					"sid": 522691875917547,
+					"parameters": {
+						"child": "JarClosedIcon",
+						"transform-x": true,
+						"transform-y": true,
+						"transform-w": true,
+						"transform-h": true,
+						"transform-a": true,
+						"transform-o": false,
+						"transform-z-elevation": true,
+						"transform-visibility": false,
+						"destroy-with-parent": true
+					}
+				}
+			],
+			"sid": 121778938406179
+		}
+	],
+	"sid": 668212507016087
+}

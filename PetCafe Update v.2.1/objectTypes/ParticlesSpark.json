@@ -1,0 +1,31 @@
+{
+	"name": "ParticlesSpark",
+	"plugin-id": "Particles",
+	"sid": 274825412354788,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [
+		{
+			"name": "ID",
+			"type": "string",
+			"desc": "",
+			"show": true,
+			"sid": 125891590060888
+		}
+	],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"image": {
+		"width": 100,
+		"height": 100,
+		"originX": 0.5,
+		"originY": 0.5,
+		"originalSource": "",
+		"exportFormat": "lossless",
+		"exportQuality": 0.8,
+		"fileType": "image/png",
+		"imageSpriteId": 5491240,
+		"useCollisionPoly": true,
+		"tag": ""
+	}
+}

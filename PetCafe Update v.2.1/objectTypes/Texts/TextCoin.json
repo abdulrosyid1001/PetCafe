@@ -1,0 +1,15 @@
+{
+	"name": "TextCoin",
+	"plugin-id": "Text",
+	"sid": 180464128890510,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [
+		{
+			"effectId": "brightness",
+			"name": "Brightness"
+		}
+	]
+}
