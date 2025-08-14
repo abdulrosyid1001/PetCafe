@@ -1,0 +1,31 @@
+{
+	"name": "TextFruit",
+	"plugin-id": "Text",
+	"sid": 307354458052420,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Tween",
+			"name": "Tween",
+			"sid": 162713543175869
+		},
+		{
+			"behaviorId": "Flash",
+			"name": "Flash",
+			"sid": 574825184565198
+		},
+		{
+			"behaviorId": "Fade",
+			"name": "Fade",
+			"sid": 488975721528692
+		}
+	],
+	"effectTypes": [
+		{
+			"effectId": "skymen_BetterOutline",
+			"name": "BetterOutline"
+		}
+	]
+}

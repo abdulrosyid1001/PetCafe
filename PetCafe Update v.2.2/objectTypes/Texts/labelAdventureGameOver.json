@@ -1,0 +1,10 @@
+{
+	"name": "labelAdventureGameOver",
+	"plugin-id": "Text",
+	"sid": 703389186169770,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": []
+}

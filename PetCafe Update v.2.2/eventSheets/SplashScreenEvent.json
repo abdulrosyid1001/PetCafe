@@ -1,0 +1,315 @@
+{
+	"name": "SplashScreenEvent",
+	"events": [
+		{
+			"eventType": "include",
+			"includeSheet": "GlobalEvents"
+		},
+		{
+			"eventType": "variable",
+			"name": "is_init_data",
+			"type": "boolean",
+			"initialValue": "false",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 345167533314854
+		},
+		{
+			"eventType": "variable",
+			"name": "loading_progress",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 455232250181517
+		},
+		{
+			"eventType": "variable",
+			"name": "FTUE_splashscreen",
+			"type": "boolean",
+			"initialValue": "true",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 171967357606722
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-start-of-layout",
+					"objectClass": "System",
+					"sid": 172357568526022
+				}
+			],
+			"actions": [
+				{
+					"type": "script",
+					"language": "javascript",
+					"script": [
+						"hideAdBanner();"
+					]
+				},
+				{
+					"type": "script",
+					"language": "javascript",
+					"script": [
+						"runtime.callFunction(\"get_storage\", storageType, \"tutorial_completed_arr\");",
+						"runtime.callFunction(\"get_storage\", storageType, \"ftue_splashscreen\");",
+						"runtime.callFunction(\"get_storage\", storageType, \"build_version\");"
+					]
+				}
+			],
+			"sid": 608962909240162,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-boolean-eventvar",
+							"objectClass": "System",
+							"sid": 544699470638501,
+							"parameters": {
+								"variable": "is_init_data"
+							},
+							"isInverted": true
+						}
+					],
+					"actions": [
+						{
+							"id": "set-boolean-eventvar",
+							"objectClass": "System",
+							"sid": 203867705580885,
+							"parameters": {
+								"variable": "is_init_data",
+								"value": "true"
+							}
+						},
+						{
+							"callFunction": "init_data",
+							"sid": 910175641558239,
+							"disabled": true,
+							"parameters": [
+								"0"
+							]
+						}
+					],
+					"sid": 377074644483527,
+					"disabled": true
+				},
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "wait",
+							"objectClass": "System",
+							"sid": 674259898933480,
+							"parameters": {
+								"seconds": "1",
+								"use-timescale": true
+							}
+						},
+						{
+							"id": "set-boolean-instvar",
+							"objectClass": "overlay",
+							"sid": 273905381153306,
+							"parameters": {
+								"instance-variable": "active",
+								"value": "true"
+							}
+						}
+					],
+					"sid": 904032652975803,
+					"disabled": true
+				}
+			]
+		},
+		{
+			"functionName": "get_loading_perc",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "number",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "set-function-return-value",
+					"objectClass": "Functions",
+					"sid": 711140800114869,
+					"parameters": {
+						"value": "loading_progress"
+					}
+				}
+			],
+			"sid": 898931407775092
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "every-tick",
+					"objectClass": "System",
+					"sid": 826598643101819
+				}
+			],
+			"actions": [
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 947041010218092,
+					"parameters": {
+						"variable": "loading_progress",
+						"value": "loadingprogress*100"
+					}
+				},
+				{
+					"type": "script",
+					"language": "javascript",
+					"script": [
+						"if(typeof FBInstant !== 'undefined'){",
+						"\t// Informs the SDK of loading progress",
+						"\tFBInstant.setLoadingProgress(runtime.globalVars.loading_progress);",
+						"\tconsole.log(runtime.globalVars.loading_progress);",
+						"}",
+						"\t\t// Once all assets are loaded, tells the SDK ",
+						"\t\t// to end loading view and start the game"
+					]
+				}
+			],
+			"sid": 429753486462212
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-opacity",
+					"objectClass": "overlay",
+					"sid": 624611022424366,
+					"parameters": {
+						"comparison": 1,
+						"opacity": "100"
+					}
+				},
+				{
+					"id": "is-boolean-instance-variable-set",
+					"objectClass": "overlay",
+					"sid": 657512304807266,
+					"parameters": {
+						"instance-variable": "active"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-opacity",
+					"objectClass": "overlay",
+					"sid": 572600285498039,
+					"parameters": {
+						"opacity": "lerp(Self.Opacity, 100, 2*dt)"
+					}
+				}
+			],
+			"sid": 495071320216676,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-opacity",
+							"objectClass": "overlay",
+							"sid": 193539911276757,
+							"parameters": {
+								"comparison": 4,
+								"opacity": "99"
+							}
+						},
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 133475672885651,
+							"parameters": {
+								"variable": "loading_progress",
+								"comparison": 5,
+								"value": "100"
+							}
+						},
+						{
+							"id": "trigger-once-while-true",
+							"objectClass": "System",
+							"sid": 906209049150330
+						}
+					],
+					"actions": [
+						{
+							"type": "script",
+							"language": "javascript",
+							"script": [
+								"game_loading_completed(100);"
+							]
+						},
+						{
+							"id": "set-boolean-instvar",
+							"objectClass": "overlay",
+							"sid": 800559171862887,
+							"parameters": {
+								"instance-variable": "active",
+								"value": "false"
+							}
+						},
+						{
+							"callFunction": "init_data",
+							"sid": 505129457465338,
+							"parameters": [
+								"1"
+							]
+						}
+					],
+					"sid": 439654236164379
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-any-touch-start",
+					"objectClass": "Touch",
+					"sid": 286028391843263
+				},
+				{
+					"id": "compare-boolean-eventvar",
+					"objectClass": "System",
+					"sid": 406929483126691,
+					"parameters": {
+						"variable": "is_init_data"
+					}
+				}
+			],
+			"actions": [
+				{
+					"type": "script",
+					"language": "javascript",
+					"script": [
+						"game_loading_completed(100);"
+					]
+				},
+				{
+					"callFunction": "init_data",
+					"sid": 354339178364393,
+					"parameters": [
+						"1"
+					]
+				}
+			],
+			"sid": 669912265751053,
+			"disabled": true
+		}
+	],
+	"sid": 254461062679589
+}

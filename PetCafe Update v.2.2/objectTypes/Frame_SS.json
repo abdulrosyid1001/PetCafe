@@ -1,0 +1,52 @@
+{
+	"name": "Frame_SS",
+	"plugin-id": "Sprite",
+	"sid": 612568700677666,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 369,
+						"height": 426,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 809219,
+						"collisionPoly": {
+							"points": [
+								0.06775067750677506,
+								0.002347417840375587,
+								0.989159891598916,
+								0.051643192488262914,
+								0.8861788617886179,
+								0.9882629107981221,
+								0,
+								0.9248826291079812
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 471415159982496,
+				"name": "Default",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}
