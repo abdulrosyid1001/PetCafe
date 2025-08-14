@@ -1,5 +1,4 @@
 import{
-    useProbabilites,
     levelMissionDataArr
 } from './levelMissionData.js'
 

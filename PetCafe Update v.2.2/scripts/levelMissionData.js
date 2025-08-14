@@ -1,5 +1,4 @@
 //v1.4
-export let useProbabilites = false;
 export const levelMissionDataArr = 
 [
     {
@@ -11,6 +10,7 @@ export const levelMissionDataArr =
             }
         ],
         "moves": 50,
+        "isprobabilites" : true,
         "probabilities" :[0.40, 0.40, 0.10, 0.10, 0.00, 0.00],
         "nexttileseq" : [0,1,2,3,4,5,0,1,2,3,4,5,0,1,2,3,4,5,0,1,2,3,4,5,0,1,2,3,4,5]
     },
@@ -23,6 +23,7 @@ export const levelMissionDataArr =
             }
         ],
         "moves": 50,
+         "isprobabilites" : false,
         "probabilities" :[0.40, 0.40, 0.10, 0.10, 0.00, 0.00],
         "nexttileseq" : [0,1,2,3,4,5,0,1,2,3,4,5,0,1,2,3,4,5,0,1,2,3,4,5,0,1,2,3,4,5]
     },
