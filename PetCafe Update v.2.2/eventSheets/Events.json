@@ -7251,6 +7251,145 @@
 									"sid": 361860609234170
 								}
 							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [],
+							"actions": [
+								{
+									"id": "wait-for-previous-actions",
+									"objectClass": "System",
+									"sid": 773191807122191
+								},
+								{
+									"callFunction": "create_anim_star_jar",
+									"sid": 303499607582519,
+									"parameters": [
+										"0"
+									]
+								}
+							],
+							"sid": 321558418035735
+						}
+					]
+				},
+				{
+					"functionName": "create_anim_star_jar",
+					"functionDescription": "",
+					"functionCategory": "",
+					"functionReturnType": "none",
+					"functionCopyPicked": false,
+					"functionIsAsync": false,
+					"functionParameters": [
+						{
+							"name": "grade",
+							"type": "number",
+							"initialValue": "0",
+							"comment": "",
+							"sid": 645530256854123
+						}
+					],
+					"eventType": "function-block",
+					"conditions": [],
+					"actions": [],
+					"sid": 358441057242510,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "for",
+									"objectClass": "System",
+									"sid": 231603844584659,
+									"parameters": {
+										"name": "\"\"",
+										"start-index": "1",
+										"end-index": "grade"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "create-object",
+									"objectClass": "System",
+									"sid": 139394294762923,
+									"parameters": {
+										"object-to-create": "starYellow",
+										"layer": "\"GameOver\"",
+										"x": "random((LayoutWidth/2)-100, (LayoutWidth/2)+100)",
+										"y": "random((starDark.Y)-100, (starDark.Y)+100)",
+										"create-hierarchy": false,
+										"template-name": "\"\""
+									}
+								},
+								{
+									"id": "set-scale",
+									"objectClass": "starYellow",
+									"sid": 427050978863571,
+									"parameters": {
+										"scale": "1"
+									}
+								},
+								{
+									"id": "wait-for-previous-actions",
+									"objectClass": "System",
+									"sid": 646719874638338
+								},
+								{
+									"id": "tween-two-properties",
+									"objectClass": "starYellow",
+									"sid": 192393493443555,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"pos\"",
+										"property": "position",
+										"end-x": "-500",
+										"end-y": "starDark.Y+400",
+										"time": "1",
+										"ease": "noease",
+										"destroy-on-complete": "no",
+										"loop": "no",
+										"ping-pong": "no",
+										"repeat-count": "1"
+									}
+								},
+								{
+									"id": "tween-one-property",
+									"objectClass": "starYellow",
+									"sid": 899710017478582,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"rotate\"",
+										"property": "offsetAngle",
+										"end-value": "280",
+										"time": "0.5",
+										"ease": "default",
+										"destroy-on-complete": "no",
+										"loop": "no",
+										"ping-pong": "no",
+										"repeat-count": "1"
+									}
+								},
+								{
+									"id": "tween-two-properties",
+									"objectClass": "starYellow",
+									"sid": 643071129629681,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"scale\"",
+										"property": "scale",
+										"end-x": "0",
+										"end-y": "0",
+										"time": "0.5",
+										"ease": "noease",
+										"destroy-on-complete": "yes",
+										"loop": "no",
+										"ping-pong": "no",
+										"repeat-count": "1"
+									}
+								}
+							],
+							"sid": 887480592581966
 						}
 					]
 				},
@@ -8009,9 +8148,30 @@
 										{
 											"id": "wait",
 											"objectClass": "System",
-											"sid": 736634183841700,
+											"sid": 962518422732956,
 											"parameters": {
-												"seconds": "1.5",
+												"seconds": "0.5",
+												"use-timescale": true
+											}
+										},
+										{
+											"type": "script",
+											"language": "javascript",
+											"script": [
+												"var limit_move = runtime.globalVars.limit_move;",
+												"// setTimeout(() => {",
+												"    if(limit_move < 10) runtime.callFunction(\"create_yellow_star\", 1);",
+												"\telse if(limit_move >= 10 && limit_move <= 15) runtime.callFunction(\"create_yellow_star\", 2);",
+												"\telse if(limit_move > 15) runtime.callFunction(\"create_yellow_star\", 3);",
+												"// }, 500);"
+											]
+										},
+										{
+											"id": "wait",
+											"objectClass": "System",
+											"sid": 621953866426672,
+											"parameters": {
+												"seconds": "1",
 												"use-timescale": true
 											}
 										},
@@ -8034,94 +8194,7 @@
 											}
 										}
 									],
-									"sid": 455110687750323,
-									"children": [
-										{
-											"eventType": "block",
-											"conditions": [
-												{
-													"id": "compare-eventvar",
-													"objectClass": "System",
-													"sid": 934582724957007,
-													"parameters": {
-														"variable": "limit_move",
-														"comparison": 2,
-														"value": "10"
-													}
-												}
-											],
-											"actions": [
-												{
-													"callFunction": "create_yellow_star",
-													"sid": 454702869191436,
-													"parameters": [
-														"1"
-													]
-												}
-											],
-											"sid": 118170432382260
-										},
-										{
-											"eventType": "block",
-											"conditions": [
-												{
-													"id": "compare-eventvar",
-													"objectClass": "System",
-													"sid": 163760484993808,
-													"parameters": {
-														"variable": "limit_move",
-														"comparison": 5,
-														"value": "10"
-													}
-												},
-												{
-													"id": "compare-eventvar",
-													"objectClass": "System",
-													"sid": 296636601022105,
-													"parameters": {
-														"variable": "limit_move",
-														"comparison": 3,
-														"value": "15"
-													}
-												}
-											],
-											"actions": [
-												{
-													"callFunction": "create_yellow_star",
-													"sid": 920035240343785,
-													"parameters": [
-														"2\n"
-													]
-												}
-											],
-											"sid": 255001508862637
-										},
-										{
-											"eventType": "block",
-											"conditions": [
-												{
-													"id": "compare-eventvar",
-													"objectClass": "System",
-													"sid": 208705630325381,
-													"parameters": {
-														"variable": "limit_move",
-														"comparison": 4,
-														"value": "15"
-													}
-												}
-											],
-											"actions": [
-												{
-													"callFunction": "create_yellow_star",
-													"sid": 103912998843967,
-													"parameters": [
-														"3\n"
-													]
-												}
-											],
-											"sid": 378961076831335
-										}
-									]
+									"sid": 455110687750323
 								},
 								{
 									"eventType": "block",
@@ -11691,9 +11764,9 @@
 						{
 							"id": "wait",
 							"objectClass": "System",
-							"sid": 198112557391516,
+							"sid": 828018954323436,
 							"parameters": {
-								"seconds": "0.5",
+								"seconds": "0.3",
 								"use-timescale": true
 							}
 						},
@@ -16959,7 +17032,7 @@
 						{
 							"id": "tween-two-properties",
 							"objectClass": "nextTile",
-							"sid": 565760009570719,
+							"sid": 430521004526734,
 							"behaviorType": "Tween",
 							"parameters": {
 								"tags": "\"next_tile\"",

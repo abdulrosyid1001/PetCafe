@@ -290,7 +290,6 @@
 			"missionIcon",
 			"navbarButton",
 			"petCafeTittleLogo",
-			"Pet_Cafe_Home_",
 			"frameNavbarButton",
 			"Star_progress_frame",
 			"starIcon",
@@ -405,7 +404,8 @@
 			"COMINGSOONTEXT",
 			"GameTempSaveManager",
 			"LevelAdvBoundaryLine",
-			"AdventureLevelHidePanel"
+			"AdventureLevelHidePanel",
+			"ParticlesBlinkYellow"
 		],
 		"subfolders": [
 			{

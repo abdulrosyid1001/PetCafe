@@ -2,7 +2,7 @@
 export let platform_ad = "Test";
 export let parent = window.parent.window;
 export let get_lang = new URLSearchParams(window.location.search).get('lang') || "en"; // Default to English
-export let god_mode = new URLSearchParams(window.location.search).get('gm') || "off"; // Default to no
+export let god_mode = new URLSearchParams(window.location.search).get('gm') || "on"; // Default to no
 export let tracking_ad_status = "none"; // Tracks ad status (e.g., started, completed, skipped)
 export let is_done_ad = false; // Prevents multiple ad calls on single button click
 export let is_have_ad = false; // True: use platform ads, False: use sample ads

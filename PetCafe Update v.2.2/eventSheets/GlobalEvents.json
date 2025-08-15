@@ -159,7 +159,7 @@
 			"eventType": "variable",
 			"name": "iterationLevelTest",
 			"type": "string",
-			"initialValue": "off",
+			"initialValue": "on",
 			"comment": "",
 			"isStatic": false,
 			"isConstant": false,
@@ -5063,6 +5063,156 @@
 										}
 									],
 									"sid": 856098045212116
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-eventvar",
+											"objectClass": "System",
+											"sid": 502876298719878,
+											"parameters": {
+												"variable": "level_select",
+												"comparison": 0,
+												"value": "10"
+											}
+										},
+										{
+											"id": "compare-eventvar",
+											"objectClass": "System",
+											"sid": 428637098281296,
+											"parameters": {
+												"variable": "level_select",
+												"comparison": 0,
+												"value": "15"
+											}
+										},
+										{
+											"id": "compare-eventvar",
+											"objectClass": "System",
+											"sid": 976617929665424,
+											"parameters": {
+												"variable": "level_select",
+												"comparison": 0,
+												"value": "20"
+											}
+										},
+										{
+											"id": "compare-eventvar",
+											"objectClass": "System",
+											"sid": 888244554642040,
+											"parameters": {
+												"variable": "level_select",
+												"comparison": 0,
+												"value": "25"
+											}
+										},
+										{
+											"id": "compare-eventvar",
+											"objectClass": "System",
+											"sid": 519892818833934,
+											"parameters": {
+												"variable": "level_select",
+												"comparison": 0,
+												"value": "30"
+											}
+										},
+										{
+											"id": "compare-eventvar",
+											"objectClass": "System",
+											"sid": 229276851492231,
+											"parameters": {
+												"variable": "level_select",
+												"comparison": 0,
+												"value": "35"
+											}
+										},
+										{
+											"id": "compare-eventvar",
+											"objectClass": "System",
+											"sid": 928262703631075,
+											"parameters": {
+												"variable": "level_select",
+												"comparison": 0,
+												"value": "40"
+											}
+										},
+										{
+											"id": "compare-eventvar",
+											"objectClass": "System",
+											"sid": 112508008902039,
+											"parameters": {
+												"variable": "level_select",
+												"comparison": 0,
+												"value": "45"
+											}
+										},
+										{
+											"id": "compare-eventvar",
+											"objectClass": "System",
+											"sid": 874061559039579,
+											"parameters": {
+												"variable": "level_select",
+												"comparison": 0,
+												"value": "50"
+											}
+										},
+										{
+											"id": "compare-eventvar",
+											"objectClass": "System",
+											"sid": 988555065148007,
+											"parameters": {
+												"variable": "level_select",
+												"comparison": 0,
+												"value": "55"
+											}
+										},
+										{
+											"id": "compare-eventvar",
+											"objectClass": "System",
+											"sid": 684229932839248,
+											"parameters": {
+												"variable": "level_select",
+												"comparison": 0,
+												"value": "60"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 817898147161722,
+											"parameters": {
+												"variable": "level_mode",
+												"value": "\"Hard\""
+											}
+										}
+									],
+									"sid": 178608055991105,
+									"isOrBlock": true
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "else",
+											"objectClass": "System",
+											"sid": 893723016231418
+										}
+									],
+									"actions": [
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 601843909927603,
+											"parameters": {
+												"variable": "level_mode",
+												"value": "\"Normal\""
+											}
+										}
+									],
+									"sid": 865907629225659
 								},
 								{
 									"eventType": "block",
