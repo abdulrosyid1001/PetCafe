@@ -308,6 +308,10 @@
 			],
 			"actions": [
 				{
+					"callFunction": "get_offer_time",
+					"sid": 251259074049011
+				},
+				{
 					"callFunction": "banner_time",
 					"sid": 909914106507454
 				},
@@ -377,6 +381,7 @@
 									"id": "set-at-xy",
 									"objectClass": "bannerStoreData",
 									"sid": 317939298692552,
+									"disabled": true,
 									"parameters": {
 										"x": "3",
 										"y": "loopindex",
@@ -675,6 +680,7 @@
 								"if(runtime.globalVars.gift_banner_seq>5){",
 								"\truntime.globalVars.gift_banner_seq = 1;",
 								"}",
+								"runtime.globalVars.temp_anim_coin = runtime.globalVars.gift_banner_value;",
 								"runtime.callFunction(\"save_storage\", storageType, \"gift_banner_seq\", String(runtime.globalVars.gift_banner_seq));",
 								"runtime.callFunction(\"save_storage\", storageType, \"coin\", String(runtime.globalVars.coin));",
 								"// runtime.callFunction(\"design_event\", \"Coins_Performance\", \"Earn_Free_Coins:FreeGift_Shop:\"+String(runtime.globalVars.gift_banner_value));"
@@ -2583,7 +2589,53 @@
 							"sid": 536459904459877
 						}
 					],
-					"sid": 495955224928371
+					"sid": 495955224928371,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "pick-children",
+									"objectClass": "bannerBundle",
+									"sid": 169047789414326,
+									"parameters": {
+										"child": "orangeBoxClosed",
+										"which": "own"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-active",
+									"objectClass": "orangeBoxClosed",
+									"sid": 200977686158231,
+									"behaviorType": "Sine",
+									"parameters": {
+										"state": "active"
+									}
+								},
+								{
+									"id": "wait",
+									"objectClass": "System",
+									"sid": 867814163027796,
+									"parameters": {
+										"seconds": "0.5",
+										"use-timescale": true
+									}
+								},
+								{
+									"id": "set-active",
+									"objectClass": "orangeBoxClosed",
+									"sid": 360612382554661,
+									"behaviorType": "Sine2",
+									"parameters": {
+										"state": "active"
+									}
+								}
+							],
+							"sid": 424335571418133
+						}
+					]
 				},
 				{
 					"functionName": "slider_banner",
@@ -3285,6 +3337,71 @@
 														}
 													],
 													"sid": 204533425110756
+												},
+												{
+													"eventType": "block",
+													"conditions": [
+														{
+															"id": "pick-children",
+															"objectClass": "bannerBundle",
+															"sid": 448634687225177,
+															"parameters": {
+																"child": "orangeBoxClosed",
+																"which": "own"
+															}
+														}
+													],
+													"actions": [],
+													"sid": 887572428313921,
+													"children": [
+														{
+															"eventType": "block",
+															"conditions": [
+																{
+																	"id": "trigger-once-while-true",
+																	"objectClass": "System",
+																	"sid": 978711053881896
+																}
+															],
+															"actions": [
+																{
+																	"id": "set-active",
+																	"objectClass": "orangeBoxClosed",
+																	"sid": 223506437785711,
+																	"behaviorType": "Sine",
+																	"parameters": {
+																		"state": "inactive"
+																	}
+																},
+																{
+																	"id": "set-active",
+																	"objectClass": "orangeBoxClosed",
+																	"sid": 876866462602415,
+																	"behaviorType": "Sine2",
+																	"parameters": {
+																		"state": "inactive"
+																	}
+																},
+																{
+																	"id": "set-animation-frame",
+																	"objectClass": "orangeBoxClosed",
+																	"sid": 170648605993747,
+																	"parameters": {
+																		"frame-number": "1"
+																	}
+																},
+																{
+																	"id": "set-scale",
+																	"objectClass": "orangeBoxClosed",
+																	"sid": 768109455714907,
+																	"parameters": {
+																		"scale": "1"
+																	}
+																}
+															],
+															"sid": 643629757527628
+														}
+													]
 												}
 											]
 										}

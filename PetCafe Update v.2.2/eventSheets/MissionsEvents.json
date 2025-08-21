@@ -1183,9 +1183,9 @@
 														{
 															"id": "wait",
 															"objectClass": "System",
-															"sid": 393769556404850,
+															"sid": 415123039056421,
 															"parameters": {
-																"seconds": "1",
+																"seconds": "0.3",
 																"use-timescale": true
 															}
 														},
@@ -1463,14 +1463,14 @@
 												{
 													"id": "tween-two-properties",
 													"objectClass": "levelMission",
-													"sid": 369656657911348,
+													"sid": 753374944021768,
 													"behaviorType": "Tween",
 													"parameters": {
 														"tags": "\"scale\"",
 														"property": "scale",
 														"end-x": "1.2",
 														"end-y": "1.2",
-														"time": "0.5",
+														"time": "0.25",
 														"ease": "easeinback",
 														"destroy-on-complete": "no",
 														"loop": "no",
@@ -1493,9 +1493,9 @@
 												{
 													"id": "wait",
 													"objectClass": "System",
-													"sid": 541999833836754,
+													"sid": 356165987924289,
 													"parameters": {
-														"seconds": "0.5",
+														"seconds": "0.25",
 														"use-timescale": true
 													}
 												},
@@ -1602,14 +1602,14 @@
 						{
 							"id": "tween-two-properties",
 							"objectClass": "levelMission",
-							"sid": 984833932469003,
+							"sid": 643352426642759,
 							"behaviorType": "Tween",
 							"parameters": {
 								"tags": "\"scale\"",
 								"property": "scale",
 								"end-x": "1.2",
 								"end-y": "1.2",
-								"time": "0.5",
+								"time": "0.25",
 								"ease": "easeinback",
 								"destroy-on-complete": "no",
 								"loop": "no",
@@ -1719,9 +1719,9 @@
 						{
 							"id": "wait",
 							"objectClass": "System",
-							"sid": 214088851177014,
+							"sid": 248182877344545,
 							"parameters": {
-								"seconds": "0.2",
+								"seconds": "0.1",
 								"use-timescale": true
 							}
 						},
@@ -1952,13 +1952,13 @@
 						{
 							"id": "tween-one-property",
 							"objectClass": "camera",
-							"sid": 761087203360397,
+							"sid": 648074775845441,
 							"behaviorType": "Tween",
 							"parameters": {
 								"tags": "\"toCenterY\"",
 								"property": "offsetY",
 								"end-value": "ButtonPlay.Y-100",
-								"time": "0.25",
+								"time": "0.2",
 								"ease": "easeoutback",
 								"destroy-on-complete": "no",
 								"loop": "no",

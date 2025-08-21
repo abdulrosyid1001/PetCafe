@@ -159,11 +159,21 @@
 			"eventType": "variable",
 			"name": "iterationLevelTest",
 			"type": "string",
-			"initialValue": "on",
+			"initialValue": "off",
 			"comment": "",
 			"isStatic": false,
 			"isConstant": false,
 			"sid": 499870308845609
+		},
+		{
+			"eventType": "variable",
+			"name": "temp_anim_coin",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 401338844821403
 		},
 		{
 			"eventType": "block",
@@ -269,6 +279,520 @@
 						}
 					],
 					"sid": 894029116202002
+				}
+			]
+		},
+		{
+			"functionName": "get_coins_anim",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "amount",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 234984819014437
+				},
+				{
+					"name": "temp_amount",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 284404815845899
+				},
+				{
+					"name": "pos_x",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 725307092489387
+				},
+				{
+					"name": "pos_y",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 986371664503886
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 472937912567923,
+					"parameters": {
+						"variable": "temp_amount",
+						"value": "amount"
+					}
+				}
+			],
+			"sid": 942675076909801,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 879134416294241,
+							"parameters": {
+								"variable": "amount",
+								"comparison": 4,
+								"value": "100"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 172727429675430,
+							"parameters": {
+								"variable": "amount",
+								"value": "100"
+							}
+						}
+					],
+					"sid": 837307104854453
+				},
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "wait-for-previous-actions",
+							"objectClass": "System",
+							"sid": 467948887904665
+						}
+					],
+					"sid": 407236437184999,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 341710074405305,
+									"parameters": {
+										"variable": "temp_anim_coin",
+										"comparison": 1,
+										"value": "0"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 378925206878829,
+									"parameters": {
+										"variable": "temp_anim_coin",
+										"value": "0"
+									}
+								}
+							],
+							"sid": 258592065930195,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "for",
+											"objectClass": "System",
+											"sid": 477805012352650,
+											"parameters": {
+												"name": "\"coin_anim\"",
+												"start-index": "1",
+												"end-index": "ceil(amount/10)"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "create-object",
+											"objectClass": "System",
+											"sid": 536926824846870,
+											"parameters": {
+												"object-to-create": "coinAnim",
+												"layer": "\"CoinAnim\"",
+												"x": "random((pos_x)-50, (pos_x)+50)",
+												"y": "random((pos_y)-30, (pos_y)+30)",
+												"create-hierarchy": false,
+												"template-name": "\"\""
+											}
+										},
+										{
+											"id": "tween-two-properties",
+											"objectClass": "coinAnim",
+											"sid": 217361049009185,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "\"\"",
+												"property": "scale",
+												"end-x": "0.5",
+												"end-y": "0.5",
+												"time": "1.1+(0.01*loopindex)",
+												"ease": "noease",
+												"destroy-on-complete": "yes",
+												"loop": "no",
+												"ping-pong": "no",
+												"repeat-count": "1"
+											}
+										},
+										{
+											"id": "tween-two-properties",
+											"objectClass": "coinAnim",
+											"sid": 892110460516909,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "\"\"",
+												"property": "position",
+												"end-x": "(LayoutWidth/2)-40",
+												"end-y": "80",
+												"time": "0.8+(0.01*loopindex)",
+												"ease": "easeinback",
+												"destroy-on-complete": "no",
+												"loop": "no",
+												"ping-pong": "no",
+												"repeat-count": "1"
+											}
+										}
+									],
+									"sid": 277507831324792
+								},
+								{
+									"eventType": "block",
+									"conditions": [],
+									"actions": [
+										{
+											"id": "wait",
+											"objectClass": "System",
+											"sid": 955977674254335,
+											"parameters": {
+												"seconds": "0.6",
+												"use-timescale": true
+											}
+										},
+										{
+											"callFunction": "audio_settings",
+											"sid": 966022023590670,
+											"parameters": [
+												"\"play\"",
+												"\"Collected_Coins\""
+											]
+										},
+										{
+											"id": "wait",
+											"objectClass": "System",
+											"sid": 422932902966055,
+											"parameters": {
+												"seconds": "0.2",
+												"use-timescale": true
+											}
+										}
+									],
+									"sid": 669877997554397,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "pick-by-comparison",
+													"objectClass": "System",
+													"sid": 137356624507001,
+													"parameters": {
+														"object": "frameHUD",
+														"expression": "frameHUD.ID",
+														"comparison": 0,
+														"value": "\"coins\""
+													}
+												}
+											],
+											"actions": [],
+											"sid": 190507851820612,
+											"children": [
+												{
+													"eventType": "block",
+													"conditions": [
+														{
+															"id": "pick-children",
+															"objectClass": "frameHUD",
+															"sid": 608896089623846,
+															"parameters": {
+																"child": "dollarIcon",
+																"which": "own"
+															}
+														}
+													],
+													"actions": [
+														{
+															"id": "create-object",
+															"objectClass": "System",
+															"sid": 639300339898941,
+															"parameters": {
+																"object-to-create": "TextAddCoins",
+																"layer": "\"CoinAnim\"",
+																"x": "dollarIcon.X+40",
+																"y": "dollarIcon.Y-20",
+																"create-hierarchy": false,
+																"template-name": "\"\""
+															}
+														},
+														{
+															"id": "set-text",
+															"objectClass": "TextAddCoins",
+															"sid": 432695609504248,
+															"parameters": {
+																"text": "\"+\"&temp_amount"
+															}
+														},
+														{
+															"id": "tween-one-property",
+															"objectClass": "TextAddCoins",
+															"sid": 763603864687328,
+															"behaviorType": "Tween",
+															"parameters": {
+																"tags": "\"\"",
+																"property": "offsetY",
+																"end-value": "Self.Y-50",
+																"time": "1",
+																"ease": "noease",
+																"destroy-on-complete": "no",
+																"loop": "no",
+																"ping-pong": "no",
+																"repeat-count": "1"
+															}
+														},
+														{
+															"id": "tween-two-properties",
+															"objectClass": "dollarIcon",
+															"sid": 583032367675827,
+															"behaviorType": "Tween",
+															"parameters": {
+																"tags": "\"\"",
+																"property": "scale",
+																"end-x": "1.2",
+																"end-y": "1.2",
+																"time": "0.2",
+																"ease": "noease",
+																"destroy-on-complete": "no",
+																"loop": "no",
+																"ping-pong": "no",
+																"repeat-count": "1"
+															}
+														},
+														{
+															"id": "set-effect-enabled",
+															"objectClass": "dollarIcon",
+															"sid": 229839793535153,
+															"parameters": {
+																"mode": "enable",
+																"effect": "\"BetterOutline\""
+															}
+														},
+														{
+															"id": "wait",
+															"objectClass": "System",
+															"sid": 193685160421860,
+															"parameters": {
+																"seconds": "0.2+(0.01*amount/10)",
+																"use-timescale": true
+															}
+														},
+														{
+															"id": "set-effect-enabled",
+															"objectClass": "dollarIcon",
+															"sid": 389546391457614,
+															"parameters": {
+																"mode": "disable",
+																"effect": "\"BetterOutline\""
+															}
+														},
+														{
+															"id": "tween-two-properties",
+															"objectClass": "dollarIcon",
+															"sid": 159993170414013,
+															"behaviorType": "Tween",
+															"parameters": {
+																"tags": "\"\"",
+																"property": "scale",
+																"end-x": "1",
+																"end-y": "1",
+																"time": "0.2",
+																"ease": "default",
+																"destroy-on-complete": "no",
+																"loop": "no",
+																"ping-pong": "no",
+																"repeat-count": "1"
+															}
+														},
+														{
+															"id": "wait-for-previous-actions",
+															"objectClass": "System",
+															"sid": 571126494452551
+														},
+														{
+															"id": "move-to-layer",
+															"objectClass": "frameHUD",
+															"sid": 955312605975100,
+															"parameters": {
+																"layer": "\"UI_HUD\""
+															}
+														},
+														{
+															"id": "move-to-layer",
+															"objectClass": "dollarIcon",
+															"sid": 760739401595855,
+															"parameters": {
+																"layer": "\"UI_HUD\""
+															}
+														},
+														{
+															"id": "move-to-layer",
+															"objectClass": "TextCoin",
+															"sid": 705827522722120,
+															"parameters": {
+																"layer": "\"UI_HUD\""
+															}
+														}
+													],
+													"sid": 196469789316604
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"functionName": "create_store_data",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "case",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"sid": 596587973607342
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 165328093706239,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 229039403990713,
+							"parameters": {
+								"variable": "case",
+								"comparison": 0,
+								"value": "\"item_store\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"type": "script",
+							"language": "javascript",
+							"script": [
+								"console.log(\"kepanggil itemstore\");"
+							]
+						}
+					],
+					"sid": 321424825705828,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-empty",
+									"objectClass": "itemStoreData",
+									"sid": 364273374345714
+								}
+							],
+							"actions": [
+								{
+									"id": "request-project-file",
+									"objectClass": "AJAX",
+									"sid": 988079750086232,
+									"parameters": {
+										"tag": "\"item_store_data\"",
+										"file": "itemStoreData.json"
+									}
+								}
+							],
+							"sid": 909631266833332
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 871646648819560,
+							"parameters": {
+								"variable": "case",
+								"comparison": 0,
+								"value": "\"banner_store\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"type": "script",
+							"language": "javascript",
+							"script": [
+								"console.log(\"kepanggil banner_store\");"
+							]
+						}
+					],
+					"sid": 473940901022951,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "is-empty",
+									"objectClass": "bannerStoreData",
+									"sid": 796495842343551
+								}
+							],
+							"actions": [
+								{
+									"id": "request-project-file",
+									"objectClass": "AJAX",
+									"sid": 117863685857491,
+									"parameters": {
+										"tag": "\"banner_store_data\"",
+										"file": "bannerStoreData.json"
+									}
+								}
+							],
+							"sid": 240944080147583
+						}
+					]
 				}
 			]
 		},
@@ -458,50 +982,6 @@
 							"children": [
 								{
 									"eventType": "block",
-									"conditions": [
-										{
-											"id": "is-empty",
-											"objectClass": "itemStoreData",
-											"sid": 367269308495298
-										}
-									],
-									"actions": [
-										{
-											"id": "request-project-file",
-											"objectClass": "AJAX",
-											"sid": 262365896492819,
-											"parameters": {
-												"tag": "\"item_store_data\"",
-												"file": "itemStoreData.json"
-											}
-										}
-									],
-									"sid": 779758988647585
-								},
-								{
-									"eventType": "block",
-									"conditions": [
-										{
-											"id": "is-empty",
-											"objectClass": "bannerStoreData",
-											"sid": 919129211323690
-										}
-									],
-									"actions": [
-										{
-											"id": "request-project-file",
-											"objectClass": "AJAX",
-											"sid": 906409375042202,
-											"parameters": {
-												"tag": "\"banner_store_data\"",
-												"file": "bannerStoreData.json"
-											}
-										}
-									],
-									"sid": 429635015388130
-								},
-								{
-									"eventType": "block",
 									"conditions": [],
 									"actions": [
 										{
@@ -530,46 +1010,31 @@
 											"script": [
 												"// runtime.callFunction(\"get_storage\", storageType, \"tutorial_completed_arr\");",
 												"// runtime.callFunction(\"get_storage\", storageType, \"ftue_splashscreen\");",
-												"runtime.callFunction(\"get_storage\", storageType, \"expire_time\");",
-												"runtime.callFunction(\"get_storage\", storageType, \"day\");",
-												"runtime.callFunction(\"get_storage\", storageType, \"total_day\");",
-												"runtime.callFunction(\"get_storage\", storageType, \"is_daily_bonus\");",
-												"runtime.callFunction(\"get_storage\", storageType, \"high_score\");",
-												"runtime.callFunction(\"get_storage\", storageType, \"player_level\");",
-												"runtime.callFunction(\"get_storage\", storageType, \"level_stage\");",
-												"runtime.callFunction(\"get_storage\", storageType, \"weekly_arr\");",
-												"runtime.callFunction(\"get_storage\", storageType, \"star_level_collected_arr\");",
-												"runtime.callFunction(\"get_storage\", storageType, \"star\");",
 												"// runtime.callFunction(\"get_storage\", storageType, \"checkpoint_save\");",
-												"runtime.callFunction(\"get_storage\", storageType, \"enabled_starter_pack\");",
-												"runtime.callFunction(\"get_storage\", storageType, \"boosters_data\");",
-												"runtime.callFunction(\"get_storage\", storageType, \"item_store\");",
-												"runtime.callFunction(\"get_storage\", storageType, \"banner_store\");",
-												"runtime.callFunction(\"get_storage\", storageType, \"coin\");",
-												"runtime.callFunction(\"get_storage\", storageType, \"music\");",
-												"runtime.callFunction(\"get_storage\", storageType, \"sound\");",
-												"runtime.callFunction(\"get_storage\", storageType, \"vibrate\");",
-												"runtime.callFunction(\"get_storage\", storageType, \"gift_banner_seq\");",
-												"runtime.callFunction(\"get_storage\", storageType, \"atempt_each_level\");",
-												"runtime.callFunction(\"get_storage\", storageType, \"classic_round\");",
-												"runtime.callFunction(\"get_storage\", storageType, \"checkpoint_classic_tile\");",
-												"runtime.callFunction(\"get_storage\", storageType, \"checkpoint_classic_data\");",
-												"",
-												"// await runtime.callFunction(\"get_offer_time\");"
+												"await runtime.callFunction(\"get_storage\", storageType, \"expire_time\");",
+												"await runtime.callFunction(\"get_storage\", storageType, \"day\");",
+												"await runtime.callFunction(\"get_storage\", storageType, \"total_day\");",
+												"await runtime.callFunction(\"get_storage\", storageType, \"is_daily_bonus\");",
+												"await runtime.callFunction(\"get_storage\", storageType, \"high_score\");",
+												"await runtime.callFunction(\"get_storage\", storageType, \"player_level\");",
+												"await runtime.callFunction(\"get_storage\", storageType, \"level_stage\");",
+												"await runtime.callFunction(\"get_storage\", storageType, \"weekly_arr\");",
+												"await runtime.callFunction(\"get_storage\", storageType, \"star_level_collected_arr\");",
+												"await runtime.callFunction(\"get_storage\", storageType, \"star\");",
+												"await runtime.callFunction(\"get_storage\", storageType, \"enabled_starter_pack\");",
+												"await runtime.callFunction(\"get_storage\", storageType, \"boosters_data\");",
+												"await runtime.callFunction(\"get_storage\", storageType, \"item_store\");",
+												"await runtime.callFunction(\"get_storage\", storageType, \"banner_store\");",
+												"await runtime.callFunction(\"get_storage\", storageType, \"coin\");",
+												"await runtime.callFunction(\"get_storage\", storageType, \"music\");",
+												"await runtime.callFunction(\"get_storage\", storageType, \"sound\");",
+												"await runtime.callFunction(\"get_storage\", storageType, \"vibrate\");",
+												"await runtime.callFunction(\"get_storage\", storageType, \"gift_banner_seq\");",
+												"await runtime.callFunction(\"get_storage\", storageType, \"atempt_each_level\");",
+												"await runtime.callFunction(\"get_storage\", storageType, \"classic_round\");",
+												"await runtime.callFunction(\"get_storage\", storageType, \"checkpoint_classic_tile\");",
+												"await runtime.callFunction(\"get_storage\", storageType, \"checkpoint_classic_data\");"
 											]
-										},
-										{
-											"id": "wait",
-											"objectClass": "System",
-											"sid": 111983120576935,
-											"parameters": {
-												"seconds": "1",
-												"use-timescale": true
-											}
-										},
-										{
-											"callFunction": "get_offer_time",
-											"sid": 603339759637647
 										}
 									],
 									"sid": 792792223643926
@@ -811,15 +1276,25 @@
 								"\t\tawait runtime.callFunction(\"check_storage\", keyName, getdataStr);",
 								"\t}",
 								"\telse{",
-								"\t\tswitch(localVars.keyName){",
+								"\t\tswitch(keyName){",
 								"\t\t\tcase \"build_version\":",
-								"\t\t\t\truntime.callFunction(\"save_storage\", storageType, \"build_version\", String(build_version));",
-								"\t\t}",
-								"\t\tif(keyName == \"ftue_splashscreen\"){",
-								"\t\t\t// progression_event(\"start\", \"ftue_splashscreen\");",
-								"\t\t}",
-								"\t\telse if(keyName == \"tutorial_completed_arr\"){",
-								"\t\t\truntime.callFunction(\"init_data\", 1);",
+								"\t\t\t\tawait runtime.callFunction(\"save_storage\", storageType, \"build_version\", String(build_version));",
+								"\t\t\t\tbreak;",
+								"\t\t\tcase \"ftue_splashscreen\":",
+								"\t\t\t\tbreak;",
+								"\t\t\tcase \"tutorial_completed_arr\":",
+								"\t\t\t\tawait runtime.callFunction(\"init_data\", 1);",
+								"\t\t\t\tbreak;",
+								"\t\t\tcase \"expire_time\":",
+								"\t\t\t\tawait runtime.callFunction(\"get_offer_time\");",
+								"\t\t\t\tbreak;",
+								"\t\t\tcase \"item_store\":",
+								"\t\t\t\tconsole.log(\"not have data itemstore\");",
+								"\t\t\t\tawait runtime.callFunction(\"create_store_data\", \"item_store\");",
+								"\t\t\t\tbreak;",
+								"\t\t\tcase \"banner_store\":",
+								"\t\t\t\tawait runtime.callFunction(\"create_store_data\", \"banner_store\");",
+								"\t\t\t\tbreak;",
 								"\t\t}",
 								"\t}",
 								"}"
@@ -890,7 +1365,7 @@
 								"\t\tbreak;",
 								"\tcase \"expire_time\":",
 								"\t\texp_time = Number(localVars.dataStr);",
-								"\t\tconsole.log(new Date (exp_time));",
+								"\t\tawait runtime.callFunction(\"get_offer_time\");",
 								"\t\tbreak;",
 								"\tcase \"weekly_arr\":",
 								"\t\tweekly_arr = JSON.parse(localVars.dataStr);",
@@ -922,6 +1397,7 @@
 								"\t\tbreak;",
 								"\tcase \"item_store\":",
 								"\t\tconst itemsdata = JSON.parse(localVars.dataStr);",
+								"\t\tconsole.log(itemsdata);",
 								"\t\tlet itemstore = runtime.objects.itemStoreData.getFirstInstance();",
 								"\t\titemstore.setSize(5,6,2);",
 								"\t\tfor (let z = 0; z < itemsdata.data.length; z++) {",
@@ -980,64 +1456,6 @@
 						}
 					],
 					"sid": 615546365650416
-				},
-				{
-					"functionName": "default_data",
-					"functionDescription": "",
-					"functionCategory": "",
-					"functionReturnType": "none",
-					"functionCopyPicked": false,
-					"functionIsAsync": false,
-					"functionParameters": [],
-					"eventType": "function-block",
-					"conditions": [],
-					"actions": [
-						{
-							"type": "script",
-							"language": "javascript",
-							"script": [
-								"const itemstore_defaultdata = {\"c2array\":true,\"size\":[4,6,2],\"data\":[[[\"Free Coins!\",\"Free Coins!\"],[\"Popular!\",\"Popular!\"],[\"Best Value!\",\"\"],[\"Free Coins!\",\"\"],[\"Free Coins!\",\"Popular!\"],[\"\",\"Best Value!\"]],[[1,5],[3,1],[10,1],[1,1],[5,5],[1,1]],[[2,1],[25,8],[150,88],[1,1],[1,88],[100,888]],[[0,0],[0,\"Rp.888.888,00\"],[0,\"Rp.888.888,00\"],[1,0],[1,1],[1,\"Rp.888.888,00\"]]]};",
-								"const itemsdata = JSON.parse(itemstore_defaultdata);",
-								"let itemstore = runtime.objects.itemStoreData.getFirstInstance();",
-								"itemstore.setSize(4,6,2);",
-								"for (let z = 0; z < itemsdata.data.length; z++) {",
-								"    for (let y = 0; y < itemsdata.data[z].length; y++) {",
-								"\t \tfor (let x = 0; x < itemsdata.data[z][y].length; x++) {",
-								"\t   \t\tconst value = itemsdata.data[z][y][x];",
-								"\t\t\tconsole.log('x', z,'y',y,'z', x,'value', value);",
-								"\t\t\titemstore.setAt(value, z, y, x);",
-								"\t\t}",
-								"\t}",
-								"}",
-								"",
-								"const bannerstore_defaultdata = {\"c2array\":true,\"size\":[3,4,1],\"data\":[[[1],[1],[1],[1]],[[1],[2],[3],[4]],[[0],[\"Rp.888.888,00\"],[\"Rp.888.888,00\"],[0]]]};",
-								"const bannerdata = JSON.parse(bannerstore_defaultdata);",
-								"let bannerstore = runtime.objects.bannerStoreData.getFirstInstance();",
-								"bannerstore.setSize(3,4,1);",
-								"for (let z = 0; z < bannerdata.data.length; z++) {",
-								"\tfor (let y = 0; y < bannerdata.data[z].length; y++) {",
-								"\t \tfor (let x = 0; x < bannerdata.data[z][y].length; x++) {",
-								" \t   \t\tconst value = bannerdata.data[z][y][x];",
-								"\t\t\tconsole.log('x', z,'y',y,'z', x,'value', value);",
-								"\t\t\tbannerstore.setAt(value, z, y, x);",
-								"\t\t}",
-								"\t}",
-								"}",
-								""
-							],
-							"disabled": true
-						},
-						{
-							"id": "request-project-file",
-							"objectClass": "AJAX",
-							"sid": 156604188218500,
-							"parameters": {
-								"tag": "\"item_store_data\"",
-								"file": "itemStoreData.json"
-							}
-						}
-					],
-					"sid": 668491797507315
 				}
 			],
 			"sid": 310982651902263
@@ -4818,6 +5236,16 @@
 							],
 							"actions": [
 								{
+									"callFunction": "get_coins_anim",
+									"sid": 250428586954794,
+									"parameters": [
+										"temp_anim_coin",
+										"0",
+										"LayoutWidth/2",
+										"LayoutHeight/2"
+									]
+								},
+								{
 									"id": "set-volume",
 									"objectClass": "Audio",
 									"sid": 927142344608048,
@@ -7620,6 +8048,15 @@
 											}
 										},
 										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 791130478038074,
+											"parameters": {
+												"variable": "temp_anim_coin",
+												"value": "itemStoreData.At(2, item_choose-1, 0)"
+											}
+										},
+										{
 											"type": "script",
 											"language": "javascript",
 											"script": [
@@ -8177,6 +8614,68 @@
 									"sid": 938136414770399
 								},
 								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "pick-by-comparison",
+											"objectClass": "System",
+											"sid": 522691583874464,
+											"parameters": {
+												"object": "frameHUD",
+												"expression": "frameHUD.ID",
+												"comparison": 0,
+												"value": "\"coins\""
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "move-to-layer",
+											"objectClass": "frameHUD",
+											"sid": 965775237900916,
+											"parameters": {
+												"layer": "\"CoinAnim\""
+											}
+										}
+									],
+									"sid": 191355790579696,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "pick-children",
+													"objectClass": "frameHUD",
+													"sid": 461385987187872,
+													"parameters": {
+														"child": "dollarIcon",
+														"which": "own"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "move-to-layer",
+													"objectClass": "TextCoin",
+													"sid": 826150661258937,
+													"parameters": {
+														"layer": "\"CoinAnim\""
+													}
+												},
+												{
+													"id": "move-to-layer",
+													"objectClass": "dollarIcon",
+													"sid": 673745673797525,
+													"parameters": {
+														"layer": "\"CoinAnim\""
+													}
+												}
+											],
+											"sid": 438977443790126
+										}
+									]
+								},
+								{
 									"eventType": "variable",
 									"name": "temp_coins_value",
 									"type": "number",
@@ -8271,9 +8770,9 @@
 												{
 													"id": "wait",
 													"objectClass": "System",
-													"sid": 756140216952191,
+													"sid": 112953084233135,
 													"parameters": {
-														"seconds": "1",
+														"seconds": "0.5",
 														"use-timescale": true
 													}
 												},
@@ -8302,9 +8801,9 @@
 												{
 													"id": "wait",
 													"objectClass": "System",
-													"sid": 979066079861513,
+													"sid": 821677528137253,
 													"parameters": {
-														"seconds": "1",
+														"seconds": "0.5",
 														"use-timescale": true
 													}
 												},
@@ -8387,9 +8886,9 @@
 														{
 															"id": "wait",
 															"objectClass": "System",
-															"sid": 519635996069758,
+															"sid": 601659364339070,
 															"parameters": {
-																"seconds": "1",
+																"seconds": "0.5",
 																"use-timescale": true
 															}
 														},
@@ -8410,9 +8909,9 @@
 												{
 													"id": "wait",
 													"objectClass": "System",
-													"sid": 188067335732186,
+													"sid": 735355853840187,
 													"parameters": {
-														"seconds": "1",
+														"seconds": "0.5",
 														"use-timescale": true
 													}
 												},
@@ -8440,14 +8939,14 @@
 												{
 													"id": "tween-two-properties",
 													"objectClass": "check_icon",
-													"sid": 623934804233203,
+													"sid": 686528884413954,
 													"behaviorType": "Tween",
 													"parameters": {
 														"tags": "\"scale\"",
 														"property": "scale",
 														"end-x": "1.2",
 														"end-y": "1.2",
-														"time": "1",
+														"time": "0.5",
 														"ease": "easeoutbounce",
 														"destroy-on-complete": "no",
 														"loop": "no",
@@ -8473,7 +8972,8 @@
 														{
 															"id": "wait-for-previous-actions",
 															"objectClass": "System",
-															"sid": 684611504507075
+															"sid": 684611504507075,
+															"disabled": true
 														},
 														{
 															"type": "script",
@@ -8521,12 +9021,23 @@
 																	}
 																},
 																{
-																	"type": "script",
-																	"language": "javascript",
-																	"script": [
-																		"runtime.callFunction(\"design_event\", \"Coins_Performance\", \"Earn_Free_Coins:FreeDailyLogin:\"+String(1));"
-																	],
-																	"disabled": true
+																	"id": "set-eventvar-value",
+																	"objectClass": "System",
+																	"sid": 570205942151242,
+																	"parameters": {
+																		"variable": "temp_anim_coin",
+																		"value": "temp_coins_value"
+																	}
+																},
+																{
+																	"callFunction": "get_coins_anim",
+																	"sid": 185871922243521,
+																	"parameters": [
+																		"temp_coins_value",
+																		"0",
+																		"panel_daily_login.X",
+																		"panel_daily_login.Y"
+																	]
 																},
 																{
 																	"type": "script",
@@ -8543,9 +9054,14 @@
 																	]
 																},
 																{
+																	"type": "comment",
+																	"text": "this animation with text label bundle item, for now (test) use the new version animation. for temp, this event must toogle."
+																},
+																{
 																	"id": "create-object",
 																	"objectClass": "System",
 																	"sid": 651389403206486,
+																	"disabled": true,
 																	"parameters": {
 																		"object-to-create": "dollarIcon",
 																		"layer": "panel_daily_login.LayerName",
@@ -8559,6 +9075,7 @@
 																	"id": "spawn-another-object",
 																	"objectClass": "dollarIcon",
 																	"sid": 741568003695755,
+																	"disabled": true,
 																	"parameters": {
 																		"object": "labelBundleItem",
 																		"layer": "dollarIcon.LayerName",
@@ -8571,6 +9088,7 @@
 																	"id": "add-child",
 																	"objectClass": "dollarIcon",
 																	"sid": 667666193715143,
+																	"disabled": true,
 																	"parameters": {
 																		"child": "labelBundleItem",
 																		"transform-x": true,
@@ -8588,6 +9106,7 @@
 																	"id": "set-text",
 																	"objectClass": "labelBundleItem",
 																	"sid": 255946167398472,
+																	"disabled": true,
 																	"parameters": {
 																		"text": "\"x\"&panel_daily_login.get_coins*multiply"
 																	}
@@ -8596,6 +9115,7 @@
 																	"id": "set-scale",
 																	"objectClass": "dollarIcon",
 																	"sid": 390662678029856,
+																	"disabled": true,
 																	"parameters": {
 																		"scale": "0"
 																	}
@@ -8604,6 +9124,7 @@
 																	"id": "tween-two-properties",
 																	"objectClass": "dollarIcon",
 																	"sid": 401846714406537,
+																	"disabled": true,
 																	"behaviorType": "Tween",
 																	"parameters": {
 																		"tags": "\"scale\"",
@@ -8622,6 +9143,7 @@
 																	"id": "wait",
 																	"objectClass": "System",
 																	"sid": 732537547143721,
+																	"disabled": true,
 																	"parameters": {
 																		"seconds": "0.6",
 																		"use-timescale": true
@@ -8631,6 +9153,7 @@
 																	"id": "tween-two-properties",
 																	"objectClass": "dollarIcon",
 																	"sid": 840323810251834,
+																	"disabled": true,
 																	"behaviorType": "Tween",
 																	"parameters": {
 																		"tags": "\"move\"",
@@ -9313,9 +9836,20 @@
 																							}
 																						},
 																						{
+																							"callFunction": "get_coins_anim",
+																							"sid": 912839915893755,
+																							"parameters": [
+																								"temp_coins_value",
+																								"0",
+																								"progress_box_daily_bonus.X",
+																								"progress_box_daily_bonus.Y"
+																							]
+																						},
+																						{
 																							"id": "create-object",
 																							"objectClass": "System",
 																							"sid": 262370793411288,
+																							"disabled": true,
 																							"parameters": {
 																								"object-to-create": "dollarIcon",
 																								"layer": "progress_box_daily_bonus.LayerName",
@@ -9329,6 +9863,7 @@
 																							"id": "spawn-another-object",
 																							"objectClass": "dollarIcon",
 																							"sid": 605435063580541,
+																							"disabled": true,
 																							"parameters": {
 																								"object": "labelBundleItem",
 																								"layer": "dollarIcon.LayerName",
@@ -9341,6 +9876,7 @@
 																							"id": "add-child",
 																							"objectClass": "dollarIcon",
 																							"sid": 381696905426858,
+																							"disabled": true,
 																							"parameters": {
 																								"child": "labelBundleItem",
 																								"transform-x": true,
@@ -9358,6 +9894,7 @@
 																							"id": "set-text",
 																							"objectClass": "labelBundleItem",
 																							"sid": 227023979740552,
+																							"disabled": true,
 																							"parameters": {
 																								"text": "\"x100\""
 																							}
@@ -9366,6 +9903,7 @@
 																							"id": "set-scale",
 																							"objectClass": "dollarIcon",
 																							"sid": 417565380521520,
+																							"disabled": true,
 																							"parameters": {
 																								"scale": "0"
 																							}
@@ -9374,6 +9912,7 @@
 																							"id": "tween-two-properties",
 																							"objectClass": "dollarIcon",
 																							"sid": 260336621112545,
+																							"disabled": true,
 																							"behaviorType": "Tween",
 																							"parameters": {
 																								"tags": "\"scale\"",
@@ -9392,6 +9931,7 @@
 																							"id": "wait",
 																							"objectClass": "System",
 																							"sid": 610637938188938,
+																							"disabled": true,
 																							"parameters": {
 																								"seconds": "0.6",
 																								"use-timescale": true
@@ -9401,6 +9941,7 @@
 																							"id": "tween-two-properties",
 																							"objectClass": "dollarIcon",
 																							"sid": 672695061266918,
+																							"disabled": true,
 																							"behaviorType": "Tween",
 																							"parameters": {
 																								"tags": "\"move\"",
@@ -10135,9 +10676,20 @@
 																							}
 																						},
 																						{
+																							"callFunction": "get_coins_anim",
+																							"sid": 376926011924902,
+																							"parameters": [
+																								"temp_coins_value",
+																								"0",
+																								"progress_box_daily_bonus.X",
+																								"progress_box_daily_bonus.Y"
+																							]
+																						},
+																						{
 																							"id": "create-object",
 																							"objectClass": "System",
 																							"sid": 207188601882270,
+																							"disabled": true,
 																							"parameters": {
 																								"object-to-create": "dollarIcon",
 																								"layer": "progress_box_daily_bonus.LayerName",
@@ -10151,6 +10703,7 @@
 																							"id": "spawn-another-object",
 																							"objectClass": "dollarIcon",
 																							"sid": 343100967137633,
+																							"disabled": true,
 																							"parameters": {
 																								"object": "labelBundleItem",
 																								"layer": "dollarIcon.LayerName",
@@ -10163,6 +10716,7 @@
 																							"id": "add-child",
 																							"objectClass": "dollarIcon",
 																							"sid": 231051465372065,
+																							"disabled": true,
 																							"parameters": {
 																								"child": "labelBundleItem",
 																								"transform-x": true,
@@ -10180,6 +10734,7 @@
 																							"id": "set-text",
 																							"objectClass": "labelBundleItem",
 																							"sid": 816973386737033,
+																							"disabled": true,
 																							"parameters": {
 																								"text": "\"x100\""
 																							}
@@ -10188,6 +10743,7 @@
 																							"id": "set-scale",
 																							"objectClass": "dollarIcon",
 																							"sid": 840095288835032,
+																							"disabled": true,
 																							"parameters": {
 																								"scale": "0"
 																							}
@@ -10196,6 +10752,7 @@
 																							"id": "tween-two-properties",
 																							"objectClass": "dollarIcon",
 																							"sid": 972024200033224,
+																							"disabled": true,
 																							"behaviorType": "Tween",
 																							"parameters": {
 																								"tags": "\"scale\"",
@@ -10214,6 +10771,7 @@
 																							"id": "wait",
 																							"objectClass": "System",
 																							"sid": 511248249051568,
+																							"disabled": true,
 																							"parameters": {
 																								"seconds": "0.6",
 																								"use-timescale": true
@@ -10223,6 +10781,7 @@
 																							"id": "tween-two-properties",
 																							"objectClass": "dollarIcon",
 																							"sid": 700916738562238,
+																							"disabled": true,
 																							"behaviorType": "Tween",
 																							"parameters": {
 																								"tags": "\"move\"",
@@ -10547,9 +11106,20 @@
 																							}
 																						},
 																						{
+																							"callFunction": "get_coins_anim",
+																							"sid": 441740609517054,
+																							"parameters": [
+																								"temp_coins_value",
+																								"0",
+																								"progress_box_daily_bonus.X",
+																								"progress_box_daily_bonus.Y"
+																							]
+																						},
+																						{
 																							"id": "create-object",
 																							"objectClass": "System",
 																							"sid": 829656548024339,
+																							"disabled": true,
 																							"parameters": {
 																								"object-to-create": "dollarIcon",
 																								"layer": "progress_box_daily_bonus.LayerName",
@@ -10563,6 +11133,7 @@
 																							"id": "spawn-another-object",
 																							"objectClass": "dollarIcon",
 																							"sid": 362237072449862,
+																							"disabled": true,
 																							"parameters": {
 																								"object": "labelBundleItem",
 																								"layer": "dollarIcon.LayerName",
@@ -10575,6 +11146,7 @@
 																							"id": "add-child",
 																							"objectClass": "dollarIcon",
 																							"sid": 576231485015793,
+																							"disabled": true,
 																							"parameters": {
 																								"child": "labelBundleItem",
 																								"transform-x": true,
@@ -10592,6 +11164,7 @@
 																							"id": "set-text",
 																							"objectClass": "labelBundleItem",
 																							"sid": 814514473444417,
+																							"disabled": true,
 																							"parameters": {
 																								"text": "\"x250\""
 																							}
@@ -10600,6 +11173,7 @@
 																							"id": "set-scale",
 																							"objectClass": "dollarIcon",
 																							"sid": 859772049615447,
+																							"disabled": true,
 																							"parameters": {
 																								"scale": "0"
 																							}
@@ -10608,6 +11182,7 @@
 																							"id": "tween-two-properties",
 																							"objectClass": "dollarIcon",
 																							"sid": 264706851639666,
+																							"disabled": true,
 																							"behaviorType": "Tween",
 																							"parameters": {
 																								"tags": "\"scale\"",
@@ -10626,6 +11201,7 @@
 																							"id": "wait",
 																							"objectClass": "System",
 																							"sid": 570943103281175,
+																							"disabled": true,
 																							"parameters": {
 																								"seconds": "0.6",
 																								"use-timescale": true
@@ -10635,6 +11211,7 @@
 																							"id": "tween-two-properties",
 																							"objectClass": "dollarIcon",
 																							"sid": 352085231218399,
+																							"disabled": true,
 																							"behaviorType": "Tween",
 																							"parameters": {
 																								"tags": "\"move\"",
@@ -10970,9 +11547,9 @@
 																				{
 																					"id": "wait",
 																					"objectClass": "System",
-																					"sid": 604446129271309,
+																					"sid": 366704109229363,
 																					"parameters": {
-																						"seconds": "1.2",
+																						"seconds": "0.6",
 																						"use-timescale": true
 																					}
 																				},
@@ -11011,9 +11588,9 @@
 																				{
 																					"id": "wait",
 																					"objectClass": "System",
-																					"sid": 336371507482967,
+																					"sid": 200439392061737,
 																					"parameters": {
-																						"seconds": "2.2",
+																						"seconds": "1.6",
 																						"use-timescale": true
 																					}
 																				},
@@ -12841,20 +13418,25 @@
 								{
 									"id": "create-object",
 									"objectClass": "System",
-									"sid": 456040445038795,
+									"sid": 897539719249267,
 									"parameters": {
 										"object-to-create": "levelDesignFrame",
 										"layer": "\"Game\"",
 										"x": "limitsFrame.X",
 										"y": "limitsFrame.Y",
 										"create-hierarchy": true,
-										"template-name": "\"Level_1\""
+										"template-name": "\"Level_11\""
 									}
 								},
 								{
 									"id": "wait-for-previous-actions",
 									"objectClass": "System",
 									"sid": 334147978184181
+								},
+								{
+									"id": "remove-from-parent",
+									"objectClass": "Fruit",
+									"sid": 321490874249453
 								},
 								{
 									"id": "destroy",

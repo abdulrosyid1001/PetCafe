@@ -836,6 +836,7 @@
 								"\t\tbreak;",
 								"\tcase \"canceled\":",
 								"\tcase \"error\":",
+								"\t\tconsole.log(\"ERROR\");",
 								"\t\truntime.callFunction(\"end_ad\");",
 								"\t\truntime.globalVars.analytics_tracking_ads_status = _tracking_ad_status;",
 								"\t\tnone_tracking_ad_status();",

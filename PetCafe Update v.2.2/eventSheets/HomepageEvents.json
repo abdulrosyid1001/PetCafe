@@ -13,6 +13,16 @@
 		},
 		{
 			"eventType": "variable",
+			"name": "temp_star",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 122859874250652
+		},
+		{
+			"eventType": "variable",
 			"name": "is_daily_bonus",
 			"type": "number",
 			"initialValue": "0",
@@ -264,8 +274,6 @@
 						"\truntime.globalVars.is_sent_login_analytics = 1;",
 						"\truntime.callFunction(\"save_storage\", storageType, \"is_daily_bonus\", String(runtime.globalVars.is_daily_bonus));",
 						"\truntime.callFunction(\"save_storage\", storageType, \"enabled_starter_pack\", String(runtime.globalVars.is_enabled_starter_pack));",
-						"",
-						"\truntime.callFunction(\"default_data\");",
 						"}",
 						"else{",
 						"\tif(runtime.globalVars.is_sent_login_analytics==0){",
@@ -714,6 +722,236 @@
 			]
 		},
 		{
+			"functionName": "star_jar_fill",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "vis_star",
+					"type": "number",
+					"initialValue": "0",
+					"comment": "",
+					"sid": 357669840170565
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 213554997278142,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 300648294834501,
+							"parameters": {
+								"variable": "vis_star",
+								"comparison": 2,
+								"value": "20"
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "set-text",
+							"objectClass": "labelStarProgress",
+							"sid": 736969225995073,
+							"parameters": {
+								"text": "vis_star&\"/20\""
+							}
+						}
+					],
+					"sid": 397865742703166,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "star_fill_progress",
+									"sid": 592062610037390,
+									"parameters": {
+										"instance-variable": "ID",
+										"comparison": 0,
+										"value": "1"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-width",
+									"objectClass": "star_fill_progress",
+									"sid": 750727764022675,
+									"parameters": {
+										"width": "8+vis_star*(61/20)"
+									}
+								}
+							],
+							"sid": 176241633570163
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "star_fill_progress",
+									"sid": 835825070732332,
+									"parameters": {
+										"instance-variable": "ID",
+										"comparison": 0,
+										"value": "2"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-width",
+									"objectClass": "star_fill_progress",
+									"sid": 426822761598968,
+									"parameters": {
+										"width": "vis_star*(96/20)"
+									}
+								}
+							],
+							"sid": 496984391294692
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "shine",
+									"sid": 792911193255708,
+									"parameters": {
+										"instance-variable": "ID",
+										"comparison": 0,
+										"value": "\"jar\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-visible",
+									"objectClass": "shine",
+									"sid": 373567855603360,
+									"parameters": {
+										"visibility": "invisible"
+									}
+								}
+							],
+							"sid": 946249107770445
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 609787317260136
+						}
+					],
+					"actions": [
+						{
+							"id": "set-text",
+							"objectClass": "labelStarProgress",
+							"sid": 467926629959799,
+							"parameters": {
+								"text": "JSON.Get(curr_lang&\".\"&\"full\")"
+							}
+						}
+					],
+					"sid": 745779049847481,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "star_fill_progress",
+									"sid": 910368858454712,
+									"parameters": {
+										"instance-variable": "ID",
+										"comparison": 0,
+										"value": "1"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-width",
+									"objectClass": "star_fill_progress",
+									"sid": 319700915232026,
+									"parameters": {
+										"width": "8+20*(61/20)"
+									}
+								}
+							],
+							"sid": 635417661026917
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "star_fill_progress",
+									"sid": 969142595414187,
+									"parameters": {
+										"instance-variable": "ID",
+										"comparison": 0,
+										"value": "2"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-width",
+									"objectClass": "star_fill_progress",
+									"sid": 253483872191700,
+									"parameters": {
+										"width": "20*(96/20)"
+									}
+								}
+							],
+							"sid": 127121853898709
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "shine",
+									"sid": 698105631097547,
+									"parameters": {
+										"instance-variable": "ID",
+										"comparison": 0,
+										"value": "\"jar\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-visible",
+									"objectClass": "shine",
+									"sid": 181950139952616,
+									"parameters": {
+										"visibility": "visible"
+									}
+								}
+							],
+							"sid": 525897429295532
+						}
+					]
+				}
+			]
+		},
+		{
 			"eventType": "block",
 			"conditions": [
 				{
@@ -746,218 +984,16 @@
 					"parameters": {
 						"text": "coin"
 					}
-				}
-			],
-			"sid": 277885171185636,
-			"children": [
-				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "compare-eventvar",
-							"objectClass": "System",
-							"sid": 740665896245338,
-							"parameters": {
-								"variable": "star",
-								"comparison": 2,
-								"value": "20"
-							}
-						}
-					],
-					"actions": [
-						{
-							"id": "set-text",
-							"objectClass": "labelStarProgress",
-							"sid": 444297701601810,
-							"parameters": {
-								"text": "star&\"/20\""
-							}
-						}
-					],
-					"sid": 339307656693291,
-					"children": [
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "compare-instance-variable",
-									"objectClass": "star_fill_progress",
-									"sid": 154553798204604,
-									"parameters": {
-										"instance-variable": "ID",
-										"comparison": 0,
-										"value": "1"
-									}
-								}
-							],
-							"actions": [
-								{
-									"id": "set-width",
-									"objectClass": "star_fill_progress",
-									"sid": 639069596440418,
-									"parameters": {
-										"width": "8+star*(61/20)"
-									}
-								}
-							],
-							"sid": 847971710903099
-						},
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "compare-instance-variable",
-									"objectClass": "star_fill_progress",
-									"sid": 495126399445683,
-									"parameters": {
-										"instance-variable": "ID",
-										"comparison": 0,
-										"value": "2"
-									}
-								}
-							],
-							"actions": [
-								{
-									"id": "set-width",
-									"objectClass": "star_fill_progress",
-									"sid": 581134957634216,
-									"parameters": {
-										"width": "star*(96/20)"
-									}
-								}
-							],
-							"sid": 185190384963527
-						},
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "compare-instance-variable",
-									"objectClass": "shine",
-									"sid": 645843882613205,
-									"parameters": {
-										"instance-variable": "ID",
-										"comparison": 0,
-										"value": "\"jar\""
-									}
-								}
-							],
-							"actions": [
-								{
-									"id": "set-visible",
-									"objectClass": "shine",
-									"sid": 270655691175395,
-									"parameters": {
-										"visibility": "invisible"
-									}
-								}
-							],
-							"sid": 649164178620256
-						}
-					]
 				},
 				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "else",
-							"objectClass": "System",
-							"sid": 568462953332336
-						}
-					],
-					"actions": [
-						{
-							"id": "set-text",
-							"objectClass": "labelStarProgress",
-							"sid": 445224894911605,
-							"parameters": {
-								"text": "\"FULL\""
-							}
-						}
-					],
-					"sid": 834584535592769,
-					"children": [
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "compare-instance-variable",
-									"objectClass": "star_fill_progress",
-									"sid": 912950486588693,
-									"parameters": {
-										"instance-variable": "ID",
-										"comparison": 0,
-										"value": "1"
-									}
-								}
-							],
-							"actions": [
-								{
-									"id": "set-width",
-									"objectClass": "star_fill_progress",
-									"sid": 409606770444243,
-									"parameters": {
-										"width": "8+20*(61/20)"
-									}
-								}
-							],
-							"sid": 988872857724083
-						},
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "compare-instance-variable",
-									"objectClass": "star_fill_progress",
-									"sid": 414502038338848,
-									"parameters": {
-										"instance-variable": "ID",
-										"comparison": 0,
-										"value": "2"
-									}
-								}
-							],
-							"actions": [
-								{
-									"id": "set-width",
-									"objectClass": "star_fill_progress",
-									"sid": 911536032558085,
-									"parameters": {
-										"width": "20*(96/20)"
-									}
-								}
-							],
-							"sid": 304624422227349
-						},
-						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "compare-instance-variable",
-									"objectClass": "shine",
-									"sid": 665310707869624,
-									"parameters": {
-										"instance-variable": "ID",
-										"comparison": 0,
-										"value": "\"jar\""
-									}
-								}
-							],
-							"actions": [
-								{
-									"id": "set-visible",
-									"objectClass": "shine",
-									"sid": 273293192087868,
-									"parameters": {
-										"visibility": "visible"
-									}
-								}
-							],
-							"sid": 667446903503694
-						}
+					"callFunction": "star_jar_fill",
+					"sid": 206545941084523,
+					"parameters": [
+						"star"
 					]
 				}
-			]
+			],
+			"sid": 277885171185636
 		},
 		{
 			"eventType": "block",
@@ -3320,6 +3356,15 @@
 							"script": [
 								"runtime.callFunction(\"save_storage\", storageType, \"star\", String(runtime.globalVars.star));"
 							]
+						},
+						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 298576587015125,
+							"parameters": {
+								"variable": "temp_anim_coin",
+								"value": "100"
+							}
 						},
 						{
 							"type": "script",

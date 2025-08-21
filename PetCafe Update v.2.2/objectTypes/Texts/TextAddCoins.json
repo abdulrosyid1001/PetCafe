@@ -1,0 +1,31 @@
+{
+	"name": "TextAddCoins",
+	"plugin-id": "Text",
+	"sid": 813649653141446,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Tween",
+			"name": "Tween",
+			"sid": 591823742720923
+		},
+		{
+			"behaviorId": "Flash",
+			"name": "Flash",
+			"sid": 576245563921843
+		},
+		{
+			"behaviorId": "Fade",
+			"name": "Fade",
+			"sid": 598742117197063
+		}
+	],
+	"effectTypes": [
+		{
+			"effectId": "skymen_BetterOutline",
+			"name": "BetterOutline"
+		}
+	]
+}

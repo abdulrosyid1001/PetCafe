@@ -1,7 +1,6 @@
-//v1.5
+//v1.4
 export const levelMissionDataArr = 
 [
-  
     {
         "level": 1,
         "goals": [

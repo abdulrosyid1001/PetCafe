@@ -1589,6 +1589,20 @@
 								"enabled": false,
 								"live-preview": false
 							}
+						},
+						"Tween": {
+							"properties": {
+								"enabled": true
+							}
+						}
+					},
+					"effects": {
+						"ColorHalftone": {
+							"isEnabled": false,
+							"parameters": {
+								"scale": 0.4,
+								"angle": 15
+							}
 						}
 					},
 					"instanceFolderItem": {
@@ -1708,6 +1722,20 @@
 								"magnitude-random": 0,
 								"enabled": false,
 								"live-preview": false
+							}
+						},
+						"Tween": {
+							"properties": {
+								"enabled": true
+							}
+						}
+					},
+					"effects": {
+						"ColorHalftone": {
+							"isEnabled": false,
+							"parameters": {
+								"scale": 0.4,
+								"angle": 15
 							}
 						}
 					},
@@ -1888,6 +1916,20 @@
 								"magnitude-random": 0,
 								"enabled": false,
 								"live-preview": false
+							}
+						},
+						"Tween": {
+							"properties": {
+								"enabled": true
+							}
+						}
+					},
+					"effects": {
+						"ColorHalftone": {
+							"isEnabled": false,
+							"parameters": {
+								"scale": 0.4,
+								"angle": 15
 							}
 						}
 					},
@@ -2439,6 +2481,34 @@
 					"tags": "",
 					"instanceVariables": {},
 					"behaviors": {},
+					"sceneGraphData": {
+						"parent-uid": null,
+						"uid": 272,
+						"flags": {
+							"x": true,
+							"y": true,
+							"z": true,
+							"w": true,
+							"h": true,
+							"a": true,
+							"o": false,
+							"v": false,
+							"d": true,
+							"sm": "normal"
+						},
+						"preview": {
+							"transformX": 0,
+							"transformY": 0,
+							"transformZElevation": 0,
+							"transformW": 0,
+							"transformH": 0,
+							"transformA": 0,
+							"transformSX": 0,
+							"transformSY": 0,
+							"transformO": 0,
+							"previewSceneGraph": false
+						}
+					},
 					"instanceFolderItem": {
 						"sid": 125937453876803,
 						"expanded": true
@@ -2490,9 +2560,7 @@
 					"uid": 294,
 					"sid": 686852892443748,
 					"tags": "",
-					"instanceVariables": {
-						"ID": "unlock_level_2"
-					},
+					"instanceVariables": {},
 					"behaviors": {},
 					"instanceFolderItem": {
 						"sid": 686852892443748,
@@ -5095,6 +5163,40 @@
 			"sid": 700107068520953,
 			"effectTypes": [],
 			"isInitiallyVisible": false,
+			"isInitiallyInteractive": true,
+			"isHTMLElementsLayer": false,
+			"color": [
+				1,
+				1,
+				1,
+				1
+			],
+			"backgroundColor": [
+				1,
+				1,
+				1,
+				1
+			],
+			"isTransparent": true,
+			"parallaxX": 0,
+			"parallaxY": 0,
+			"scaleRate": 1,
+			"forceOwnTexture": false,
+			"renderingMode": "3d",
+			"drawOrder": "z-order",
+			"useRenderCells": false,
+			"blendMode": "normal",
+			"zElevation": 0,
+			"global": false
+		},
+		{
+			"name": "CoinAnim",
+			"overriden": 1,
+			"subLayers": [],
+			"instances": [],
+			"sid": 814636805525740,
+			"effectTypes": [],
+			"isInitiallyVisible": true,
 			"isInitiallyInteractive": true,
 			"isHTMLElementsLayer": false,
 			"color": [

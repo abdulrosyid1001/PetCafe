@@ -15,9 +15,19 @@
 			"behaviorId": "Sin",
 			"name": "Sine2",
 			"sid": 391414286308837
+		},
+		{
+			"behaviorId": "Tween",
+			"name": "Tween",
+			"sid": 438261726277754
 		}
 	],
-	"effectTypes": [],
+	"effectTypes": [
+		{
+			"effectId": "colorhalftone",
+			"name": "ColorHalftone"
+		}
+	],
 	"animations": {
 		"items": [
 			{

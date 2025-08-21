@@ -1,8 +1,8 @@
 // Configuration and state variables
-export let platform_ad = "Test";
+export let platform_ad = "Poki";
 export let parent = window.parent.window;
 export let get_lang = new URLSearchParams(window.location.search).get('lang') || "en"; // Default to English
-export let god_mode = new URLSearchParams(window.location.search).get('gm') || "on"; // Default to no
+export let god_mode = new URLSearchParams(window.location.search).get('gm') || "off"; // Default to no
 export let tracking_ad_status = "none"; // Tracks ad status (e.g., started, completed, skipped)
 export let is_done_ad = false; // Prevents multiple ad calls on single button click
 export let is_have_ad = false; // True: use platform ads, False: use sample ads
@@ -687,42 +687,52 @@ export function show_ad(_ad_format, _ad_reward_state = -1) {
              switch(ad_format){
                 case "interstitial":
                     //app-id_placement-id
+                    var interst_ad = null;
                     FBInstant.getInterstitialAdAsync('1036071814995688_403800600388584',)
                     .then(function(interstitial) {
+                        interst_ad = interstitial;
                         tracking_ad_status = "started";
-                        return interstitial.loadAsync()
+                        return interst_ad.loadAsync();
+                    }).then(function() {
+                        return interst_ad.showAsync()
                         .then(function() {
-                            return interstitial.showAsync();
+                            tracking_ad_status = "skipped";
+                            // Ad completed 
+                        })
+                        .catch(function(error) {
+                            console.error('Ad error:', error);
+                            tracking_ad_status = "skipped";
                         });
-                    })
-                    .then(function() {
-                        tracking_ad_status = "skipped";
-                        // Ad completed 
-                    })
-                    .catch(function(error) {
-                        console.error('Ad error:', error);
-                        tracking_ad_status = "skipped";
+                    }).catch(function(err){
+                        setTimeout(() => {
+                        tracking_ad_status = "error";
+                        console.error('interstitial failed to preload: ' + err.message);
+                        }, 500);
                     });
                     break;
                 case "rewarded":
-                    var ad = null;
+                    var reward_ad = null;
                      //app-id_placement-id
-                     FBInstant.getRewardedVideoAsync('1036071814995688_403800600388584',)
+                      FBInstant.getRewardedVideoAsync('1036071814995688_403800600388584',)
                     .then(function(rewardedVideo) {
-                         ad = rewardedVideo;
-                        tracking_ad_status = "started";
-                        return ad.loadAsync()
+                          reward_ad = rewardedVideo;
+                          tracking_ad_status = "started";
+                        return reward_ad.loadAsync();
+                    }).then(function() {
+                        return reward_ad.showAsync()
                         .then(function() {
-                            return ad.showAsync();
+                            tracking_ad_status = "completed";
+                            // Ad completed 
+                        })
+                        .catch(function(error) {
+                            console.error('Ad error:', error);
+                            tracking_ad_status = "error";
                         });
-                    })
-                    .then(function() {
-                        tracking_ad_status = "completed";
-                        // Ad completed 
-                    })
-                    .catch(function(error) {
-                        console.error('Ad error:', error);
-                         tracking_ad_status = "error";
+                    }).catch(function(err){
+                        setTimeout(() => {
+                        tracking_ad_status = "error";
+                        console.error('rewarded failed to preload: ' + err.message);
+                        }, 500);
                     });
                     break;
             }
