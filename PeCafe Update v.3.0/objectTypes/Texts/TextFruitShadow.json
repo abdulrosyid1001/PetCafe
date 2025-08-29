@@ -1,0 +1,16 @@
+{
+	"name": "TextFruitShadow",
+	"plugin-id": "Text",
+	"sid": 918146350146271,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Fade",
+			"name": "Fade",
+			"sid": 858003876102814
+		}
+	],
+	"effectTypes": []
+}

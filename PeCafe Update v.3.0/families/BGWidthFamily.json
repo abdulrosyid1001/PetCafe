@@ -1,0 +1,21 @@
+{
+	"name": "BGWidthFamily",
+	"plugin-id": "Sprite",
+	"sid": 911491088273282,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"members": [
+		"BG_Homepage",
+		"BG_banner_slider",
+		"BG_GameOver",
+		"black_shadow",
+		"Background",
+		"Main_BG",
+		"overlay",
+		"devider_plane",
+		"black_ads_loading",
+		"dragging",
+		"gameover_shadow"
+	]
+}
