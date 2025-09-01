@@ -1119,7 +1119,8 @@
 								},
 								{
 									"callFunction": "tutorial_ev",
-									"sid": 534573627783694
+									"sid": 534573627783694,
+									"disabled": true
 								},
 								{
 									"callFunction": "setNextTileFrame",
@@ -4907,6 +4908,7 @@
 										{
 											"callFunction": "level_adventure_info",
 											"sid": 563399415672922,
+											"disabled": true,
 											"parameters": [
 												false
 											]
@@ -8589,6 +8591,46 @@
 											"parameters": [
 												true
 											]
+										},
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 430499320312634,
+											"parameters": {
+												"variable": "gameState",
+												"value": "\"play\""
+											}
+										},
+										{
+											"id": "set-group-active",
+											"objectClass": "System",
+											"sid": 737053759167306,
+											"parameters": {
+												"group-name": "\"Controls\"",
+												"state": "activated"
+											}
+										},
+										{
+											"id": "set-group-active",
+											"objectClass": "System",
+											"sid": 307364219846253,
+											"parameters": {
+												"group-name": "\"Fruit Collision\"",
+												"state": "activated"
+											}
+										},
+										{
+											"id": "set-group-active",
+											"objectClass": "System",
+											"sid": 964034780544627,
+											"parameters": {
+												"group-name": "\"Game Over\"",
+												"state": "deactivated"
+											}
+										},
+										{
+											"callFunction": "checkCollision",
+											"sid": 352784554985698
 										}
 									],
 									"sid": 115585050679677
@@ -30135,14 +30177,14 @@
 														},
 														{
 															"id": "add-child",
-															"objectClass": "scoreFrame",
-															"sid": 528041165867451,
+															"objectClass": "goalsUI",
+															"sid": 749804901669152,
 															"parameters": {
 																"child": "labelGoalsUI",
 																"transform-x": true,
 																"transform-y": true,
-																"transform-w": false,
-																"transform-h": false,
+																"transform-w": true,
+																"transform-h": true,
 																"transform-a": true,
 																"transform-o": false,
 																"transform-z-elevation": true,
@@ -31866,6 +31908,10 @@
 							],
 							"actions": [
 								{
+									"callFunction": "set_boosters_frame_unlocked",
+									"sid": 167445131421853
+								},
+								{
 									"id": "set-eventvar-value",
 									"objectClass": "System",
 									"sid": 769510296157818,
@@ -31957,6 +32003,24 @@
 								},
 								{
 									"id": "tween-two-properties",
+									"objectClass": "goalsUI",
+									"sid": 753336306569279,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"size\"",
+										"property": "scale",
+										"end-x": "0.5",
+										"end-y": "0.5",
+										"time": "0.3",
+										"ease": "default",
+										"destroy-on-complete": "no",
+										"loop": "no",
+										"ping-pong": "no",
+										"repeat-count": "1"
+									}
+								},
+								{
+									"id": "tween-two-properties",
 									"objectClass": "AdventureLevelHidePanel",
 									"sid": 496268431806744,
 									"behaviorType": "Tween",
@@ -32017,13 +32081,13 @@
 								{
 									"id": "tween-two-properties",
 									"objectClass": "AdventureLevelHidePanel",
-									"sid": 756702624200909,
+									"sid": 492131893429316,
 									"behaviorType": "Tween",
 									"parameters": {
 										"tags": "\"size\"",
 										"property": "size",
-										"end-x": "165",
-										"end-y": "130",
+										"end-x": "158",
+										"end-y": "126",
 										"time": "0.3",
 										"ease": "easeoutback",
 										"destroy-on-complete": "no",
@@ -32038,9 +32102,14 @@
 									"sid": 251540939482836
 								},
 								{
+									"callFunction": "tutorial_ev",
+									"sid": 326340828988730
+								},
+								{
 									"id": "set-eventvar-value",
 									"objectClass": "System",
-									"sid": 670253001752495,
+									"sid": 449599038344542,
+									"disabled": true,
 									"parameters": {
 										"variable": "gameState",
 										"value": "\"play\""
@@ -32049,7 +32118,8 @@
 								{
 									"id": "set-group-active",
 									"objectClass": "System",
-									"sid": 681004220682563,
+									"sid": 352072796379216,
+									"disabled": true,
 									"parameters": {
 										"group-name": "\"Controls\"",
 										"state": "activated"
@@ -32058,7 +32128,8 @@
 								{
 									"id": "set-group-active",
 									"objectClass": "System",
-									"sid": 285627323954467,
+									"sid": 697432992488838,
+									"disabled": true,
 									"parameters": {
 										"group-name": "\"Fruit Collision\"",
 										"state": "activated"
@@ -32067,7 +32138,8 @@
 								{
 									"id": "set-group-active",
 									"objectClass": "System",
-									"sid": 317519140813350,
+									"sid": 492431236800899,
+									"disabled": true,
 									"parameters": {
 										"group-name": "\"Game Over\"",
 										"state": "deactivated"
@@ -32075,7 +32147,8 @@
 								},
 								{
 									"callFunction": "checkCollision",
-									"sid": 576146200980392
+									"sid": 576146200980392,
+									"disabled": true
 								}
 							],
 							"sid": 556236708322114
@@ -32094,6 +32167,7 @@
 									"id": "create-object",
 									"objectClass": "System",
 									"sid": 926814922402791,
+									"disabled": true,
 									"parameters": {
 										"object-to-create": "AdventureLevelHidePanel",
 										"layer": "\"UI\"",
@@ -32107,6 +32181,7 @@
 									"id": "set-scale",
 									"objectClass": "AdventureLevelHidePanel",
 									"sid": 878969880636106,
+									"disabled": true,
 									"parameters": {
 										"scale": "0"
 									}
@@ -32115,6 +32190,7 @@
 									"id": "set-text",
 									"objectClass": "AdventureLevelText",
 									"sid": 978039718843571,
+									"disabled": true,
 									"parameters": {
 										"text": "replace(JSON.Get(curr_lang&\".level\"), \"<X>\", str(level_select))"
 									}
@@ -32123,6 +32199,7 @@
 									"id": "tween-two-properties",
 									"objectClass": "AdventureLevelHidePanel",
 									"sid": 398363879345557,
+									"disabled": true,
 									"behaviorType": "Tween",
 									"parameters": {
 										"tags": "\"size\"",
