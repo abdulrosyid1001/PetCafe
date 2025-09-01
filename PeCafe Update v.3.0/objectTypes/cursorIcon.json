@@ -1,0 +1,88 @@
+{
+	"name": "cursorIcon",
+	"plugin-id": "Sprite",
+	"sid": 614196809708879,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Sin",
+			"name": "Sine",
+			"sid": 131097012140442
+		},
+		{
+			"behaviorId": "Sin",
+			"name": "Sine2",
+			"sid": 273117228503660
+		}
+	],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 85,
+						"height": 77,
+						"originX": 0.5258964143426295,
+						"originY": 0.4981132075471698,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 7659167,
+						"collisionPoly": {
+							"points": [
+								0.15294117647058825,
+								0.12987012987012986,
+								0.2235294117647059,
+								0.12987012987012986,
+								0.6941176470588235,
+								0.35064935064935066,
+								0.9647058823529412,
+								0.7142857142857143,
+								0.9647058823529412,
+								0.7662337662337663,
+								0.9529411764705882,
+								0.8181818181818182,
+								0.9176470588235294,
+								0.8961038961038961,
+								0.8823529411764706,
+								0.935064935064935,
+								0.788235294117647,
+								0.987012987012987,
+								0.7294117647058823,
+								0.987012987012987,
+								0.35294117647058826,
+								0.7532467532467533,
+								0.29411764705882354,
+								0.6883116883116883,
+								0.12941176470588237,
+								0.24675324675324675
+							]
+						},
+						"useCollisionPoly": true,
+						"imagePoints": [
+							{
+								"name": "Image Point 1",
+								"x": 0.18823529411764706,
+								"y": 0.18181818181818182
+							}
+						],
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 168029332289775,
+				"name": "Default",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}

@@ -1,0 +1,17 @@
+{
+	"name": "BGHeightFamily",
+	"plugin-id": "Sprite",
+	"sid": 880330353002885,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"members": [
+		"BG_GameOver",
+		"BG_Homepage",
+		"Main_BG",
+		"overlay",
+		"black_shadow",
+		"black_ads_loading",
+		"gameover_shadow"
+	]
+}

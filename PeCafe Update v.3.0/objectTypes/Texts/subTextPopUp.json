@@ -1,0 +1,10 @@
+{
+	"name": "subTextPopUp",
+	"plugin-id": "Text",
+	"sid": 108320083124067,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": []
+}

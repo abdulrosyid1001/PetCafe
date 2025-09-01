@@ -1,0 +1,15 @@
+{
+	"name": "TextTickets",
+	"plugin-id": "Text",
+	"sid": 538505209886112,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [
+		{
+			"effectId": "brightness",
+			"name": "Brightness"
+		}
+	]
+}

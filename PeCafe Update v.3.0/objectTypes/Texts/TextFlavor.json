@@ -1,0 +1,26 @@
+{
+	"name": "TextFlavor",
+	"plugin-id": "Text",
+	"sid": 692596418777368,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Tween",
+			"name": "Tween",
+			"sid": 326386959240084
+		},
+		{
+			"behaviorId": "Flash",
+			"name": "Flash",
+			"sid": 275247891070026
+		}
+	],
+	"effectTypes": [
+		{
+			"effectId": "skymen_BetterOutline",
+			"name": "BetterOutline"
+		}
+	]
+}
