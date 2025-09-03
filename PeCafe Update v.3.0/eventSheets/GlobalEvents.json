@@ -378,10 +378,10 @@
 												"// runtime.callFunction(\"get_storage\", storageType, \"tutorial_completed_arr\");",
 												"// runtime.callFunction(\"get_storage\", storageType, \"ftue_splashscreen\");",
 												"// runtime.callFunction(\"get_storage\", storageType, \"checkpoint_save\");",
+												"await runtime.callFunction(\"get_storage\", storageType, \"is_daily_bonus\");",
 												"await runtime.callFunction(\"get_storage\", storageType, \"expire_time\");",
 												"await runtime.callFunction(\"get_storage\", storageType, \"day\");",
 												"await runtime.callFunction(\"get_storage\", storageType, \"total_day\");",
-												"await runtime.callFunction(\"get_storage\", storageType, \"is_daily_bonus\");",
 												"await runtime.callFunction(\"get_storage\", storageType, \"high_score\");",
 												"await runtime.callFunction(\"get_storage\", storageType, \"player_level\");",
 												"await runtime.callFunction(\"get_storage\", storageType, \"level_stage\");",
@@ -6771,7 +6771,7 @@
 					"functionIsAsync": false,
 					"functionParameters": [
 						{
-							"name": "deactivated",
+							"name": "deactivated_true",
 							"type": "boolean",
 							"initialValue": "false",
 							"comment": "",
@@ -6789,14 +6789,14 @@
 								{
 									"id": "for-each",
 									"objectClass": "System",
-									"sid": 309007200227717,
+									"sid": 702196659943388,
 									"parameters": {
 										"object": "blueButton"
 									}
 								}
 							],
 							"actions": [],
-							"sid": 186573362021319,
+							"sid": 228482713117220,
 							"children": [
 								{
 									"eventType": "block",
@@ -6804,7 +6804,7 @@
 										{
 											"id": "compare-instance-variable",
 											"objectClass": "blueButton",
-											"sid": 520932853882713,
+											"sid": 390935291114823,
 											"parameters": {
 												"instance-variable": "ID",
 												"comparison": 0,
@@ -6816,14 +6816,14 @@
 										{
 											"id": "set-instvar-value",
 											"objectClass": "blueButton",
-											"sid": 169204008546199,
+											"sid": 597142811217184,
 											"parameters": {
 												"instance-variable": "deactive",
-												"value": "deactivated"
+												"value": "deactivated_true"
 											}
 										}
 									],
-									"sid": 808657931407155
+									"sid": 396986439578363
 								},
 								{
 									"eventType": "block",
@@ -6831,7 +6831,7 @@
 										{
 											"id": "compare-instance-variable",
 											"objectClass": "blueButton",
-											"sid": 747876577832948,
+											"sid": 684528515006308,
 											"parameters": {
 												"instance-variable": "ID",
 												"comparison": 0,
@@ -6843,14 +6843,193 @@
 										{
 											"id": "set-instvar-value",
 											"objectClass": "blueButton",
-											"sid": 962837704102677,
+											"sid": 787424230817505,
 											"parameters": {
 												"instance-variable": "deactive",
-												"value": "deactivated"
+												"value": "deactivated_true"
 											}
 										}
 									],
-									"sid": 125390114433681
+									"sid": 995697389266706
+								}
+							]
+						}
+					]
+				},
+				{
+					"functionName": "anim_button_gameover",
+					"functionDescription": "",
+					"functionCategory": "",
+					"functionReturnType": "none",
+					"functionCopyPicked": false,
+					"functionIsAsync": false,
+					"functionParameters": [],
+					"eventType": "function-block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "set-scale",
+							"objectClass": "blueButton",
+							"sid": 392476113094624,
+							"parameters": {
+								"scale": "0"
+							}
+						}
+					],
+					"sid": 349542691413721,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "blueButton",
+									"sid": 298579902345165,
+									"parameters": {
+										"instance-variable": "ID",
+										"comparison": 0,
+										"value": "\"continue_missions\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "tween-two-properties",
+									"objectClass": "blueButton",
+									"sid": 690869165960643,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"in\"",
+										"property": "scale",
+										"end-x": "1",
+										"end-y": "1",
+										"time": "0.5",
+										"ease": "easeoutback",
+										"destroy-on-complete": "no",
+										"loop": "no",
+										"ping-pong": "no",
+										"repeat-count": "1"
+									}
+								}
+							],
+							"sid": 772931013904481
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "blueButton",
+									"sid": 716183005290681,
+									"parameters": {
+										"instance-variable": "ID",
+										"comparison": 0,
+										"value": "\"retry\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "tween-two-properties",
+									"objectClass": "blueButton",
+									"sid": 701625797006340,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"in\"",
+										"property": "scale",
+										"end-x": "1",
+										"end-y": "1",
+										"time": "0.5",
+										"ease": "easeoutback",
+										"destroy-on-complete": "no",
+										"loop": "no",
+										"ping-pong": "no",
+										"repeat-count": "1"
+									}
+								}
+							],
+							"sid": 372567912847789
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "blueButton",
+									"sid": 429766528000464,
+									"parameters": {
+										"instance-variable": "ID",
+										"comparison": 0,
+										"value": "\"home\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "wait",
+									"objectClass": "System",
+									"sid": 436911932189172,
+									"parameters": {
+										"seconds": "0.4",
+										"use-timescale": true
+									}
+								}
+							],
+							"sid": 836064801441120,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-two-values",
+											"objectClass": "System",
+											"sid": 779503746788206,
+											"parameters": {
+												"first-value": "level_stage",
+												"comparison": 4,
+												"second-value": "10"
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "tween-two-properties",
+											"objectClass": "blueButton",
+											"sid": 936975273377674,
+											"behaviorType": "Tween",
+											"parameters": {
+												"tags": "\"in\"",
+												"property": "scale",
+												"end-x": "1",
+												"end-y": "1",
+												"time": "0.5",
+												"ease": "easeoutback",
+												"destroy-on-complete": "no",
+												"loop": "no",
+												"ping-pong": "no",
+												"repeat-count": "1"
+											}
+										}
+									],
+									"sid": 188362858430073
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "else",
+											"objectClass": "System",
+											"sid": 863463279521101
+										}
+									],
+									"actions": [
+										{
+											"id": "destroy",
+											"objectClass": "blueButton",
+											"sid": 566901997778944
+										}
+									],
+									"sid": 606418639452562
 								}
 							]
 						}
@@ -11085,6 +11264,16 @@
 		},
 		{
 			"eventType": "variable",
+			"name": "gameplay_state",
+			"type": "string",
+			"initialValue": "stop",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 805461768221160
+		},
+		{
+			"eventType": "variable",
 			"name": "pe_value",
 			"type": "string",
 			"initialValue": "null",
@@ -12053,16 +12242,36 @@
 					"functionParameters": [],
 					"eventType": "function-block",
 					"conditions": [],
-					"actions": [
+					"actions": [],
+					"sid": 896275597094500,
+					"children": [
 						{
-							"type": "script",
-							"language": "javascript",
-							"script": [
-								"gameplay(\"start\");"
-							]
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 277791560911395,
+									"parameters": {
+										"variable": "gameplay_state",
+										"comparison": 0,
+										"value": "\"stop\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"type": "script",
+									"language": "javascript",
+									"script": [
+										"runtime.globalVars.gameplay_state = \"start\";",
+										"gameplay(\"start\");"
+									]
+								}
+							],
+							"sid": 786871283164357
 						}
-					],
-					"sid": 896275597094500
+					]
 				},
 				{
 					"functionName": "event_stop_gameplay",
@@ -12074,16 +12283,36 @@
 					"functionParameters": [],
 					"eventType": "function-block",
 					"conditions": [],
-					"actions": [
+					"actions": [],
+					"sid": 375551999811843,
+					"children": [
 						{
-							"type": "script",
-							"language": "javascript",
-							"script": [
-								"gameplay(\"stop\");"
-							]
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 175562185749884,
+									"parameters": {
+										"variable": "gameplay_state",
+										"comparison": 0,
+										"value": "\"start\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"type": "script",
+									"language": "javascript",
+									"script": [
+										"runtime.globalVars.gameplay_state = \"stop\";",
+										"gameplay(\"stop\");"
+									]
+								}
+							],
+							"sid": 806269184092252
 						}
-					],
-					"sid": 375551999811843
+					]
 				},
 				{
 					"eventType": "block",

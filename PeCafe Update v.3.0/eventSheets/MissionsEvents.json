@@ -2945,11 +2945,11 @@
 										{
 											"id": "set-at-xy",
 											"objectClass": "unlockedMission",
-											"sid": 208726747993582,
+											"sid": 467870154810689,
 											"parameters": {
 												"x": "0",
 												"y": "3",
-												"value": "5"
+												"value": "4"
 											}
 										},
 										{

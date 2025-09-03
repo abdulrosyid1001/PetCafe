@@ -260,7 +260,9 @@ export function game_loading_completed(loading_pg) {
 }
 
 // Handle gameplay events
+var gameplay_status_global = "none";
 export function gameplay(gameplay_status, days = 0) {
+    gameplay_status_global = gameplay_status;
     switch (platform_ad) {
         case "Glance":
             const glanceEvents = {
@@ -523,7 +525,7 @@ export function show_ad(_ad_format, _ad_reward_state = -1) {
                         console.log("started_interstitial");
                     }).then(() => tracking_ad_status = "skipped");
                 } else if (ad_format === "rewarded") {
-                    PokiSDK.gameplayStop();
+                     if(gameplay_status_global === "start") PokiSDK.gameplayStop();
                     PokiSDK.rewardedBreak(() => {
                         tracking_ad_status = "started";
                     }).then(withReward => {

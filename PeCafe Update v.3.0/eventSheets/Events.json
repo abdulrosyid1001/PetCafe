@@ -787,6 +787,10 @@
 						{
 							"callFunction": "get_offer_time",
 							"sid": 688887316116504
+						},
+						{
+							"callFunction": "set_boosters_frame_unlocked",
+							"sid": 167445131421853
 						}
 					],
 					"sid": 393098096475609,
@@ -976,6 +980,10 @@
 										{
 											"callFunction": "set_pet_frame",
 											"sid": 518970736052757
+										},
+										{
+											"callFunction": "tutorial_ev",
+											"sid": 107953408670686
 										}
 									],
 									"sid": 161684816968646
@@ -1119,7 +1127,7 @@
 								},
 								{
 									"callFunction": "tutorial_ev",
-									"sid": 534573627783694,
+									"sid": 862390139365370,
 									"disabled": true
 								},
 								{
@@ -2410,7 +2418,15 @@
 										{
 											"id": "move-to-top",
 											"objectClass": "TextFruit",
-											"sid": 157371758053053
+											"sid": 237891651628989
+										},
+										{
+											"callFunction": "shake_merge_event",
+											"sid": 157500978787174,
+											"disabled": true,
+											"parameters": [
+												true
+											]
 										}
 									],
 									"sid": 436541911552801,
@@ -3142,6 +3158,55 @@
 												}
 											],
 											"sid": 396491039426217
+										},
+										{
+											"bookmark": true,
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "is-timer-running",
+													"objectClass": "GameManager",
+													"sid": 808292741440721,
+													"behaviorType": "Timer",
+													"parameters": {
+														"tag": "\"MergeShake\""
+													},
+													"isInverted": true
+												},
+												{
+													"id": "compare-eventvar",
+													"objectClass": "System",
+													"sid": 501911180747544,
+													"parameters": {
+														"variable": "BONUS_MULT",
+														"comparison": 5,
+														"value": "5"
+													}
+												},
+												{
+													"id": "compare-boolean-eventvar",
+													"objectClass": "System",
+													"sid": 914825284857705,
+													"parameters": {
+														"variable": "shake_activated"
+													},
+													"isInverted": true
+												}
+											],
+											"actions": [
+												{
+													"id": "start-timer",
+													"objectClass": "GameManager",
+													"sid": 279332969425838,
+													"behaviorType": "Timer",
+													"parameters": {
+														"duration": "0.4",
+														"type": "once",
+														"tag": "\"MergeShake\""
+													}
+												}
+											],
+											"sid": 334520408174652
 										}
 									]
 								}
@@ -3543,14 +3608,17 @@
 								"\truntime.globalVars.is_tutorial = 1;",
 								"\ttutorialCompletedArr[localVars.ID-1]--;",
 								"\tunlockedBoosterData.setAt(tutorialCompletedArr[localVars.ID-1], 0, localVars.ID-1);",
+								"\truntime.globalVars.gameState = \"tutorial\";",
 								"\truntime.callFunction(\"tutorial_popup\", localVars.ID, \"show\");",
 								"\truntime.callFunction(\"set_boosters_frame_unlocked\");",
 								"\truntime.callFunction(\"save_storage\", storageType, \"tutorial_completed_arr\", JSON.stringify(tutorialCompletedArr));",
+								"\t",
 								"}",
 								"else{",
 								"\tif(runtime.globalVars.gameState == \"start\"){",
 								"\t\truntime.globalVars.is_tutorial = 0;",
 								"\t\truntime.callFunction(\"tutorial_popup\", localVars.ID, \"no_tutorial\");",
+								"\t\tconsole.log(\"no_tutorial\");",
 								"\t\truntime.callFunction(\"set_boosters_frame_unlocked\");",
 								"\t}",
 								"}"
@@ -3787,7 +3855,15 @@
 													"sid": 552637218854275
 												}
 											],
-											"actions": [],
+											"actions": [
+												{
+													"callFunction": "check_tutorial_completed",
+													"sid": 658613716493537,
+													"parameters": [
+														"2"
+													]
+												}
+											],
 											"sid": 402310570012690,
 											"children": [
 												{
@@ -3813,7 +3889,8 @@
 															]
 														}
 													],
-													"sid": 911564723338429
+													"sid": 911564723338429,
+													"disabled": true
 												},
 												{
 													"eventType": "block",
@@ -3833,7 +3910,8 @@
 															]
 														}
 													],
-													"sid": 107130524971727
+													"sid": 107130524971727,
+													"disabled": true
 												}
 											]
 										}
@@ -4546,7 +4624,16 @@
 											"sid": 811869387531893
 										}
 									],
-									"actions": [],
+									"actions": [
+										{
+											"type": "script",
+											"language": "javascript",
+											"script": [
+												"progression_event(\"start\", \"ftue_adv_goals_tap\");",
+												"progression_event(\"completed\", \"ftue_adv_goals_tap\");"
+											]
+										}
+									],
 									"sid": 252245914133579,
 									"children": [
 										{
@@ -4573,7 +4660,8 @@
 													]
 												}
 											],
-											"sid": 180779675102963
+											"sid": 180779675102963,
+											"disabled": true
 										},
 										{
 											"eventType": "block",
@@ -4600,6 +4688,7 @@
 												}
 											],
 											"sid": 740435407218706,
+											"disabled": true,
 											"children": [
 												{
 													"eventType": "block",
@@ -4637,7 +4726,8 @@
 															}
 														}
 													],
-													"sid": 383799349468135
+													"sid": 383799349468135,
+													"disabled": true
 												}
 											]
 										}
@@ -5326,12 +5416,12 @@
 										{
 											"id": "create-object",
 											"objectClass": "System",
-											"sid": 990486635388094,
+											"sid": 296149616097756,
 											"parameters": {
 												"object-to-create": "tutorialFrame",
 												"layer": "\"Tutorial\"",
 												"x": "LayoutWidth/2",
-												"y": "50+(LayoutHeight/2)",
+												"y": "(LayoutHeight/2)-200",
 												"create-hierarchy": true,
 												"template-name": "\"\""
 											}
@@ -8527,15 +8617,6 @@
 									],
 									"actions": [
 										{
-											"id": "set-eventvar-value",
-											"objectClass": "System",
-											"sid": 645940426720774,
-											"parameters": {
-												"variable": "gameState",
-												"value": "\"play\""
-											}
-										},
-										{
 											"id": "set-group-active",
 											"objectClass": "System",
 											"sid": 549485353046184,
@@ -8560,6 +8641,15 @@
 											"parameters": {
 												"group-name": "\"Game Over\"",
 												"state": "deactivated"
+											}
+										},
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 523794136910955,
+											"parameters": {
+												"variable": "gameState",
+												"value": "\"play\""
 											}
 										},
 										{
@@ -8593,15 +8683,6 @@
 											]
 										},
 										{
-											"id": "set-eventvar-value",
-											"objectClass": "System",
-											"sid": 430499320312634,
-											"parameters": {
-												"variable": "gameState",
-												"value": "\"play\""
-											}
-										},
-										{
 											"id": "set-group-active",
 											"objectClass": "System",
 											"sid": 737053759167306,
@@ -8626,6 +8707,15 @@
 											"parameters": {
 												"group-name": "\"Game Over\"",
 												"state": "deactivated"
+											}
+										},
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 910344589509520,
+											"parameters": {
+												"variable": "gameState",
+												"value": "\"play\""
 											}
 										},
 										{
@@ -9319,13 +9409,22 @@
 									],
 									"actions": [
 										{
+											"callFunction": "create_convety",
+											"sid": 237312820183209,
+											"parameters": [
+												"\"GameOver\"",
+												"LayoutWidth/2",
+												"LayoutHeight/2+100"
+											]
+										},
+										{
 											"callFunction": "save_yellow_star",
 											"sid": 506779649658986
 										},
 										{
 											"id": "create-object",
 											"objectClass": "System",
-											"sid": 331667349651305,
+											"sid": 924419934810808,
 											"parameters": {
 												"object-to-create": "frameButtonGameOver",
 												"layer": "\"GameOver\"",
@@ -9346,9 +9445,9 @@
 										{
 											"id": "set-text",
 											"objectClass": "labelAdventureGameOver",
-											"sid": 327522163950790,
+											"sid": 766883499606403,
 											"parameters": {
-												"text": "JSON.Get(curr_lang&\".completed\")"
+												"text": "JSON.Get(curr_lang&\".victory\")"
 											}
 										},
 										{
@@ -9357,40 +9456,6 @@
 											"sid": 699187135475784,
 											"parameters": {
 												"color": "rgba255(88, 125, 49, 255)"
-											}
-										},
-										{
-											"id": "set-scale",
-											"objectClass": "frameButtonGameOver",
-											"sid": 741822623157073,
-											"parameters": {
-												"scale": "0"
-											}
-										},
-										{
-											"id": "set-scale",
-											"objectClass": "buttonGameOver",
-											"sid": 693502718845836,
-											"parameters": {
-												"scale": "0"
-											}
-										},
-										{
-											"id": "tween-two-properties",
-											"objectClass": "frameButtonGameOver",
-											"sid": 741768167114684,
-											"behaviorType": "Tween",
-											"parameters": {
-												"tags": "\"in\"",
-												"property": "scale",
-												"end-x": "1",
-												"end-y": "1",
-												"time": "0.5",
-												"ease": "easeoutback",
-												"destroy-on-complete": "no",
-												"loop": "no",
-												"ping-pong": "no",
-												"repeat-count": "1"
 											}
 										},
 										{
@@ -9418,31 +9483,8 @@
 											]
 										},
 										{
-											"id": "wait",
-											"objectClass": "System",
-											"sid": 621953866426672,
-											"parameters": {
-												"seconds": "1",
-												"use-timescale": true
-											}
-										},
-										{
-											"id": "tween-two-properties",
-											"objectClass": "buttonGameOver",
-											"sid": 881449578022070,
-											"behaviorType": "Tween",
-											"parameters": {
-												"tags": "\"in\"",
-												"property": "scale",
-												"end-x": "1",
-												"end-y": "1",
-												"time": "0.5",
-												"ease": "easeoutback",
-												"destroy-on-complete": "no",
-												"loop": "no",
-												"ping-pong": "no",
-												"repeat-count": "1"
-											}
+											"callFunction": "anim_button_gameover",
+											"sid": 746180901416110
 										}
 									],
 									"sid": 455110687750323
@@ -9487,11 +9529,6 @@
 										}
 									],
 									"actions": [
-										{
-											"id": "wait-for-previous-actions",
-											"objectClass": "System",
-											"sid": 927056994847165
-										},
 										{
 											"id": "create-object",
 											"objectClass": "System",
@@ -9548,35 +9585,9 @@
 											}
 										},
 										{
-											"id": "set-scale",
-											"objectClass": "frameButtonGameOver",
-											"sid": 793411556667722,
-											"parameters": {
-												"scale": "0"
-											}
-										},
-										{
 											"id": "wait-for-previous-actions",
 											"objectClass": "System",
 											"sid": 474947918463129
-										},
-										{
-											"id": "tween-two-properties",
-											"objectClass": "frameButtonGameOver",
-											"sid": 379661132259861,
-											"behaviorType": "Tween",
-											"parameters": {
-												"tags": "\"in\"",
-												"property": "scale",
-												"end-x": "1",
-												"end-y": "1",
-												"time": "0.5",
-												"ease": "easeoutback",
-												"destroy-on-complete": "no",
-												"loop": "no",
-												"ping-pong": "no",
-												"repeat-count": "1"
-											}
 										},
 										{
 											"callFunction": "create_goals_UI",
@@ -9586,9 +9597,8 @@
 											]
 										},
 										{
-											"id": "wait-for-previous-actions",
-											"objectClass": "System",
-											"sid": 725208548129594
+											"callFunction": "anim_button_gameover",
+											"sid": 749665827071093
 										}
 									],
 									"sid": 529710940091128
@@ -9886,7 +9896,7 @@
 												},
 												{
 													"callFunction": "create_convety",
-													"sid": 276598334079330,
+													"sid": 220523152423869,
 													"parameters": [
 														"\"GameOver\"",
 														"LayoutWidth/2",
@@ -14622,6 +14632,14 @@
 										{
 											"callFunction": "text_flavor_anim",
 											"sid": 833831946368901
+										},
+										{
+											"callFunction": "shake_merge_event",
+											"sid": 515542531656989,
+											"disabled": true,
+											"parameters": [
+												false
+											]
 										}
 									],
 									"sid": 306160468282119
@@ -23315,11 +23333,11 @@
 										{
 											"id": "set-at-xy",
 											"objectClass": "unlockedBooster",
-											"sid": 527833550456323,
+											"sid": 407967634758871,
 											"parameters": {
 												"x": "1",
 												"y": "0",
-												"value": "5"
+												"value": "4"
 											}
 										},
 										{
@@ -23426,33 +23444,33 @@
 							"eventType": "block",
 							"conditions": [
 								{
-									"id": "for-each",
+									"id": "compare-eventvar",
 									"objectClass": "System",
-									"sid": 547311840364185,
+									"sid": 957132840289089,
 									"parameters": {
-										"object": "boostersFrame"
+										"variable": "game_mode",
+										"comparison": 0,
+										"value": "\"classic\""
 									}
 								}
 							],
 							"actions": [],
-							"sid": 737724187801413,
+							"sid": 829481767890666,
 							"children": [
 								{
 									"eventType": "block",
 									"conditions": [
 										{
-											"id": "compare-instance-variable",
-											"objectClass": "boostersFrame",
-											"sid": 896547756430881,
+											"id": "for-each",
+											"objectClass": "System",
+											"sid": 301742585248998,
 											"parameters": {
-												"instance-variable": "ID",
-												"comparison": 1,
-												"value": "\"brush\""
+												"object": "boostersFrame"
 											}
 										}
 									],
 									"actions": [],
-									"sid": 380478405880277,
+									"sid": 561125856695586,
 									"children": [
 										{
 											"eventType": "block",
@@ -23460,7 +23478,7 @@
 												{
 													"id": "compare-at-xy",
 													"objectClass": "unlockedBoosterData",
-													"sid": 877655590126107,
+													"sid": 812030308386268,
 													"parameters": {
 														"x": "0",
 														"y": "loopindex+2",
@@ -23473,7 +23491,7 @@
 												{
 													"id": "set-effect-enabled",
 													"objectClass": "boostersFrame",
-													"sid": 784751217554900,
+													"sid": 818734276965179,
 													"disabled": true,
 													"parameters": {
 														"mode": "disable",
@@ -23483,7 +23501,7 @@
 												{
 													"id": "set-animation-frame",
 													"objectClass": "boostersFrame",
-													"sid": 812028917403618,
+													"sid": 720632142798471,
 													"parameters": {
 														"frame-number": "0"
 													}
@@ -23491,7 +23509,7 @@
 												{
 													"id": "create-object",
 													"objectClass": "System",
-													"sid": 217704341428612,
+													"sid": 761322775712569,
 													"parameters": {
 														"object-to-create": "boostersButton",
 														"layer": "boostersFrame.LayerName",
@@ -23504,7 +23522,7 @@
 												{
 													"id": "create-object",
 													"objectClass": "System",
-													"sid": 983388231792354,
+													"sid": 667096352419362,
 													"parameters": {
 														"object-to-create": "boosterPlus",
 														"layer": "boostersFrame.LayerName",
@@ -23517,7 +23535,7 @@
 												{
 													"id": "set-animation-frame",
 													"objectClass": "boostersButton",
-													"sid": 320577420254098,
+													"sid": 350792644326617,
 													"parameters": {
 														"frame-number": "loopindex"
 													}
@@ -23525,7 +23543,7 @@
 												{
 													"id": "set-instvar-value",
 													"objectClass": "boostersButton",
-													"sid": 911723920173801,
+													"sid": 844089849565723,
 													"parameters": {
 														"instance-variable": "ID",
 														"value": "boostersFrame.ID"
@@ -23534,14 +23552,14 @@
 												{
 													"id": "set-instvar-value",
 													"objectClass": "boosterPlus",
-													"sid": 429114166434165,
+													"sid": 799865602810619,
 													"parameters": {
 														"instance-variable": "ID",
 														"value": "boostersFrame.ID"
 													}
 												}
 											],
-											"sid": 296055702551147
+											"sid": 592796126584273
 										},
 										{
 											"eventType": "block",
@@ -23549,14 +23567,14 @@
 												{
 													"id": "else",
 													"objectClass": "System",
-													"sid": 155577788898826
+													"sid": 671424976049129
 												}
 											],
 											"actions": [
 												{
 													"id": "set-effect-enabled",
 													"objectClass": "boostersFrame",
-													"sid": 322599586490610,
+													"sid": 677876793579591,
 													"disabled": true,
 													"parameters": {
 														"mode": "enable",
@@ -23566,7 +23584,7 @@
 												{
 													"id": "set-animation-frame",
 													"objectClass": "boostersFrame",
-													"sid": 370242220623253,
+													"sid": 911218221074788,
 													"parameters": {
 														"frame-number": "1"
 													}
@@ -23574,7 +23592,7 @@
 												{
 													"id": "create-object",
 													"objectClass": "System",
-													"sid": 732207917065368,
+													"sid": 232733617938324,
 													"parameters": {
 														"object-to-create": "lockIcon",
 														"layer": "boostersFrame.LayerName",
@@ -23587,7 +23605,7 @@
 												{
 													"id": "set-size",
 													"objectClass": "lockIcon",
-													"sid": 431512006580197,
+													"sid": 612066724237060,
 													"parameters": {
 														"width": "19",
 														"height": "25"
@@ -23596,7 +23614,7 @@
 												{
 													"id": "create-object",
 													"objectClass": "System",
-													"sid": 552730697096952,
+													"sid": 982872091352351,
 													"parameters": {
 														"object-to-create": "labelLockInfo",
 														"layer": "boostersFrame.LayerName",
@@ -23605,117 +23623,80 @@
 														"create-hierarchy": false,
 														"template-name": "\"\""
 													}
-												}
-											],
-											"sid": 673779024234418,
-											"children": [
-												{
-													"eventType": "block",
-													"conditions": [
-														{
-															"id": "compare-eventvar",
-															"objectClass": "System",
-															"sid": 382582889350897,
-															"parameters": {
-																"variable": "game_mode",
-																"comparison": 0,
-																"value": "\"classic\""
-															}
-														}
-													],
-													"actions": [
-														{
-															"id": "set-text",
-															"objectClass": "labelLockInfo",
-															"sid": 359265686559761,
-															"disabled": true,
-															"parameters": {
-																"text": "left(replace(JSON.Get(curr_lang&\".level\"), \"<X>\", str(unlockedBooster.At(0, loopindex))), 3)&\". \"&str(unlockedBooster.At(0, loopindex))"
-															}
-														},
-														{
-															"id": "set-text",
-															"objectClass": "labelLockInfo",
-															"sid": 573887855074327,
-															"parameters": {
-																"text": "JSON.Get(curr_lang&\".level_short\")&\" \"&str(unlockedBooster.At(0, loopindex))"
-															}
-														}
-													],
-													"sid": 515998738769174
 												},
 												{
-													"eventType": "block",
-													"conditions": [
-														{
-															"id": "compare-eventvar",
-															"objectClass": "System",
-															"sid": 724353121134071,
-															"parameters": {
-																"variable": "game_mode",
-																"comparison": 0,
-																"value": "\"adventure\""
-															}
-														}
-													],
-													"actions": [
-														{
-															"id": "set-text",
-															"objectClass": "labelLockInfo",
-															"sid": 630190124709618,
-															"disabled": true,
-															"parameters": {
-																"text": "left(replace(JSON.Get(curr_lang&\".level\"), \"<X>\", str(unlockedBooster.At(1, loopindex))), 3)&\". \"&str(unlockedBooster.At(1, loopindex))"
-															}
-														},
-														{
-															"id": "set-text",
-															"objectClass": "labelLockInfo",
-															"sid": 282981494294310,
-															"parameters": {
-																"text": "JSON.Get(curr_lang&\".level_short\")&\" \"&str(unlockedBooster.At(1, loopindex))"
-															}
-														}
-													],
-													"sid": 418762017233374
+													"id": "set-text",
+													"objectClass": "labelLockInfo",
+													"sid": 880242422211227,
+													"parameters": {
+														"text": "JSON.Get(curr_lang&\".level_short\")&\" \"&str(unlockedBooster.At(0, loopindex))"
+													}
 												}
-											]
+											],
+											"sid": 824948719242148
 										}
 									]
-								},
+								}
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 263669930036583,
+									"parameters": {
+										"variable": "game_mode",
+										"comparison": 0,
+										"value": "\"adventure\""
+									}
+								}
+							],
+							"actions": [],
+							"sid": 160547271397263,
+							"children": [
 								{
 									"eventType": "block",
 									"conditions": [
 										{
-											"id": "compare-instance-variable",
-											"objectClass": "boostersFrame",
-											"sid": 565589175324700,
+											"id": "for-each",
+											"objectClass": "System",
+											"sid": 565422889381697,
 											"parameters": {
-												"instance-variable": "ID",
-												"comparison": 0,
-												"value": "\"brush\""
+												"object": "boostersFrame"
 											}
 										}
 									],
 									"actions": [],
-									"sid": 148000232754020,
+									"sid": 211911863633298,
 									"children": [
 										{
 											"eventType": "block",
 											"conditions": [
 												{
-													"id": "compare-eventvar",
-													"objectClass": "System",
-													"sid": 123740275596645,
+													"id": "compare-instance-variable",
+													"objectClass": "boostersFrame",
+													"sid": 858577157405861,
 													"parameters": {
-														"variable": "game_mode",
-														"comparison": 0,
-														"value": "\"classic\""
+														"instance-variable": "ID",
+														"comparison": 1,
+														"value": "\"brush\""
+													}
+												},
+												{
+													"id": "compare-instance-variable",
+													"objectClass": "boostersFrame",
+													"sid": 204230276059408,
+													"parameters": {
+														"instance-variable": "ID",
+														"comparison": 1,
+														"value": "\"rainbow\""
 													}
 												}
 											],
 											"actions": [],
-											"sid": 225045773240482,
+											"sid": 274348659181287,
 											"children": [
 												{
 													"eventType": "block",
@@ -23723,7 +23704,7 @@
 														{
 															"id": "compare-at-xy",
 															"objectClass": "unlockedBoosterData",
-															"sid": 487934464378061,
+															"sid": 204032881689502,
 															"parameters": {
 																"x": "0",
 																"y": "loopindex+2",
@@ -23736,7 +23717,7 @@
 														{
 															"id": "set-effect-enabled",
 															"objectClass": "boostersFrame",
-															"sid": 233098408863737,
+															"sid": 373718329844724,
 															"disabled": true,
 															"parameters": {
 																"mode": "disable",
@@ -23746,7 +23727,7 @@
 														{
 															"id": "set-animation-frame",
 															"objectClass": "boostersFrame",
-															"sid": 325394682723722,
+															"sid": 200858804471258,
 															"parameters": {
 																"frame-number": "0"
 															}
@@ -23754,7 +23735,7 @@
 														{
 															"id": "create-object",
 															"objectClass": "System",
-															"sid": 180107236604650,
+															"sid": 741408338065194,
 															"parameters": {
 																"object-to-create": "boostersButton",
 																"layer": "boostersFrame.LayerName",
@@ -23767,7 +23748,7 @@
 														{
 															"id": "create-object",
 															"objectClass": "System",
-															"sid": 303900477056009,
+															"sid": 191667249890058,
 															"parameters": {
 																"object-to-create": "boosterPlus",
 																"layer": "boostersFrame.LayerName",
@@ -23780,7 +23761,7 @@
 														{
 															"id": "set-animation-frame",
 															"objectClass": "boostersButton",
-															"sid": 292831488138945,
+															"sid": 476482716227786,
 															"parameters": {
 																"frame-number": "loopindex"
 															}
@@ -23788,7 +23769,7 @@
 														{
 															"id": "set-instvar-value",
 															"objectClass": "boostersButton",
-															"sid": 136876913518935,
+															"sid": 546732965725437,
 															"parameters": {
 																"instance-variable": "ID",
 																"value": "boostersFrame.ID"
@@ -23797,14 +23778,14 @@
 														{
 															"id": "set-instvar-value",
 															"objectClass": "boosterPlus",
-															"sid": 896426898002466,
+															"sid": 643104452393385,
 															"parameters": {
 																"instance-variable": "ID",
 																"value": "boostersFrame.ID"
 															}
 														}
 													],
-													"sid": 125769263562010
+													"sid": 350408959754637
 												},
 												{
 													"eventType": "block",
@@ -23812,14 +23793,14 @@
 														{
 															"id": "else",
 															"objectClass": "System",
-															"sid": 561210827573063
+															"sid": 761674322707535
 														}
 													],
 													"actions": [
 														{
 															"id": "set-effect-enabled",
 															"objectClass": "boostersFrame",
-															"sid": 618771220084863,
+															"sid": 875466034308546,
 															"disabled": true,
 															"parameters": {
 																"mode": "enable",
@@ -23829,7 +23810,7 @@
 														{
 															"id": "set-animation-frame",
 															"objectClass": "boostersFrame",
-															"sid": 929196411145649,
+															"sid": 525467414779347,
 															"parameters": {
 																"frame-number": "1"
 															}
@@ -23837,7 +23818,7 @@
 														{
 															"id": "create-object",
 															"objectClass": "System",
-															"sid": 508727198649201,
+															"sid": 672962146474370,
 															"parameters": {
 																"object-to-create": "lockIcon",
 																"layer": "boostersFrame.LayerName",
@@ -23850,7 +23831,7 @@
 														{
 															"id": "set-size",
 															"objectClass": "lockIcon",
-															"sid": 445194701114035,
+															"sid": 584641044626887,
 															"parameters": {
 																"width": "19",
 																"height": "25"
@@ -23859,7 +23840,7 @@
 														{
 															"id": "create-object",
 															"objectClass": "System",
-															"sid": 490349417377811,
+															"sid": 594152609136056,
 															"parameters": {
 																"object-to-create": "labelLockInfo",
 																"layer": "boostersFrame.LayerName",
@@ -23872,13 +23853,13 @@
 														{
 															"id": "set-text",
 															"objectClass": "labelLockInfo",
-															"sid": 952463336761871,
+															"sid": 493727298323535,
 															"parameters": {
-																"text": "JSON.Get(curr_lang&\".level_short\")&\" \"&str(unlockedBooster.At(0, loopindex))"
+																"text": "JSON.Get(curr_lang&\".level_short\")&\" \"&str(unlockedBooster.At(1, loopindex))"
 															}
 														}
 													],
-													"sid": 491362871198669
+													"sid": 823984716977062
 												}
 											]
 										},
@@ -23886,18 +23867,28 @@
 											"eventType": "block",
 											"conditions": [
 												{
-													"id": "compare-eventvar",
-													"objectClass": "System",
-													"sid": 900360541934043,
+													"id": "compare-instance-variable",
+													"objectClass": "boostersFrame",
+													"sid": 812674479566001,
 													"parameters": {
-														"variable": "game_mode",
+														"instance-variable": "ID",
 														"comparison": 0,
-														"value": "\"adventure\""
+														"value": "\"brush\""
+													}
+												},
+												{
+													"id": "compare-instance-variable",
+													"objectClass": "boostersFrame",
+													"sid": 689331809403486,
+													"parameters": {
+														"instance-variable": "ID",
+														"comparison": 0,
+														"value": "\"rainbow\""
 													}
 												}
 											],
 											"actions": [],
-											"sid": 847159360351277,
+											"sid": 944375414078546,
 											"children": [
 												{
 													"eventType": "block",
@@ -23905,7 +23896,7 @@
 														{
 															"id": "compare-at-xy",
 															"objectClass": "unlockedBoosterData",
-															"sid": 967021260646736,
+															"sid": 250334441639090,
 															"parameters": {
 																"x": "0",
 																"y": "loopindex+3",
@@ -23918,7 +23909,7 @@
 														{
 															"id": "set-effect-enabled",
 															"objectClass": "boostersFrame",
-															"sid": 995469530164576,
+															"sid": 885736450282815,
 															"disabled": true,
 															"parameters": {
 																"mode": "disable",
@@ -23928,7 +23919,7 @@
 														{
 															"id": "set-animation-frame",
 															"objectClass": "boostersFrame",
-															"sid": 983420880722541,
+															"sid": 856337562485592,
 															"parameters": {
 																"frame-number": "0"
 															}
@@ -23936,7 +23927,7 @@
 														{
 															"id": "create-object",
 															"objectClass": "System",
-															"sid": 257724298776598,
+															"sid": 576145929323877,
 															"parameters": {
 																"object-to-create": "boostersButton",
 																"layer": "boostersFrame.LayerName",
@@ -23949,7 +23940,7 @@
 														{
 															"id": "create-object",
 															"objectClass": "System",
-															"sid": 740537333059474,
+															"sid": 545443469799742,
 															"parameters": {
 																"object-to-create": "boosterPlus",
 																"layer": "boostersFrame.LayerName",
@@ -23962,7 +23953,7 @@
 														{
 															"id": "set-instvar-value",
 															"objectClass": "boostersFrame",
-															"sid": 607060470163387,
+															"sid": 815763343192722,
 															"parameters": {
 																"instance-variable": "ID",
 																"value": "\"rainbow\""
@@ -23971,7 +23962,7 @@
 														{
 															"id": "set-animation-frame",
 															"objectClass": "boostersButton",
-															"sid": 872060803326336,
+															"sid": 464496132282526,
 															"parameters": {
 																"frame-number": "3"
 															}
@@ -23979,7 +23970,7 @@
 														{
 															"id": "set-instvar-value",
 															"objectClass": "boostersButton",
-															"sid": 151502545240119,
+															"sid": 418183298859573,
 															"parameters": {
 																"instance-variable": "ID",
 																"value": "\"rainbow\""
@@ -23988,14 +23979,14 @@
 														{
 															"id": "set-instvar-value",
 															"objectClass": "boosterPlus",
-															"sid": 690050631872023,
+															"sid": 280336288310490,
 															"parameters": {
 																"instance-variable": "ID",
 																"value": "\"rainbow\""
 															}
 														}
 													],
-													"sid": 851443648354342
+													"sid": 820575169045528
 												},
 												{
 													"eventType": "block",
@@ -24003,14 +23994,14 @@
 														{
 															"id": "else",
 															"objectClass": "System",
-															"sid": 890410702507029
+															"sid": 954869043955929
 														}
 													],
 													"actions": [
 														{
 															"id": "set-effect-enabled",
 															"objectClass": "boostersFrame",
-															"sid": 621217863697168,
+															"sid": 716468465787391,
 															"disabled": true,
 															"parameters": {
 																"mode": "enable",
@@ -24020,7 +24011,7 @@
 														{
 															"id": "set-animation-frame",
 															"objectClass": "boostersFrame",
-															"sid": 520534540319829,
+															"sid": 911647944083650,
 															"parameters": {
 																"frame-number": "1"
 															}
@@ -24028,7 +24019,7 @@
 														{
 															"id": "create-object",
 															"objectClass": "System",
-															"sid": 809913614445231,
+															"sid": 705511878153536,
 															"parameters": {
 																"object-to-create": "lockIcon",
 																"layer": "boostersFrame.LayerName",
@@ -24041,7 +24032,7 @@
 														{
 															"id": "set-size",
 															"objectClass": "lockIcon",
-															"sid": 973420314519592,
+															"sid": 300470807376824,
 															"parameters": {
 																"width": "19",
 																"height": "25"
@@ -24050,7 +24041,7 @@
 														{
 															"id": "create-object",
 															"objectClass": "System",
-															"sid": 541703957382427,
+															"sid": 429450283825031,
 															"parameters": {
 																"object-to-create": "labelLockInfo",
 																"layer": "boostersFrame.LayerName",
@@ -24063,7 +24054,7 @@
 														{
 															"id": "set-text",
 															"objectClass": "labelLockInfo",
-															"sid": 112966790999416,
+															"sid": 907616942538150,
 															"parameters": {
 																"text": "JSON.Get(curr_lang&\".level_short\")&\" \"&str(unlockedBooster.At(1, loopindex))"
 															}
@@ -24071,16 +24062,17 @@
 														{
 															"id": "set-text",
 															"objectClass": "labelLockInfo",
-															"sid": 916343980261663,
+															"sid": 345490521220870,
 															"disabled": true,
 															"parameters": {
 																"text": "left(replace(JSON.Get(curr_lang&\".level\"), \"<X>\", str(unlockedBooster.At(1, loopindex))), 3)&\". \"&str(unlockedBooster.At(1, loopindex))"
 															}
 														}
 													],
-													"sid": 534090557266613
+													"sid": 142043917713262
 												}
-											]
+											],
+											"isOrBlock": true
 										}
 									]
 								}
@@ -24333,6 +24325,16 @@
 								"variable": "gameState",
 								"comparison": 1,
 								"value": "\"level_adv_info\""
+							}
+						},
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 769497626311468,
+							"parameters": {
+								"variable": "gameState",
+								"comparison": 1,
+								"value": "\"start\""
 							}
 						},
 						{
@@ -25766,139 +25768,153 @@
 													"eventType": "block",
 													"conditions": [
 														{
-															"id": "for-each",
-															"objectClass": "System",
-															"sid": 783462443864797,
-															"parameters": {
-																"object": "FruitnPropsFamily"
-															}
+															"id": "is-on-screen",
+															"objectClass": "touchGuide",
+															"sid": 532364244378102
 														}
 													],
 													"actions": [],
-													"sid": 370428010950626,
+													"sid": 212093846277602,
 													"children": [
 														{
 															"eventType": "block",
 															"conditions": [
 																{
-																	"id": "is-overlapping-another-object",
-																	"objectClass": "FruitnPropsFamily",
-																	"sid": 312650237008941,
+																	"id": "for-each",
+																	"objectClass": "System",
+																	"sid": 712277230791714,
 																	"parameters": {
-																		"object": "touchGuide"
-																	},
-																	"isInverted": true
+																		"object": "FruitnPropsFamily"
+																	}
 																}
 															],
 															"actions": [],
-															"sid": 192050254067907,
+															"sid": 244373178090950,
 															"children": [
 																{
 																	"eventType": "block",
 																	"conditions": [
 																		{
 																			"id": "is-overlapping-another-object",
-																			"objectClass": "Fruit",
-																			"sid": 632343903292390,
+																			"objectClass": "FruitnPropsFamily",
+																			"sid": 907468862589551,
 																			"parameters": {
 																				"object": "touchGuide"
 																			},
 																			"isInverted": true
 																		}
 																	],
-																	"actions": [
+																	"actions": [],
+																	"sid": 357767110776449,
+																	"children": [
 																		{
-																			"id": "set-boolean-instvar",
-																			"objectClass": "Fruit",
-																			"sid": 287250309957030,
-																			"parameters": {
-																				"instance-variable": "active",
-																				"value": "false"
-																			}
+																			"eventType": "block",
+																			"conditions": [
+																				{
+																					"id": "is-overlapping-another-object",
+																					"objectClass": "Fruit",
+																					"sid": 476512945921129,
+																					"parameters": {
+																						"object": "touchGuide"
+																					},
+																					"isInverted": true
+																				}
+																			],
+																			"actions": [
+																				{
+																					"id": "set-boolean-instvar",
+																					"objectClass": "Fruit",
+																					"sid": 157655253677096,
+																					"parameters": {
+																						"instance-variable": "active",
+																						"value": "false"
+																					}
+																				}
+																			],
+																			"sid": 386187906341831
+																		},
+																		{
+																			"eventType": "block",
+																			"conditions": [
+																				{
+																					"id": "is-overlapping-another-object",
+																					"objectClass": "props",
+																					"sid": 650919921211430,
+																					"parameters": {
+																						"object": "touchGuide"
+																					},
+																					"isInverted": true
+																				}
+																			],
+																			"actions": [
+																				{
+																					"id": "set-boolean-instvar",
+																					"objectClass": "props",
+																					"sid": 505704006831189,
+																					"parameters": {
+																						"instance-variable": "active",
+																						"value": "false"
+																					}
+																				}
+																			],
+																			"sid": 288797347501418
 																		}
 																	],
-																	"sid": 476718579320715
+																	"isOrBlock": true
 																},
 																{
 																	"eventType": "block",
 																	"conditions": [
 																		{
-																			"id": "is-overlapping-another-object",
-																			"objectClass": "props",
-																			"sid": 522861845099625,
-																			"parameters": {
-																				"object": "touchGuide"
-																			},
-																			"isInverted": true
+																			"id": "else",
+																			"objectClass": "System",
+																			"sid": 444465225090798
 																		}
 																	],
 																	"actions": [
 																		{
-																			"id": "set-boolean-instvar",
-																			"objectClass": "props",
-																			"sid": 455852028309668,
+																			"id": "create-object",
+																			"objectClass": "System",
+																			"sid": 237971375271629,
 																			"parameters": {
-																				"instance-variable": "active",
-																				"value": "false"
+																				"object-to-create": "cursorIcon",
+																				"layer": "FruitnPropsFamily.LayerName",
+																				"x": "FruitnPropsFamily.X+40",
+																				"y": "FruitnPropsFamily.Y+40",
+																				"create-hierarchy": false,
+																				"template-name": "\"\""
+																			}
+																		},
+																		{
+																			"id": "set-active",
+																			"objectClass": "cursorIcon",
+																			"sid": 810469289222333,
+																			"behaviorType": "Sine2",
+																			"parameters": {
+																				"state": "active"
+																			}
+																		},
+																		{
+																			"id": "add-child",
+																			"objectClass": "black_shadow",
+																			"sid": 519339036851076,
+																			"parameters": {
+																				"child": "cursorIcon",
+																				"transform-x": false,
+																				"transform-y": false,
+																				"transform-w": false,
+																				"transform-h": false,
+																				"transform-a": false,
+																				"transform-o": false,
+																				"transform-z-elevation": true,
+																				"transform-visibility": false,
+																				"destroy-with-parent": true
 																			}
 																		}
 																	],
-																	"sid": 322353572344882
+																	"sid": 107272287148588
 																}
-															],
-															"isOrBlock": true
-														},
-														{
-															"eventType": "block",
-															"conditions": [
-																{
-																	"id": "else",
-																	"objectClass": "System",
-																	"sid": 291699232092669
-																}
-															],
-															"actions": [
-																{
-																	"id": "create-object",
-																	"objectClass": "System",
-																	"sid": 468550840699675,
-																	"parameters": {
-																		"object-to-create": "cursorIcon",
-																		"layer": "FruitnPropsFamily.LayerName",
-																		"x": "FruitnPropsFamily.X+40",
-																		"y": "FruitnPropsFamily.Y+40",
-																		"create-hierarchy": false,
-																		"template-name": "\"\""
-																	}
-																},
-																{
-																	"id": "set-active",
-																	"objectClass": "cursorIcon",
-																	"sid": 199459078529301,
-																	"behaviorType": "Sine2",
-																	"parameters": {
-																		"state": "active"
-																	}
-																},
-																{
-																	"id": "add-child",
-																	"objectClass": "black_shadow",
-																	"sid": 298749870373298,
-																	"parameters": {
-																		"child": "cursorIcon",
-																		"transform-x": false,
-																		"transform-y": false,
-																		"transform-w": false,
-																		"transform-h": false,
-																		"transform-a": false,
-																		"transform-o": false,
-																		"transform-z-elevation": true,
-																		"transform-visibility": false,
-																		"destroy-with-parent": true
-																	}
-																}
-															],
-															"sid": 546166314299796
+															]
 														}
 													]
 												}
@@ -26937,9 +26953,9 @@
 												{
 													"id": "set-group-active",
 													"objectClass": "System",
-													"sid": 397422943606373,
+													"sid": 955470922962871,
 													"parameters": {
-														"group-name": "\"Shake Event\"",
+														"group-name": "\"Shake Booster Event\"",
 														"state": "activated"
 													}
 												},
@@ -28980,9 +28996,9 @@
 												{
 													"id": "set-group-active",
 													"objectClass": "System",
-													"sid": 609664904748811,
+													"sid": 505209507851498,
 													"parameters": {
-														"group-name": "\"Shake Event\"",
+														"group-name": "\"Shake Booster Event\"",
 														"state": "activated"
 													}
 												},
@@ -29560,7 +29576,7 @@
 		{
 			"eventType": "group",
 			"disabled": false,
-			"title": "Shake Event",
+			"title": "Shake Booster Event",
 			"description": "",
 			"isActiveOnStart": false,
 			"children": [
@@ -29619,9 +29635,9 @@
 								{
 									"id": "set-group-active",
 									"objectClass": "System",
-									"sid": 500320383349849,
+									"sid": 643303765955226,
 									"parameters": {
-										"group-name": "\"Shake Event\"",
+										"group-name": "\"Shake Booster Event\"",
 										"state": "deactivated"
 									}
 								}
@@ -29682,9 +29698,9 @@
 								{
 									"id": "set-group-active",
 									"objectClass": "System",
-									"sid": 213004433499909,
+									"sid": 248521340051469,
 									"parameters": {
-										"group-name": "\"Shake Event\"",
+										"group-name": "\"Shake Booster Event\"",
 										"state": "deactivated"
 									}
 								}
@@ -29695,6 +29711,228 @@
 				}
 			],
 			"sid": 991000879235047
+		},
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "Shake Merge Event",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "on-timer",
+							"objectClass": "GameManager",
+							"sid": 577210906063426,
+							"behaviorType": "Timer",
+							"parameters": {
+								"tag": "\"Bonus\""
+							}
+						}
+					],
+					"actions": [],
+					"sid": 196454025163505,
+					"disabled": true,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "trigger-once-while-true",
+									"objectClass": "System",
+									"sid": 125981201212178
+								}
+							],
+							"actions": [],
+							"sid": 817138722866401,
+							"disabled": true,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-eventvar",
+											"objectClass": "System",
+											"sid": 133701948748728,
+											"parameters": {
+												"variable": "BONUS_MULT",
+												"comparison": 4,
+												"value": "2"
+											}
+										}
+									],
+									"actions": [
+										{
+											"callFunction": "shake_merge_event",
+											"sid": 355516322703795,
+											"parameters": [
+												false
+											]
+										}
+									],
+									"sid": 750140115435136,
+									"disabled": true
+								}
+							]
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "is-timer-running",
+							"objectClass": "GameManager",
+							"sid": 838371688938399,
+							"behaviorType": "Timer",
+							"parameters": {
+								"tag": "\"MergeShake\""
+							}
+						}
+					],
+					"actions": [],
+					"sid": 346010291553235,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 317058274390187,
+									"parameters": {
+										"variable": "BONUS_MULT",
+										"comparison": 4,
+										"value": "2"
+									}
+								}
+							],
+							"actions": [
+								{
+									"callFunction": "shake_merge_event",
+									"sid": 429113871006049,
+									"parameters": [
+										true
+									]
+								}
+							],
+							"sid": 330473975291382
+						}
+					]
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "else",
+							"objectClass": "System",
+							"sid": 348442996421908
+						}
+					],
+					"actions": [],
+					"sid": 773922446829978,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 604085860155563,
+									"parameters": {
+										"variable": "BONUS_MULT",
+										"comparison": 4,
+										"value": "2"
+									}
+								}
+							],
+							"actions": [
+								{
+									"callFunction": "shake_merge_event",
+									"sid": 974789325885467,
+									"parameters": [
+										false
+									]
+								}
+							],
+							"sid": 739962291441924
+						}
+					]
+				},
+				{
+					"functionName": "shake_merge_event",
+					"functionDescription": "",
+					"functionCategory": "",
+					"functionReturnType": "none",
+					"functionCopyPicked": false,
+					"functionIsAsync": false,
+					"functionParameters": [
+						{
+							"name": "enabled",
+							"type": "boolean",
+							"initialValue": "false",
+							"comment": "",
+							"sid": 679828927312568
+						}
+					],
+					"eventType": "function-block",
+					"conditions": [],
+					"actions": [],
+					"sid": 692391181236660,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-boolean-eventvar",
+									"objectClass": "System",
+									"sid": 882317758444910,
+									"parameters": {
+										"variable": "enabled"
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "set-active",
+									"objectClass": "fruitBox",
+									"sid": 487493191223348,
+									"behaviorType": "Sine4",
+									"parameters": {
+										"state": "active"
+									}
+								}
+							],
+							"sid": 215550246511216
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "else",
+									"objectClass": "System",
+									"sid": 485884943519379
+								}
+							],
+							"actions": [
+								{
+									"id": "set-active",
+									"objectClass": "fruitBox",
+									"sid": 523194285200047,
+									"behaviorType": "Sine4",
+									"parameters": {
+										"state": "inactive"
+									}
+								}
+							],
+							"sid": 904445082757115
+						}
+					]
+				}
+			],
+			"sid": 391573628096900
 		},
 		{
 			"functionName": "remove_joint",
@@ -30073,7 +30311,7 @@
 												"const start_x = center_grid_x-(grid_width/2)-(item_width/2)-((x_spacing*(tempLevelGoalsArr.length-1)/2));",
 												"",
 												"for (let i = 0; i < tempLevelGoalsArr.length; i++) {",
-												"    const goals_frame = runtime.objects.goalsUI.createInstance(\"UI\", start_x+(item_width*(i+1))+(i*x_spacing), 85, true);",
+												"    const goals_frame = runtime.objects.goalsUI.createInstance(\"UI\", start_x+(item_width*(i+1))+(i*x_spacing), 88, true);",
 												"\tconst label_goals = runtime.objects.labelGoalsUI.createInstance(\"UI\", goals_frame.x+15, goals_frame.y+2);",
 												"\tgoals_frame.instVars.ID = \"HUD_UI\";",
 												"\tgoals_frame.animationFrame = tempLevelGoalsArr[i].goalsID;",
@@ -30106,12 +30344,12 @@
 											"type": "script",
 											"language": "javascript",
 											"script": [
-												"const x_spacing = 8;",
+												"const x_spacing = 25;",
 												"const item_width = tempLevelGoalsArr.length > 1 ? 36 : 0;",
 												"const grid_width = (tempLevelGoalsArr.length)*item_width;",
 												"const start_level_screen = runtime.objects.LevelAdvBoundaryLine.getPickedInstances();",
 												"const center_grid_x = 430/2;",
-												"const center_grid_y = (932/2)-100;",
+												"const center_grid_y = (932/2)-90;",
 												"const start_x = center_grid_x-(grid_width/2)-(item_width/2)-((x_spacing*(tempLevelGoalsArr.length-1)/2));",
 												"",
 												"for (let i = 0; i < tempLevelGoalsArr.length; i++) {",
@@ -31907,10 +32145,6 @@
 								}
 							],
 							"actions": [
-								{
-									"callFunction": "set_boosters_frame_unlocked",
-									"sid": 167445131421853
-								},
 								{
 									"id": "set-eventvar-value",
 									"objectClass": "System",

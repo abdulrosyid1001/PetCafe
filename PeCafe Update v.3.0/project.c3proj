@@ -416,7 +416,8 @@
 			"coinAnim",
 			"circleTouch",
 			"touchGuide",
-			"gameover_shadow"
+			"gameover_shadow",
+			"Sprite2"
 		],
 		"subfolders": [
 			{
@@ -948,7 +949,7 @@
 	},
 	"properties": {
 		"description": "Merge the Animals",
-		"version": "3.0.0.1",
+		"version": "3.1.0.0",
 		"autoIncrementVersion": false,
 		"author": "Master",
 		"authorEmail": "",
