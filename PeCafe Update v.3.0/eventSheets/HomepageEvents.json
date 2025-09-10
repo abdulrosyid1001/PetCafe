@@ -238,7 +238,9 @@
 						"\t\t\t\tdimension_event_GA(\"old_user\");",
 						"\t\t\t}, timeout_GA);",
 						"\t\t}",
-						"\t\truntime.callFunction(\"design_event\", \"retention\", `retention_D${runtime.globalVars.total_day}`);",
+						"\t\tsetTimeout(() => {",
+						"\t\t\truntime.callFunction(\"design_event\", \"retention\", `retention_D${runtime.globalVars.total_day}`);",
+						"\t\t}, timeout_GA);",
 						"\t}",
 						"\t// runtime.globalVars.total_day++;",
 						"\truntime.globalVars.day = runtime.globalVars.day +d+1;",
@@ -256,7 +258,9 @@
 						"else{",
 						"\tif(runtime.globalVars.is_sent_login_analytics==0){",
 						"\t\truntime.globalVars.is_sent_login_analytics = 1;",
-						"\t\truntime.callFunction(\"design_event\", \"retention\", `retention_D${runtime.globalVars.total_day}`);",
+						"\t\tsetTimeout(() => {",
+						"\t\t\truntime.callFunction(\"design_event\", \"retention\", `retention_D${runtime.globalVars.total_day}`);",
+						"\t\t}, timeout_GA);\t",
 						"\t}",
 						"}",
 						"",
@@ -896,7 +900,9 @@
 									"type": "script",
 									"language": "javascript",
 									"script": [
-										"progression_event(\"start\", \"ftue_dailybonus_show\");"
+										"setTimeout(() => {",
+										"\tprogression_event(\"start\", \"ftue_dailybonus_show\");",
+										"}, timeout_GA);"
 									]
 								}
 							],

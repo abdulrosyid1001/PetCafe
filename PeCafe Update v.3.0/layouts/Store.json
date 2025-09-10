@@ -31,7 +31,7 @@
 									"y": false,
 									"z": false,
 									"w": true,
-									"h": false,
+									"h": true,
 									"a": true,
 									"o": false,
 									"v": false,
@@ -551,81 +551,6 @@
 						"height": 13,
 						"originX": 0.5,
 						"originY": 0.5,
-						"color": [
-							1,
-							1,
-							1,
-							1
-						],
-						"angle": 0,
-						"zElevation": 0
-					}
-				},
-				{
-					"type": "canopyTiled",
-					"properties": {
-						"initially-visible": true,
-						"origin": "top",
-						"wrap-horizontal": "repeat",
-						"wrap-vertical": "repeat",
-						"image-offset-x": 0,
-						"image-offset-y": 0,
-						"image-scale-x": 1,
-						"image-scale-y": 1,
-						"image-angle": 0,
-						"enable-tile-randomization": false,
-						"x-random": 1,
-						"y-random": 1,
-						"angle-random": 1,
-						"blend-margin-x": 0.1,
-						"blend-margin-y": 0.1
-					},
-					"uid": 102,
-					"sid": 377218333130725,
-					"tags": "",
-					"instanceVariables": {},
-					"behaviors": {},
-					"sceneGraphData": {
-						"parent-uid": 100,
-						"uid": 102,
-						"flags": {
-							"x": false,
-							"y": false,
-							"z": false,
-							"w": true,
-							"h": false,
-							"a": true,
-							"o": false,
-							"v": false,
-							"d": true,
-							"sm": "normal"
-						},
-						"preview": {
-							"transformX": 0,
-							"transformY": 0,
-							"transformZElevation": 0,
-							"transformW": 0,
-							"transformH": 0,
-							"transformA": 0,
-							"transformSX": 0,
-							"transformSY": 0,
-							"transformO": 0,
-							"previewSceneGraph": false
-						}
-					},
-					"instanceFolderItem": {
-						"sid": 377218333130725,
-						"expanded": true
-					},
-					"showing": true,
-					"locked": false,
-					"world": {
-						"x": 215,
-						"y": 0,
-						"width": 1291,
-						"height": 51,
-						"originX": 0.5,
-						"originY": 0,
 						"color": [
 							1,
 							1,

@@ -3174,16 +3174,6 @@
 													"isInverted": true
 												},
 												{
-													"id": "compare-eventvar",
-													"objectClass": "System",
-													"sid": 501911180747544,
-													"parameters": {
-														"variable": "BONUS_MULT",
-														"comparison": 5,
-														"value": "5"
-													}
-												},
-												{
 													"id": "compare-boolean-eventvar",
 													"objectClass": "System",
 													"sid": 914825284857705,
@@ -4532,13 +4522,6 @@
 								"variable": "gameState",
 								"value": "\"play\""
 							}
-						},
-						{
-							"type": "script",
-							"language": "javascript",
-							"script": [
-								"progression_event(\"completed\", runtime.globalVars.pe_value);"
-							]
 						}
 					],
 					"sid": 495741360998571,
@@ -4569,6 +4552,31 @@
 								}
 							],
 							"sid": 623080587143525
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-eventvar",
+									"objectClass": "System",
+									"sid": 552306917921629,
+									"parameters": {
+										"variable": "tutorial_case",
+										"comparison": 1,
+										"value": "\"adventure\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"type": "script",
+									"language": "javascript",
+									"script": [
+										"progression_event(\"completed\", runtime.globalVars.pe_value);"
+									]
+								}
+							],
+							"sid": 784235750892346
 						},
 						{
 							"eventType": "block",
@@ -4607,6 +4615,7 @@
 											"language": "javascript",
 											"script": [
 												"setTimeout(() => {",
+												"\tprogression_event(\"completed\", runtime.globalVars.pe_value);",
 												"\tprogression_event(\"start\", \"ftue_adv_control_tap\");",
 												"\tprogression_event(\"completed\", \"ftue_adv_control_tap\");",
 												"}, timeout_GA);"
@@ -4629,6 +4638,7 @@
 											"type": "script",
 											"language": "javascript",
 											"script": [
+												"progression_event(\"completed\", runtime.globalVars.pe_value);",
 												"progression_event(\"start\", \"ftue_adv_goals_tap\");",
 												"progression_event(\"completed\", \"ftue_adv_goals_tap\");"
 											]
@@ -29801,11 +29811,11 @@
 								{
 									"id": "compare-eventvar",
 									"objectClass": "System",
-									"sid": 317058274390187,
+									"sid": 649056819807487,
 									"parameters": {
 										"variable": "BONUS_MULT",
-										"comparison": 4,
-										"value": "2"
+										"comparison": 5,
+										"value": "5"
 									}
 								}
 							],
@@ -29831,35 +29841,16 @@
 							"sid": 348442996421908
 						}
 					],
-					"actions": [],
-					"sid": 773922446829978,
-					"children": [
+					"actions": [
 						{
-							"eventType": "block",
-							"conditions": [
-								{
-									"id": "compare-eventvar",
-									"objectClass": "System",
-									"sid": 604085860155563,
-									"parameters": {
-										"variable": "BONUS_MULT",
-										"comparison": 4,
-										"value": "2"
-									}
-								}
-							],
-							"actions": [
-								{
-									"callFunction": "shake_merge_event",
-									"sid": 974789325885467,
-									"parameters": [
-										false
-									]
-								}
-							],
-							"sid": 739962291441924
+							"callFunction": "shake_merge_event",
+							"sid": 787478028485913,
+							"parameters": [
+								false
+							]
 						}
-					]
+					],
+					"sid": 773922446829978
 				},
 				{
 					"functionName": "shake_merge_event",

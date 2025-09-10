@@ -225,6 +225,14 @@
 							"parameters": {
 								"x": "-500-ViewportWidth(Self.LayerName)"
 							}
+						},
+						{
+							"type": "script",
+							"language": "javascript",
+							"script": [
+								"load_ad(\"interstitial\");",
+								"load_ad(\"rewarded\");"
+							]
 						}
 					],
 					"sid": 302076034186188,
@@ -452,6 +460,7 @@
 										"\tgame_loading_completed(100);",
 										"\tif(tutorialCompletedArr[0] === 1){",
 										"\t\truntime.globalVars.game_mode = \"adventure\";",
+										"\t\truntime.globalVars.isFTUE = true;",
 										"\t\truntime.callFunction(\"go_to_layout\", \"Game\");",
 										"\t}",
 										"\telse{",
@@ -4337,16 +4346,35 @@
 									}
 								}
 							],
-							"actions": [
+							"actions": [],
+							"sid": 211372968439096,
+							"children": [
 								{
-									"type": "script",
-									"language": "javascript",
-									"script": [
-										" simpleVibration();"
-									]
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-eventvar",
+											"objectClass": "System",
+											"sid": 876973449797009,
+											"parameters": {
+												"variable": "vibrate",
+												"comparison": 0,
+												"value": "\"on\""
+											}
+										}
+									],
+									"actions": [
+										{
+											"type": "script",
+											"language": "javascript",
+											"script": [
+												" simpleVibration();"
+											]
+										}
+									],
+									"sid": 177090699427668
 								}
-							],
-							"sid": 211372968439096
+							]
 						},
 						{
 							"eventType": "block",

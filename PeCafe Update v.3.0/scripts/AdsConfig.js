@@ -1,8 +1,8 @@
 // Configuration and state variables
 export let platform_ad = "Test";
 export let parent = window.parent.window;
-export let get_lang = new URLSearchParams(window.location.search).get('lang') || "en"; // Default to English
-export let god_mode = new URLSearchParams(window.location.search).get('gm') || "on"; // Default to no
+export let get_lang = new URLSearchParams(window.location.search).get('lang') || "en"; // Default to English ("en")
+export let god_mode = new URLSearchParams(window.location.search).get('gm') || "off"; // Default to "off"
 export let tracking_ad_status = "none"; // Tracks ad status (e.g., started, completed, skipped)
 export let is_done_ad = false; // Prevents multiple ad calls on single button click
 export let is_have_ad = false; // True: use platform ads, False: use sample ads
@@ -24,7 +24,11 @@ let ad_reward_state; // State for rewarded ads
 let is_grant_reward = false; // Tracks reward grant status
 let once_preload = false; // Tracks ad preload status
 let ad_placement = "null";
-export const timeout_GA = 2000;
+export const timeout_GA = 5000;
+let is_loaded_interstitial_ad = false;
+let is_loaded_rewarded_ad = false;
+var interst_ad = null;
+var reward_ad = null;
 
 
 function init_config_ad() {
@@ -353,6 +357,7 @@ export function game_analytics(ga, game_key, secret_key) {
 
     switch (ga) {
         case "initialize":
+            //NEW RULE FOR INIT GA, set this event to index html after load the JS.
             gameanalytics.GameAnalytics.configureAvailableResourceCurrencies(["coins", "hammer", "shake", "brush", "rainbow"]);
             gameanalytics.GameAnalytics.configureAvailableResourceItemTypes(["shop", "star_jar", "daily_login", "weekly_login", "add_booster_pop", "buy_booster_pop", "use_booster", "tutorial", "insufficient_pop_up", "initial", "buy_moves"]);
             gameanalytics.GameAnalytics.configureAvailableCustomDimensions01(["new_user", "returning_user", "old_user"]);
@@ -445,9 +450,45 @@ if (is_game_analytics) {
 
 // Load ad (placeholder for preload logic)
 export function load_ad(_ad_format, _ad_reward_state = -1) {
+     //placement-id facebook list
+    //403800600388584  //petmod
+    //2487129365389020
+    //1196456724956425
+    //1196456948289736
+    //1196456841623080  //petcafe '1287995509583488_1196456841623080'
     ad_format = _ad_format;
     ad_reward_state = _ad_reward_state;
     console.log(`load_ad: ${_ad_format}`);
+    if(ad_format == "interstitial"){
+        if(!is_loaded_interstitial_ad){
+            if(platform_ad == "Facebook"){
+                FBInstant.getInterstitialAdAsync('1036071814995688_403800600388584',)
+                .then(function(interstitial) {
+                    interst_ad = interstitial;
+                    return interst_ad.loadAsync();
+                    }).then(function() {
+                        is_loaded_interstitial_ad = true;
+                    }).catch(function(err){
+                        is_loaded_interstitial_ad = false;
+                    });
+            }
+        }
+    }
+    else{
+         if(!is_loaded_rewarded_ad){
+            if(platform_ad == "Facebook"){
+                FBInstant.getRewardedVideoAsync('1036071814995688_403800600388584',)
+                .then(function(rewardedVideo) {
+                    reward_ad = rewardedVideo;
+                    return reward_ad.loadAsync();
+                    }).then(function() {
+                        is_loaded_rewarded_ad = true;
+                    }).catch(function(err){
+                        is_loaded_rewarded_ad = false;
+                    });
+            }
+        }
+    }
 }
 
 // Show ad based on platform and format
@@ -588,7 +629,7 @@ export function show_ad(_ad_format, _ad_reward_state = -1) {
 					} else if (placementInfo.breakStatus !== "viewed") {
                         tracking_ad_status = "skipped";
                         ad_event_GA("FailedShow", "Interstitial", platform_ad.toLowerCase(), ad_placement);
-						console.log("NOTviewed");
+						console.log("NOTviewed", placementInfo.breakStatus);
 
 					}
 					else{
@@ -631,7 +672,7 @@ export function show_ad(_ad_format, _ad_reward_state = -1) {
 					} else if (placementInfo.breakStatus !== "viewed") {
                         tracking_ad_status = "error";
                         ad_event_GA("FailedShow", "RewardedVideo", platform_ad.toLowerCase(), ad_placement);
-						console.log("NOTviewed");
+						console.log("NOTviewed", placementInfo.breakStatus);
 						return;
 					}
 					else{
@@ -696,52 +737,76 @@ export function show_ad(_ad_format, _ad_reward_state = -1) {
              switch(ad_format){
                 case "interstitial":
                     //app-id_placement-id
-                    var interst_ad = null;
-                    FBInstant.getInterstitialAdAsync('1036071814995688_403800600388584',)
-                    .then(function(interstitial) {
-                        interst_ad = interstitial;
-                        tracking_ad_status = "started";
-                        return interst_ad.loadAsync();
-                    }).then(function() {
-                        return interst_ad.showAsync()
-                        .then(function() {
-                            tracking_ad_status = "skipped";
-                            // Ad completed 
-                        })
-                        .catch(function(error) {
-                            console.error('Ad error:', error);
-                            tracking_ad_status = "skipped";
-                        });
-                    }).catch(function(err){
-                        setTimeout(() => {
-                        tracking_ad_status = "error";
-                        console.error('interstitial failed to preload: ' + err.message);
-                        }, 500);
+                    // FBInstant.getInterstitialAdAsync('1036071814995688_403800600388584',)
+                    // .then(function(interstitial) {
+                    //     interst_ad = interstitial;
+                    //     tracking_ad_status = "started";
+                    //     return interst_ad.loadAsync();
+                    // }).then(function() {
+                    //     return interst_ad.showAsync()
+                    //     .then(function() {
+                    //         tracking_ad_status = "skipped";
+                    //         // Ad completed 
+                    //     })
+                    //     .catch(function(error) {
+                    //         console.error('Ad error:', error);
+                    //         tracking_ad_status = "skipped";
+                    //     });
+                    // }).catch(function(err){
+                    //     setTimeout(() => {
+                    //     tracking_ad_status = "error";
+                    //     console.error('interstitial failed to preload: ' + err.message);
+                    //     }, 500);
+                    // });
+                    interst_ad.showAsync()
+                    .then(function() {
+                        tracking_ad_status = "skipped";
+                        is_loaded_interstitial_ad = false;
+                        load_ad("interstitial");
+                        // Ad completed 
+                    })
+                    .catch(function(error) {
+                        console.error('Ad error:', error);
+                        tracking_ad_status = "skipped";
+                        is_loaded_interstitial_ad = false;
+                        load_ad("interstitial");
                     });
                     break;
                 case "rewarded":
-                    var reward_ad = null;
                      //app-id_placement-id
-                      FBInstant.getRewardedVideoAsync('1036071814995688_403800600388584',)
-                    .then(function(rewardedVideo) {
-                          reward_ad = rewardedVideo;
-                          tracking_ad_status = "started";
-                        return reward_ad.loadAsync();
-                    }).then(function() {
-                        return reward_ad.showAsync()
-                        .then(function() {
-                            tracking_ad_status = "completed";
+                    //   FBInstant.getRewardedVideoAsync('1036071814995688_403800600388584',)
+                    // .then(function(rewardedVideo) {
+                    //       reward_ad = rewardedVideo;
+                    //       tracking_ad_status = "started";
+                    //     return reward_ad.loadAsync();
+                    // }).then(function() {
+                    //     return reward_ad.showAsync()
+                    //     .then(function() {
+                    //         tracking_ad_status = "completed";
+                    //         // Ad completed 
+                    //     })
+                    //     .catch(function(error) {
+                    //         console.error('Ad error:', error);
+                    //         tracking_ad_status = "error";
+                    //     });
+                    // }).catch(function(err){
+                    //     setTimeout(() => {
+                    //     tracking_ad_status = "error";
+                    //     console.error('rewarded failed to preload: ' + err.message);
+                    //     }, 500);
+                    // });
+                    reward_ad.showAsync()
+                    .then(function() {
+                        tracking_ad_status = "completed";
+                        is_loaded_rewarded_ad = false;
+                        load_ad("rewarded");
                             // Ad completed 
                         })
-                        .catch(function(error) {
-                            console.error('Ad error:', error);
-                            tracking_ad_status = "error";
-                        });
-                    }).catch(function(err){
-                        setTimeout(() => {
+                    .catch(function(error) {
+                        console.error('Ad error:', error);
                         tracking_ad_status = "error";
-                        console.error('rewarded failed to preload: ' + err.message);
-                        }, 500);
+                        is_loaded_rewarded_ad = false;
+                        load_ad("rewarded");
                     });
                     break;
             }

@@ -211,12 +211,10 @@ function hideAdBanner() {
 
 function removeAdAnchor(){
      if(platform_ad == "Xiaomi"){
-        document.querySelectorAll('.adsbygoogle.adsbygoogle-noablate').forEach(el => {
-            if (el && typeof el.remove === 'function') {
-            el.remove();
-            } else {
-            console.warn('Element does not support remove method or is invalid:', el);
-            }
+         const anchors = document.querySelectorAll('ins[data-anchor-shown="true"]');
+             anchors.forEach(anchor => {
+            // Menghapus elemen dari DOM
+            anchor.remove();
         });
      }
 }
