@@ -1,47 +1,34 @@
-//v1.6
+//v1.7
 export const levelMissionDataArr = 
 [
     {
         "level": 1,
         "goals": [
             {
-                "goalsID": 3,
-                "qty": 4,
-            }
-        ],
-        "moves": 50,
-        "isprobabilites" : false,
-        "probabilities" :[0.40, 0.40, 0.10, 0.10, 0.00, 0.00],
-        "nexttileseq" : [0,1,0,1,0,1,1,1,0,1,0,1,0,0,1,1,0,1,0,0,0,1,0,1,1,0,0,1,0,1]
-    },
-    {
-        "level": 2,
-        "goals": [
-            {
-                "goalsID": 4,
-                "qty": 4
+                "goalsID": 5,
+                "qty": 3
             }
         ],
         "moves": 50,
          "isprobabilites" : false,
         "probabilities" :[0.40, 0.40, 0.10, 0.10, 0.00, 0.00],
-        "nexttileseq" : [2,2,3,2,1,1,2,3,1,3,1,2,1,0,2,2,1,0,2,1,3,2,0,1,0,2,2,1,2,2]
+        "nexttileseq" : [2,2,3,2,1,1,2,3,1,3,1,2,1,0,2,4,1,0,2,1,3,2,0,4,0,2,2,1,2,2]
     },
     {
-        "level": 3,
+        "level": 2,
         "goals": [
             {
                 "goalsID": 6,
                 "qty": 2
             }
         ],
-        "moves": 40,
-         "isprobabilites" : false,
-        "probabilities" :[0.40, 0.40, 0.15, 0.05, 0.00, 0.00],
-        "nexttileseq" : [0,0,0,1,2,1,1,0,0,0,0,1,2,0,2,0,0,0,0,1,1,2,0,0,2,1,2,0,2,1]
+        "moves": 50,
+        "isprobabilites" : false,
+        "probabilities" :[0.20, 0.20, 0.20, 0.00, 0.40, 0.00],
+        "nexttileseq" : [2,1,1,0,2,4,2,1,0,1,4,5,0,1,2,3,4,5,0,1,2,3,4,5,0,1,2,3,4,5]
     },
     {
-        "level": 4,
+        "level": 3,
         "goals": [
             {
                 "goalsID": 7,
@@ -54,30 +41,43 @@ export const levelMissionDataArr =
         "nexttileseq" : [4,3,4,2,4,4,0,2,4,4,3,2,4,1,2,3,4,3,0,1,2,3,4,2,0,1,2,3,4,3]
     },
     {
+        "level": 4,
+        "goals": [
+            {
+                "goalsID": 7,
+                "qty": 1,
+            }
+          ],  
+        "moves": 50,
+        "isprobabilites" : true,
+        "probabilities" :[0.30, 0.30, 0.20, 0.10, 0.10, 0.00],
+        "nexttileseq" : [4,3,4,2,4,4,0,2,4,4,3,2,4,1,2,3,4,3,0,1,2,3,4,2,0,1,2,3,4,3]
+    },
+    {
         "level": 5,
         "goals": [
             {
-                "goalsID": 5,
-                "qty": 3
-            }
-        ],
-        "moves": 50,
-        "isprobabilites" : false,
-        "probabilities" :[0.20, 0.20, 0.20, 0.00, 0.40, 0.00],
-        "nexttileseq" : [2,1,1,0,2,4,2,1,0,1,4,5,0,1,2,3,4,5,0,1,2,3,4,5,0,1,2,3,4,5]
-    },
-    {
-        "level": 6,
-        "goals": [
-            {
                 "goalsID": 13,
-                "qty": 4
+                "qty": 6
             }
         ],
         "moves": 50,
         "isprobabilites" : true,
         "probabilities" :[0.40, 0.20, 0.20, 0.20, 0.00, 0.00],
         "nexttileseq" : [0,1,2,3,4,5,0,1,2,3,4,5,0,1,2,3,4,5,0,1,2,3,4,5,0,1,2,3,4,5]
+    },
+    {
+        "level": 6,
+        "goals": [
+            {
+                "goalsID": 6,
+                "qty": 2
+            }
+        ],
+        "moves": 40,
+         "isprobabilites" : false,
+        "probabilities" :[0.40, 0.40, 0.15, 0.05, 0.00, 0.00],
+        "nexttileseq" : [0,0,0,1,2,1,1,0,0,0,0,1,2,0,2,0,0,0,0,1,1,2,0,0,2,1,2,0,2,1]
     },
     {
         "level": 7,
