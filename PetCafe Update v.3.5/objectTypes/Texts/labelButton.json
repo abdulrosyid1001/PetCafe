@@ -1,0 +1,32 @@
+{
+	"name": "labelButton",
+	"plugin-id": "Text",
+	"sid": 523216813947678,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [
+		{
+			"name": "ID",
+			"type": "string",
+			"desc": "",
+			"show": true,
+			"sid": 842608022885556
+		},
+		{
+			"name": "ID_number",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 663871304616300
+		},
+		{
+			"name": "ID_case",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 481262670031156
+		}
+	],
+	"behaviorTypes": [],
+	"effectTypes": []
+}

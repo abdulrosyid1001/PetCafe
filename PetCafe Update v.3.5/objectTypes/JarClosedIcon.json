@@ -1,0 +1,89 @@
+{
+	"name": "JarClosedIcon",
+	"plugin-id": "Sprite",
+	"sid": 143452488968340,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [
+		{
+			"name": "ID",
+			"type": "string",
+			"desc": "",
+			"show": true,
+			"sid": 486497988538329
+		}
+	],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Tween",
+			"name": "Tween",
+			"sid": 193607767245477
+		},
+		{
+			"behaviorId": "Sin",
+			"name": "Sine",
+			"sid": 156575376518351
+		}
+	],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 151,
+						"height": 219,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 5473797,
+						"collisionPoly": {
+							"points": [
+								0.4105960264900662,
+								0,
+								0.9139072847682119,
+								0.0547945205479452,
+								0.9668874172185431,
+								0.1050228310502283,
+								1,
+								0.4063926940639269,
+								0.9470198675496688,
+								0.908675799086758,
+								0.8874172185430463,
+								0.9452054794520548,
+								0.8211920529801324,
+								0.9680365296803652,
+								0.39072847682119205,
+								1,
+								0.23841059602649006,
+								0.9863013698630136,
+								0,
+								0.8401826484018264,
+								0,
+								0.4018264840182648,
+								0.06622516556291391,
+								0.0684931506849315,
+								0.11258278145695365,
+								0.045662100456621
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 128861323341845,
+				"name": "Default",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 0
+			}
+		],
+		"subfolders": []
+	}
+}

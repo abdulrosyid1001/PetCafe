@@ -1,0 +1,34 @@
+{
+	"name": "props_wood_rectangle",
+	"plugin-id": "NinePatch",
+	"sid": 518151574384556,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Physics",
+			"name": "Physics",
+			"sid": 661704230876340
+		},
+		{
+			"behaviorId": "solid",
+			"name": "Solid",
+			"sid": 310835994375588
+		}
+	],
+	"effectTypes": [],
+	"image": {
+		"width": 12,
+		"height": 62,
+		"originX": 0.5,
+		"originY": 0.5,
+		"originalSource": "",
+		"exportFormat": "lossless",
+		"exportQuality": 0.8,
+		"fileType": "image/png",
+		"imageSpriteId": 1065048,
+		"useCollisionPoly": true,
+		"tag": ""
+	}
+}

@@ -1,0 +1,88 @@
+{
+	"name": "frameGameOver",
+	"plugin-id": "Sprite",
+	"sid": 183144150547312,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 192,
+						"height": 90,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 7120575,
+						"collisionPoly": {
+							"points": [
+								0.26424870466321243,
+								0.01098901098901099,
+								0.9896373056994818,
+								0.04395604395604396,
+								0.9637305699481865,
+								0.978021978021978,
+								0.03626943005181347,
+								0.989010989010989,
+								0.015544041450777202,
+								0.945054945054945,
+								0.0051813471502590676,
+								0.13186813186813187,
+								0.02072538860103627,
+								0.02197802197802198
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					},
+					{
+						"width": 192,
+						"height": 91,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 9493503,
+						"collisionPoly": {
+							"points": [
+								0.2760416666666667,
+								0,
+								0.9895833333333334,
+								0.03333333333333333,
+								0.96875,
+								0.9777777777777777,
+								0.015625,
+								0.9555555555555556,
+								0,
+								0.14444444444444443,
+								0.015625,
+								0.022222222222222223
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 582334231961859,
+				"name": "Animation 1",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}

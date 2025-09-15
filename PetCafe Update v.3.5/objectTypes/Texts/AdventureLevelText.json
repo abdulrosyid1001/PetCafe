@@ -1,0 +1,15 @@
+{
+	"name": "AdventureLevelText",
+	"plugin-id": "Text",
+	"sid": 783223960735052,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [
+		{
+			"effectId": "skymen_BetterOutline",
+			"name": "BetterOutline"
+		}
+	]
+}

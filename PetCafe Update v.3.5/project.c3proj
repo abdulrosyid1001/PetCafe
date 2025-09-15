@@ -1,0 +1,1007 @@
+{
+	"projectFormatVersion": 1,
+	"savedWithRelease": 44902,
+	"name": "PetCafe",
+	"runtime": "c3",
+	"useWorker": "dom",
+	"bundleAddons": false,
+	"usedAddons": [
+		{
+			"type": "plugin",
+			"id": "AJAX",
+			"name": "AJAX",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "Arr",
+			"name": "Array",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "Audio",
+			"name": "Audio",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "DrawingCanvas",
+			"name": "Drawing canvas",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "GameAnalytics",
+			"name": "GameAnalytics",
+			"author": "GameAnalytics",
+			"bundled": false,
+			"version": "3.0.13"
+		},
+		{
+			"type": "plugin",
+			"id": "Json",
+			"name": "JSON",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "Keyboard",
+			"name": "Keyboard",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "LocalStorage",
+			"name": "Local storage",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "NinePatch",
+			"name": "9-patch",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "Particles",
+			"name": "Particles",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "Sprite",
+			"name": "Sprite",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "Text",
+			"name": "Text",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "TiledBg",
+			"name": "Tiled Background",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "Touch",
+			"name": "Touch",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "plugin",
+			"id": "gamepad",
+			"name": "Gamepad",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "DragnDrop",
+			"name": "Drag & Drop",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "Fade",
+			"name": "Fade",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "Flash",
+			"name": "Flash",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "Physics",
+			"name": "Physics",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "Rotate",
+			"name": "Rotate",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "Sin",
+			"name": "Sine",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "Timer",
+			"name": "Timer",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "Tween",
+			"name": "Tween",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "behavior",
+			"id": "solid",
+			"name": "Solid",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "effect",
+			"id": "blacknwhitemask",
+			"name": "Black & white mask",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "effect",
+			"id": "brightness",
+			"name": "Brightness",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "effect",
+			"id": "colorhalftone",
+			"name": "Color halftone",
+			"author": "Evan Wallace",
+			"bundled": false
+		},
+		{
+			"type": "effect",
+			"id": "contrast",
+			"name": "Contrast",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "effect",
+			"id": "grayscale",
+			"name": "Grayscale",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "effect",
+			"id": "hsladjust",
+			"name": "Adjust HSL",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "effect",
+			"id": "overlay",
+			"name": "Overlay",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "effect",
+			"id": "radialblur",
+			"name": "Radial blur",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "effect",
+			"id": "replacecolor",
+			"name": "Replace color",
+			"author": "Scirra",
+			"bundled": false
+		},
+		{
+			"type": "effect",
+			"id": "skymen_BetterOutline",
+			"name": "Better Outline",
+			"author": "skymen",
+			"bundled": false,
+			"version": "2.1.0.1"
+		}
+	],
+	"uniqueId": "fjqckwsswad",
+	"objectTypes": {
+		"items": [
+			"Limits",
+			"UINext",
+			"UIBest",
+			"GuidingLine",
+			"GameManager",
+			"Fader",
+			"Background",
+			"back_eye",
+			"front_eye",
+			"mouth",
+			"collider_tile_face",
+			"base_eye",
+			"scoreFrame",
+			"nextLevTileFrame",
+			"progressLevBar",
+			"currLevFrame",
+			"floatingIcon",
+			"Sprite",
+			"piala",
+			"banner_space",
+			"framePopUp",
+			"contentPopUp",
+			"buttonPopUp",
+			"black_shadow",
+			"subBoundaryLine",
+			"frameSettings",
+			"subFrameSettings",
+			"Button",
+			"fruitBox",
+			"ScreenshotResult",
+			"BG_GameOver",
+			"frameGameOver",
+			"buttonGameOver",
+			"frameButtonGameOver",
+			"ticketIcon",
+			"adsIcon",
+			"tempScreenshot",
+			"frameHUD",
+			"frameNotification",
+			"BG_Homepage",
+			"dollarIcon",
+			"ButtonPlay",
+			"navbarIcon",
+			"storeIcon",
+			"missionIcon",
+			"navbarButton",
+			"petCafeTittleLogo",
+			"frameNavbarButton",
+			"Star_progress_frame",
+			"starIcon",
+			"bluePanel",
+			"packIcon",
+			"redPanel",
+			"NPC_",
+			"unlockedMissionFrame",
+			"star_fill_progress",
+			"time_icon",
+			"limitsFrame",
+			"lightEffect",
+			"ParticlesSpark",
+			"shine",
+			"progressLevFrame",
+			"Frame_SS",
+			"frame_bluebutton",
+			"convetyGreen",
+			"convetyBlue",
+			"convetyRed",
+			"convetyYellow",
+			"convetyWhite",
+			"ParticlesMerge",
+			"Main_BG",
+			"levelMission",
+			"levelMissionLine",
+			"dragging",
+			"frameGameModeUI",
+			"BoundaryLine",
+			"Orange_Panel",
+			"camera",
+			"canopyTiled",
+			"bannerBundle",
+			"BG_banner_slider",
+			"devider_plane",
+			"devider_items",
+			"banner_slider_nav",
+			"orangeBoxClosed",
+			"greenButton",
+			"Shine2",
+			"bundleItemBG",
+			"StoreManager",
+			"subPanelItemStore",
+			"redRibbonItem",
+			"subitemImage",
+			"blueButton",
+			"orangeBoxOpened",
+			"mascotEndAdventure",
+			"subPanelEndAdventure",
+			"panelEndAdventure",
+			"starYellow",
+			"starDark",
+			"check_icon",
+			"closeButton",
+			"headPanelPopUp",
+			"frameBoosterActive",
+			"ParticlesSparkOrange",
+			"overlay",
+			"JarIcon",
+			"starterPackBG",
+			"red_Tag",
+			"start_Pack_subpanel",
+			"JarClosedIcon",
+			"JarOpenIcon",
+			"swipe_control",
+			"musicIcon",
+			"soundIcon",
+			"hepticIcon",
+			"supportIcon",
+			"noAdsIcon",
+			"exitIcon",
+			"collider_eye_face",
+			"starLevelFrame",
+			"goalsUI",
+			"labelGoalsUIFrame",
+			"props",
+			"props_wood_rectangle",
+			"props_jam",
+			"collider_props",
+			"tutorialFrame",
+			"cursorIcon",
+			"lockIcon",
+			"levelDesignFrame",
+			"breakerBrown",
+			"breakerBlue",
+			"breakerYellow",
+			"breakerGreen",
+			"panel_daily_login",
+			"9patch",
+			"removeadsIcon",
+			"green_fillbar_dailybonus",
+			"progress_box_daily_bonus",
+			"weekly_gift_Frame_Bar",
+			"cake_icon",
+			"cat_Icon",
+			"boosters_value",
+			"Gamepad",
+			"GameAnalytics",
+			"goalsTracer",
+			"canopyTiled2",
+			"PopupDetailInfoDailyLogin",
+			"Popup_Detail_Info_Stroke",
+			"ads_loading",
+			"black_ads_loading",
+			"weekly_point",
+			"green_shine",
+			"hammerAnim",
+			"brushAnim",
+			"smoke_brush_seq",
+			"ParticlesStar",
+			"Smoke_brush_seq_2",
+			"COMINGSOONTEXT",
+			"GameTempSaveManager",
+			"LevelAdvBoundaryLine",
+			"AdventureLevelHidePanel",
+			"ParticlesBlinkYellow",
+			"coinAnim",
+			"circleTouch",
+			"touchGuide",
+			"gameover_shadow",
+			"Sprite2",
+			"BG_footer_starjar"
+		],
+		"subfolders": [
+			{
+				"items": [
+					"Keyboard",
+					"LocalStorage",
+					"Touch",
+					"DrawingCanvas",
+					"AJAX",
+					"Audio",
+					"JSON"
+				],
+				"subfolders": [],
+				"name": "Plugins"
+			},
+			{
+				"items": [
+					"levelProgress",
+					"unlockedMission",
+					"itemStoreData",
+					"bannerStoreData",
+					"levelMissionData",
+					"unlockedBooster",
+					"unlockedBoosterData"
+				],
+				"subfolders": [],
+				"name": "Arrays"
+			},
+			{
+				"items": [
+					"HighScore",
+					"PlayerLevelText",
+					"TextFruit",
+					"TextFruitShadow",
+					"TextGameOver",
+					"TextScore",
+					"labelInfo",
+					"TextFlavor",
+					"TextTickets",
+					"labelButton",
+					"labelContentPopUp",
+					"labelGameOver",
+					"labelSettings",
+					"subTextPopUp",
+					"TextNotification",
+					"versionText",
+					"TextCoin",
+					"labelNavbarButton",
+					"labelStarProgress",
+					"labelOfferTime",
+					"HighScoreGameOver",
+					"labelMission",
+					"TextMove",
+					"labelUnlockedMission",
+					"labelBanner",
+					"labelBundleItem",
+					"labelSubMenuStore",
+					"labelSubItemRibbons",
+					"labelSubItemStatus",
+					"labelSubItemValue",
+					"labelGrantedInfo",
+					"subSubTextPopUp",
+					"labelGoalsUI",
+					"TextTutorial",
+					"labelLockInfo",
+					"labelAdventureGameOver",
+					"labelProgressCake",
+					"TextTutorial2",
+					"labelSubBannerStatus",
+					"AdventureLevelText",
+					"TextAddCoins"
+				],
+				"subfolders": [],
+				"name": "Texts"
+			},
+			{
+				"items": [
+					"boosterPlus",
+					"setting"
+				],
+				"subfolders": [],
+				"name": "Buttons"
+			},
+			{
+				"items": [
+					"boostersButton",
+					"boostersFrame",
+					"missionIconPack"
+				],
+				"subfolders": [],
+				"name": "Boosters"
+			},
+			{
+				"items": [
+					"eyePet",
+					"Fruit",
+					"NextEyePet",
+					"nextTile",
+					"UIFruit",
+					"rainbowTile",
+					"PetAssets"
+				],
+				"subfolders": [],
+				"name": "Tiles and UI Tile"
+			}
+		]
+	},
+	"functionsName": "Functions",
+	"autosaveData": null,
+	"containers": [],
+	"families": {
+		"items": [
+			"FruitFamily",
+			"NavBarFamily",
+			"BGHeightFamily",
+			"BGWidthFamily",
+			"allTextFamily",
+			"FruitnPropsFamily"
+		],
+		"subfolders": []
+	},
+	"layouts": {
+		"items": [
+			"ObjectRepository",
+			"Game",
+			"Homepage",
+			"Store",
+			"Missions",
+			"SplashScreen"
+		],
+		"subfolders": []
+	},
+	"eventSheets": {
+		"items": [
+			"Events",
+			"GlobalEvents",
+			"HomepageEvents",
+			"StoreEvents",
+			"MissionsEvents",
+			"SplashScreenEvent",
+			"AdsEvents"
+		],
+		"subfolders": []
+	},
+	"rootFileFolders": {
+		"script": {
+			"items": [
+				{
+					"name": "EventImports.js",
+					"type": "application/javascript",
+					"sid": 218878173963154,
+					"script-info": {
+						"purpose": "imports-for-events"
+					}
+				},
+				{
+					"name": "levelMissionData.js",
+					"type": "application/javascript",
+					"sid": 326540206588465,
+					"script-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "AdsConfig.js",
+					"type": "application/javascript",
+					"sid": 417271970730975,
+					"script-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "languanges.js",
+					"type": "application/javascript",
+					"sid": 367443694923898,
+					"script-info": {
+						"purpose": "none"
+					}
+				}
+			],
+			"subfolders": []
+		},
+		"sound": {
+			"items": [
+				{
+					"name": "Button_ToogleOnOff.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 109540872861605,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "Button_Play.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 573061072129554,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "Tile_Pop1.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 866962093049841,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "Tile_Pop2.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 772281153366396,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "Tile_Pop3.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 984646168883607,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "Cue_GameOver.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 578112135411249,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "Flavor_Text.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 827003352675365,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "PopUp_Appear.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 612485642202825,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "Adventure_Clear.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 988632283281707,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "Adventure_Fail.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 215464026931529,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "Booster_Brush.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 874811964954635,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "Booster_Hammer.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 360486515001706,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "Break_Ice.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 193771268971209,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "Break_Jam.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 271242589292755,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "Break_Wood.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 327857163367224,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "Button_Close.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 395751957529624,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "Button_Disabled.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 714790061900731,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "Button_Switch.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 965198026217518,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "Button_Tap.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 657951717701567,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "Tile_Drop.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 224765838920573,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "Gift_Open.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 846697360760725,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "Merge_Alpaca.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 671041261034915,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "Merge_Lion.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 837591857012862,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "Collected_Coins.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 984625852918043,
+					"file-info": {
+						"purpose": "none"
+					}
+				}
+			],
+			"subfolders": []
+		},
+		"music": {
+			"items": [
+				{
+					"name": "BGM_Gameplay.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 872961440641997,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "BGM_Homepage.webm",
+					"type": "audio/webm; codecs=opus",
+					"sid": 921539745681233,
+					"file-info": {
+						"purpose": "none"
+					}
+				}
+			],
+			"subfolders": []
+		},
+		"video": {
+			"items": [],
+			"subfolders": []
+		},
+		"font": {
+			"items": [
+				{
+					"name": "Coiny-Regular.ttf",
+					"type": "application/font-sfnt",
+					"sid": 854960018237753,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "LilitaOne-Regular.ttf",
+					"type": "application/font-sfnt",
+					"sid": 848970399180188,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "RussoOne-Regular.woff2",
+					"type": "font/woff2",
+					"sid": 541156180164515,
+					"file-info": {
+						"purpose": "none"
+					}
+				}
+			],
+			"subfolders": []
+		},
+		"icon": {
+			"items": [
+				{
+					"name": "icon-16.png",
+					"type": "image/png",
+					"sid": 645478739340725,
+					"icon-info": {
+						"purpose": "app-icon"
+					}
+				},
+				{
+					"name": "icon-32.png",
+					"type": "image/png",
+					"sid": 528806643147216,
+					"icon-info": {
+						"purpose": "app-icon"
+					}
+				},
+				{
+					"name": "icon-64.png",
+					"type": "image/png",
+					"sid": 811285207007215,
+					"icon-info": {
+						"purpose": "app-icon"
+					}
+				},
+				{
+					"name": "icon-128.png",
+					"type": "image/png",
+					"sid": 848498415602658,
+					"icon-info": {
+						"purpose": "app-icon"
+					}
+				},
+				{
+					"name": "icon-256.png",
+					"type": "image/png",
+					"sid": 552366827627724,
+					"icon-info": {
+						"purpose": "app-icon"
+					}
+				},
+				{
+					"name": "icon-512.png",
+					"type": "image/png",
+					"sid": 671281262911604,
+					"icon-info": {
+						"purpose": "app-icon"
+					}
+				},
+				{
+					"name": "loading-logo.png",
+					"type": "image/png",
+					"sid": 287286215441958,
+					"icon-info": {
+						"purpose": "loading-logo"
+					}
+				}
+			],
+			"subfolders": []
+		},
+		"general": {
+			"items": [
+				{
+					"name": "itemStoreData.json",
+					"type": "application/json",
+					"sid": 127096469226118,
+					"file-info": {
+						"purpose": "none"
+					}
+				},
+				{
+					"name": "bannerStoreData.json",
+					"type": "application/json",
+					"sid": 483402195006736,
+					"file-info": {
+						"purpose": "none"
+					}
+				}
+			],
+			"subfolders": []
+		}
+	},
+	"timelines": {
+		"items": [],
+		"subfolders": [
+			{
+				"items": [],
+				"subfolders": []
+			}
+		]
+	},
+	"flowcharts": {
+		"items": [],
+		"subfolders": []
+	},
+	"properties": {
+		"description": "Merge the Animals",
+		"version": "3.1.0.5",
+		"autoIncrementVersion": false,
+		"author": "Master",
+		"authorEmail": "",
+		"authorWebsite": "",
+		"appId": "com.gamotions.app",
+		"pixelRounding": true,
+		"zAxisScale": "normalized",
+		"fov": 0.7853981633974483,
+		"useLoaderLayout": false,
+		"fullscreenMode": "scale-outer",
+		"fullscreenQuality": "high",
+		"viewportFit": "auto",
+		"backgroundColor": [
+			1,
+			1,
+			1,
+			0
+		],
+		"splashColor": [
+			1,
+			1,
+			1,
+			0
+		],
+		"useThemeColor": false,
+		"themeColor": [
+			1,
+			1,
+			1,
+			0
+		],
+		"orientations": "portrait",
+		"webgpu": "auto",
+		"gpuPreference": "low-power",
+		"scriptsType": "module",
+		"framerateMode": "vsync",
+		"sampling": "trilinear",
+		"downscaling": "medium",
+		"renderingMode": "auto",
+		"anisotropicFiltering": "auto",
+		"zNear": 1,
+		"zFar": 10000,
+		"maxSpriteSheetSize": 2048,
+		"loaderStyle": "none",
+		"preloadSounds": true,
+		"cordovaiOSScheme": "app",
+		"cordovaAndroidScheme": "https",
+		"exportFileStructure": "folders",
+		"uidAllocationMode": "increment"
+	},
+	"viewportWidth": 430,
+	"viewportHeight": 932,
+	"firstLayout": "SplashScreen"
+}

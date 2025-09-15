@@ -1,0 +1,10 @@
+{
+	"name": "TextScore",
+	"plugin-id": "Text",
+	"sid": 506596525357927,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": []
+}
