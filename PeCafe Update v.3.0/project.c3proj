@@ -417,7 +417,8 @@
 			"circleTouch",
 			"touchGuide",
 			"gameover_shadow",
-			"Sprite2"
+			"Sprite2",
+			"BG_footer_starjar"
 		],
 		"subfolders": [
 			{
@@ -949,7 +950,7 @@
 	},
 	"properties": {
 		"description": "Merge the Animals",
-		"version": "3.1.0.3",
+		"version": "3.1.0.5",
 		"autoIncrementVersion": false,
 		"author": "Master",
 		"authorEmail": "",
@@ -993,7 +994,7 @@
 		"zNear": 1,
 		"zFar": 10000,
 		"maxSpriteSheetSize": 2048,
-		"loaderStyle": "progress",
+		"loaderStyle": "none",
 		"preloadSounds": true,
 		"cordovaiOSScheme": "app",
 		"cordovaAndroidScheme": "https",

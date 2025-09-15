@@ -3503,6 +3503,13 @@
 									"initialValue": "0",
 									"comment": "",
 									"sid": 357669840170565
+								},
+								{
+									"name": "case",
+									"type": "string",
+									"initialValue": "",
+									"comment": "",
+									"sid": 595440256169668
 								}
 							],
 							"eventType": "function-block",
@@ -3516,103 +3523,275 @@
 										{
 											"id": "compare-eventvar",
 											"objectClass": "System",
-											"sid": 949218371768022,
+											"sid": 600802646131104,
 											"parameters": {
-												"variable": "vis_star",
-												"comparison": 2,
-												"value": "20"
+												"variable": "case",
+												"comparison": 0,
+												"value": "\"show_progression\""
 											}
 										}
 									],
-									"actions": [
-										{
-											"id": "set-text",
-											"objectClass": "labelStarProgress",
-											"sid": 327266334423000,
-											"parameters": {
-												"text": "vis_star&\"/20\""
-											}
-										}
-									],
-									"sid": 982168005139248,
+									"actions": [],
+									"sid": 311579404765077,
 									"children": [
 										{
 											"eventType": "block",
 											"conditions": [
 												{
-													"id": "compare-instance-variable",
-													"objectClass": "star_fill_progress",
-													"sid": 259033076154066,
+													"id": "compare-eventvar",
+													"objectClass": "System",
+													"sid": 773365573103735,
 													"parameters": {
-														"instance-variable": "ID",
-														"comparison": 0,
-														"value": "1"
+														"variable": "vis_star",
+														"comparison": 2,
+														"value": "20"
 													}
 												}
 											],
 											"actions": [
 												{
-													"id": "set-width",
-													"objectClass": "star_fill_progress",
-													"sid": 539654676015208,
+													"id": "set-text",
+													"objectClass": "labelStarProgress",
+													"sid": 979384506654441,
 													"parameters": {
-														"width": "8+vis_star*(61/20)"
+														"text": "round(vis_star)&\"/20\""
 													}
 												}
 											],
-											"sid": 362540431912649
+											"sid": 792940582043753,
+											"children": [
+												{
+													"eventType": "block",
+													"conditions": [
+														{
+															"id": "compare-instance-variable",
+															"objectClass": "star_fill_progress",
+															"sid": 111858983716794,
+															"parameters": {
+																"instance-variable": "ID",
+																"comparison": 0,
+																"value": "1"
+															}
+														}
+													],
+													"actions": [
+														{
+															"id": "set-width",
+															"objectClass": "star_fill_progress",
+															"sid": 775847848685155,
+															"parameters": {
+																"width": "8+vis_star*(61/20)"
+															}
+														}
+													],
+													"sid": 984476187735188
+												},
+												{
+													"eventType": "block",
+													"conditions": [
+														{
+															"id": "compare-instance-variable",
+															"objectClass": "star_fill_progress",
+															"sid": 310419068796817,
+															"parameters": {
+																"instance-variable": "ID",
+																"comparison": 0,
+																"value": "2"
+															}
+														}
+													],
+													"actions": [
+														{
+															"id": "set-width",
+															"objectClass": "star_fill_progress",
+															"sid": 797516709683131,
+															"parameters": {
+																"width": "0.2+vis_star*(96/20)"
+															}
+														}
+													],
+													"sid": 813922633809347
+												},
+												{
+													"eventType": "block",
+													"conditions": [
+														{
+															"id": "compare-instance-variable",
+															"objectClass": "star_fill_progress",
+															"sid": 467697166179256,
+															"parameters": {
+																"instance-variable": "ID",
+																"comparison": 0,
+																"value": "3"
+															}
+														}
+													],
+													"actions": [
+														{
+															"id": "set-width",
+															"objectClass": "star_fill_progress",
+															"sid": 559542043493240,
+															"parameters": {
+																"width": "0.2+vis_star*(318/20)"
+															}
+														}
+													],
+													"sid": 203529616555705
+												},
+												{
+													"eventType": "block",
+													"conditions": [
+														{
+															"id": "compare-instance-variable",
+															"objectClass": "shine",
+															"sid": 709967823245339,
+															"parameters": {
+																"instance-variable": "ID",
+																"comparison": 0,
+																"value": "\"jar\""
+															}
+														}
+													],
+													"actions": [
+														{
+															"id": "set-visible",
+															"objectClass": "shine",
+															"sid": 678277128885786,
+															"parameters": {
+																"visibility": "invisible"
+															}
+														}
+													],
+													"sid": 738537939063486
+												}
+											]
 										},
 										{
 											"eventType": "block",
 											"conditions": [
 												{
-													"id": "compare-instance-variable",
-													"objectClass": "star_fill_progress",
-													"sid": 451444015870591,
-													"parameters": {
-														"instance-variable": "ID",
-														"comparison": 0,
-														"value": "2"
-													}
+													"id": "else",
+													"objectClass": "System",
+													"sid": 216664712825011
 												}
 											],
 											"actions": [
 												{
-													"id": "set-width",
-													"objectClass": "star_fill_progress",
-													"sid": 899014237358514,
+													"id": "set-text",
+													"objectClass": "labelStarProgress",
+													"sid": 696340382243277,
 													"parameters": {
-														"width": "vis_star*(96/20)"
+														"text": "JSON.Get(curr_lang&\".\"&\"full\")"
 													}
 												}
 											],
-											"sid": 403273859143967
-										},
-										{
-											"eventType": "block",
-											"conditions": [
+											"sid": 511787611182867,
+											"children": [
 												{
-													"id": "compare-instance-variable",
-													"objectClass": "shine",
-													"sid": 265114581053988,
-													"parameters": {
-														"instance-variable": "ID",
-														"comparison": 0,
-														"value": "\"jar\""
-													}
-												}
-											],
-											"actions": [
+													"eventType": "block",
+													"conditions": [
+														{
+															"id": "compare-instance-variable",
+															"objectClass": "star_fill_progress",
+															"sid": 352256751913006,
+															"parameters": {
+																"instance-variable": "ID",
+																"comparison": 0,
+																"value": "1"
+															}
+														}
+													],
+													"actions": [
+														{
+															"id": "set-width",
+															"objectClass": "star_fill_progress",
+															"sid": 368914291887830,
+															"parameters": {
+																"width": "8+20*(61/20)"
+															}
+														}
+													],
+													"sid": 981570197298470
+												},
 												{
-													"id": "set-visible",
-													"objectClass": "shine",
-													"sid": 322864824762660,
-													"parameters": {
-														"visibility": "invisible"
-													}
+													"eventType": "block",
+													"conditions": [
+														{
+															"id": "compare-instance-variable",
+															"objectClass": "star_fill_progress",
+															"sid": 322399945600103,
+															"parameters": {
+																"instance-variable": "ID",
+																"comparison": 0,
+																"value": "2"
+															}
+														}
+													],
+													"actions": [
+														{
+															"id": "set-width",
+															"objectClass": "star_fill_progress",
+															"sid": 611971180570213,
+															"parameters": {
+																"width": "20*(96/20)"
+															}
+														}
+													],
+													"sid": 880907378016940
+												},
+												{
+													"eventType": "block",
+													"conditions": [
+														{
+															"id": "compare-instance-variable",
+															"objectClass": "star_fill_progress",
+															"sid": 553998034051564,
+															"parameters": {
+																"instance-variable": "ID",
+																"comparison": 0,
+																"value": "3"
+															}
+														}
+													],
+													"actions": [
+														{
+															"id": "set-width",
+															"objectClass": "star_fill_progress",
+															"sid": 362366169753263,
+															"parameters": {
+																"width": "20*(318/20)"
+															}
+														}
+													],
+													"sid": 953638567702420
+												},
+												{
+													"eventType": "block",
+													"conditions": [
+														{
+															"id": "compare-instance-variable",
+															"objectClass": "shine",
+															"sid": 275653934216544,
+															"parameters": {
+																"instance-variable": "ID",
+																"comparison": 0,
+																"value": "\"jar\""
+															}
+														}
+													],
+													"actions": [
+														{
+															"id": "set-visible",
+															"objectClass": "shine",
+															"sid": 967052196105478,
+															"parameters": {
+																"visibility": "visible"
+															}
+														}
+													],
+													"sid": 358487026644473
 												}
-											],
-											"sid": 612308764809508
+											]
 										}
 									]
 								},
@@ -3620,100 +3799,168 @@
 									"eventType": "block",
 									"conditions": [
 										{
-											"id": "else",
+											"id": "compare-eventvar",
 											"objectClass": "System",
-											"sid": 255880219168383
-										}
-									],
-									"actions": [
-										{
-											"id": "set-text",
-											"objectClass": "labelStarProgress",
-											"sid": 177667782031831,
+											"sid": 700473701484406,
 											"parameters": {
-												"text": "JSON.Get(curr_lang&\".\"&\"full\")"
+												"variable": "case",
+												"comparison": 0,
+												"value": "\"collect_star\""
 											}
 										}
 									],
-									"sid": 184003208428424,
+									"actions": [],
+									"sid": 357066186854571,
 									"children": [
 										{
 											"eventType": "block",
 											"conditions": [
 												{
-													"id": "compare-instance-variable",
-													"objectClass": "star_fill_progress",
-													"sid": 548504274930447,
+													"id": "compare-eventvar",
+													"objectClass": "System",
+													"sid": 633079527043809,
 													"parameters": {
-														"instance-variable": "ID",
-														"comparison": 0,
-														"value": "1"
+														"variable": "vis_star",
+														"comparison": 2,
+														"value": "20"
 													}
 												}
 											],
 											"actions": [
 												{
-													"id": "set-width",
-													"objectClass": "star_fill_progress",
-													"sid": 859749632527911,
-													"parameters": {
-														"width": "8+20*(61/20)"
-													}
+													"callFunction": "star_jar_fill",
+													"sid": 609470107014433,
+													"parameters": [
+														"vis_star",
+														"\"show_progression\""
+													]
 												}
 											],
-											"sid": 258545534231963
+											"sid": 724841900028450,
+											"children": [
+												{
+													"eventType": "block",
+													"conditions": [
+														{
+															"id": "compare-instance-variable",
+															"objectClass": "BG_footer_starjar",
+															"sid": 908291342729847,
+															"parameters": {
+																"instance-variable": "ID",
+																"comparison": 0,
+																"value": "\"star_jar_not_full\""
+															}
+														}
+													],
+													"actions": [
+														{
+															"id": "set-position",
+															"objectClass": "BG_footer_starjar",
+															"sid": 465793854974502,
+															"parameters": {
+																"x": "LayoutWidth/2",
+																"y": "LayoutHeight-150"
+															}
+														}
+													],
+													"sid": 143151877164370
+												},
+												{
+													"eventType": "block",
+													"conditions": [
+														{
+															"id": "compare-instance-variable",
+															"objectClass": "BG_footer_starjar",
+															"sid": 825113955336289,
+															"parameters": {
+																"instance-variable": "ID",
+																"comparison": 0,
+																"value": "\"star_jar_full\""
+															}
+														}
+													],
+													"actions": [
+														{
+															"id": "set-position",
+															"objectClass": "BG_footer_starjar",
+															"sid": 228973417184572,
+															"parameters": {
+																"x": "-1000",
+																"y": "-1000"
+															}
+														}
+													],
+													"sid": 744008992803746
+												}
+											]
 										},
 										{
 											"eventType": "block",
 											"conditions": [
 												{
-													"id": "compare-instance-variable",
-													"objectClass": "star_fill_progress",
-													"sid": 683754510931483,
-													"parameters": {
-														"instance-variable": "ID",
-														"comparison": 0,
-														"value": "2"
-													}
+													"id": "else",
+													"objectClass": "System",
+													"sid": 144231798901427
 												}
 											],
-											"actions": [
+											"actions": [],
+											"sid": 416164685341854,
+											"children": [
 												{
-													"id": "set-width",
-													"objectClass": "star_fill_progress",
-													"sid": 189754946577725,
-													"parameters": {
-														"width": "20*(96/20)"
-													}
-												}
-											],
-											"sid": 765830966620587
-										},
-										{
-											"eventType": "block",
-											"conditions": [
+													"eventType": "block",
+													"conditions": [
+														{
+															"id": "compare-instance-variable",
+															"objectClass": "BG_footer_starjar",
+															"sid": 581045244215594,
+															"parameters": {
+																"instance-variable": "ID",
+																"comparison": 0,
+																"value": "\"star_jar_full\""
+															}
+														}
+													],
+													"actions": [
+														{
+															"id": "set-position",
+															"objectClass": "BG_footer_starjar",
+															"sid": 443784806499886,
+															"parameters": {
+																"x": "LayoutWidth/2",
+																"y": "LayoutHeight-150"
+															}
+														}
+													],
+													"sid": 284341114732565
+												},
 												{
-													"id": "compare-instance-variable",
-													"objectClass": "shine",
-													"sid": 291311588562245,
-													"parameters": {
-														"instance-variable": "ID",
-														"comparison": 0,
-														"value": "\"jar\""
-													}
+													"eventType": "block",
+													"conditions": [
+														{
+															"id": "compare-instance-variable",
+															"objectClass": "BG_footer_starjar",
+															"sid": 236667268728979,
+															"parameters": {
+																"instance-variable": "ID",
+																"comparison": 0,
+																"value": "\"star_jar_not_full\""
+															}
+														}
+													],
+													"actions": [
+														{
+															"id": "set-position",
+															"objectClass": "BG_footer_starjar",
+															"sid": 154971916643672,
+															"parameters": {
+																"x": "-1000",
+																"y": "-1000"
+															}
+														}
+													],
+													"sid": 961892514321287
 												}
-											],
-											"actions": [
-												{
-													"id": "set-visible",
-													"objectClass": "shine",
-													"sid": 708237866153550,
-													"parameters": {
-														"visibility": "visible"
-													}
-												}
-											],
-											"sid": 347408921531117
+											]
 										}
 									]
 								}
@@ -8692,27 +8939,83 @@
 								"seconds": "0.1",
 								"use-timescale": true
 							}
-						},
-						{
-							"id": "tween-two-properties",
-							"objectClass": "blueButton",
-							"sid": 741768460091033,
-							"behaviorType": "Tween",
-							"parameters": {
-								"tags": "\"button\"",
-								"property": "scale",
-								"end-x": "0.9",
-								"end-y": "0.9",
-								"time": "0.1",
-								"ease": "noease",
-								"destroy-on-complete": "no",
-								"loop": "no",
-								"ping-pong": "yes",
-								"repeat-count": "1"
-							}
 						}
 					],
-					"sid": 308173751112813
+					"sid": 308173751112813,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "blueButton",
+									"sid": 216126139019415,
+									"parameters": {
+										"instance-variable": "ID",
+										"comparison": 1,
+										"value": "\"claim_star_jar_icon\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "tween-two-properties",
+									"objectClass": "blueButton",
+									"sid": 741768460091033,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"button\"",
+										"property": "scale",
+										"end-x": "0.9",
+										"end-y": "0.9",
+										"time": "0.1",
+										"ease": "noease",
+										"destroy-on-complete": "no",
+										"loop": "no",
+										"ping-pong": "yes",
+										"repeat-count": "1"
+									}
+								}
+							],
+							"sid": 426604165218097
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "blueButton",
+									"sid": 518468285954124,
+									"parameters": {
+										"instance-variable": "ID",
+										"comparison": 0,
+										"value": "\"claim_star_jar_icon\""
+									}
+								}
+							],
+							"actions": [
+								{
+									"id": "tween-two-properties",
+									"objectClass": "blueButton",
+									"sid": 981280982232782,
+									"behaviorType": "Tween",
+									"parameters": {
+										"tags": "\"button\"",
+										"property": "scale",
+										"end-x": "0.4",
+										"end-y": "0.4",
+										"time": "0.1",
+										"ease": "noease",
+										"destroy-on-complete": "no",
+										"loop": "no",
+										"ping-pong": "yes",
+										"repeat-count": "1"
+									}
+								}
+							],
+							"sid": 842509226224392
+						}
+					]
 				},
 				{
 					"eventType": "block",
@@ -9035,9 +9338,10 @@
 								},
 								{
 									"callFunction": "star_jar_fill",
-									"sid": 792372554617659,
+									"sid": 975091389737915,
 									"parameters": [
-										"star"
+										"star",
+										"\"collect_star\""
 									]
 								},
 								{
@@ -9094,6 +9398,66 @@
 											"sid": 216835603980962
 										}
 									]
+								}
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "compare-instance-variable",
+									"objectClass": "blueButton",
+									"sid": 999457404041356,
+									"parameters": {
+										"instance-variable": "ID",
+										"comparison": 0,
+										"value": "\"claim_star_jar_icon\""
+									}
+								}
+							],
+							"actions": [],
+							"sid": 950175884814853,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-two-values",
+											"objectClass": "System",
+											"sid": 977413211123808,
+											"parameters": {
+												"first-value": "LayoutName",
+												"comparison": 0,
+												"second-value": "\"Game\""
+											}
+										}
+									],
+									"actions": [
+										{
+											"id": "set-instvar-value",
+											"objectClass": "blueButton",
+											"sid": 764589647819936,
+											"parameters": {
+												"instance-variable": "deactive",
+												"value": "1"
+											}
+										},
+										{
+											"callFunction": "popup_pack",
+											"sid": 403391682580808,
+											"parameters": [
+												"packIcon.AnimationName"
+											]
+										},
+										{
+											"callFunction": "gameover_button_ev",
+											"sid": 104219379385510,
+											"parameters": [
+												true
+											]
+										}
+									],
+									"sid": 723193062608916
 								}
 							]
 						},

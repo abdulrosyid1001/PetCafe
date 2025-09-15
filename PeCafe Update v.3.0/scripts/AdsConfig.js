@@ -2,7 +2,7 @@
 export let platform_ad = "Test";
 export let parent = window.parent.window;
 export let get_lang = new URLSearchParams(window.location.search).get('lang') || "en"; // Default to English ("en")
-export let god_mode = new URLSearchParams(window.location.search).get('gm') || "off"; // Default to "off"
+export let god_mode = new URLSearchParams(window.location.search).get('gm') || "on"; // Default to "off"
 export let tracking_ad_status = "none"; // Tracks ad status (e.g., started, completed, skipped)
 export let is_done_ad = false; // Prevents multiple ad calls on single button click
 export let is_have_ad = false; // True: use platform ads, False: use sample ads
@@ -73,6 +73,9 @@ function init_config_ad() {
             is_have_ad = true;
             break;
         case "Facebook":
+            is_have_ad = true;
+            break;
+        case "Huawei":
             is_have_ad = true;
             break;
     }
@@ -159,6 +162,11 @@ export function init_ad() {
                     console.log("Player Locale:", FBInstant.getLocale());
                 });
             }, 100);
+            break;
+        case "Huawei":
+            const script_tag = document.createElement('script');
+            script_tag.src = 'https://h5hosting.dbankcdn.com/cch5/pps-jssdk/mobile/ppsads.js';
+            document.head.appendChild(script_tag);
             break;
     }
     console.log("init_success");
@@ -461,23 +469,40 @@ export function load_ad(_ad_format, _ad_reward_state = -1) {
     console.log(`load_ad: ${_ad_format}`);
     if(ad_format == "interstitial"){
         if(!is_loaded_interstitial_ad){
-            if(platform_ad == "Facebook"){
-                FBInstant.getInterstitialAdAsync('1036071814995688_403800600388584',)
-                .then(function(interstitial) {
-                    interst_ad = interstitial;
-                    return interst_ad.loadAsync();
+            switch (platform_ad){
+                case "Facebook":
+                    FBInstant.getInterstitialAdAsync('1036071814995688_403800600388584',)
+                    .then(function(interstitial) {
+                        interst_ad = interstitial;
+                        return interst_ad.loadAsync();
                     }).then(function() {
                         is_loaded_interstitial_ad = true;
                     }).catch(function(err){
                         is_loaded_interstitial_ad = false;
                     });
+                    break;
+                case "Huawei":
+                    interst_ad = ppsads.createInterstitialAd({
+                        slotId: "testb4znbuh3n2"
+                    });
+                    interst_ad.load();
+                    interst_ad.onLoad((interstitial)=>{
+                        console.log(interstitial);
+                         is_loaded_interstitial_ad = true;
+                    });
+                    interst_ad.onError((interstitial)=>{
+                        console.log(interstitial);
+                         is_loaded_interstitial_ad = false;
+                    });
+                    break;
             }
         }
     }
     else{
          if(!is_loaded_rewarded_ad){
-            if(platform_ad == "Facebook"){
-                FBInstant.getRewardedVideoAsync('1036071814995688_403800600388584',)
+            switch (platform_ad){
+                case "Facebook":
+                    FBInstant.getRewardedVideoAsync('1036071814995688_403800600388584',)
                 .then(function(rewardedVideo) {
                     reward_ad = rewardedVideo;
                     return reward_ad.loadAsync();
@@ -486,6 +511,24 @@ export function load_ad(_ad_format, _ad_reward_state = -1) {
                     }).catch(function(err){
                         is_loaded_rewarded_ad = false;
                     });
+                    break;
+                case "Huawei":
+                    reward_ad = ppsads.createRewardAd({
+                        slotId: "testx9dtjw8hp"
+                    });
+                    console.log("reward_ad", reward_ad);
+                    reward_ad.load(()=>{
+                        console.log("load success");
+                    })
+                    reward_ad.onLoad((rewardedVideo)=>{
+                        console.log(rewardedVideo);
+                         is_loaded_rewarded_ad = true;
+                    });
+                    reward_ad.onError((rewardedVideo)=>{
+                        console.log("error");
+                         is_loaded_rewarded_ad = false;
+                    });
+                    break;
             }
         }
     }
@@ -811,5 +854,65 @@ export function show_ad(_ad_format, _ad_reward_state = -1) {
                     break;
             }
             break;
+        case "Huawei":
+            switch (ad_format){
+                case "interstitial":
+                    console.log("call_show_interstitial");
+                    interst_ad.show(() => {
+                        console.log("show_interstitial");
+                    });
+                    interst_ad.onShow((e_ads) => {
+                        console.log(e_ads);
+                    })
+                    interst_ad.onClose(() => {
+                        console.log("Interstitial ditutup.");
+                        // Hancurkan instance agar tidak menumpuk
+                        interst_ad.destroy();
+                        tracking_ad_status = "skipped";
+                        is_loaded_interstitial_ad = false;
+                        load_ad("interstitial");
+                    });
+                    break;
+                case "rewarded":
+                    console.log("call_show_rewarded");
+                    reward_ad.show({
+                        callbacks: {
+                            onShow: () => {
+                                tracking_ad_status = "started";
+                                console.log("Rewarded ad dibuka.");
+                            },
+
+                            onReward: (rewardData) => {
+                                is_grant_reward = true;
+                                console.log("Reward granted:", rewardData);
+                            },
+
+                            onComplete: () => {
+                                console.log("Playback selesai ✅");
+                            },
+
+                            onClose: () => {
+                                if (is_grant_reward) {
+                                    tracking_ad_status = "completed";
+                                    console.log("User menonton iklan full ✅");
+                                    // kasih reward di sini
+                                    is_grant_reward = false; // reset
+                                } else {
+                                    tracking_ad_status = "skipped";
+                                    console.log("User skip / tutup iklan ❌");
+                                }
+
+                                reward_ad.destroy();
+                            },
+
+                            onError: (err) => {
+                                tracking_ad_status = "error";
+                                console.error("Error saat tampilkan iklan:", err);
+                            }
+                        }
+                    });
+                    break;
+            }
+        break;
     }
 }

@@ -533,6 +533,15 @@
 							}
 						},
 						{
+							"id": "set-eventvar-value",
+							"objectClass": "System",
+							"sid": 203681374138698,
+							"parameters": {
+								"variable": "gameState",
+								"value": "\"start\""
+							}
+						},
+						{
 							"id": "set-layer-visible",
 							"objectClass": "System",
 							"sid": 244420583580234,
@@ -3548,28 +3557,6 @@
 			"isActiveOnStart": true,
 			"children": [
 				{
-					"eventType": "block",
-					"conditions": [
-						{
-							"id": "on-start-of-layout",
-							"objectClass": "System",
-							"sid": 515675694445870
-						}
-					],
-					"actions": [
-						{
-							"id": "set-eventvar-value",
-							"objectClass": "System",
-							"sid": 222318852052463,
-							"parameters": {
-								"variable": "gameState",
-								"value": "\"start\""
-							}
-						}
-					],
-					"sid": 588986322544921
-				},
-				{
 					"functionName": "check_tutorial_completed",
 					"functionDescription": "",
 					"functionCategory": "",
@@ -3940,11 +3927,11 @@
 												{
 													"id": "compare-eventvar",
 													"objectClass": "System",
-													"sid": 191528780859419,
+													"sid": 971573330141489,
 													"parameters": {
 														"variable": "level_select",
 														"comparison": 0,
-														"value": "6"
+														"value": "5"
 													}
 												}
 											],
@@ -9497,7 +9484,45 @@
 											"sid": 746180901416110
 										}
 									],
-									"sid": 455110687750323
+									"sid": 455110687750323,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "for",
+													"objectClass": "System",
+													"sid": 295666245138546,
+													"parameters": {
+														"name": "\"\"",
+														"start-index": "1",
+														"end-index": "3"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "wait",
+													"objectClass": "System",
+													"sid": 635910355632767,
+													"parameters": {
+														"seconds": "0.1*loopindex",
+														"use-timescale": true
+													}
+												},
+												{
+													"callFunction": "create_convety",
+													"sid": 852524863325818,
+													"parameters": [
+														"\"GameOver\"",
+														"LayoutWidth/2+(random(-150, 150))",
+														"LayoutHeight/2+(random(-50, 50))"
+													]
+												}
+											],
+											"sid": 753821262546506
+										}
+									]
 								},
 								{
 									"eventType": "block",
@@ -23343,11 +23368,11 @@
 										{
 											"id": "set-at-xy",
 											"objectClass": "unlockedBooster",
-											"sid": 407967634758871,
+											"sid": 680625898653919,
 											"parameters": {
 												"x": "1",
 												"y": "0",
-												"value": "4"
+												"value": "3"
 											}
 										},
 										{
@@ -30986,7 +31011,63 @@
 							],
 							"eventType": "function-block",
 							"conditions": [],
-							"actions": [],
+							"actions": [
+								{
+									"id": "create-object",
+									"objectClass": "System",
+									"sid": 490689741371339,
+									"parameters": {
+										"object-to-create": "BG_footer_starjar",
+										"layer": "\"GameOver\"",
+										"x": "-1000",
+										"y": "-1000",
+										"create-hierarchy": true,
+										"template-name": "\"star_jar_not_full\""
+									}
+								},
+								{
+									"id": "set-width",
+									"objectClass": "BG_footer_starjar",
+									"sid": 936036617775348,
+									"parameters": {
+										"width": "ViewportWidth(Self.LayerName)"
+									}
+								},
+								{
+									"id": "create-object",
+									"objectClass": "System",
+									"sid": 789819709507570,
+									"parameters": {
+										"object-to-create": "BG_footer_starjar",
+										"layer": "\"GameOver\"",
+										"x": "-1000",
+										"y": "-1000",
+										"create-hierarchy": true,
+										"template-name": "\"star_jar_full\""
+									}
+								},
+								{
+									"id": "set-width",
+									"objectClass": "BG_footer_starjar",
+									"sid": 674722325716567,
+									"parameters": {
+										"width": "ViewportWidth(Self.LayerName)"
+									}
+								},
+								{
+									"id": "wait-for-previous-actions",
+									"objectClass": "System",
+									"sid": 558336640216063
+								},
+								{
+									"callFunction": "star_jar_fill",
+									"sid": 473643062954334,
+									"parameters": [
+										"temp_star",
+										"\"collect_star\""
+									]
+								}
+							],
 							"sid": 578790426349911,
 							"children": [
 								{
@@ -31007,6 +31088,15 @@
 										{
 											"callFunction": "create_anim_star_jar",
 											"sid": 734437839138041,
+											"disabled": true,
+											"parameters": [
+												"grade",
+												"\"jar\""
+											]
+										},
+										{
+											"callFunction": "create_footer_anim_star_jar",
+											"sid": 666135670327529,
 											"parameters": [
 												"grade",
 												"\"jar\""
@@ -31090,13 +31180,13 @@
 												{
 													"id": "tween-two-properties",
 													"objectClass": "starYellow",
-													"sid": 589351143906805,
+													"sid": 771518615627255,
 													"behaviorType": "Tween",
 													"parameters": {
 														"tags": "\"scale\"",
 														"property": "scale",
-														"end-x": "1.1",
-														"end-y": "1.1",
+														"end-x": "1.25",
+														"end-y": "1.25",
 														"time": "0.25+(loopindex/10)",
 														"ease": "easeoutback",
 														"destroy-on-complete": "no",
@@ -31132,9 +31222,13 @@
 									"conditions": [],
 									"actions": [
 										{
-											"id": "wait-for-previous-actions",
+											"id": "wait",
 											"objectClass": "System",
-											"sid": 313121055249061
+											"sid": 943548338222750,
+											"parameters": {
+												"seconds": "1",
+												"use-timescale": true
+											}
 										}
 									],
 									"sid": 695202071302263,
@@ -31173,6 +31267,7 @@
 															"id": "tween-two-properties",
 															"objectClass": "starDark",
 															"sid": 739831920223600,
+															"disabled": true,
 															"behaviorType": "Tween",
 															"parameters": {
 																"tags": "\"destroy\"",
@@ -31188,7 +31283,63 @@
 															}
 														}
 													],
-													"sid": 155239788075778
+													"sid": 155239788075778,
+													"children": [
+														{
+															"eventType": "block",
+															"conditions": [
+																{
+																	"id": "for",
+																	"objectClass": "System",
+																	"sid": 783693881873604,
+																	"parameters": {
+																		"name": "\"\"",
+																		"start-index": "1",
+																		"end-index": "grade"
+																	}
+																}
+															],
+															"actions": [],
+															"sid": 482541449233350,
+															"children": [
+																{
+																	"eventType": "block",
+																	"conditions": [
+																		{
+																			"id": "pick-nth-instance",
+																			"objectClass": "System",
+																			"sid": 740740588330867,
+																			"parameters": {
+																				"object": "starDark",
+																				"instance": "loopindex-1"
+																			}
+																		}
+																	],
+																	"actions": [
+																		{
+																			"id": "tween-two-properties",
+																			"objectClass": "starDark",
+																			"sid": 525036034599239,
+																			"behaviorType": "Tween",
+																			"parameters": {
+																				"tags": "\"destroy\"",
+																				"property": "scale",
+																				"end-x": "0",
+																				"end-y": "0",
+																				"time": "0.2",
+																				"ease": "default",
+																				"destroy-on-complete": "no",
+																				"loop": "no",
+																				"ping-pong": "no",
+																				"repeat-count": "1"
+																			}
+																		}
+																	],
+																	"sid": 904011734778788
+																}
+															]
+														}
+													]
 												},
 												{
 													"eventType": "block",
@@ -31287,6 +31438,41 @@
 																						}
 																					],
 																					"sid": 347834687908220
+																				},
+																				{
+																					"eventType": "block",
+																					"conditions": [
+																						{
+																							"id": "pick-nth-instance",
+																							"objectClass": "System",
+																							"sid": 520260420286224,
+																							"parameters": {
+																								"object": "starDark",
+																								"instance": "loopindex"
+																							}
+																						}
+																					],
+																					"actions": [
+																						{
+																							"id": "tween-two-properties",
+																							"objectClass": "starDark",
+																							"sid": 424986996012063,
+																							"behaviorType": "Tween",
+																							"parameters": {
+																								"tags": "\"destroy\"",
+																								"property": "scale",
+																								"end-x": "0",
+																								"end-y": "0",
+																								"time": "0.2",
+																								"ease": "default",
+																								"destroy-on-complete": "no",
+																								"loop": "no",
+																								"ping-pong": "no",
+																								"repeat-count": "1"
+																							}
+																						}
+																					],
+																					"sid": 245826460469064
 																				}
 																			]
 																		}
@@ -31337,6 +31523,40 @@
 																				}
 																			],
 																			"sid": 547302653762754
+																		},
+																		{
+																			"eventType": "block",
+																			"conditions": [
+																				{
+																					"id": "pick-last-created",
+																					"objectClass": "System",
+																					"sid": 726801581173420,
+																					"parameters": {
+																						"object": "starDark"
+																					}
+																				}
+																			],
+																			"actions": [
+																				{
+																					"id": "tween-two-properties",
+																					"objectClass": "starDark",
+																					"sid": 331543759996531,
+																					"behaviorType": "Tween",
+																					"parameters": {
+																						"tags": "\"destroy\"",
+																						"property": "scale",
+																						"end-x": "0",
+																						"end-y": "0",
+																						"time": "0.2",
+																						"ease": "default",
+																						"destroy-on-complete": "no",
+																						"loop": "no",
+																						"ping-pong": "no",
+																						"repeat-count": "1"
+																					}
+																				}
+																			],
+																			"sid": 166904124824792
 																		}
 																	]
 																}
@@ -31405,6 +31625,41 @@
 																				}
 																			],
 																			"sid": 844042258279160
+																		},
+																		{
+																			"eventType": "block",
+																			"conditions": [
+																				{
+																					"id": "pick-nth-instance",
+																					"objectClass": "System",
+																					"sid": 545160645173382,
+																					"parameters": {
+																						"object": "starDark",
+																						"instance": "loopindex"
+																					}
+																				}
+																			],
+																			"actions": [
+																				{
+																					"id": "tween-two-properties",
+																					"objectClass": "starDark",
+																					"sid": 691113358023035,
+																					"behaviorType": "Tween",
+																					"parameters": {
+																						"tags": "\"destroy\"",
+																						"property": "scale",
+																						"end-x": "0",
+																						"end-y": "0",
+																						"time": "0.2",
+																						"ease": "default",
+																						"destroy-on-complete": "no",
+																						"loop": "no",
+																						"ping-pong": "no",
+																						"repeat-count": "1"
+																					}
+																				}
+																			],
+																			"sid": 469620036924167
 																		}
 																	]
 																}
@@ -31460,38 +31715,7 @@
 																		}
 																	],
 																	"sid": 571601565041193,
-																	"children": [
-																		{
-																			"eventType": "block",
-																			"conditions": [
-																				{
-																					"id": "pick-children",
-																					"objectClass": "starDark",
-																					"sid": 620492465570714,
-																					"parameters": {
-																						"child": "starYellow",
-																						"which": "own"
-																					}
-																				}
-																			],
-																			"actions": [],
-																			"sid": 863046702447977,
-																			"disabled": true
-																		},
-																		{
-																			"eventType": "block",
-																			"conditions": [
-																				{
-																					"id": "else",
-																					"objectClass": "System",
-																					"sid": 849865483325641
-																				}
-																			],
-																			"actions": [],
-																			"sid": 216938800055941,
-																			"disabled": true
-																		}
-																	]
+																	"disabled": true
 																}
 															]
 														}
@@ -31503,7 +31727,16 @@
 													"actions": [
 														{
 															"callFunction": "create_anim_star_jar",
-															"sid": 944630237729622,
+															"sid": 883755570259248,
+															"disabled": true,
+															"parameters": [
+																"star-temp_star",
+																"\"jar\""
+															]
+														},
+														{
+															"callFunction": "create_footer_anim_star_jar",
+															"sid": 543600420726569,
 															"parameters": [
 																"star-temp_star",
 																"\"star\""
@@ -31535,6 +31768,327 @@
 												}
 											],
 											"sid": 727996098190290
+										}
+									]
+								}
+							]
+						},
+						{
+							"functionName": "create_footer_anim_star_jar",
+							"functionDescription": "",
+							"functionCategory": "",
+							"functionReturnType": "none",
+							"functionCopyPicked": false,
+							"functionIsAsync": false,
+							"functionParameters": [
+								{
+									"name": "grade",
+									"type": "number",
+									"initialValue": "0",
+									"comment": "",
+									"sid": 479835316290378
+								},
+								{
+									"name": "case",
+									"type": "string",
+									"initialValue": "",
+									"comment": "",
+									"sid": 730390565727034
+								}
+							],
+							"eventType": "function-block",
+							"conditions": [],
+							"actions": [],
+							"sid": 271587587926486,
+							"children": [
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-eventvar",
+											"objectClass": "System",
+											"sid": 538071940766059,
+											"parameters": {
+												"variable": "case",
+												"comparison": 0,
+												"value": "\"star\""
+											}
+										}
+									],
+									"actions": [],
+									"sid": 129527175680371,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [
+												{
+													"id": "for",
+													"objectClass": "System",
+													"sid": 725835393356818,
+													"parameters": {
+														"name": "\"\"",
+														"start-index": "1",
+														"end-index": "grade"
+													}
+												}
+											],
+											"actions": [
+												{
+													"id": "create-object",
+													"objectClass": "System",
+													"sid": 967297844092585,
+													"parameters": {
+														"object-to-create": "ParticlesBlinkYellow",
+														"layer": "\"GameOver\"",
+														"x": "random((LayoutWidth/2)-100, (LayoutWidth/2)+100)",
+														"y": "random((starDark.Y)-100, (starDark.Y)+100)",
+														"create-hierarchy": false,
+														"template-name": "\"\""
+													}
+												},
+												{
+													"id": "create-object",
+													"objectClass": "System",
+													"sid": 483901767776394,
+													"parameters": {
+														"object-to-create": "starYellow",
+														"layer": "\"GameOver\"",
+														"x": "random((LayoutWidth/2)-100, (LayoutWidth/2)+100)",
+														"y": "random((starDark.Y)-100, (starDark.Y)+100)",
+														"create-hierarchy": false,
+														"template-name": "\"\""
+													}
+												},
+												{
+													"id": "set-scale",
+													"objectClass": "starYellow",
+													"sid": 267424114551545,
+													"parameters": {
+														"scale": "0.8"
+													}
+												},
+												{
+													"id": "tween-two-properties",
+													"objectClass": "starYellow",
+													"sid": 273409097846601,
+													"behaviorType": "Tween",
+													"parameters": {
+														"tags": "\"pos\"",
+														"property": "position",
+														"end-x": "LayoutWidth/2",
+														"end-y": "LayoutHeight+100",
+														"time": "0.5",
+														"ease": "noease",
+														"destroy-on-complete": "yes",
+														"loop": "no",
+														"ping-pong": "no",
+														"repeat-count": "1"
+													}
+												},
+												{
+													"id": "tween-two-properties",
+													"objectClass": "starYellow",
+													"sid": 364456783736826,
+													"behaviorType": "Tween",
+													"parameters": {
+														"tags": "\"scale\"",
+														"property": "scale",
+														"end-x": "0",
+														"end-y": "0",
+														"time": "0.42",
+														"ease": "noease",
+														"destroy-on-complete": "no",
+														"loop": "no",
+														"ping-pong": "no",
+														"repeat-count": "1"
+													}
+												},
+												{
+													"id": "tween-one-property",
+													"objectClass": "starYellow",
+													"sid": 560652559551341,
+													"behaviorType": "Tween",
+													"parameters": {
+														"tags": "\"rotate\"",
+														"property": "offsetAngle",
+														"end-value": "280",
+														"time": "0.4",
+														"ease": "default",
+														"destroy-on-complete": "no",
+														"loop": "yes",
+														"ping-pong": "no",
+														"repeat-count": "1"
+													}
+												}
+											],
+											"sid": 256763112021600
+										},
+										{
+											"eventType": "block",
+											"conditions": [],
+											"actions": [
+												{
+													"id": "wait",
+													"objectClass": "System",
+													"sid": 666052985480322,
+													"parameters": {
+														"seconds": "0.2",
+														"use-timescale": true
+													}
+												},
+												{
+													"id": "signal",
+													"objectClass": "System",
+													"sid": 568140859342418,
+													"parameters": {
+														"tag": "\"with_star_jar_end\""
+													}
+												}
+											],
+											"sid": 657639907059337
+										}
+									]
+								},
+								{
+									"eventType": "block",
+									"conditions": [
+										{
+											"id": "compare-eventvar",
+											"objectClass": "System",
+											"sid": 929280553267145,
+											"parameters": {
+												"variable": "case",
+												"comparison": 0,
+												"value": "\"jar\""
+											}
+										}
+									],
+									"actions": [],
+									"sid": 732152553911029,
+									"children": [
+										{
+											"eventType": "block",
+											"conditions": [],
+											"actions": [
+												{
+													"id": "wait-for-signal",
+													"objectClass": "System",
+													"sid": 953117109914290,
+													"parameters": {
+														"tag": "\"with_star_jar_end\""
+													}
+												},
+												{
+													"callFunction": "audio_settings",
+													"sid": 437946023212784,
+													"parameters": [
+														"\"play\"",
+														"\"Collected_Coins\""
+													]
+												},
+												{
+													"callFunction": "star_jar_fill",
+													"sid": 676675821279851,
+													"parameters": [
+														"star",
+														"\"collect_star\""
+													]
+												}
+											],
+											"sid": 812779305988555,
+											"children": [
+												{
+													"eventType": "block",
+													"conditions": [
+														{
+															"id": "compare-eventvar",
+															"objectClass": "System",
+															"sid": 670581349438898,
+															"parameters": {
+																"variable": "star",
+																"comparison": 5,
+																"value": "20"
+															}
+														}
+													],
+													"actions": [
+														{
+															"id": "wait-for-previous-actions",
+															"objectClass": "System",
+															"sid": 437260559910276
+														},
+														{
+															"id": "create-object",
+															"objectClass": "System",
+															"sid": 106631020437841,
+															"parameters": {
+																"object-to-create": "cursorIcon",
+																"layer": "\"GameOver\"",
+																"x": "LayoutWidth/2+70",
+																"y": "LayoutHeight-80",
+																"create-hierarchy": false,
+																"template-name": "\"\""
+															}
+														},
+														{
+															"id": "set-active",
+															"objectClass": "cursorIcon",
+															"sid": 200984902167669,
+															"behaviorType": "Sine2",
+															"parameters": {
+																"state": "active"
+															}
+														}
+													],
+													"sid": 313206634875947
+												}
+											]
+										},
+										{
+											"eventType": "block",
+											"conditions": [],
+											"actions": [
+												{
+													"id": "wait-for-signal",
+													"objectClass": "System",
+													"sid": 498523481936344,
+													"parameters": {
+														"tag": "\"without_star_jar_end\""
+													}
+												},
+												{
+													"callFunction": "star_jar_fill",
+													"sid": 879881254951547,
+													"parameters": [
+														"star",
+														"\"collect_star\""
+													]
+												}
+											],
+											"sid": 671723123300855,
+											"children": [
+												{
+													"eventType": "block",
+													"conditions": [
+														{
+															"id": "is-animation-playing",
+															"objectClass": "cursorIcon",
+															"sid": 625096103329043,
+															"parameters": {
+																"animation": "\"Default\""
+															}
+														}
+													],
+													"actions": [
+														{
+															"id": "destroy",
+															"objectClass": "cursorIcon",
+															"sid": 986371535087056
+														}
+													],
+													"sid": 539601067569449
+												}
+											]
 										}
 									]
 								}
@@ -31584,6 +32138,7 @@
 									],
 									"actions": [],
 									"sid": 731531288656628,
+									"disabled": true,
 									"children": [
 										{
 											"eventType": "block",
@@ -31696,7 +32251,8 @@
 													}
 												}
 											],
-											"sid": 755907199490375
+											"sid": 755907199490375,
+											"disabled": true
 										}
 									]
 								},
@@ -31743,9 +32299,10 @@
 										},
 										{
 											"callFunction": "star_jar_fill",
-											"sid": 883701988675553,
+											"sid": 363354026999164,
 											"parameters": [
-												"temp_star"
+												"temp_star",
+												"\"show_progression\""
 											]
 										},
 										{
@@ -31784,6 +32341,7 @@
 										}
 									],
 									"sid": 799767279514925,
+									"disabled": true,
 									"children": [
 										{
 											"eventType": "block",
@@ -31807,9 +32365,10 @@
 												},
 												{
 													"callFunction": "star_jar_fill",
-													"sid": 575028702965772,
+													"sid": 689473582554223,
 													"parameters": [
-														"star"
+														"star",
+														"\"show_progression\""
 													]
 												},
 												{
@@ -31855,6 +32414,7 @@
 												}
 											],
 											"sid": 929824414156153,
+											"disabled": true,
 											"children": [
 												{
 													"eventType": "block",
@@ -31920,7 +32480,8 @@
 															}
 														}
 													],
-													"sid": 594890568595976
+													"sid": 594890568595976,
+													"disabled": true
 												},
 												{
 													"eventType": "block",
@@ -31960,7 +32521,8 @@
 															}
 														}
 													],
-													"sid": 196314971888838
+													"sid": 196314971888838,
+													"disabled": true
 												}
 											]
 										},
@@ -31978,9 +32540,10 @@
 												},
 												{
 													"callFunction": "star_jar_fill",
-													"sid": 568913567118320,
+													"sid": 469953108514077,
 													"parameters": [
-														"star"
+														"star",
+														"\"show_progression\""
 													]
 												},
 												{
@@ -32028,6 +32591,7 @@
 												}
 											],
 											"sid": 299210961514730,
+											"disabled": true,
 											"children": [
 												{
 													"eventType": "block",
@@ -32048,7 +32612,8 @@
 															"sid": 909513015527122
 														}
 													],
-													"sid": 202728933660732
+													"sid": 202728933660732,
+													"disabled": true
 												}
 											]
 										}
@@ -32202,9 +32767,9 @@
 								{
 									"id": "wait",
 									"objectClass": "System",
-									"sid": 334403161651338,
+									"sid": 558241882630977,
 									"parameters": {
-										"seconds": "0.4",
+										"seconds": "1.4",
 										"use-timescale": true
 									}
 								},
@@ -32325,6 +32890,15 @@
 									"id": "wait-for-previous-actions",
 									"objectClass": "System",
 									"sid": 251540939482836
+								},
+								{
+									"id": "set-eventvar-value",
+									"objectClass": "System",
+									"sid": 709064259635848,
+									"parameters": {
+										"variable": "gameState",
+										"value": "\"start\""
+									}
 								},
 								{
 									"callFunction": "tutorial_ev",

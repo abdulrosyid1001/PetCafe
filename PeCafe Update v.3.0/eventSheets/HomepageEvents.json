@@ -528,9 +528,10 @@
 				},
 				{
 					"callFunction": "star_jar_fill",
-					"sid": 206545941084523,
+					"sid": 765820456852296,
 					"parameters": [
-						"star"
+						"star",
+						"\"show_progression\""
 					]
 				}
 			],
