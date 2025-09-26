@@ -1,0 +1,13 @@
+{
+	"name": "FruitnPropsFamily",
+	"plugin-id": "Sprite",
+	"sid": 228032362023227,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"members": [
+		"Fruit",
+		"props",
+		"propAssets"
+	]
+}

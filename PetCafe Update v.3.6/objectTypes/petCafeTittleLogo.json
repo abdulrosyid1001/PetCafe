@@ -1,0 +1,74 @@
+{
+	"name": "petCafeTittleLogo",
+	"plugin-id": "Sprite",
+	"sid": 214417654334566,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Tween",
+			"name": "Tween",
+			"sid": 301675501705984
+		}
+	],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 379,
+						"height": 163,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 3044922,
+						"collisionPoly": {
+							"points": [
+								0.0870712401055409,
+								0,
+								0.8390501319261213,
+								0.1901840490797546,
+								0.9498680738786279,
+								0.294478527607362,
+								0.9868073878627969,
+								0.38650306748466257,
+								1,
+								0.4662576687116564,
+								0.9762532981530343,
+								0.6196319018404908,
+								0.8575197889182058,
+								0.901840490797546,
+								0.7810026385224275,
+								1,
+								0.30606860158311344,
+								0.950920245398773,
+								0.0633245382585752,
+								0.7607361963190185,
+								0,
+								0.3067484662576687,
+								0.005277044854881266,
+								0.12269938650306748
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 402219960944943,
+				"name": "Default",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}

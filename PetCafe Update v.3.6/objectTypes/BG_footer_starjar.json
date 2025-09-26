@@ -1,0 +1,37 @@
+{
+	"name": "BG_footer_starjar",
+	"plugin-id": "NinePatch",
+	"sid": 504156938500364,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [
+		{
+			"name": "ID",
+			"type": "string",
+			"desc": "",
+			"show": true,
+			"sid": 758282672396005
+		}
+	],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Fade",
+			"name": "Fade",
+			"sid": 567495179631899
+		}
+	],
+	"effectTypes": [],
+	"image": {
+		"width": 416,
+		"height": 423,
+		"originX": 0.5,
+		"originY": 0.5,
+		"originalSource": "",
+		"exportFormat": "lossless",
+		"exportQuality": 0.8,
+		"fileType": "image/png",
+		"imageSpriteId": 4072699,
+		"useCollisionPoly": true,
+		"tag": ""
+	}
+}

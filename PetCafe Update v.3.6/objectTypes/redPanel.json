@@ -1,0 +1,74 @@
+{
+	"name": "redPanel",
+	"plugin-id": "Sprite",
+	"sid": 940869108268157,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 160,
+						"height": 69,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 2875198,
+						"collisionPoly": {
+							"points": [
+								0.16875,
+								0,
+								0.9,
+								0.08695652173913043,
+								0.94375,
+								0.18840579710144928,
+								0.9625,
+								0.6666666666666666,
+								0.94375,
+								0.7391304347826086,
+								0.9,
+								0.8405797101449275,
+								0.86875,
+								0.8840579710144928,
+								0.83125,
+								0.9130434782608695,
+								0.79375,
+								0.927536231884058,
+								0.1875,
+								0.927536231884058,
+								0.08125,
+								0.8405797101449275,
+								0.0375,
+								0.7391304347826086,
+								0.03125,
+								0.2028985507246377,
+								0.0625,
+								0.11594202898550725,
+								0.0875,
+								0.07246376811594203
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 796528528669876,
+				"name": "Default",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}

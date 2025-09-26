@@ -1,0 +1,72 @@
+{
+	"name": "progressLevFrame",
+	"plugin-id": "Sprite",
+	"sid": 689188577755418,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 236,
+						"height": 52,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 3913465,
+						"collisionPoly": {
+							"points": [
+								0.03389830508474576,
+								0,
+								0.9576271186440678,
+								0,
+								0.9745762711864406,
+								0.038461538461538464,
+								0.9915254237288136,
+								0.11538461538461539,
+								1,
+								0.19230769230769232,
+								1,
+								0.8076923076923077,
+								0.9915254237288136,
+								0.8846153846153846,
+								0.9745762711864406,
+								0.9615384615384616,
+								0.9491525423728814,
+								1,
+								0.0423728813559322,
+								1,
+								0.00847457627118644,
+								0.9230769230769231,
+								0,
+								0.8461538461538461,
+								0,
+								0.15384615384615385,
+								0.01694915254237288,
+								0.038461538461538464
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 142006603082358,
+				"name": "Animation 1",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}

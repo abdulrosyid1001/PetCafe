@@ -1,0 +1,150 @@
+{
+	"name": "FruitFamily",
+	"plugin-id": "Sprite",
+	"sid": 580454247891983,
+	"instanceVariables": [
+		{
+			"name": "active",
+			"type": "boolean",
+			"desc": "Is this fruit active?",
+			"show": true,
+			"sid": 947877041880771
+		},
+		{
+			"name": "collided",
+			"type": "boolean",
+			"desc": "Has this fruit already coliided?",
+			"show": true,
+			"sid": 232000667279112
+		},
+		{
+			"name": "fruitScore",
+			"type": "number",
+			"desc": "How many points this fruit is worth",
+			"show": true,
+			"sid": 711974188588144
+		},
+		{
+			"name": "in_offset",
+			"type": "boolean",
+			"desc": "for tile faces animation",
+			"show": true,
+			"sid": 247883749589791
+		},
+		{
+			"name": "eyeAngle",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 422785574837869
+		},
+		{
+			"name": "eyeRadius_X1",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 774271530367303
+		},
+		{
+			"name": "eyeRadius_Y1",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 661379935036458
+		},
+		{
+			"name": "eyeRadius_X2",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 492388676538138
+		},
+		{
+			"name": "eyeRadius_Y2",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 361969190713098
+		},
+		{
+			"name": "fall",
+			"type": "boolean",
+			"desc": "",
+			"show": true,
+			"sid": 188977940228645
+		},
+		{
+			"name": "baseEye_Width",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 145927607272580
+		},
+		{
+			"name": "baseEye_Height",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 905862509722157
+		},
+		{
+			"name": "baseEye_X",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 811211253564624
+		},
+		{
+			"name": "baseEye_Y",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 163765752088215
+		},
+		{
+			"name": "freeze",
+			"type": "boolean",
+			"desc": "",
+			"show": true,
+			"sid": 395557583062958
+		},
+		{
+			"name": "waitingMerge",
+			"type": "boolean",
+			"desc": "",
+			"show": true,
+			"sid": 981710491339399
+		}
+	],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Physics",
+			"name": "Physics",
+			"sid": 416325651002077
+		},
+		{
+			"behaviorId": "Tween",
+			"name": "Tween",
+			"sid": 765801703298782
+		},
+		{
+			"behaviorId": "Timer",
+			"name": "Timer",
+			"sid": 550145998862703
+		},
+		{
+			"behaviorId": "Sin",
+			"name": "Sine",
+			"sid": 850772130284652
+		}
+	],
+	"effectTypes": [
+		{
+			"effectId": "hsladjust",
+			"name": "AdjustHSL"
+		}
+	],
+	"members": [
+		"Fruit"
+	]
+}

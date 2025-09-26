@@ -1,0 +1,82 @@
+{
+	"name": "Star_progress_frame",
+	"plugin-id": "Sprite",
+	"sid": 721064979976894,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 168,
+						"height": 43,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 4277308,
+						"collisionPoly": {
+							"points": [
+								0.19047619047619047,
+								0,
+								0.9345238095238095,
+								0.046511627906976744,
+								0.9702380952380952,
+								0.18604651162790697,
+								0.9702380952380952,
+								0.6744186046511628,
+								0.9047619047619048,
+								0.8604651162790697,
+								0.19047619047619047,
+								0.8604651162790697
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					},
+					{
+						"width": 756,
+						"height": 90,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 7557884,
+						"collisionPoly": {
+							"points": [
+								0.08695652173913043,
+								0,
+								0.9683794466403162,
+								0.06896551724137931,
+								0.9486166007905138,
+								0.896551724137931,
+								0.08695652173913043,
+								0.896551724137931
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 659052490056435,
+				"name": "Default",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 0
+			}
+		],
+		"subfolders": []
+	}
+}

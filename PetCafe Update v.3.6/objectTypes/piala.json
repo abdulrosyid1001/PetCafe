@@ -1,0 +1,65 @@
+{
+	"name": "piala",
+	"plugin-id": "Sprite",
+	"sid": 853940684890155,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [
+		{
+			"effectId": "blacknwhitemask",
+			"name": "BlackWhiteMask"
+		}
+	],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 53,
+						"height": 49,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 3765151,
+						"collisionPoly": {
+							"points": [
+								0.2857142857142857,
+								0,
+								0.75,
+								0,
+								1,
+								0.12,
+								1,
+								0.28,
+								0.75,
+								1,
+								0.2857142857142857,
+								1,
+								0.03571428571428571,
+								0.36,
+								0.03571428571428571,
+								0.12
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 695815637394927,
+				"name": "Default",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}

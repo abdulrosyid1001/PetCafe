@@ -1,0 +1,23 @@
+{
+	"name": "frameNavbarButton",
+	"plugin-id": "NinePatch",
+	"sid": 288896594406883,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"image": {
+		"width": 2562,
+		"height": 268,
+		"originX": 0.5,
+		"originY": 0.5,
+		"originalSource": "",
+		"exportFormat": "lossless",
+		"exportQuality": 0.8,
+		"fileType": "image/png",
+		"imageSpriteId": 1840148,
+		"useCollisionPoly": true,
+		"tag": ""
+	}
+}

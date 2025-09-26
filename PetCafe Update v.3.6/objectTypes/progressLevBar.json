@@ -1,0 +1,74 @@
+{
+	"name": "progressLevBar",
+	"plugin-id": "Sprite",
+	"sid": 206391561279634,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [
+		{
+			"name": "targetLev",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 404191900077255
+		}
+	],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Timer",
+			"name": "Timer",
+			"sid": 556943265316656
+		}
+	],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 221,
+						"height": 37,
+						"originX": 0,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 5274555,
+						"collisionPoly": {
+							"points": [
+								0.06896551724137931,
+								0,
+								0.9482758620689655,
+								0,
+								1,
+								0.15789473684210525,
+								1,
+								0.8421052631578947,
+								0.9482758620689655,
+								1,
+								0.06896551724137931,
+								1,
+								0.017241379310344827,
+								0.8421052631578947,
+								0.017241379310344827,
+								0.15789473684210525
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 285738670014576,
+				"name": "Animation 1",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}

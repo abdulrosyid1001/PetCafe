@@ -1,0 +1,86 @@
+{
+	"name": "panelEndAdventure",
+	"plugin-id": "Sprite",
+	"sid": 964965698068684,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 576,
+						"height": 249,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 3628656,
+						"collisionPoly": {
+							"points": [
+								0.2552083333333333,
+								0,
+								0.9895833333333334,
+								0.036585365853658534,
+								0.9635416666666666,
+								0.9878048780487805,
+								0.010416666666666666,
+								0.926829268292683,
+								0,
+								0.12195121951219512,
+								0.015625,
+								0.012195121951219513
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					},
+					{
+						"width": 579,
+						"height": 249,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 3889705,
+						"collisionPoly": {
+							"points": [
+								0.265625,
+								0,
+								0.9895833333333334,
+								0.036585365853658534,
+								0.96875,
+								0.9878048780487805,
+								0.010416666666666666,
+								0.926829268292683,
+								0,
+								0.13414634146341464,
+								0.015625,
+								0.012195121951219513
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 376749953553989,
+				"name": "Default",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 0
+			}
+		],
+		"subfolders": []
+	}
+}

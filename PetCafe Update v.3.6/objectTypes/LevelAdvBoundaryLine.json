@@ -1,0 +1,62 @@
+{
+	"name": "LevelAdvBoundaryLine",
+	"plugin-id": "Sprite",
+	"sid": 175016724753992,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Fade",
+			"name": "Fade",
+			"sid": 733051949436491
+		}
+	],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 3773,
+						"height": 171,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 2026127,
+						"collisionPoly": {
+							"points": [
+								0.20908130939809927,
+								0,
+								0.7914466737064414,
+								0,
+								0.7914466737064414,
+								0.9883720930232558,
+								0.7402323125659979,
+								1,
+								0.25976768743400214,
+								1,
+								0.20908130939809927,
+								0.9883720930232558
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 428798236296463,
+				"name": "Animation 1",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}

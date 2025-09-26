@@ -1,0 +1,52 @@
+{
+	"name": "BG_banner_slider",
+	"plugin-id": "Sprite",
+	"sid": 397867436775810,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 2578,
+						"height": 681,
+						"originX": 0.5,
+						"originY": 1,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 4371302,
+						"collisionPoly": {
+							"points": [
+								0,
+								0,
+								0.9996121024049651,
+								0,
+								0.9996121024049651,
+								0.9985315712187959,
+								0,
+								0.9985315712187959
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 876929803840909,
+				"name": "Default",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}

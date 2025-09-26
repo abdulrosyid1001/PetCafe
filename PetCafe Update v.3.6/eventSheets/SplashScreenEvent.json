@@ -1,0 +1,480 @@
+{
+	"name": "SplashScreenEvent",
+	"events": [
+		{
+			"eventType": "include",
+			"includeSheet": "GlobalEvents"
+		},
+		{
+			"eventType": "variable",
+			"name": "is_init_data",
+			"type": "boolean",
+			"initialValue": "false",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 345167533314854
+		},
+		{
+			"eventType": "variable",
+			"name": "loading_progress",
+			"type": "number",
+			"initialValue": "0",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 455232250181517
+		},
+		{
+			"eventType": "variable",
+			"name": "FTUE_splashscreen",
+			"type": "boolean",
+			"initialValue": "true",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 171967357606722
+		},
+		{
+			"eventType": "variable",
+			"name": "is_loading_completed",
+			"type": "boolean",
+			"initialValue": "false",
+			"comment": "",
+			"isStatic": false,
+			"isConstant": false,
+			"sid": 844785558764607
+		},
+		{
+			"functionName": "first_init",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 262698462500379,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-boolean-eventvar",
+							"objectClass": "System",
+							"sid": 521099671108428,
+							"parameters": {
+								"variable": "is_init_data"
+							},
+							"isInverted": true
+						}
+					],
+					"actions": [
+						{
+							"type": "script",
+							"language": "javascript",
+							"script": [
+								"if(storagePlatform !== \"local\" && storagePlatform !== \"\"){",
+								"\tstorageType = \"server_storage\";",
+								"}",
+								"console.log(\"storageType\", storageType);",
+								"runtime.globalVars.storageType = storageType;",
+								"",
+								"runtime.callFunction(\"get_storage\", storageType, \"tutorial_completed_arr\");",
+								"runtime.callFunction(\"get_storage\", storageType, \"ftue_splashscreen\");",
+								"runtime.callFunction(\"get_storage\", storageType, \"build_version\");"
+							]
+						},
+						{
+							"callFunction": "init_data",
+							"sid": 479887882616331,
+							"parameters": [
+								"0"
+							]
+						}
+					],
+					"sid": 485927410409428
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-start-of-layout",
+					"objectClass": "System",
+					"sid": 172357568526022
+				}
+			],
+			"actions": [
+				{
+					"type": "script",
+					"language": "javascript",
+					"script": [
+						"function waitForInit(retries = 20, delay = 200) {",
+						"\tif(storagePlatform == \"\"){",
+						"\t\tif (retries > 0) {",
+						"        \tsetTimeout(() => waitForInit(retries - 1, delay), delay);",
+						"\t\t} else {",
+						"\t\t\tconsole.log(\"Init not Completed\");",
+						"\t\t\truntime.callFunction(\"first_init\");",
+						"\t\t}",
+						"\t}",
+						"\telse{",
+						"\t\truntime.callFunction(\"first_init\");",
+						"\t}",
+						"}",
+						"if(platform_ad === \"CrazyGames\"){",
+						"\twaitForInit();",
+						"}",
+						"else{",
+						"\truntime.callFunction(\"first_init\");",
+						"}"
+					]
+				},
+				{
+					"type": "script",
+					"language": "javascript",
+					"script": [
+						"var pa = document.getElementById(\"preload_anchor\");",
+						"if(pa !== null){document.getElementById(\"preload_anchor\").remove();}"
+					]
+				}
+			],
+			"sid": 608962909240162,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "wait",
+							"objectClass": "System",
+							"sid": 674259898933480,
+							"parameters": {
+								"seconds": "1",
+								"use-timescale": true
+							}
+						},
+						{
+							"id": "set-boolean-instvar",
+							"objectClass": "overlay",
+							"sid": 273905381153306,
+							"parameters": {
+								"instance-variable": "active",
+								"value": "true"
+							}
+						}
+					],
+					"sid": 904032652975803,
+					"disabled": true
+				}
+			]
+		},
+		{
+			"functionName": "go_to_layout",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "none",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [
+				{
+					"name": "ID",
+					"type": "string",
+					"initialValue": "",
+					"comment": "",
+					"sid": 576395586666370
+				}
+			],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [],
+			"sid": 908712468556177,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 755911686549467,
+							"parameters": {
+								"variable": "ID",
+								"comparison": 0,
+								"value": "\"Game\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "go-to-layout",
+							"objectClass": "System",
+							"sid": 962817741356303,
+							"parameters": {
+								"layout": "Game"
+							}
+						}
+					],
+					"sid": 835582051707727
+				},
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 459323253343392,
+							"parameters": {
+								"variable": "ID",
+								"comparison": 0,
+								"value": "\"Homepage\""
+							}
+						}
+					],
+					"actions": [
+						{
+							"id": "go-to-layout",
+							"objectClass": "System",
+							"sid": 823027394246856,
+							"parameters": {
+								"layout": "Homepage"
+							}
+						}
+					],
+					"sid": 954294790622241
+				}
+			]
+		},
+		{
+			"functionName": "get_loading_perc",
+			"functionDescription": "",
+			"functionCategory": "",
+			"functionReturnType": "number",
+			"functionCopyPicked": false,
+			"functionIsAsync": false,
+			"functionParameters": [],
+			"eventType": "function-block",
+			"conditions": [],
+			"actions": [
+				{
+					"id": "set-function-return-value",
+					"objectClass": "Functions",
+					"sid": 711140800114869,
+					"parameters": {
+						"value": "loading_progress"
+					}
+				}
+			],
+			"sid": 898931407775092
+		},
+		{
+			"bookmark": true,
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "every-tick",
+					"objectClass": "System",
+					"sid": 826598643101819
+				}
+			],
+			"actions": [
+				{
+					"id": "set-eventvar-value",
+					"objectClass": "System",
+					"sid": 947041010218092,
+					"parameters": {
+						"variable": "loading_progress",
+						"value": "loadingprogress*100"
+					}
+				},
+				{
+					"type": "script",
+					"language": "javascript",
+					"script": [
+						"console.log(runtime.globalVars.loading_progress, \"%\");",
+						"if(typeof FBInstant !== 'undefined'){",
+						"\t// Informs the SDK of loading progress",
+						"\tFBInstant.setLoadingProgress(runtime.globalVars.loading_progress);",
+						"\tconsole.log(runtime.globalVars.loading_progress);",
+						"}",
+						"\t\t// Once all assets are loaded, tells the SDK ",
+						"\t\t// to end loading view and start the game"
+					],
+					"disabled": true
+				}
+			],
+			"sid": 429753486462212
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-eventvar",
+					"objectClass": "System",
+					"sid": 538959629960211,
+					"parameters": {
+						"variable": "loading_progress",
+						"comparison": 5,
+						"value": "100"
+					}
+				},
+				{
+					"id": "compare-boolean-eventvar",
+					"objectClass": "System",
+					"sid": 241946223025531,
+					"parameters": {
+						"variable": "is_loading_completed"
+					}
+				},
+				{
+					"id": "trigger-once-while-true",
+					"objectClass": "System",
+					"sid": 896227118419574
+				}
+			],
+			"actions": [
+				{
+					"callFunction": "init_data",
+					"sid": 923861642465471,
+					"parameters": [
+						"1"
+					]
+				}
+			],
+			"sid": 820397581801699,
+			"disabled": true
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "compare-opacity",
+					"objectClass": "overlay",
+					"sid": 624611022424366,
+					"parameters": {
+						"comparison": 1,
+						"opacity": "100"
+					}
+				},
+				{
+					"id": "is-boolean-instance-variable-set",
+					"objectClass": "overlay",
+					"sid": 657512304807266,
+					"parameters": {
+						"instance-variable": "active"
+					}
+				}
+			],
+			"actions": [
+				{
+					"id": "set-opacity",
+					"objectClass": "overlay",
+					"sid": 572600285498039,
+					"parameters": {
+						"opacity": "lerp(Self.Opacity, 100, 2*dt)"
+					}
+				}
+			],
+			"sid": 495071320216676,
+			"disabled": true,
+			"children": [
+				{
+					"eventType": "block",
+					"conditions": [
+						{
+							"id": "compare-opacity",
+							"objectClass": "overlay",
+							"sid": 193539911276757,
+							"parameters": {
+								"comparison": 4,
+								"opacity": "99"
+							}
+						},
+						{
+							"id": "compare-eventvar",
+							"objectClass": "System",
+							"sid": 133475672885651,
+							"parameters": {
+								"variable": "loading_progress",
+								"comparison": 5,
+								"value": "100"
+							}
+						},
+						{
+							"id": "trigger-once-while-true",
+							"objectClass": "System",
+							"sid": 906209049150330
+						}
+					],
+					"actions": [
+						{
+							"type": "script",
+							"language": "javascript",
+							"script": [
+								"game_loading_completed(100);"
+							]
+						},
+						{
+							"id": "set-boolean-instvar",
+							"objectClass": "overlay",
+							"sid": 800559171862887,
+							"parameters": {
+								"instance-variable": "active",
+								"value": "false"
+							}
+						},
+						{
+							"callFunction": "init_data",
+							"sid": 505129457465338,
+							"parameters": [
+								"1"
+							]
+						}
+					],
+					"sid": 439654236164379,
+					"disabled": true
+				}
+			]
+		},
+		{
+			"eventType": "block",
+			"conditions": [
+				{
+					"id": "on-any-touch-start",
+					"objectClass": "Touch",
+					"sid": 332707951870654
+				},
+				{
+					"id": "compare-boolean-eventvar",
+					"objectClass": "System",
+					"sid": 263949321773360,
+					"parameters": {
+						"variable": "is_init_data"
+					}
+				}
+			],
+			"actions": [
+				{
+					"type": "script",
+					"language": "javascript",
+					"script": [
+						"game_loading_completed(100);"
+					]
+				},
+				{
+					"callFunction": "init_data",
+					"sid": 970807222621252,
+					"parameters": [
+						"1"
+					]
+				}
+			],
+			"sid": 415345903489298,
+			"disabled": true
+		}
+	],
+	"sid": 254461062679589
+}

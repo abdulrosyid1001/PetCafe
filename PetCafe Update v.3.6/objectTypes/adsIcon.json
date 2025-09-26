@@ -1,0 +1,56 @@
+{
+	"name": "adsIcon",
+	"plugin-id": "Sprite",
+	"sid": 749161214072646,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 25,
+						"height": 25,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 7849345,
+						"collisionPoly": {
+							"points": [
+								1,
+								0,
+								1,
+								0.9090909090909091,
+								0.9545454545454546,
+								1,
+								0.045454545454545456,
+								1,
+								0,
+								0.9545454545454546,
+								0,
+								0.045454545454545456
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 538173895619278,
+				"name": "Animation 1",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}

@@ -1,0 +1,39 @@
+{
+	"name": "allTextFamily",
+	"plugin-id": "Text",
+	"sid": 926541101202774,
+	"instanceVariables": [
+		{
+			"name": "lang_ID",
+			"type": "string",
+			"desc": "",
+			"show": true,
+			"sid": 644330662984297
+		}
+	],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"members": [
+		"labelInfo",
+		"labelSettings",
+		"labelButton",
+		"subSubTextPopUp",
+		"subTextPopUp",
+		"labelContentPopUp",
+		"TextNotification",
+		"TextFlavor",
+		"labelSubItemStatus",
+		"labelSubMenuStore",
+		"labelSubItemRibbons",
+		"labelBanner",
+		"labelUnlockedMission",
+		"labelAdventureGameOver",
+		"labelGameOver",
+		"labelLockInfo",
+		"TextTutorial2",
+		"TextTutorial",
+		"TextTickets",
+		"COMINGSOONTEXT",
+		"AdventureLevelText"
+	]
+}

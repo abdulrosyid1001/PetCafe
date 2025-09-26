@@ -1,0 +1,350 @@
+{
+	"name": "props",
+	"plugin-id": "Sprite",
+	"sid": 992612395303846,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [
+		{
+			"name": "petBoxLevel",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 831908791698334
+		},
+		{
+			"name": "active",
+			"type": "boolean",
+			"desc": "",
+			"show": true,
+			"sid": 215546420597323
+		}
+	],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Physics",
+			"name": "Physics",
+			"sid": 791059299596114
+		}
+	],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 56,
+						"height": 58,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 9195845,
+						"collisionPoly": {
+							"points": [
+								0.05681818181818182,
+								0.004702194357366771,
+								0.9366883116883115,
+								0.0031347962382445105,
+								0.9951298701298701,
+								0.07019704433497537,
+								1,
+								0.923533363188536,
+								0.9464285714285715,
+								0.979623824451411,
+								0.03571428571428571,
+								0.9743058665472458,
+								0.0016233766233766235,
+								0.9274238692342142,
+								0,
+								0.06392745185848633
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					},
+					{
+						"width": 57,
+						"height": 58,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 8269276,
+						"collisionPoly": {
+							"points": [
+								0.059751651856915,
+								0.0015673981191222548,
+								0.9257518796992479,
+								0.0015673981191222527,
+								0.9807758031442241,
+								0.06549484997760861,
+								0.9808612440191387,
+								0.9188311688311693,
+								0.9416438824333561,
+								0.9749216300940444,
+								0.03571428571428571,
+								0.9743058665472458,
+								0.0016233766233766235,
+								0.9274238692342142,
+								0,
+								0.06392745185848633
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					},
+					{
+						"width": 57,
+						"height": 58,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 3954451,
+						"collisionPoly": {
+							"points": [
+								0.06453634085213032,
+								0,
+								0.9034233310549099,
+								0,
+								0.9791809068124858,
+								0.06079265562024183,
+								0.977671451355662,
+								0.9203985669502914,
+								0.9464285714285715,
+								0.979623824451411,
+								0.03571428571428571,
+								0.9743058665472458,
+								0.0016233766233766235,
+								0.9274238692342142,
+								0,
+								0.06392745185848633
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 182979481325601,
+				"name": "Wood Box",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 0
+			},
+			{
+				"frames": [
+					{
+						"width": 59,
+						"height": 58,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 5797675,
+						"collisionPoly": {
+							"points": [
+								0.0526634382566586,
+								0.01567398119122257,
+								0.9504182258419546,
+								0.01567398119122257,
+								0.9861325115562402,
+								0.0701970443349754,
+								0.9815100154083204,
+								0.9360725481415141,
+								0.9211424169051289,
+								0.9984326018808778,
+								0.05855161787365176,
+								0.9921630094043887,
+								0.012326656394452998,
+								0.9535938199731309,
+								0.01078582434514638,
+								0.04825347066726378
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					},
+					{
+						"width": 59,
+						"height": 58,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 3239209,
+						"collisionPoly": {
+							"points": [
+								0.0526634382566586,
+								0.01567398119122257,
+								0.9504182258419546,
+								0.01567398119122257,
+								0.9861325115562402,
+								0.0701970443349754,
+								0.9815100154083204,
+								0.9360725481415141,
+								0.9211424169051289,
+								0.9984326018808778,
+								0.05855161787365176,
+								0.9921630094043887,
+								0.012326656394452998,
+								0.9535938199731309,
+								0.01078582434514638,
+								0.04825347066726378
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					},
+					{
+						"width": 59,
+						"height": 58,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 6159488,
+						"collisionPoly": {
+							"points": [
+								0.0526634382566586,
+								0.01567398119122257,
+								0.9504182258419546,
+								0.01567398119122257,
+								0.9861325115562402,
+								0.0701970443349754,
+								0.9815100154083204,
+								0.9360725481415141,
+								0.9211424169051289,
+								0.9984326018808778,
+								0.05855161787365176,
+								0.9921630094043887,
+								0.012326656394452998,
+								0.9535938199731309,
+								0.01078582434514638,
+								0.04825347066726378
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 843653526057791,
+				"name": "Jam Box",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 0
+			},
+			{
+				"frames": [
+					{
+						"width": 56,
+						"height": 58,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 2061382,
+						"collisionPoly": {
+							"points": [
+								0.03571428571428571,
+								0.018808777429467086,
+								0.9512987012987012,
+								0.012539184952978054,
+								0.9967532467532467,
+								0.05765785938199731,
+								0.9951298701298701,
+								0.9313703537841471,
+								0.943181818181818,
+								0.9780564263322886,
+								0.03896103896103897,
+								0.9821428571428571,
+								0,
+								0.9407467532467538,
+								0,
+								0.05922525750111959
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 188667435169072,
+				"name": "Mystery Box",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 0
+			},
+			{
+				"frames": [
+					{
+						"width": 56,
+						"height": 58,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 6542637,
+						"collisionPoly": {
+							"points": [
+								0.07467532467532469,
+								0,
+								0.9285714285714285,
+								0,
+								1,
+								0.04668607254814151,
+								1,
+								0.9642857142857143,
+								0.9642857142857143,
+								1,
+								0,
+								0.9821428571428571,
+								0,
+								0.05765785938199731
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 697969666654431,
+				"name": "Ice Box",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 0
+			}
+		],
+		"subfolders": []
+	}
+}

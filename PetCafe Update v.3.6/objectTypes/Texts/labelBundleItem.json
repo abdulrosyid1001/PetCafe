@@ -1,0 +1,27 @@
+{
+	"name": "labelBundleItem",
+	"plugin-id": "Text",
+	"sid": 109812406579064,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [
+		{
+			"name": "ID",
+			"type": "string",
+			"desc": "",
+			"show": true,
+			"sid": 845905495895193
+		}
+	],
+	"behaviorTypes": [],
+	"effectTypes": [
+		{
+			"effectId": "skymen_BetterOutline",
+			"name": "BetterOutline"
+		},
+		{
+			"effectId": "brightness",
+			"name": "Brightness"
+		}
+	]
+}

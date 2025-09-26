@@ -1,0 +1,12 @@
+{
+	"name": "NavBarFamily",
+	"plugin-id": "Sprite",
+	"sid": 878603186550473,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"members": [
+		"navbarButton",
+		"navbarIcon"
+	]
+}

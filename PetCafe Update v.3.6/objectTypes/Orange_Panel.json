@@ -1,0 +1,60 @@
+{
+	"name": "Orange_Panel",
+	"plugin-id": "Sprite",
+	"sid": 168585634778622,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 303,
+						"height": 52,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 9565031,
+						"collisionPoly": {
+							"points": [
+								0.02666666666666667,
+								0,
+								0.9666666666666667,
+								0,
+								0.98,
+								0.038461538461538464,
+								0.9933333333333333,
+								0.11538461538461539,
+								0.9933333333333333,
+								0.8846153846153846,
+								0.98,
+								0.9615384615384616,
+								0.02,
+								0.9615384615384616,
+								0,
+								0.15384615384615385
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 252571366918888,
+				"name": "Default",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}

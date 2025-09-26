@@ -1,0 +1,64 @@
+{
+	"name": "starYellow",
+	"plugin-id": "Sprite",
+	"sid": 723718625924447,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Tween",
+			"name": "Tween",
+			"sid": 976480748634514
+		}
+	],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 297,
+						"height": 306,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 5132097,
+						"collisionPoly": {
+							"points": [
+								0.531986531986532,
+								0.013071895424836602,
+								0.9966329966329966,
+								0.34967320261437906,
+								0.9966329966329966,
+								0.45751633986928103,
+								0.7946127946127947,
+								1,
+								0.18181818181818182,
+								0.9771241830065359,
+								0.006734006734006734,
+								0.4542483660130719,
+								0.02356902356902357,
+								0.3300653594771242
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 309509934565162,
+				"name": "Default",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}

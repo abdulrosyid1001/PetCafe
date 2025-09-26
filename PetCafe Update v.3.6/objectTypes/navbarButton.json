@@ -1,0 +1,60 @@
+{
+	"name": "navbarButton",
+	"plugin-id": "Sprite",
+	"sid": 973282551017001,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Tween",
+			"name": "Tween",
+			"sid": 849870337021206
+		}
+	],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 305,
+						"height": 297,
+						"originX": 0.5,
+						"originY": 1,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 5580147,
+						"collisionPoly": {
+							"points": [
+								0.10429447852760736,
+								0.05660377358490566,
+								0.9079754601226994,
+								0.06289308176100629,
+								0.9386503067484663,
+								0.09433962264150944,
+								0.901840490797546,
+								0.9371069182389937,
+								0.05521472392638037,
+								0.8867924528301887
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 719551538602703,
+				"name": "Animation 1",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}

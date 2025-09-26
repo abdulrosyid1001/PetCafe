@@ -1,0 +1,62 @@
+{
+	"name": "NPC_",
+	"plugin-id": "Sprite",
+	"sid": 179930797717766,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 507,
+						"height": 539,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 781938,
+						"collisionPoly": {
+							"points": [
+								0.4812623274161736,
+								0.0018552875695732839,
+								0.5621301775147929,
+								0.04452690166975881,
+								0.873767258382643,
+								0.7105751391465677,
+								0.9349112426035503,
+								0.9146567717996289,
+								0.9151873767258383,
+								0.9758812615955473,
+								0.6824457593688363,
+								0.9888682745825603,
+								0.07100591715976332,
+								0.9721706864564007,
+								0.055226824457593686,
+								0.8738404452690167,
+								0.3708086785009862,
+								0.08719851576994433
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 826868683360337,
+				"name": "Default",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}

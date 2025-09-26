@@ -1,0 +1,62 @@
+{
+	"name": "scoreFrame",
+	"plugin-id": "Sprite",
+	"sid": 608412569761473,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [
+		{
+			"name": "ID",
+			"type": "string",
+			"desc": "",
+			"show": true,
+			"sid": 831288047368813
+		}
+	],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 273,
+						"height": 141,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 7272881,
+						"collisionPoly": {
+							"points": [
+								0.02586206896551724,
+								0.013888888888888888,
+								1,
+								0.06944444444444445,
+								0.9655172413793104,
+								1,
+								0,
+								0.9444444444444444,
+								0,
+								0.05555555555555555
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 993574446017309,
+				"name": "Animation 1",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}

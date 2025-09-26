@@ -1,0 +1,72 @@
+{
+	"name": "PopupDetailInfoDailyLogin",
+	"plugin-id": "Sprite",
+	"sid": 590826774092863,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [
+		{
+			"name": "day",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 640757597763056
+		}
+	],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Fade",
+			"name": "Fade",
+			"sid": 932268458381465
+		}
+	],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 339,
+						"height": 264,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 7176894,
+						"collisionPoly": {
+							"points": [
+								0.05309734513274336,
+								0.003787878787878788,
+								0.976401179941003,
+								0.03787878787878788,
+								0.9970501474926253,
+								0.09090909090909091,
+								0.9587020648967551,
+								0.9393939393939394,
+								0.5132743362831859,
+								0.9962121212121212,
+								0.06784660766961652,
+								0.9356060606060606,
+								0.0029498525073746312,
+								0.8636363636363636
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 170178549896480,
+				"name": "Default",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}

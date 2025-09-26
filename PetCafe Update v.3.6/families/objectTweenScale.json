@@ -1,0 +1,26 @@
+{
+	"name": "objectTweenScale",
+	"plugin-id": "Sprite",
+	"sid": 740195217962591,
+	"instanceVariables": [
+		{
+			"name": "selfWidth",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 282657777510602
+		},
+		{
+			"name": "selfHeight",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 905872410384294
+		}
+	],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"members": [
+		"framePopUp"
+	]
+}

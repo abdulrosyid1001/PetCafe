@@ -1,0 +1,95 @@
+{
+	"name": "fruitBox",
+	"plugin-id": "Sprite",
+	"sid": 506769579321933,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [
+		{
+			"name": "shake_count",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 803628927408397
+		},
+		{
+			"name": "selfX",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 887970954518381
+		},
+		{
+			"name": "selfY",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 779259964677225
+		},
+		{
+			"name": "shake_active",
+			"type": "boolean",
+			"desc": "",
+			"show": true,
+			"sid": 634094337255285
+		}
+	],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Tween",
+			"name": "Tween",
+			"sid": 932189455843217
+		},
+		{
+			"behaviorId": "Sin",
+			"name": "Sine",
+			"sid": 571482380052449
+		},
+		{
+			"behaviorId": "Sin",
+			"name": "Sine2",
+			"sid": 549999562338131
+		},
+		{
+			"behaviorId": "Sin",
+			"name": "Sine3",
+			"sid": 473860091669170
+		},
+		{
+			"behaviorId": "Sin",
+			"name": "Sine4",
+			"sid": 157065698749413
+		}
+	],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 250,
+						"height": 250,
+						"originX": 0.5,
+						"originY": 0.168,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 6573106,
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 972839549955303,
+				"name": "Animation 1",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}

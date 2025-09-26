@@ -1,0 +1,23 @@
+{
+	"name": "tutorialFrame",
+	"plugin-id": "NinePatch",
+	"sid": 509471098251153,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"image": {
+		"width": 253,
+		"height": 125,
+		"originX": 0.5,
+		"originY": 0.5,
+		"originalSource": "",
+		"exportFormat": "lossless",
+		"exportQuality": 0.8,
+		"fileType": "image/png",
+		"imageSpriteId": 4928244,
+		"useCollisionPoly": true,
+		"tag": ""
+	}
+}

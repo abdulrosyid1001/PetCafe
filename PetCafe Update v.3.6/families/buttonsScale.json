@@ -1,0 +1,34 @@
+{
+	"name": "buttonsScale",
+	"plugin-id": "Sprite",
+	"sid": 626813621815453,
+	"instanceVariables": [
+		{
+			"name": "selfWidth",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 623093069754655
+		},
+		{
+			"name": "selfHeight",
+			"type": "number",
+			"desc": "",
+			"show": true,
+			"sid": 198194221357748
+		}
+	],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"members": [
+		"blueButton",
+		"Button",
+		"boostersButton",
+		"ButtonPlay",
+		"buttonGameOver",
+		"buttonPopUp",
+		"closeButton",
+		"greenButton",
+		"frameButtonGameOver"
+	]
+}

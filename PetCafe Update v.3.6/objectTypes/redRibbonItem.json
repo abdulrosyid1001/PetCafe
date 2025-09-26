@@ -1,0 +1,54 @@
+{
+	"name": "redRibbonItem",
+	"plugin-id": "Sprite",
+	"sid": 929712140046736,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [],
+	"behaviorTypes": [],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 179,
+						"height": 65,
+						"originX": 0.4945054945054945,
+						"originY": 0.36363636363636365,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 3927633,
+						"collisionPoly": {
+							"points": [
+								1,
+								0,
+								1,
+								0.7538461538461538,
+								0.1005586592178771,
+								1,
+								0,
+								0.7692307692307693,
+								0,
+								0.015384615384615385
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 840357699285784,
+				"name": "Default",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}

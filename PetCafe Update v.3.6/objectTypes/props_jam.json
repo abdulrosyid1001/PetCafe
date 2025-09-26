@@ -1,0 +1,76 @@
+{
+	"name": "props_jam",
+	"plugin-id": "Sprite",
+	"sid": 434813312410433,
+	"isGlobal": false,
+	"editorNewInstanceIsReplica": true,
+	"instanceVariables": [],
+	"behaviorTypes": [
+		{
+			"behaviorId": "Tween",
+			"name": "Tween",
+			"sid": 610550020963784
+		}
+	],
+	"effectTypes": [],
+	"animations": {
+		"items": [
+			{
+				"frames": [
+					{
+						"width": 132,
+						"height": 132,
+						"originX": 0.5,
+						"originY": 0.5,
+						"originalSource": "",
+						"exportFormat": "lossless",
+						"exportQuality": 0.8,
+						"fileType": "image/png",
+						"imageSpriteId": 8999831,
+						"collisionPoly": {
+							"points": [
+								0.5454545454545454,
+								0.030303030303030304,
+								0.75,
+								0.2727272727272727,
+								0.8106060606060606,
+								0.5454545454545454,
+								0.8106060606060606,
+								0.6136363636363636,
+								0.6439393939393939,
+								0.9166666666666666,
+								0.6136363636363636,
+								0.9318181818181818,
+								0.5681818181818182,
+								0.946969696969697,
+								0.4772727272727273,
+								0.9545454545454546,
+								0.4166666666666667,
+								0.946969696969697,
+								0.30303030303030304,
+								0.8939393939393939,
+								0.17424242424242425,
+								0.5909090909090909,
+								0.18181818181818182,
+								0.5075757575757576,
+								0.4090909090909091,
+								0.1590909090909091
+							]
+						},
+						"useCollisionPoly": true,
+						"duration": 1,
+						"tag": ""
+					}
+				],
+				"sid": 394122988591629,
+				"name": "Default",
+				"isLooping": false,
+				"isPingPong": false,
+				"repeatCount": 1,
+				"repeatTo": 0,
+				"speed": 5
+			}
+		],
+		"subfolders": []
+	}
+}
