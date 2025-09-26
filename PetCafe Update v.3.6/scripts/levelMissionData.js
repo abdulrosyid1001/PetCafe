@@ -1,4 +1,4 @@
-//v1.6
+//v1.9
 export const levelMissionDataArr = 
 [
     {
@@ -45,10 +45,10 @@ export const levelMissionDataArr =
         "goals": [
             {
                 "goalsID": 7,
-                "qty": 1,
+                "qty": 2,
             }
           ],  
-        "moves": 50,
+        "moves": 90,
         "isprobabilites" : true,
         "probabilities" :[0.30, 0.30, 0.20, 0.10, 0.10, 0.00],
         "nexttileseq" : [4,3,4,2,4,4,0,2,4,4,3,2,4,1,2,3,4,3,0,1,2,3,4,2,0,1,2,3,4,3]
